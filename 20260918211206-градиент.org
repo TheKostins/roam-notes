@@ -1,0 +1,32 @@
+:PROPERTIES:
+:ID:       1756907B-1FF2-4F62-8553-759B8509281C
+:END:
+#+title: Градиент
+#+filetags: :calc:definition:
+
+Пусть $E \subset \R^n$ -- открытое множество, $f: E \rightarrow \R$ -- [[id:957FA09D-8883-40A5-B4C7-237D9F815A42][дифференцируемая]] в точке $x \in E$ функция.
+*Градиент* $f$ в точке $x$ -- вектор-столбец из частных производных:
+\[
+\nabla f(x) = \left( \frac{\partial f}{\partial x_1}(x), \dots, \frac{\partial f}{\partial x_n}(x) \right)^T \in \R^n
+\]
+
+Производная $f^{\prime}(x)$ -- это строка $1 \times n$ (матрица линейного отображения $\R^n \rightarrow \R$), а градиент -- она же, записанная столбцом: $\nabla f(x) = (f^{\prime}(x))^T$.
+Поэтому действие производной на вектор $h \in \R^n$ -- это [[id:F2942E98-6115-4600-AA3F-E0F687D9C732][скалярное произведение]] с градиентом:
+\[
+f^{\prime}(x) h = (\nabla f(x))^T h = \left\langle \nabla f(x); h \right\rangle
+\]
+и определение дифференцируемости переписывается как
+\[
+f(x + h) = f(x) + \left\langle \nabla f(x); h \right\rangle + o(\norm{h}),\ h \rightarrow 0
+\]
+
+* Производная вдоль прямой
+Пусть $x \in E$, $h \in \R^n$ и $g(t) = f(x + th)$ (для тех $t$, при которых $x + th \in E$). Тогда
+\[
+g^{\prime}(t) = \left\langle \nabla f(x + th); h \right\rangle
+\]
+** Доказательство
+$g = f \circ l$, где $l(t) = x + th$, $l: \R \rightarrow \R^n$ и $l^{\prime}(t) = h$ (столбец $n \times 1$). По правилу дифференцирования композиции:
+\[
+g^{\prime}(t) = f^{\prime}(l(t)) l^{\prime}(t) = (\nabla f(x + th))^T h = \left\langle \nabla f(x + th); h \right\rangle
+\]

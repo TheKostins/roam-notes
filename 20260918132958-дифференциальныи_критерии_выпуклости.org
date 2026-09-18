@@ -2,16 +2,16 @@
 :ID:       18BD8497-CEBD-4962-8144-474B489606C3
 :END:
 #+title: Дифференциальный критерий выпуклости
-#+filetags: :theorem:metopt:
+#+filetags: :metopt:theorem:
 
-Пусть $f: E \rightarrow \R^n$ -- [[id:957FA09D-8883-40A5-B4C7-237D9F815A42][дифференцируемая]] и [[id:1CA14F2C-637F-41DE-9E97-72075D19E97F][выпуклая]] функция. $E$ -- [[id:316B5BFA-8B9F-4267-9086-D6593AAB5F9B][выпуклое множество]].
+Пусть $E \subset \R^n$, $f: E \rightarrow \R$ -- [[id:957FA09D-8883-40A5-B4C7-237D9F815A42][дифференцируемая]] и [[id:1CA14F2C-637F-41DE-9E97-72075D19E97F][выпуклая]] функция. $E$ -- [[id:316B5BFA-8B9F-4267-9086-D6593AAB5F9B][выпуклое множество]].
 Тогда $\forall x,y \in E\ f(y) \ge f(x) + \left\langle \nabla f(x); y-x \right\rangle$
 
-/Rem/: Это аналог одномерного случая, когда [[id:1CA14F2C-637F-41DE-9E97-72075D19E97F][выпуклая функция]] должна лежать на касательной (в данном случае $f: E \subset \R \rightarrow \R$ и $f$ - [[id:957FA09D-8883-40A5-B4C7-237D9F815A42][дифференцируемая]])
-$f(y) \ge f^{\prime}(x)(y-x) \Leftrightarrow f$ -- выпуклая функция 
+/Rem/: Это аналог [[id:2F475EE4-2630-45FD-8DD2-8EA9D48059E4][одномерного случая]], когда [[id:1CA14F2C-637F-41DE-9E97-72075D19E97F][выпуклая функция]] должна лежать не ниже касательной (в данном случае $f: E \subset \R \rightarrow \R$ и $f$ -- [[id:957FA09D-8883-40A5-B4C7-237D9F815A42][дифференцируемая]])
+$f(y) \ge f(x) + f^{\prime}(x)(y-x) \Leftrightarrow f$ -- выпуклая функция
 
 * Доказательство
-Давайте подведем наш случай до одномерного. Так как нас интересует только отрезок
+Давайте сведём наш случай к одномерному. Так как нас интересует только отрезок
 $[x;y]$, мы можем сузить функцию $f$ на этот отрезок.
 
 Заведем $g(t) = f(x + t(y-x)) = f((1-t)x + ty),\ t \in [0;1]$
@@ -21,33 +21,31 @@ $[x;y]$, мы можем сузить функцию $f$ на этот отре�
 \[
 g(\lambda l + (1-\lambda) t) = f(x + (\lambda l + (1-\lambda)t)(y-x)) =
 \]
-Разделим $x$ на $\lambda x + (1-\lambda) x$:
+Представим $x$ как $\lambda x + (1-\lambda) x$:
 \[
-f(\lambda x + (1-\lambda) x + (\lambda l + (1-\lambda)t)(y-x)) = 
+f(\lambda x + (1-\lambda) x + (\lambda l + (1-\lambda)t)(y-x)) =
 \]
 Перегруппируем на слагаемые с $\lambda$ и с $1-\lambda$
 \[
 f (\lambda ( x + l(y-x)) + (1-\lambda)(x + t(y-x)))
 \]
 По выпуклости, получаем неравенство
-\begin{gather}
+\begin{gather*}
 f (\lambda ( x + l(y-x)) + (1-\lambda)(x + t(y-x))) \le \\
 \le \lambda f(x + l(y-x)) + (1-\lambda) f(x + t(y-x)) = \lambda g(l) + (1-\lambda) g(t)
-\end{gather}
+\end{gather*}
 Итого $g$ -- [[id:1CA14F2C-637F-41DE-9E97-72075D19E97F][выпуклая]].
 
 
-Это неравенство (*)
-Теперь рассмотрим  $f(y)= g(1) \ge g(0) + g^{\prime}(0)(1-0) = f(x) + g^{\prime}(0)$
+Теперь применим [[id:2F475EE4-2630-45FD-8DD2-8EA9D48059E4][одномерный случай]] к выпуклой $g$ в точках $0$ и $1$:
+$f(y)= g(1) \ge g(0) + g^{\prime}(0)(1-0) = f(x) + g^{\prime}(0)$ (*)
 
 Давайте посмотрим на $g^{\prime}(t)$, можно представить $g$, как $f \circ h$, где
-$h(t) = x + t(y-x)$, тогда $g\prime(t) = f^{\prime}(h(t))h^{\prime}(t)$
-\[
-\]
-Так как $h: \R \rightarrow \R^n$, то ее производная это столбец $1 \times n$ и она равняется $y-x$ -- множителю при $t$ (прим. $x,y$ -- векторы)
-Для $f: \R^n \rightarrow \R$ производной является строка $n \times 1$
+$h(t) = x + t(y-x)$, тогда $g^{\prime}(t) = f^{\prime}(h(t))h^{\prime}(t)$
+Так как $h: \R \rightarrow \R^n$, то ее производная это столбец $n \times 1$ и она равняется $y-x$ -- множителю при $t$ (прим. $x,y$ -- векторы)
+Для $f: \R^n \rightarrow \R$ производной является строка $1 \times n$
 
-Тогда, выходит, что $f^{\prime}(h(t)) h(t) = (\nabla f(h(t)))^T h^{\prime}(t)$
+Тогда, выходит, что $f^{\prime}(h(t)) h^{\prime}(t) = (\nabla f(h(t)))^T h^{\prime}(t)$, где $\nabla f$ -- [[id:1756907B-1FF2-4F62-8553-759B8509281C][градиент]]
 Получилось [[id:F2942E98-6115-4600-AA3F-E0F687D9C732][скалярное произведение]]; Давайте подставим значение производной и функции
 \[
 (\nabla f(h(t)))^T h^{\prime}(t) =\left\langle \nabla f(x + t(y-x)); y-x \right\rangle
@@ -59,7 +57,3 @@ $h(t) = x + t(y-x)$, тогда $g\prime(t) = f^{\prime}(h(t))h^{\prime}(t)$
 \[
 f(y) \ge f(x) + \left\langle \nabla f(x); y-x \right\rangle
 \]
-
-
-
-
