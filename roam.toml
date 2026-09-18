@@ -1,0 +1,38 @@
+# Конфигурация тулинга агента (tools/roam.py). Заметки org-roam лежат рядом.
+
+[vault]
+# Теги процесса, а не предмета. Зеркалит my/notes-workflow-tags из my-org.el
+# (+ backfill: заглушка «дописать позже»).
+workflow_tags = ["review", "hub", "lecture", "image", "backfill"]
+# Теги типа заметки.
+type_tags = ["definition", "theorem", "lemma", "example", "method", "property"]
+# Откуда читать LaTeX-макросы (my/notes-latex-macros).
+emacs_macros = "~/.config/emacs/lisp/my-org.el"
+# Тело короче этого (в символах) считается заглушкой.
+stub_chars = 40
+
+# Курс = тег предмета. Первый не-workflow тег заметки должен быть курсом:
+# из него my/anki-deck-for-buffer выводит деку.
+[courses.metopt]
+name = "Методы оптимизации"
+prefix = "Метопт."
+deck = "Notes::metopt"
+pdf = "../optimization_methods-1.pdf"
+pdf_label = "Конспект 2025/26"
+page_offset = 2   # физическая страница = логическая + 2
+lecture_header_re = '^\s*Пара (\d+)\.\s+(.+?)\s{2,}'
+
+[courses.calc]
+name = "Математический анализ"
+prefix = "Матан."
+deck = "Notes::calc"
+
+# Имена типов и полей Anki. НЕ подтверждены через AnkiConnect (modelFieldNames):
+# в русской локали могут быть «Основная / Лицевая сторона / Оборотная сторона».
+[anki.basic]
+type = "Basic"
+fields = ["Front", "Back"]
+
+[anki.cloze]
+type = "Cloze"
+fields = ["Text", "Back Extra"]
