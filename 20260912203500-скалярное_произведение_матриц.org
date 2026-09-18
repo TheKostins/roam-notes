@@ -1,0 +1,12 @@
+:PROPERTIES:
+:ID:       9E3EEBE3-5D6D-4EB8-AFF1-9B9F95F4463A
+:END:
+#+title: Скалярное произведение матриц
+#+filetags: :definition:metopt:
+$X,Y$ -- матрицы $m \times n$.
+\[
+\left\langle X ; Y \right\rangle = \sum\limits_{i=1}^m \sum\limits_{j=1}^n X_{ij} Y_{ij} = \textt{tr}(X^T Y)
+\]
+
+Где $\textt{tr}$ -- [[id:854E1CDF-3421-4E56-AEF4-BAA6511FC523][След матрицы]]
+

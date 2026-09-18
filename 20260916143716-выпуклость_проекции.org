@@ -1,0 +1,20 @@
+:PROPERTIES:
+:ID:       80AFB48E-12EF-4D6C-9303-E2E52FC83D26
+:END:
+#+title: Выпуклость проекции
+#+filetags: :definition:metopt:
+Пусть:
+- $V$ -- [[id:5D688904-8445-47B5-9D39-8BCC39F9C354][гильбертово пространство]],
+- $U \subset V$ -- замкнутое подпространство,
+- $C \subset V$ -- [[id:316B5BFA-8B9F-4267-9086-D6593AAB5F9B][выпуклое множество]]
+- $P_U: V \rightarrow U$ -- проекция (по свойствам гильбертовости это линейный оператор)
+
+Тогда: $P_U C$ -- тоже выпуклое
+
+* Доказательство
+$x, y \in P_UC$, следовательно у них есть образы $x = P_Ua, y = P_Ub$, где $a,b \in C$.
+Мы хотим доказать, что $\forall \lambda \in [0;1]\ \forall x, y \in P_UC\ \lambda x + (1-\lambda)y \in P_UC$.
+Заменим $x,y$ на проекции образов: $\lambda x + (1-\lambda) y = \lambda P_U a + (1- \lambda) P_U b$.
+По линейности: $\lambda P_Ua + (1-\lambda)P_U b = P_U(\lambda a + (1-\lambda) b)$ .
+Но мы знаем, что j$\lambda a + (1-\lambda)b \in C$ (выпуклость), тогда
+$P_U(\lambda a + (1-\lambda) b) = \lambda P_U a + (1-\lambda) P_U b \in P_U C$ 

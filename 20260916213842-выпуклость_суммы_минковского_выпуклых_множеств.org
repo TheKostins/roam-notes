@@ -1,0 +1,35 @@
+:PROPERTIES:
+:ID:       88ABE812-A1C1-44A1-BF92-D714C9AF6315
+:END:
+#+title: Выпуклость суммы минковского выпуклых множеств
+#+filetags: :theorem:metopt:
+Пусть $C_k,\ k \in k = 1,2,...,n$ -- [[id:316B5BFA-8B9F-4267-9086-D6593AAB5F9B][выпуклые множества]], причем они все подмножества
+$V$ -- [[id:1B626AA4-35C8-4C7C-9D3D-D8C26D98F40C][Векторное пространство]].
+тогда $C = \sum\limits_k^n w_k C_k = \left\{ \sum\limits_k^n w_k x_k,\ x_k \in C_k \right\}$ -- [[id:316B5BFA-8B9F-4267-9086-D6593AAB5F9B][выпуклое множество]].
+По сути $C$ -- это [[id:14FE7B45-F304-4C15-8086-3535589FA04A][Сумма Минковского]] для $C_k$, только взешенная.
+
+* Доказательство
+
+Нужно доказать:
+\[
+\forall \lambda \in [0;1]\ \forall x, y \in C\ \lambda x +  (1- \lambda )y \in C
+\]
+
+Знаем, что $x,y$ представимы в виде суммы элементов из множеств $C_k$.
+Тогда:
+\[
+\lambda x + (1-\lambda)y = \lambda \sum\limits_{k=1}^n w_k x_k + (1-\lambda) \sum\limits_{i=1}^n w_i y_i,\quad x_k,y_k \in C_k
+\]
+Тогда объединим слагаемые по индексу в одну сумму
+\[
+\sum\limits_{k=1}^n \left[ \lambda w_kx_k + (1-\lambda) w_ky_k \right]
+\]
+А из выпуклости $C_k$ следует, что $\lambda w_kx_k + (1-\lambda) w_ky_k \in C_k$
+Обозначим: $\lambda w_k x_k + (1-\lambda) w_k y_k = w_k z_k  \in C_k$.
+Тогда мы представили $\lambda x + (1-\lambda)y$, как $\sum\limits_{k=1}^n w_kz_k, z_{k} \in C_k$.
+А из этого следует, что $\lambda x + (1-\lambda)y \in C$, как элемент [[id:14FE7B45-F304-4C15-8086-3535589FA04A][суммы минковского]]
+
+* Пример
+
+Пусть $C_1$ -- квадрат со стороной 2, а $C_2$ -- окружность радиуса 1. Тогда $C_1 + \frac{1}{2} C_2$ -- квадрат со скругленными углами.
+

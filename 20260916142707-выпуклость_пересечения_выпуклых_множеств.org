@@ -1,0 +1,16 @@
+:PROPERTIES:
+:ID:       08CF7113-4709-4C4F-A0E7-4A2ED595BD7F
+:END:
+#+title: Выпуклость пересечения выпуклых множеств
+#+filetags: :metopt:theorem:
+Пусть $C_{\alpha}$ -- семейство [[id:316B5BFA-8B9F-4267-9086-D6593AAB5F9B][выпуклых множеств]], тогда $\bigcap_{\alpha} C_{\alpha}$ -- выпуклое.
+
+* Доказательство
+\[
+x, y \in \bigcap_{\alpha} C_{\alpha} \Rightarrow \forall \alpha\ x,y \in C_{\alpha} \Rightarrow
+ \forall \alpha\ \forall 0 \le \lambda \le 1\  \lambda x + (1-\lambda) y \in C_{\alpha} \Rightarrow 
+\]
+\[
+\Rightarrow \forall 0 \le \lambda \le 1\ \lambda x + (1-\lambda) y \in \bigcap_{\alpha} C_{\alpha}
+\]
+

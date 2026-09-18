@@ -1,0 +1,8 @@
+:PROPERTIES:
+:ID:       1B626AA4-35C8-4C7C-9D3D-D8C26D98F40C
+:END:
+#+title: Векторное пространство
+#+filetags: :definition:
+Backfill
+
+

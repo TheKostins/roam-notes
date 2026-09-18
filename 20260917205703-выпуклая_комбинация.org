@@ -1,0 +1,9 @@
+:PROPERTIES:
+:ID:       8583F986-A6E8-4BBB-B2FB-BA0E9BBE58BF
+:END:
+#+title: Выпуклая комбинация
+#+filetags: :metopt:definition:
+
+Пусть $V$ -- [[id:1B626AA4-35C8-4C7C-9D3D-D8C26D98F40C][векторное пространство]]. $x_k \in V, 1 \le k \le n, \sum\limits_{k=1}^n \lambda_k = 1, \lambda_k \ge 0$
+Тогда $\sum\limits_{k=1}^n \lambda_k x_k$ -- выпуклая комбинация
+

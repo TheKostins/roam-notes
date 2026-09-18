@@ -1,0 +1,6 @@
+.DS_Store
+\#*\#
+.\#*
+*~
+theme-*.org
+__pycache__/

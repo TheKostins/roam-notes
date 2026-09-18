@@ -1,0 +1,6 @@
+:PROPERTIES:
+:ID:       3819FAC4-B7DB-4181-A40B-8FBB5EC85DC1
+:END:
+#+title: Борелевская оболочка
+#+filetags: :backfill:definition:
+backfill 

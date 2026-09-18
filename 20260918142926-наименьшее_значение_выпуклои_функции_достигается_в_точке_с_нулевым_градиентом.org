@@ -1,0 +1,27 @@
+:PROPERTIES:
+:ID:       035B8935-65A9-4BB4-BDA3-60A60FF278F0
+:END:
+#+title: Наименьшее значение выпуклой функции достигается в точке с нулевым градиентом
+#+filetags: :theorem:metopt:
+
+Пусть $E$ -- выпуклое множество. $f: E \rightarrow \R$ -- выпуклая и дифференцируемая;
+возьмем  $x^{*} \in E$
+Тогда $\nabla f(x^{*}) = 0 \Leftrightarrow x^{*}$ -- точка минимума
+
+* Доказательство
+Возьмем неравенство из [[id:18BD8497-CEBD-4962-8144-474B489606C3][дифференциального критерия выпуклости]]
+\[
+f(y) \ge f(x) + \left\langle \nabla f(x), y-x \right\rangle \forall y
+\]
+Если подставить $x^{*}$, вместо $x$, получим
+\[
+\forall y\ f(y) \ge f(x^{*}) + \left\langle \nabla f(x^{*}); y - x^{*} \right\rangle
+\Rightarrow f(y) \ge f(x^{*}) + \left\langle 0; y-x^{*} \right\rangle
+\]
+\[
+\Rightarrow f(y) \ge f(x^{*})\  \forall y
+\]
+
+Причем оно достигается, так как $x^{*} \in E$.
+
+

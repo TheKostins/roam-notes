@@ -1,0 +1,10 @@
+:PROPERTIES:
+:ID:       854E1CDF-3421-4E56-AEF4-BAA6511FC523
+:END:
+#+title: След матрицы
+#+filetags: :definition:
+Это сумма элементов по диагонали, матрица /должна быть/ *квадратной*.
+
+\[
+\textt{tr}(X) = \sum\limits_{i=1}^n X_{ii}
+\]

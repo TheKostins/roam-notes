@@ -1,0 +1,65 @@
+:PROPERTIES:
+:ID:       18BD8497-CEBD-4962-8144-474B489606C3
+:END:
+#+title: Дифференциальный критерий выпуклости
+#+filetags: :theorem:metopt:
+
+Пусть $f: E \rightarrow \R^n$ -- [[id:957FA09D-8883-40A5-B4C7-237D9F815A42][дифференцируемая]] и [[id:1CA14F2C-637F-41DE-9E97-72075D19E97F][выпуклая]] функция. $E$ -- [[id:316B5BFA-8B9F-4267-9086-D6593AAB5F9B][выпуклое множество]].
+Тогда $\forall x,y \in E\ f(y) \ge f(x) + \left\langle \nabla f(x); y-x \right\rangle$
+
+/Rem/: Это аналог одномерного случая, когда [[id:1CA14F2C-637F-41DE-9E97-72075D19E97F][выпуклая функция]] должна лежать на касательной (в данном случае $f: E \subset \R \rightarrow \R$ и $f$ - [[id:957FA09D-8883-40A5-B4C7-237D9F815A42][дифференцируемая]])
+$f(y) \ge f^{\prime}(x)(y-x) \Leftrightarrow f$ -- выпуклая функция 
+
+* Доказательство
+Давайте подведем наш случай до одномерного. Так как нас интересует только отрезок
+$[x;y]$, мы можем сузить функцию $f$ на этот отрезок.
+
+Заведем $g(t) = f(x + t(y-x)) = f((1-t)x + ty),\ t \in [0;1]$
+
+Проверим $g$ на выпуклость. Возьмем $l,t,\lambda \in [0;1]$
+
+\[
+g(\lambda l + (1-\lambda) t) = f(x + (\lambda l + (1-\lambda)t)(y-x)) =
+\]
+Разделим $x$ на $\lambda x + (1-\lambda) x$:
+\[
+f(\lambda x + (1-\lambda) x + (\lambda l + (1-\lambda)t)(y-x)) = 
+\]
+Перегруппируем на слагаемые с $\lambda$ и с $1-\lambda$
+\[
+f (\lambda ( x + l(y-x)) + (1-\lambda)(x + t(y-x)))
+\]
+По выпуклости, получаем неравенство
+\begin{gather}
+f (\lambda ( x + l(y-x)) + (1-\lambda)(x + t(y-x))) \le \\
+\le \lambda f(x + l(y-x)) + (1-\lambda) f(x + t(y-x)) = \lambda g(l) + (1-\lambda) g(t)
+\end{gather}
+Итого $g$ -- [[id:1CA14F2C-637F-41DE-9E97-72075D19E97F][выпуклая]].
+
+
+Это неравенство (*)
+Теперь рассмотрим  $f(y)= g(1) \ge g(0) + g^{\prime}(0)(1-0) = f(x) + g^{\prime}(0)$
+
+Давайте посмотрим на $g^{\prime}(t)$, можно представить $g$, как $f \circ h$, где
+$h(t) = x + t(y-x)$, тогда $g\prime(t) = f^{\prime}(h(t))h^{\prime}(t)$
+\[
+\]
+Так как $h: \R \rightarrow \R^n$, то ее производная это столбец $1 \times n$ и она равняется $y-x$ -- множителю при $t$ (прим. $x,y$ -- векторы)
+Для $f: \R^n \rightarrow \R$ производной является строка $n \times 1$
+
+Тогда, выходит, что $f^{\prime}(h(t)) h(t) = (\nabla f(h(t)))^T h^{\prime}(t)$
+Получилось [[id:F2942E98-6115-4600-AA3F-E0F687D9C732][скалярное произведение]]; Давайте подставим значение производной и функции
+\[
+(\nabla f(h(t)))^T h^{\prime}(t) =\left\langle \nabla f(x + t(y-x)); y-x \right\rangle
+\]
+
+В точке $t=0, g^{\prime}(0) = \left\langle \nabla f(x); y-x \right\rangle$
+
+Подставим это в (*) и получим
+\[
+f(y) \ge f(x) + \left\langle \nabla f(x); y-x \right\rangle
+\]
+
+
+
+

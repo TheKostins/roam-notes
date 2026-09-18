@@ -1,0 +1,9 @@
+:PROPERTIES:
+:ID:       1CA14F2C-637F-41DE-9E97-72075D19E97F
+:END:
+#+title: Выпуклая функция
+#+filetags: :definition:metopt:
+
+Пусть $E$ -- [[id:316B5BFA-8B9F-4267-9086-D6593AAB5F9B][выпуклое]]; $f: E \rightarrow \R$.
+$f$ -- выпуклая, если:
+\[\forall x,y \in E\ \forall \lambda \in [0;1]\ f(\lambda x + (1-\lambda)y) \le \lambda f(x) + (1-\lambda)f(y)\]
