@@ -21,7 +21,7 @@ python3 tools/roam.py pending
 python3 tools/roam.py guard <refs>
 git status --short
 ```
-Попросить пользователя сохранить буферы Emacs. Если рабочее дерево грязное — `git add -A && git commit -m "audit: snapshot"`.
+`guard` сам спрашивает Emacs о несохранённых буферах; если пишет, что сервер недоступен, — попросить пользователя сохранить буферы (`C-x s`). Если рабочее дерево грязное — `git add -A && git commit -m "audit: snapshot"`.
 
 ### 3. Детерминированная часть
 ```bash
@@ -102,4 +102,4 @@ git add -A && git commit -m "audit: state"
 ```
 `state mark` — только для заметок, по которым пользователь ответил (применил или отклонил); заметка с отложенными находками тоже помечается, число отложенных идёт в `--open`. Отклонённое больше не поднимать: `context` показывает прошлые отклонения.
 
-Напомнить: `M-x org-roam-db-sync` в Emacs (особенно если создавались заглушки). Предложить следующий шаг: `/notes-lecture` или `/notes-anki`.
+Обновить базу org-roam: `python3 tools/roam.py sync` (при недоступном сервере — напомнить `M-x org-roam-db-sync`). Предложить следующий шаг: `/notes-lecture` или `/notes-anki`.

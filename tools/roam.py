@@ -3,7 +3,7 @@
 
 Источник правды -- сами .org файлы (sqlite-база org-roam устаревает, когда
 файлы правятся вне Emacs).  Команды: list, pending, show, context, lint, fix,
-spell, mentions, new, macros, expand, cards, guard, state, pdfmap, grep-pdf.
+spell, mentions, new, macros, expand, cards, guard, sync, state, pdfmap, grep-pdf.
 
 Коды возврата: 0 -- ок, 1 -- есть находки / отказ, 2 -- ошибка использования.
 """
@@ -1310,6 +1310,36 @@ def run_spell(notes: list[Note]) -> list[dict] | None:
 
 
 # --------------------------------------------------------------------------
+# Emacs (через emacsclient; нужен server-start в конфиге)
+# --------------------------------------------------------------------------
+
+def emacs_eval(expr: str, timeout: int = 60) -> str | None:
+    """Evaluate EXPR in the running Emacs; None when no server answers."""
+    exe = shutil.which("emacsclient")
+    if not exe:
+        return None
+    try:
+        r = subprocess.run([exe, "--eval", expr], capture_output=True, text=True, timeout=timeout)
+    except (OSError, subprocess.TimeoutExpired):
+        return None
+    return r.stdout.strip() if r.returncode == 0 else None
+
+
+def emacs_modified_notes() -> set[str] | None:
+    """Timestamp prefixes of vault notes with unsaved changes in Emacs.
+    Prefixes are ASCII, so the answer survives any output encoding."""
+    root = str(VAULT).replace("\\", "\\\\").replace('"', '\\"')
+    expr = ('(let (out) (dolist (b (buffer-list)) (let ((f (buffer-file-name b))) '
+            '(when (and f (buffer-modified-p b) '
+            f'(string-prefix-p "{root}/" (file-truename f))) '
+            '(push (car (split-string (file-name-nondirectory f) "-")) out)))) out)')
+    res = emacs_eval(expr, timeout=10)
+    if res is None:
+        return None
+    return set(re.findall(r'"([^"]*)"', res))
+
+
+# --------------------------------------------------------------------------
 # commands
 # --------------------------------------------------------------------------
 
@@ -1642,7 +1672,13 @@ def cmd_guard(a, v: Vault):
     notes = v.resolve_many(a.refs)
     if a.expect_hash and len(notes) != 1:
         die("--expect-hash работает с одной заметкой")
+    unsaved = emacs_modified_notes()
+    if unsaved is None:
+        print("(Emacs-сервер недоступен: несохранённые буферы не проверены — попроси сохранить, C-x s)")
     for n in notes:
+        if unsaved and (n.created or nfc(n.path.name)) in unsaved:
+            ok = False
+            print(f"ОТКАЗ {n.rel}: в Emacs открыт буфер с несохранёнными изменениями")
         for side in (n.path.parent / f"#{n.path.name}#", n.path.parent / f".#{n.path.name}"):
             if side.exists() or side.is_symlink():
                 ok = False
@@ -1653,6 +1689,15 @@ def cmd_guard(a, v: Vault):
     if ok:
         print("ok: " + ", ".join(f"{n.id[:8]}={n.file_hash()}" for n in notes))
     return 0 if ok else 1
+
+
+def cmd_sync(a, v: Vault):
+    res = emacs_eval("(progn (require 'org-roam) (org-roam-db-sync) (caar (org-roam-db-query [:select (funcall count id) :from nodes])))")
+    if res is None:
+        print("Emacs-сервер недоступен: выполни в Emacs M-x org-roam-db-sync")
+        return 1
+    print(f"org-roam-db-sync: узлов в базе {res}, заметок в vault {len(v.notes)}")
+    return 0
 
 
 def _git_head() -> str | None:
@@ -1846,6 +1891,9 @@ def build_parser() -> argparse.ArgumentParser:
     s.add_argument("refs", nargs="+")
     s.add_argument("--expect-hash")
     s.set_defaults(fn=cmd_guard)
+
+    s = sub.add_parser("sync", help="org-roam-db-sync в запущенном Emacs")
+    s.set_defaults(fn=cmd_sync)
 
     s = sub.add_parser("state", help="состояние проверки")
     s.add_argument("action", choices=["mark", "cards", "dismiss", "show"])

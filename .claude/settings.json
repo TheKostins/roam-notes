@@ -1,0 +1,26 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(python3 tools/roam.py list:*)",
+      "Bash(python3 tools/roam.py pending:*)",
+      "Bash(python3 tools/roam.py show:*)",
+      "Bash(python3 tools/roam.py context:*)",
+      "Bash(python3 tools/roam.py lint:*)",
+      "Bash(python3 tools/roam.py spell:*)",
+      "Bash(python3 tools/roam.py mentions:*)",
+      "Bash(python3 tools/roam.py macros:*)",
+      "Bash(python3 tools/roam.py expand:*)",
+      "Bash(python3 tools/roam.py cards:*)",
+      "Bash(python3 tools/roam.py guard:*)",
+      "Bash(python3 tools/roam.py sync)",
+      "Bash(python3 tools/roam.py state:*)",
+      "Bash(python3 tools/roam.py pdfmap:*)",
+      "Bash(python3 tools/roam.py grep-pdf:*)",
+      "Bash(python3 -m unittest tools/test_roam.py)",
+      "Bash(git status:*)",
+      "Bash(git diff:*)",
+      "Bash(git log:*)",
+      "Read(~/Documents/notes/**)"
+    ]
+  }
+}

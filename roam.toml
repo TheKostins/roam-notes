@@ -2,7 +2,7 @@
 
 [vault]
 # Теги процесса, а не предмета. Зеркалит my/notes-workflow-tags из my-org.el
-# (+ backfill: заглушка «дописать позже»).
+# (backfill -- заглушка «дописать позже»).
 workflow_tags = ["review", "hub", "lecture", "image", "backfill"]
 # Теги типа заметки.
 type_tags = ["definition", "theorem", "lemma", "example", "method", "property"]
@@ -27,8 +27,8 @@ name = "Математический анализ"
 prefix = "Матан."
 deck = "Notes::calc"
 
-# Имена типов и полей Anki. НЕ подтверждены через AnkiConnect (modelFieldNames):
-# в русской локали могут быть «Основная / Лицевая сторона / Оборотная сторона».
+# Имена типов и полей Anki. Сверены с профилем через AnkiConnect
+# (modelFieldNames) 2026-09-18.
 [anki.basic]
 type = "Basic"
 fields = ["Front", "Back"]

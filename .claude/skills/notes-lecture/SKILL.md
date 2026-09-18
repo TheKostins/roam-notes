@@ -49,7 +49,7 @@ Lecture-заметка — оглавление лекции: материалы
    python3 tools/roam.py lint <новая заметка>
    git add -A && git commit -m "lecture: <курс> пара N"
    ```
-   Напомнить `M-x org-roam-db-sync`.
+   Затем `python3 tools/roam.py sync`, чтобы новая заметка появилась в org-roam.
 
 ## Шаблон тела
 
