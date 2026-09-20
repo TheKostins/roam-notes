@@ -1,0 +1,36 @@
+:PROPERTIES:
+:ID:       592AD816-1D80-48E6-8399-8524FBC1E8F3
+:END:
+#+title: Матрица Гессе
+#+filetags: :calc:definition:
+
+Пусть $E \subset \R^n$ -- открытое множество, $f: E \rightarrow \R$ -- дважды непрерывно дифференцируемая функция.
+*Матрица Гессе* (/гессиан/) $f$ в точке $x \in E$ -- матрица $n \times n$ из вторых частных производных:
+\[
+\nabla^2 f(x) = \left( \frac{\partial^2 f}{\partial x_i \partial x_j}(x) \right)_{i,j=1}^n
+\]
+
+Смешанные производные непрерывны, поэтому не зависят от порядка дифференцирования, и $\nabla^2 f(x)$ -- симметричная матрица.
+
+Матрица Гессе -- это производная [[id:1756907B-1FF2-4F62-8553-759B8509281C][градиента]] как отображения $\nabla f: E \rightarrow \R^n$: ее $i$-я строка состоит из частных производных $i$-й координаты градиента $\frac{\partial f}{\partial x_i}$.
+
+Запись $\nabla^2 f(x) \ge 0$ означает /неотрицательную определенность/: $h^T \nabla^2 f(x) h \ge 0\ \forall h \in \R^n$. Это нестрогий аналог [[id:771B93FA-654D-4233-9487-B4FDD356DDFE][положительной определенности]], где требуется $h^T A h > 0\ \forall h \ne 0$.
+
+* Вторая производная вдоль прямой
+Пусть $x \in E$, $h \in \R^n$ и $\phi(t) = f(x + th)$ (для тех $t$, при которых $x + th \in E$). Тогда
+\[
+\phi^{\prime\prime}(t) = \left\langle \nabla^2 f(x + th) h; h \right\rangle = h^T \nabla^2 f(x + th) h
+\]
+** Доказательство
+Из заметки про [[id:1756907B-1FF2-4F62-8553-759B8509281C][градиент]] (производная вдоль прямой):
+\[
+\phi^{\prime}(t) = \left\langle \nabla f(x + th); h \right\rangle = \sum\limits_{i=1}^n \frac{\partial f}{\partial x_i}(x + th) h_i
+\]
+Каждое слагаемое -- снова функция вида $u(x + th)$, где $u = \frac{\partial f}{\partial x_i}$, поэтому к нему применима та же формула:
+\[
+\left( \frac{\partial f}{\partial x_i}(x + th) \right)^{\prime}_t = \left\langle \nabla \frac{\partial f}{\partial x_i}(x + th); h \right\rangle = \sum\limits_{j=1}^n \frac{\partial^2 f}{\partial x_i \partial x_j}(x + th) h_j
+\]
+Подставим:
+\[
+\phi^{\prime\prime}(t) = \sum\limits_{i=1}^n \sum\limits_{j=1}^n \frac{\partial^2 f}{\partial x_i \partial x_j}(x + th) h_i h_j = h^T \nabla^2 f(x + th) h
+\]

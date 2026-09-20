@@ -2,16 +2,16 @@
 :ID:       86FCE16B-C82E-4416-851C-0E0AD0FDA382
 :END:
 #+title: Критерий выпуклости в терминах вторых производных
-#+filetags: :theorem:metopt:
+#+filetags: :metopt:theorem:
 
-Пусть $f: E \rightarrow \R$ -- дважды дифференцируемая, $E$ -- выпуклое;
+Пусть $E \subset \R^n$ -- открытое выпуклое множество, $f: E \rightarrow \R$ -- дважды дифференцируемая;
 
 Тогда $f$ -- выпуклая $\Leftrightarrow$ $\nabla^2 f(x) \ge 0\ \forall x \in E$
 
-/Rem/: Правое условие аналогично $\lambda_{\mathrm{min}}\nabla^2f \ge 0$ -- [[id:025A8419-962C-4892-A4F8-FB496AAA938C][факт из алгебры]] 
+/Rem/: Правое условие аналогично $\lambda_{\min}(\nabla^2 f(x)) \ge 0$ -- [[id:025A8419-962C-4892-A4F8-FB496AAA938C][факт из алгебры]]
 
 * Доказательство
-Рассмотрим для произвольных $x, h \in E$,  $\phi(t) = f(x + th)$
+Рассмотрим для произвольных $x \in E$, $h \in \R^n$ функцию $\phi(t) = f(x + th)$
 ** Выпуклость $\phi$
 Докажем, что $\phi$ -- выпуклая. Зададим область определения $\phi$
 \[
@@ -21,14 +21,14 @@ I = \left\{ t \in \R\ |\ x + th \in E \right\}
 Заметим, что $I$ -- выпукло, так как для любых $t_1, t_2 \in I$
 точки $x + t_1h \in E$  и $x+ t_2h \in E$
 Но $E$ -- выпукло, следовательно отрезок $[x + t_1 h; x + t_2h] \subset E$,
-а из этого следует, что отрезок $[t_1; t_2] \subset E$, так как $\forall t \in [t_1, t_2]\ x + th \in E$
+а из этого следует, что отрезок $[t_1; t_2] \subset I$, так как $\forall t \in [t_1; t_2]\ x + th \in E$
 А это ровно так, как мы определяем принадлежность к $I$.
 
 Возьмем произвольные $l, t \in I$ и $\lambda \in [0;1]$
 \[
 \phi(\lambda t + (1-\lambda) l) = f(x + (\lambda t + (1-\lambda)l)h)
 \]
-Разделим $x = \lambda x + (1-\lambda) x$ и сгруппируем вокруг $\lambda, 1-\lambda$
+Представим $x = \lambda x + (1-\lambda) x$ и сгруппируем вокруг $\lambda, 1-\lambda$
 \[
 \phi(\lambda t + (1-\lambda) l) = f(\lambda (x + th) + (1-\lambda)(x + lh))
 \]
@@ -46,27 +46,24 @@ f(\lambda (x + th) + (1-\lambda)(x + lh)) \le \lambda f(x + th) + (1-\lambda)f(x
 Мы доказали, что $\phi$ -- выпуклая.
 
 ** Связь выпуклости $\phi$ и $\nabla^2 f(x) \ge 0$
-Мы все еще пользуемся произвольными $x, h \in E$.
+Мы все еще пользуемся произвольными $x \in E$, $h \in \R^n$.
 
-Рассмотрим $\phi^{\prime}(t) = \left( f(x_+th) \right))^{\prime}_t = f^{\prime}(x + th) (x + th)^{\prime}_t = \left\langle \nabla f (x + th); h \right\rangle$
-Вторя производная:
+Рассмотрим $\phi^{\prime}(t) = \left( f(x+th) \right)^{\prime}_t = f^{\prime}(x + th) (x + th)^{\prime}_t = \left\langle \nabla f (x + th); h \right\rangle$ (см. [[id:1756907B-1FF2-4F62-8553-759B8509281C][градиент]])
+Вторая производная:
 \[
 \phi^{\prime \prime}(t) = \left(  \left\langle \nabla f(x +th); h \right\rangle \right)^{\prime}_t =
 \left\langle \left( \nabla f(x +th) \right)^{\prime}_t; h \right\rangle  +
- \left\langle \nabla f(x +th); h^{\prime}_t \right\rangle 
+ \left\langle \nabla f(x +th); h^{\prime}_t \right\rangle
 \]
 Получим
 \[
 \phi^{\prime \prime}(t) = \left\langle \nabla^2 f(x +th) h; h \right\rangle + \left\langle \nabla f(x+th); 0 \right\rangle
-= \left\langle \nabla^2 f(x +th) h; h \right\rangle 
+= \left\langle \nabla^2 f(x +th) h; h \right\rangle
 \]
 
 Раскроем скалярное произведение
 \[
 \left\langle \nabla^2 f(x +th) h; h \right\rangle = h^T \nabla^2 f(x +th) h
 \]
-Из одномерного случая, мы знаем, что $\phi$ -- выпуклая $\Leftrightarrow \phi^{\prime\prime} \ge 0$.
-Если $h^T \nabla^2 f(x +th) h \ge 0$ для произвольного $h$, то Гессиан $f$ -- это [[id:771B93FA-654D-4233-9487-B4FDD356DDFE][пололожительно определенная матрица]] (то, что и требовалось в условии)
-
-
-
+Из [[id:9CEE854D-ED37-4C08-82EB-E41B36C43EA6][одномерного случая]], мы знаем, что $\phi$ -- выпуклая $\Leftrightarrow \phi^{\prime\prime} \ge 0$.
+Если $h^T \nabla^2 f(x +th) h \ge 0$ для произвольного $h$, то [[id:592AD816-1D80-48E6-8399-8524FBC1E8F3][Гессиан]] $f$ -- это [[id:771B93FA-654D-4233-9487-B4FDD356DDFE][пололожительно определенная матрица]] (то, что и требовалось в условии)

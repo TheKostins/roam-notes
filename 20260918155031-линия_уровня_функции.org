@@ -2,9 +2,7 @@
 :ID:       BF27A4AF-11BF-4A0D-85DF-5F7790BD58A9
 :END:
 #+title: Линия уровня функции
-#+filetags: :definition:metopt:
+#+filetags: :metopt:definition:
 
-Пусть $f: E \rightarrow \R, c \in E, E$ -- произвольное
+Пусть $E$ -- произвольное множество, $f: E \rightarrow \R$, $c \in \R$
 Тогда множество $f_c = \left\{ x \in E \ | \ f(x) = c  \right\}$ -- /линия уровня/
-
-

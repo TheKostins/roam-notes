@@ -1,0 +1,36 @@
+:PROPERTIES:
+:ID:       9CEE854D-ED37-4C08-82EB-E41B36C43EA6
+:END:
+#+title: Критерий выпуклости функции одной переменной через вторую производную
+#+filetags: :metopt:theorem:
+
+Пусть $I \subset \R$ -- промежуток, $\phi: I \rightarrow \R$ -- дважды дифференцируемая функция.
+Тогда $\phi$ -- [[id:1CA14F2C-637F-41DE-9E97-72075D19E97F][выпуклая]] $\Leftrightarrow$ $\phi^{\prime\prime}(t) \ge 0\ \forall t \in I$
+
+* Доказательство
+Оба направления идут через промежуточное условие: $\phi^{\prime}$ не убывает на $I$. Для дифференцируемой $\phi^{\prime}$ это равносильно $\phi^{\prime\prime} \ge 0$ (признак монотонности). Поэтому достаточно доказать: $\phi$ -- выпуклая $\Leftrightarrow$ $\phi^{\prime}$ не убывает.
+** $\Rightarrow$
+Пусть $\phi$ -- выпуклая, $s, t \in I$. Запишем неравенство из [[id:2F475EE4-2630-45FD-8DD2-8EA9D48059E4][одномерного дифференциального критерия]] дважды:
+\[
+\phi(t) \ge \phi(s) + \phi^{\prime}(s)(t-s)
+\]
+\[
+\phi(s) \ge \phi(t) + \phi^{\prime}(t)(s-t)
+\]
+Сложим их и сократим $\phi(s) + \phi(t)$:
+\[
+0 \ge \phi^{\prime}(s)(t-s) + \phi^{\prime}(t)(s-t) = -(\phi^{\prime}(t) - \phi^{\prime}(s))(t-s)
+\]
+То есть $(\phi^{\prime}(t) - \phi^{\prime}(s))(t-s) \ge 0$: при $t > s$ получаем $\phi^{\prime}(t) \ge \phi^{\prime}(s)$ -- производная не убывает.
+** $\Leftarrow$
+Пусть $\phi^{\prime}$ не убывает, $s, t \in I$, $s \ne t$. По теореме Лагранжа существует $\xi$ между $s$ и $t$:
+\[
+\phi(t) - \phi(s) = \phi^{\prime}(\xi)(t-s)
+\]
+Если $t > s$, то $\xi > s \Rightarrow \phi^{\prime}(\xi) \ge \phi^{\prime}(s)$, и, умножая на $t - s > 0$, получаем $\phi^{\prime}(\xi)(t-s) \ge \phi^{\prime}(s)(t-s)$.
+Если $t < s$, то $\xi < s \Rightarrow \phi^{\prime}(\xi) \le \phi^{\prime}(s)$, и, умножая на $t - s < 0$, снова получаем $\phi^{\prime}(\xi)(t-s) \ge \phi^{\prime}(s)(t-s)$.
+В обоих случаях
+\[
+\phi(t) \ge \phi(s) + \phi^{\prime}(s)(t-s)
+\]
+а это по [[id:2F475EE4-2630-45FD-8DD2-8EA9D48059E4][одномерному дифференциальному критерию]] означает выпуклость $\phi$.
