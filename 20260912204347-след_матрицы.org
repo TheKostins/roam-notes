@@ -2,9 +2,9 @@
 :ID:       854E1CDF-3421-4E56-AEF4-BAA6511FC523
 :END:
 #+title: След матрицы
-#+filetags: :definition:
-Это сумма элементов по диагонали, матрица /должна быть/ *квадратной*.
+#+filetags: :metopt:definition:
+Это сумма элементов на главной диагонали /квадратной/ матрицы $X$ размера $n \times n$.
 
 \[
-\textt{tr}(X) = \sum\limits_{i=1}^n X_{ii}
+\operatorname{tr}(X) = \sum\limits_{i=1}^n X_{ii}
 \]

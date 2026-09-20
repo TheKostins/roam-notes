@@ -2,20 +2,15 @@
 :ID:       F2942E98-6115-4600-AA3F-E0F687D9C732
 :END:
 #+title: Скалярное произведение
-
 #+filetags: :calc:definition:
-Скалярное произведение: функция 2 аргументов, удовлетворяющая след свойствам.
+Скалярное произведение: функция 2 аргументов, удовлетворяющая следующим свойствам.
 
-Пусть $X$ -- векторное пространство над $\mathbb{R}$ или $\mathbb{C}$.
-Тогда 
-$\left\langle \cdot, \cdot \right\rangle:\ X \times X \rightarrow \mathbb{R}\ \mathrm{or}\ \mathbb{C}$ -- скалярное произведение, если:
+Пусть $X$ -- [[id:1B626AA4-35C8-4C7C-9D3D-D8C26D98F40C][векторное пространство]] над $\mathbb{R}$ или $\mathbb{C}$.
+Тогда
+$\left\langle \cdot, \cdot \right\rangle:\ X \times X \rightarrow \mathbb{R} \text{ или } \mathbb{C}$ -- скалярное произведение, если:
 
 
-1. $\left\langle x, x \right\rangle \ge 0\ \forall x,\ \left\langle x, x \right\rangle = 0 \Leftrightarrow x = \overline{0}$
+1. $\left\langle x; x \right\rangle \ge 0\ \forall x,\ \left\langle x; x \right\rangle = 0 \Leftrightarrow x = \overline{0}$
 2. $\left\langle x+y; z \right\rangle = \left\langle x; z \right\rangle + \left\langle y; z \right\rangle\ \forall x,y,z \in X$
-3.  $\left\langle c \cdot x; y \right\rangle = c \cdot \left\langle x; y \right\rangle, \forall x, y \in X, \forall c \in \mathbb{R},\ \mathbb{C}$
-4.  $\left\langle x; y \right\rangle = \overline{\left\langle y ;x \right\rangle}\ \forall x, y \in X$
-
-
-
-
+3. $\left\langle c \cdot x; y \right\rangle = c \cdot \left\langle x; y \right\rangle, \forall x, y \in X, \forall c \in \mathbb{R},\ \mathbb{C}$
+4. $\left\langle x; y \right\rangle = \overline{\left\langle y ;x \right\rangle}\ \forall x, y \in X$

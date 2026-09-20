@@ -1413,7 +1413,7 @@ def _numbered(n: Note) -> str:
 
 
 def _meta_block(v: Vault, n: Note) -> str:
-    return (f"# {n.title}\nid: {n.id}\nfile: {n.rel}\ntags: :{':'.join(n.tags)}:\n"
+    return (f"# {n.title}\nid: {n.id}\nfile: {n.rel}\ntags: {(':' + ':'.join(n.tags) + ':') if n.tags else '(нет)'}\n"
             f"status: {v.status(n)}   file_hash: {n.file_hash()}   body_hash: {n.body_hash()}")
 
 
