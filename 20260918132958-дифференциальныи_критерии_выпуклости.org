@@ -5,19 +5,18 @@
 #+filetags: :metopt:theorem:
 
 Пусть $E \subset \R^n$, $f: E \rightarrow \R$ -- [[id:957FA09D-8883-40A5-B4C7-237D9F815A42][дифференцируемая]] и [[id:1CA14F2C-637F-41DE-9E97-72075D19E97F][выпуклая]] функция. $E$ -- [[id:316B5BFA-8B9F-4267-9086-D6593AAB5F9B][выпуклое множество]].
-Тогда $\forall x,y \in E\ f(y) \ge f(x) + \left\langle \nabla f(x); y-x \right\rangle$
+Равносильно $\forall x,y \in E\ f(y) \ge f(x) + \left\langle \nabla f(x); y-x \right\rangle$
 
 /Rem/: Это аналог [[id:2F475EE4-2630-45FD-8DD2-8EA9D48059E4][одномерного случая]], когда [[id:1CA14F2C-637F-41DE-9E97-72075D19E97F][выпуклая функция]] должна лежать не ниже касательной (в данном случае $f: E \subset \R \rightarrow \R$ и $f$ -- [[id:957FA09D-8883-40A5-B4C7-237D9F815A42][дифференцируемая]])
 $f(y) \ge f(x) + f^{\prime}(x)(y-x) \Leftrightarrow f$ -- выпуклая функция
 
 * Доказательство
-Давайте сведём наш случай к одномерному. Так как нас интересует только отрезок
-$[x;y]$, мы можем сузить функцию $f$ на этот отрезок.
-
+Давайте сведём наш случай к [[id:2F475EE4-2630-45FD-8DD2-8EA9D48059E4][одномерному]].
+Так как нас интересует только отрезок $[x;y]$,мы можем сузить функцию $f$ на этот отрезок.
 Заведем $g(t) = f(x + t(y-x)) = f((1-t)x + ty),\ t \in [0;1]$
 
-Проверим $g$ на выпуклость. Возьмем $l,t,\lambda \in [0;1]$
-
+** $g$ -- выпуклая 
+Возьмем $l,t,\lambda \in [0;1]$, проверим определение выпуклости.
 \[
 g(\lambda l + (1-\lambda) t) = f(x + (\lambda l + (1-\lambda)t)(y-x)) =
 \]
@@ -30,19 +29,24 @@ f(\lambda x + (1-\lambda) x + (\lambda l + (1-\lambda)t)(y-x)) =
 f (\lambda ( x + l(y-x)) + (1-\lambda)(x + t(y-x)))
 \]
 По выпуклости, получаем неравенство
-\begin{gather*}
+\begin{multline*}
 f (\lambda ( x + l(y-x)) + (1-\lambda)(x + t(y-x))) \le \\
-\le \lambda f(x + l(y-x)) + (1-\lambda) f(x + t(y-x)) = \lambda g(l) + (1-\lambda) g(t)
-\end{gather*}
+\le \lambda f(x + l(y-x)) + (1-\lambda) f(x + t(y-x)) \qquad\qquad
+\end{multline*}
+Давайте выразим $f$, через $g$.
+\[
+\lambda f(x + l(y-x)) + (1-\lambda) f(x + t(y-x)) = \lambda g(l) + (1-\lambda) g(t)
+\]
 Итого $g$ -- [[id:1CA14F2C-637F-41DE-9E97-72075D19E97F][выпуклая]].
 
-
+** $\Rightarrow$
 Теперь применим [[id:2F475EE4-2630-45FD-8DD2-8EA9D48059E4][одномерный случай]] к выпуклой $g$ в точках $0$ и $1$:
 $f(y)= g(1) \ge g(0) + g^{\prime}(0)(1-0) = f(x) + g^{\prime}(0)$ (*)
 
 Давайте посмотрим на $g^{\prime}(t)$, можно представить $g$, как $f \circ h$, где
 $h(t) = x + t(y-x)$, тогда $g^{\prime}(t) = f^{\prime}(h(t))h^{\prime}(t)$
-Так как $h: \R \rightarrow \R^n$, то ее производная это столбец $n \times 1$ и она равняется $y-x$ -- множителю при $t$ (прим. $x,y$ -- векторы)
+
+Для $h: \R \rightarrow \R^n$ производной является  столбец $n \times 1$. Можно заметить, что она равна множителю при $t$:  $(y-x)$.  $y,x$ -- это векторы, так что получится столбец.
 Для $f: \R^n \rightarrow \R$ производной является строка $1 \times n$
 
 Тогда, выходит, что $f^{\prime}(h(t)) h^{\prime}(t) = (\nabla f(h(t)))^T h^{\prime}(t)$, где $\nabla f$ -- [[id:1756907B-1FF2-4F62-8553-759B8509281C][градиент]]
@@ -57,3 +61,52 @@ $h(t) = x + t(y-x)$, тогда $g^{\prime}(t) = f^{\prime}(h(t))h^{\prime}(t)$
 \[
 f(y) \ge f(x) + \left\langle \nabla f(x); y-x \right\rangle
 \]
+
+** $\Leftarrow$
+Имеем, что $E \subset \R^n$ -- выпуклое, $f : E \rightarrow \R$ -- дифференцируемая и
+\[
+\forall x, y\ f(y) \ge f(x) + \left\langle \nabla f(x), y-x \right\rangle
+\]
+
+Давайте возьмем произвольные $x,y \in E$, произвольный $\lambda \in [0;1]$  и $z:= \lambda y + (1-\lambda) x$. Мы знаем, что $z \in E$, так как $E$ -- выпуклое.
+
+Запишем неравенство два раза: для $x, z$ и  для $y,z$
+
+\[
+f(y) \ge f(z) + \left\langle \nabla f(z), y - z \right\rangle
+\] (1)
+\[
+f(x) \ge f(z) + \left\langle \nabla f(z), x - z \right\rangle
+\] (2)
+
+Домножим (1) на $\lambda$, а (2) $1-\lambda$  и сложим их. Получим:
+\[
+\lambda f(y) + (1-\lambda) f(x) \ge \lambda f(z) + (1-\lambda) f(z) + \lambda \left\langle \nabla f(z), y-z \right\rangle + (1-\lambda) \left\langle  \nabla f(z), x-z \right\rangle
+\]
+Давайте занесем множители в скалярное произведение, а так-же объединим $f(z)$.
+\[
+\lambda f(y) + (1-\lambda) f(x) \ge \lambda f(z)+  \left\langle\nabla f(z),  \lambda \cdot ( y-z ) \right\rangle +\left\langle   \nabla f(z), (1-\lambda) \cdot (  x-z ) \right\rangle
+\]
+Давайте теперь подставим значение $z$
+\[
+\lambda f(y) + (1-\lambda) f(x) \ge  f(z)+  \left\langle \nabla f(z), \lambda (  y - \lambda y - (1-\lambda) x )\right\rangle +\left\langle   \nabla f(z), (1-\lambda) ( x - \lambda y - (1-\lambda) x ) \right\rangle
+\]
+Сократим слагаемые с $x, y$
+\[
+\lambda f(y) + (1-\lambda) f(x) \ge  f(z)+  \left\langle \nabla f(z), \lambda ( (1-\lambda) y - (1-\lambda) x )\right\rangle +\left\langle   \nabla f(z), (1-\lambda) ( \lambda x - \lambda y ) \right\rangle
+\]
+Вынесем множители ха скобки 
+\[
+ \lambda f(y) + (1-\lambda) f(x) \ge  f(z)+  \left\langle \nabla f(z), \lambda (1-\lambda) (  y -  x )\right\rangle +\left\langle   \nabla f(z), (1-\lambda) \lambda ( x -y ) \right\rangle
+\]
+По линейности сложим скалярное
+\[
+ \lambda f(y) + (1-\lambda) f(x) \ge  f(z)+  \left\langle \nabla f(z), \lambda (1-\lambda) (  y -  x ) + \lambda (1-\lambda) (x - y)\right\rangle 
+\]
+Получили
+\[
+ \lambda f(y) + (1-\lambda) f(x) \ge  f(z)+  \left\langle \nabla f(z), 0 \right\rangle 
+\]
+Подставим $z$ в $f(z)$ и запишем итоговое неравенство.
+Итого  $\forall x,y \in E\ \lambda f(y) + (1-\lambda) f(x) \ge f(\lambda y + (1-\lambda) x)$
+Получили определение выпуклой функции
