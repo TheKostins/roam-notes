@@ -1,14 +1,114 @@
 {
  "notes": {
+  "025A8419-962C-4892-A4F8-FB496AAA938C": {
+   "audited": {
+    "body_hash": "aaa072c76b9a94a4",
+    "commit": "6006be9",
+    "date": "2026-09-20",
+    "open": 0,
+    "report": "2026-09-20-2113-audit.md"
+   },
+   "title": "Собственные значения положительно определенных, симметричных матриц"
+  },
   "18BD8497-CEBD-4962-8144-474B489606C3": {
    "audited": {
-    "body_hash": "fad515bd04d3a895",
-    "commit": "2bf0bb2",
-    "date": "2026-09-18",
-    "open": 2,
-    "report": "2026-09-18-2018-audit.md"
+    "body_hash": "c847a4d12c2c569a",
+    "commit": "6006be9",
+    "date": "2026-09-20",
+    "open": 0,
+    "report": "2026-09-20-2113-audit.md"
    },
    "title": "Дифференциальный критерий выпуклости"
+  },
+  "4DB0669C-3F52-4A14-BAC8-0BAE487E2E21": {
+   "audited": {
+    "body_hash": "562b868c3cc7cdef",
+    "commit": "6006be9",
+    "date": "2026-09-20",
+    "open": 0,
+    "report": "2026-09-20-2113-audit.md"
+   },
+   "title": "Невырожденность через собственные значения"
+  },
+  "4F4E5575-ABE6-4D9B-9C61-B76A3AA9701C": {
+   "audited": {
+    "body_hash": "bafc9f625d6d6b49",
+    "commit": "6006be9",
+    "date": "2026-09-20",
+    "open": 0,
+    "report": "2026-09-20-2113-audit.md"
+   },
+   "title": "Собственные значения симметричных матриц"
+  },
+  "57D369D6-D748-41A2-9BDA-38D2FFC6601A": {
+   "audited": {
+    "body_hash": "fbd08d1eac3a681f",
+    "commit": "6006be9",
+    "date": "2026-09-20",
+    "open": 0,
+    "report": "2026-09-20-2113-audit.md"
+   },
+   "title": "Собственный вектор"
+  },
+  "5D688904-8445-47B5-9D39-8BCC39F9C354": {
+   "audited": {
+    "body_hash": "2ffefebdf65ea943",
+    "commit": "6006be9",
+    "date": "2026-09-20",
+    "open": 0,
+    "report": "2026-09-20-2113-audit.md"
+   },
+   "title": "Гильбертово пространство"
+  },
+  "771B93FA-654D-4233-9487-B4FDD356DDFE": {
+   "audited": {
+    "body_hash": "15405453ead2a0d2",
+    "commit": "6006be9",
+    "date": "2026-09-20",
+    "open": 0,
+    "report": "2026-09-20-2113-audit.md"
+   },
+   "title": "Положительно определенная симметричная матрица"
+  },
+  "854E1CDF-3421-4E56-AEF4-BAA6511FC523": {
+   "audited": {
+    "body_hash": "738da344db47425d",
+    "commit": "6006be9",
+    "date": "2026-09-20",
+    "open": 0,
+    "report": "2026-09-20-2113-audit.md"
+   },
+   "title": "След матрицы"
+  },
+  "9D2905FC-8E68-4E6F-9243-364269F795B0": {
+   "audited": {
+    "body_hash": "fa969fdb0ac3347a",
+    "commit": "6006be9",
+    "date": "2026-09-20",
+    "open": 0,
+    "report": "2026-09-20-2113-audit.md"
+   },
+   "title": "Собственное значение"
+  },
+  "9E3EEBE3-5D6D-4EB8-AFF1-9B9F95F4463A": {
+   "audited": {
+    "body_hash": "f796ed77f4be4f87",
+    "commit": "6006be9",
+    "date": "2026-09-20",
+    "open": 0,
+    "report": "2026-09-20-2113-audit.md"
+   },
+   "title": "Скалярное произведение матриц"
+  },
+  "F2942E98-6115-4600-AA3F-E0F687D9C732": {
+   "audited": {
+    "body_hash": "c6c70089059643c9",
+    "commit": "6006be9",
+    "date": "2026-09-20",
+    "open": 0,
+    "report": "2026-09-20-2113-audit.md"
+   },
+   "title": "Скалярное произведение"
   }
  },
  "version": 1
