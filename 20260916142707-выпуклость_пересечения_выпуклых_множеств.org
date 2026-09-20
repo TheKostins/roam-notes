@@ -8,9 +8,8 @@
 * Доказательство
 \[
 x, y \in \bigcap_{\alpha} C_{\alpha} \Rightarrow \forall \alpha\ x,y \in C_{\alpha} \Rightarrow
- \forall \alpha\ \forall 0 \le \lambda \le 1\  \lambda x + (1-\lambda) y \in C_{\alpha} \Rightarrow 
+ \forall \alpha\ \forall 0 \le \lambda \le 1\  \lambda x + (1-\lambda) y \in C_{\alpha} \Rightarrow
 \]
 \[
 \Rightarrow \forall 0 \le \lambda \le 1\ \lambda x + (1-\lambda) y \in \bigcap_{\alpha} C_{\alpha}
 \]
-

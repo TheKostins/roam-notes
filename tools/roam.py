@@ -1067,7 +1067,8 @@ class Linter:
         for i, sl in enumerate(solid):
             if not sl.strip() or HEADING_RE.match(n.lines[i]):
                 continue
-            if re.match(r"^\s*(?:[-+]|\d+[.)])\s{2,}\S", sl):
+            # raw line: masked links would look like extra spaces after the marker
+            if re.match(r"^\s*(?:[-+]|\d+[.)])\s{2,}\S", n.lines[i]):
                 self.add(n, "X02", "M", i + 1, n.lines[i], "двойной пробел после маркера списка", fixable=True)
             m = re.search(r"\S ([,.;:!?])(?=\s|$)", sl)
             if m and not re.search(r"\s--\s*$", sl[:m.start() + 1]):

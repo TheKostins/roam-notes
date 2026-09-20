@@ -9,24 +9,24 @@ $C$ -- [[id:316B5BFA-8B9F-4267-9086-D6593AAB5F9B][выпуклое]] тогда 
 * Доказательство
 
 ** $\Leftarrow$ (Содержит комбинации, следовательно выпуклое)
-Если $\lambda \in [0;1]$, то частным случаем ($n=2, \lambda_1=\lambda, \lambda_2 = 1-\lambda, x_1=x, x_2 = y$) [[id:8583F986-A6E8-4BBB-B2FB-BA0E9BBE58BF][выпуклой комбинации]] является $\lambda x + (1-\lambda)y\ \forall x, y \in C$. 
+Если $\lambda \in [0;1]$, то частным случаем ($n=2, \lambda_1=\lambda, \lambda_2 = 1-\lambda, x_1=x, x_2 = y$) [[id:8583F986-A6E8-4BBB-B2FB-BA0E9BBE58BF][выпуклой комбинации]] является $\lambda x + (1-\lambda)y\ \forall x, y \in C$.
 А это в точности определение [[id:316B5BFA-8B9F-4267-9086-D6593AAB5F9B][выпуклого множества]].
 
 ** $\Rightarrow$ (Выпуклое, следовательно содержит комбинации)
 Строим индукцию.
 База это определение [[id:316B5BFA-8B9F-4267-9086-D6593AAB5F9B][выпуклого множества]].
 
-Положим, что для $\forall n \le m$ утверждение  из заголовка вернo.
+Положим, что для $\forall n \le m$ утверждение  из заголовка верно.
 Увеличим размерность суммы.
 
 Давайте запишем произвольную [[id:8583F986-A6E8-4BBB-B2FB-BA0E9BBE58BF][выпуклую комбинацию]]
-$\sum\limits_{k=1}^{m+1} \lambda_k x_k,\ x_k \in C, \sum\limits_{k=1}^{m+1} \lambda_k = 1$. НУО $\lambda_{m+1} \ne 0$
+$\sum\limits_{k=1}^{m+1} \lambda_k x_k,\ x_k \in C, \sum\limits_{k=1}^{m+1} \lambda_k = 1$. Если $\lambda_{m+1} = 1$, то остальные $\lambda_k = 0$ и комбинация равна $x_{m+1} \in C$. Далее считаем $\lambda_{m+1} \ne 1$.
 
 Тогда:
 $\sum\limits_{k=1}^{m+1} \lambda_k x_k = \sum\limits_{k=1}^{m} \lambda_k x_k + \lambda_{m+1}x_{m+1}$
 
-Пусть $y = \sum\limits_{k=1}^m \frac{\lambda_k x_k}{1 - \lambda_{m+1}}$. Но $\sum\limits_{k=1}^m \frac{\lambda_k}{1-\lambda_{m+1}} = \frac{1-\lambda_{m+1}}{1-\lambda_{m+1}} = 1$, следовательно $y$ -- [[id:8583F986-A6E8-4BBB-B2FB-BA0E9BBE58BF][выпуклая комбинация]] и  можем применить индукционно предположение для размерности $m$.
+Пусть $y = \sum\limits_{k=1}^m \frac{\lambda_k x_k}{1 - \lambda_{m+1}}$. Но $\sum\limits_{k=1}^m \frac{\lambda_k}{1-\lambda_{m+1}} = \frac{1-\lambda_{m+1}}{1-\lambda_{m+1}} = 1$, и коэффициенты неотрицательны ($1 - \lambda_{m+1} > 0$), следовательно $y$ -- [[id:8583F986-A6E8-4BBB-B2FB-BA0E9BBE58BF][выпуклая комбинация]] и можем применить индукционное предположение для размерности $m$.
 Тогда $y \in C$.
 
 Получили, что $\sum\limits_{k=1}^{m+1} \lambda_k x_k = \sum\limits_{k=1}^{m} \lambda_k x_k + \lambda_{m+1}x_{m+1} = (1-\lambda_{m+1})y + \lambda_{m+1}x_{m+1}$
-А по [[id:316B5BFA-8B9F-4267-9086-D6593AAB5F9B][определению выпуклости]] этот объект лежит в множестве;
+А по [[id:316B5BFA-8B9F-4267-9086-D6593AAB5F9B][определению выпуклости]] этот объект лежит в множестве.

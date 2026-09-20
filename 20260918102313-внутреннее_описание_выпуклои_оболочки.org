@@ -2,7 +2,7 @@
 :ID:       3A5B0E29-AED4-409E-A823-956F3A3957F7
 :END:
 #+title: Внутреннее описание выпуклой оболочки
-#+filetags: :theorem:metopt:
+#+filetags: :metopt:theorem:
 
 Пусть $V$ -- [[id:1B626AA4-35C8-4C7C-9D3D-D8C26D98F40C][векторное пространство]], $M \subset V$.
 Тогда
@@ -21,17 +21,17 @@ S = \left\{ \sum\limits_{k=1}^n \lambda_k x_k\  \left| \  x_k \in M, \sum\limits
 
 ** Сперва докажем, что $\mathrm{conv}(M) \supset S$.
 
-По определению [[id:1AC657F9-2A3D-47D1-A71D-5B813D961260][выпуклой оболочки]]: 
+По определению [[id:1AC657F9-2A3D-47D1-A71D-5B813D961260][выпуклой оболочки]]:
 \[
-\mathrm{conv}(M) = \bigcap_Q \left\{ Q \subset V, Q \texttt{-- выпуклое и } M \subset Q \right\}
+\mathrm{conv}(M) = \bigcap_Q \left\{ Q \subset V, Q \text{ -- выпуклое и } M \subset Q \right\}
 \]
 
-А из [[id:42DFF6DC-CC9D-40AA-9D6F-218DCF613833][леммы]] мы знаем, что [[id:316B5BFA-8B9F-4267-9086-D6593AAB5F9B][выпуклое множество]] собержит все свои выпуклые комбинации.
+А из [[id:42DFF6DC-CC9D-40AA-9D6F-218DCF613833][леммы]] мы знаем, что [[id:316B5BFA-8B9F-4267-9086-D6593AAB5F9B][выпуклое множество]] содержит все свои выпуклые комбинации.
 
-Получается, что $x_k \in M \Rightarrow x_k \in Q \supset M$, для произвольного $Q \supset M$.
+Получается, что $x_k \in M \Rightarrow x_k \in Q \supset M$, для произвольного выпуклого $Q \supset M$.
 Тогда [[id:8583F986-A6E8-4BBB-B2FB-BA0E9BBE58BF][выпуклая комбинация]] $x_k \in M$, тоже принадлежит к $Q \supset M$.
 
-Получили, что $\forall Q \supset M\  S \subset Q$, следовательно $S$ лежит и в их пересечении $\Rightarrow S \subset \mathrm{conv}(M)$
+Получили, что $S \subset Q$ для любого выпуклого $Q \supset M$, следовательно $S$ лежит и в их пересечении $\Rightarrow S \subset \mathrm{conv}(M)$
 
 
 ** Теперь докажем, что $S \supset \mathrm{conv}(M)$.
@@ -56,21 +56,19 @@ u = \sum\limits_{i=1}^n \lambda_i x_i,\quad v = \sum\limits_{j=1}^m \eta_jy_j,\q
 \sum\limits_{i=1}^n \lambda_i = \sum\limits_{j=1}^m \eta_j = 1,\ \eta_j, \lambda_i \ge 0,\ x_i,y_j \in M
 \]
 
-Возьмем $\phi \in [0;1]$, рассмотрим $\phi u + (1-\phi) v$, подставим суммы 
+Возьмем $\phi \in [0;1]$, рассмотрим $\phi u + (1-\phi) v$, подставим суммы
 \[
  \sum\limits_{i=1}^n (\phi \lambda_i) x_i + \sum\limits_{j=1}^m ((1-\phi)\eta_j)y_j
-\] 
+\]
 
 Получили комбинацию из $n+m$ точек с коэффициентами $\phi\lambda_i$ и $(1-\phi)\eta_j$ соответственно.
 
-Если сумма коэффициентов 1 -- то это будет [[id:8583F986-A6E8-4BBB-B2FB-BA0E9BBE58BF][выпуклой комбинацией]], проверим
+Коэффициенты неотрицательны; если их сумма 1 -- то это будет [[id:8583F986-A6E8-4BBB-B2FB-BA0E9BBE58BF][выпуклой комбинацией]], проверим
 \[
 \sum\limits_{i=1}^n \phi \lambda_i + \sum\limits_{j=1}^m (1-\phi) \eta_j = \phi \cdot \sum\limits_{i=1}^n \lambda_i + (1-\phi) \sum\limits_{j=1}^m \eta_j = \phi \cdot 1 + (1-\phi) \cdot 1 = 1
-\] 
+\]
 
 Получили, что $\sum\limits_{i=1}^n (\phi \lambda_i) x_i + \sum\limits_{j=1}^m ((1-\phi)\eta_j)y_j$ -- [[id:8583F986-A6E8-4BBB-B2FB-BA0E9BBE58BF][выпуклая комбинация]] элементов из $M$, следовательно она лежит в $S$.
 
 Следовательно, мы доказали, что $\forall u, v \in S\ \forall \phi \in [0; 1]\ \phi u + (1-\phi) v \in S$
 Это в точности определение [[id:316B5BFA-8B9F-4267-9086-D6593AAB5F9B][выпуклого множества]]
-
-
