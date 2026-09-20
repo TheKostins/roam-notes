@@ -11,8 +11,8 @@
 /Rem/: Правое условие аналогично $\lambda_{\mathrm{min}}\nabla^2f \ge 0$ -- [[id:025A8419-962C-4892-A4F8-FB496AAA938C][факт из алгебры]] 
 
 * Доказательство
-
 Рассмотрим для произвольных $x, h \in E$,  $\phi(t) = f(x + th)$
+** Выпуклость $\phi$
 Докажем, что $\phi$ -- выпуклая. Зададим область определения $\phi$
 \[
 I = \left\{ t \in \R\ |\ x + th \in E \right\}
@@ -45,6 +45,8 @@ f(\lambda (x + th) + (1-\lambda)(x + lh)) \le \lambda f(x + th) + (1-\lambda)f(x
 Тогда мы получим $\phi(\lambda t + (1-\lambda) l) \le \lambda \phi(t) + (1 - \lambda)\phi(l)\ \forall l,t \in I, \lambda \in [0;1]$
 Мы доказали, что $\phi$ -- выпуклая.
 
+** Связь выпуклости $\phi$ и $\nabla^2 f(x) \ge 0$
+Мы все еще пользуемся произвольными $x, h \in E$.
 
 Рассмотрим $\phi^{\prime}(t) = \left( f(x_+th) \right))^{\prime}_t = f^{\prime}(x + th) (x + th)^{\prime}_t = \left\langle \nabla f (x + th); h \right\rangle$
 Вторя производная:
@@ -63,12 +65,8 @@ f(\lambda (x + th) + (1-\lambda)(x + lh)) \le \lambda f(x + th) + (1-\lambda)f(x
 \[
 \left\langle \nabla^2 f(x +th) h; h \right\rangle = h^T \nabla^2 f(x +th) h
 \]
+Из одномерного случая, мы знаем, что $\phi$ -- выпуклая $\Leftrightarrow \phi^{\prime\prime} \ge 0$.
+Если $h^T \nabla^2 f(x +th) h \ge 0$ для произвольного $h$, то Гессиан $f$ -- это [[id:771B93FA-654D-4233-9487-B4FDD356DDFE][пололожительно определенная матрица]] (то, что и требовалось в условии)
 
-А так-как мы требуем положительную определенность $\nabla^2 f$,
-условие  $\left\langle \nabla^2 f(x +th) h; h \right\rangle = h^T \nabla^2 f(x +th) h \ge 0$  -- Выполняется 
 
-Тогда из разложения $f$ в ряд Тейлора
-\[
-f(x + h) \approx f(x) + ( \nabla f(x) )^T h + \frac{1}{2} h^T\nabla^2 f(x) h \ge f(x) + ( \nabla f(x) )^T h
-\]
-Следует выполнение [[id:18BD8497-CEBD-4962-8144-474B489606C3][Дифференциальный критерий выпуклости]]
+

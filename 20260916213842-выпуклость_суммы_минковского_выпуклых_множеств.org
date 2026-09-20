@@ -24,10 +24,11 @@ $V$ -- [[id:1B626AA4-35C8-4C7C-9D3D-D8C26D98F40C][векторное прост�
 \[
 \sum\limits_{k=1}^n \left[ \lambda w_kx_k + (1-\lambda) w_ky_k \right]
 \]
-А из выпуклости $C_k$ следует, что $\lambda w_kx_k + (1-\lambda) w_ky_k \in C_k$
-Обозначим: $\lambda w_k x_k + (1-\lambda) w_k y_k = w_k z_k  \in C_k$.
+Пусть $z_k:= \lambda x_k + (1-\lambda)y_k$, тогда слагаемые этой суммы имеют вид $w_kz_k$.
+При этом $z_k \in C_k$, так как оно выпуклое.
 Тогда мы представили $\lambda x + (1-\lambda)y$, как $\sum\limits_{k=1}^n w_kz_k, z_{k} \in C_k$.
 А из этого следует, что $\lambda x + (1-\lambda)y \in C$, как элемент [[id:14FE7B45-F304-4C15-8086-3535589FA04A][суммы Минковского]]
+
 
 * Пример
 
