@@ -75,7 +75,7 @@ f(\lambda y + (1-\lambda) x) = f (x + \lambda (y - x)) = \phi(\lambda) \le \lamb
 \left\langle \nabla^2 f(x +th) h; h \right\rangle = h^T \nabla^2 f(x +th) h
 \]
 Из [[id:9CEE854D-ED37-4C08-82EB-E41B36C43EA6][одномерного случая]], мы знаем, что $\phi$ -- выпуклая $\Leftrightarrow \phi^{\prime\prime} \ge 0$.
-Если $h^T \nabla^2 f(x +th) h \ge 0$ для произвольного $h$, то [[id:592AD816-1D80-48E6-8399-8524FBC1E8F3][Гессиан]] $f$ -- это [[id:771B93FA-654D-4233-9487-B4FDD356DDFE][пололожительно определенная матрица]] (то, что и требовалось в условии)
+Если $h^T \nabla^2 f(x +th) h \ge 0$ для произвольного $h$, то [[id:592AD816-1D80-48E6-8399-8524FBC1E8F3][Гессиан]] $f$ -- это [[id:771B93FA-654D-4233-9487-B4FDD356DDFE][неотрицательно определенная матрица]] (то, что и требовалось в условии)
 
 *** $\Leftarrow$
 Давайте возьмем произвольные $x \in E, h \in \R^{n}$
