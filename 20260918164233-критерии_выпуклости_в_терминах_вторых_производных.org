@@ -12,7 +12,9 @@
 
 * Доказательство
 Рассмотрим для произвольных $x \in E$, $h \in \R^n$ функцию $\phi(t) = f(x + th)$
-** Выпуклость $\phi$
+
+** Выпуклость $\phi \Leftrightarrow$ выпуклости $f$
+*** $\Leftarrow$
 Докажем, что $\phi$ -- выпуклая. Зададим область определения $\phi$
 \[
 I = \left\{ t \in \R\ |\ x + th \in E \right\}
@@ -44,8 +46,16 @@ f(\lambda (x + th) + (1-\lambda)(x + lh)) \le \lambda f(x + th) + (1-\lambda)f(x
 Но $\lambda f(x + th) + (1-\lambda)f(x + lh) = \lambda \phi(t) + (1-\lambda) \phi(l)$
 Тогда мы получим $\phi(\lambda t + (1-\lambda) l) \le \lambda \phi(t) + (1 - \lambda)\phi(l)\ \forall l,t \in I, \lambda \in [0;1]$
 Мы доказали, что $\phi$ -- выпуклая.
-
+***  $\Rightarrow$
+Давайте возьмем произвольные $x, y \in E,\ h := y-x$.
+Тогда $\phi$ должна лежать на прямой, проходящей через отрезок $[x;y]$, следовательно $\phi(t):= x + th$
+Давайте будем проверять $f$ на выпуклость.
+\[
+f(\lambda y + (1-\lambda) x) = f (x + \lambda (y - x)) = \phi(\lambda) \le \lambda \phi(1) + (1-\lambda) \phi(0) = \lambda f(y) + (1-\lambda) f(x)
+\]
 ** Связь выпуклости $\phi$ и $\nabla^2 f(x) \ge 0$
+
+*** $\Rightarrow$
 Мы все еще пользуемся произвольными $x \in E$, $h \in \R^n$.
 
 Рассмотрим $\phi^{\prime}(t) = \left( f(x+th) \right)^{\prime}_t = f^{\prime}(x + th) (x + th)^{\prime}_t = \left\langle \nabla f (x + th); h \right\rangle$ (см. [[id:1756907B-1FF2-4F62-8553-759B8509281C][градиент]])
@@ -60,10 +70,18 @@ f(\lambda (x + th) + (1-\lambda)(x + lh)) \le \lambda f(x + th) + (1-\lambda)f(x
 \phi^{\prime \prime}(t) = \left\langle \nabla^2 f(x +th) h; h \right\rangle + \left\langle \nabla f(x+th); 0 \right\rangle
 = \left\langle \nabla^2 f(x +th) h; h \right\rangle
 \]
-
 Раскроем скалярное произведение
 \[
 \left\langle \nabla^2 f(x +th) h; h \right\rangle = h^T \nabla^2 f(x +th) h
 \]
 Из [[id:9CEE854D-ED37-4C08-82EB-E41B36C43EA6][одномерного случая]], мы знаем, что $\phi$ -- выпуклая $\Leftrightarrow \phi^{\prime\prime} \ge 0$.
 Если $h^T \nabla^2 f(x +th) h \ge 0$ для произвольного $h$, то [[id:592AD816-1D80-48E6-8399-8524FBC1E8F3][Гессиан]] $f$ -- это [[id:771B93FA-654D-4233-9487-B4FDD356DDFE][пололожительно определенная матрица]] (то, что и требовалось в условии)
+
+*** $\Leftarrow$
+Давайте возьмем произвольные $x \in E, h \in \R^{n}$
+Тогда $\phi(t) := f(x + th)$  (по построению)
+Вторая производная все так-же равна $h^T \nabla^2f(x +th) h$,
+Мы уже имеем неотрицательную определенность Гессиана,
+а следовательно вторая производная будет всегда не отрицательна
+(следует из определения неотрицательной определенности)
+
