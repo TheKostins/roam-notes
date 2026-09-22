@@ -1,0 +1,23 @@
+% !TeX program = lualatex
+% Ручной файл: генератор его не перезаписывает.  Структура глав -- chapters.tex.
+\input{../common/prelude}
+\input{../common/math}
+\input{../common/macros}
+\input{../common/theorems}
+\input{meta}
+
+\title{\handbooktitle}
+\author{}
+\date{\handbooksubtitle \\ \today}
+
+\begin{document}
+\maketitle
+\tableofcontents
+\tcblistof[\chapter*]{thms}{Список утверждений}
+
+\input{chapters}
+
+\appendix
+\input{aux}
+\InputIfFileExists{bilety}{}{}
+\end{document}

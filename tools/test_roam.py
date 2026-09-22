@@ -214,3 +214,175 @@ class MentionTest(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+# --------------------------------------------------------------------------
+# handbook: org → LaTeX (roam_tex.py)
+# --------------------------------------------------------------------------
+import roam_tex  # noqa: E402
+
+TEX_ID = "316B5BFA-8B9F-4267-9086-D6593AAB5F9B"
+AAA = "AAAAAAAA-0000-0000-0000-000000000001"
+
+
+def tex(body: str, tags: str = ":metopt:theorem:", exported=None, extra_notes=()):
+    text = (":PROPERTIES:\n:ID:       %s\n:END:\n#+title: Тест\n#+filetags: %s\n\n%s\n"
+            % (TEX_ID, tags, body))
+    n = make_note(text)
+    notes = [n] + list(extra_notes)
+    real = roam.VAULT
+    roam.VAULT = n.path.parent
+    try:
+        out, warnings = roam_tex.note_to_tex(n, FakeVault(notes), set(exported or ()) | {TEX_ID})
+    finally:
+        roam.VAULT = real
+    body_out = out.split("\n", 3)[3]      # drop the two comment lines + blank
+    return body_out, [w.code for w in warnings]
+
+
+def other_note():
+    return make_note(":PROPERTIES:\n:ID:       %s\n:END:\n#+title: Другая\n#+filetags: :metopt:definition:\n\nТело другой заметки достаточно длинное.\n"
+                     % AAA, name="20260101000001-другая.org")
+
+
+class TexInlineTest(unittest.TestCase):
+    def test_env_label(self):
+        out, w = tex("Пусть $x$.")
+        self.assertEqual(out, "\\begin{theorem}[{Тест}]\\label[theorem]{note:%s}\n  Пусть $x$.\n\\end{theorem}\n" % TEX_ID)
+        self.assertEqual(w, [])
+
+    def test_type_map(self):
+        out, _ = tex("Пусть $x$.", tags=":metopt:property:")
+        self.assertIn("\\begin{proposition}[{Тест}]\\label[proposition]", out)
+        out, _ = tex("Пусть $x$.", tags=":metopt:method:")
+        self.assertIn("\\begin{method}", out)
+        out, w = tex("Пусть $x$ и ещё много текста, чтобы не быть заглушкой.", tags=":metopt:")
+        self.assertIn("\\begin{proposition}", out)
+        self.assertIn("X11", w)
+
+    def test_dash(self):
+        out, _ = tex("$E$ -- выпуклое, $\\text{ -- }$ и\n\\[\nx\n\\] -- так")
+        self.assertIn("$E$~--- выпуклое, $\\text{ -- }$ и\n  \\[\n  x\n  \\] --- так", out)
+
+    def test_escape(self):
+        out, w = tex("Доля 5% и a_b & c#d ^ ~, $a_b$ и цена 5$")
+        self.assertIn("Доля 5\\% и a\\_b \\& c\\#d \\textasciicircum{} \\textasciitilde{}, $a_b$ и цена 5\\$", out)
+        self.assertIn("X02", w)
+
+    def test_links(self):
+        o = other_note()
+        out, w = tex("[[id:%s][выпуклое_множество]] и [[id:BBBBBBBB-0000-0000-0000-000000000002][другое]]" % AAA,
+                     exported={AAA}, extra_notes=[o])
+        self.assertIn("\\hyperref[note:%s]{выпуклое\\_множество} и другое" % AAA, out)
+        self.assertIn("X03", w)
+        out, w = tex("[[id:%s][та]]" % AAA, exported=set(), extra_notes=[o])
+        self.assertIn("  та\n", out)
+        self.assertIn("X07", w)
+
+    def test_emphasis(self):
+        o = other_note()
+        out, _ = tex("/аффинное/ и *жирный*, 2025/26, $a/b$, /см. [[id:%s][тут]]/ и (*) дважды (*)" % AAA,
+                     exported={AAA}, extra_notes=[o])
+        self.assertIn("\\emph{аффинное} и \\textbf{жирный}, 2025/26, $a/b$, \\emph{см. \\hyperref[note:%s]{тут}} и (*) дважды (*)" % AAA, out)
+
+    def test_unicode_prose(self):
+        out, w = tex("тогда ⇒ $⇒$ и много текста для длины.")
+        self.assertIn("тогда $\\Rightarrow$ $⇒$", out)
+        self.assertIn("X05", w)
+
+
+class TexBlockTest(unittest.TestCase):
+    def test_rem_hoisted(self):
+        out, _ = tex("Пусть $x$.\n/Rem/: Текст $y$.\n\n/Rem/: Ещё.")
+        head, rest = out.split("\\end{theorem}\n")
+        self.assertNotIn("Rem", head)
+        self.assertIn("Пусть $x$.", head)
+        self.assertEqual(rest, "\n\\begin{remark}\n  Текст $y$.\n\\end{remark}\n\n\\begin{remark}\n  Ещё.\n\\end{remark}\n")
+
+    def test_proof_parts(self):
+        out, w = tex("A.\n* Доказательство\nВезде $\\lambda$.\n** $\\Rightarrow$\nB.\n*** $g$ -- выпуклая\nC.\n** 2. Шаг.\nD.")
+        self.assertIn("\\begin{proof}\n  Везде $\\lambda$.\n\n  \\proofpart{$\\Rightarrow$}\n  B.\n\n  \\proofstep{$g$~--- выпуклая}\n  C.\n\n  \\proofpart{2. Шаг}\n  D.\n\\end{proof}", out)
+        self.assertEqual(w, [])
+
+    def test_lists(self):
+        out, _ = tex("Пусть:\n- a\n- b $x$\n  cont\n1. один\n   продолж.\n2. два\n   - вложенный")
+        self.assertIn("Пусть:\n\n  \\begin{itemize}\n    \\item a\n    \\item b $x$\n      cont\n  \\end{itemize}\n\n  \\begin{enumerate}\n    \\item один\n      продолж.\n    \\item два\n      \\begin{itemize}\n        \\item вложенный\n      \\end{itemize}\n  \\end{enumerate}", out)
+
+    def test_math_only_line_keeps_paragraph(self):
+        out, _ = tex("Тогда\n$x = y$\nи $z$.")
+        self.assertIn("  Тогда\n  $x = y$\n  и $z$.", out)
+
+    def test_display_in_paragraph(self):
+        out, _ = tex("Тогда\n\\[\nx = y\n\\]\nи $z$.\n\n\\[\na\n\nb\n\\]")
+        self.assertIn("  Тогда\n  \\[\n  x = y\n  \\]\n  и $z$.\n\n  \\[\n  a\n\n  b\n  \\]", out)
+
+    def test_noexport_dropped(self):
+        n = make_note(NOTE)
+        real = roam.VAULT
+        roam.VAULT = n.path.parent
+        try:
+            out, _ = roam_tex.note_to_tex(n, FakeVault([n]), {n.id})
+        finally:
+            roam.VAULT = real
+        for bad in ("Anki", "ANKI_", ":PROPERTIES:", "Карточка"):
+            self.assertNotIn(bad, out)
+
+    def test_unknown_heading(self):
+        out, w = tex("Опр.\n* Свойство: X\nтекст\n** Доказательство\nдок.")
+        self.assertIn("\\begin{proposition}[{Свойство: X}]\\label[proposition]{note:%s:1}\n  текст\n\\end{proposition}\n\n\\begin{proof}\n  док.\n\\end{proof}" % TEX_ID, out)
+        self.assertIn("X01", w)
+
+    def test_example_heading(self):
+        out, _ = tex("S.\n* Пример\nПусть $C_1$.")
+        self.assertIn("\\begin{example}\n  Пусть $C_1$.\n\\end{example}", out)
+
+
+LECTURE = """:PROPERTIES:
+:ID:       8DD500EE-1B27-4328-9B4A-3A365516213F
+:END:
+#+title: Метопт. Лекция 1: Выпуклые множества и функции
+#+filetags: :lecture:metopt:
+#+date: 2026-09-01
+
+* Материалы
+- конспект
+
+* План лекции
+1. Выпуклые множества (1.1)
+   - [[id:316B5BFA-8B9F-4267-9086-D6593AAB5F9B][Выпуклое множество]] — опр. 1.1
+   - [[id:08CF7113-4709-4C4F-A0E7-4A2ED595BD7F][Пересечение]] — свойство 1.1.1
+   - Конус — /нет заметки/
+2. Выпуклые функции (1.2)
+   - [[id:1CA14F2C-637F-41DE-9E97-72075D19E97F][Выпуклая функция]] — опр. 1.4
+
+* Вне конспекта
+- [[id:14FE7B45-F304-4C15-8086-3535589FA04A][Сумма Минковского]] — для свойства 1.1.3
+- [[id:5D688904-8445-47B5-9D39-8BCC39F9C354][Гильбертово пространство]], [[id:F2942E98-6115-4600-AA3F-E0F687D9C732][Скалярное произведение]] — для 1.1.2
+"""
+
+
+class PlanTest(unittest.TestCase):
+    def test_lecture_plan(self):
+        n = make_note(LECTURE, name="20260922124251-лекция.org")
+        plan, w = roam_tex.lecture_plan(n, FakeVault([n]))
+        self.assertEqual(plan.number, 1)
+        self.assertEqual(plan.title, "Выпуклые множества и функции")
+        self.assertEqual([s.title for s in plan.sections], ["Выпуклые множества", "Выпуклые функции"])
+        self.assertEqual(plan.sections[0].ref, "1.1")
+        self.assertEqual([i.id for i in plan.sections[0].items],
+                         ["316B5BFA-8B9F-4267-9086-D6593AAB5F9B", "08CF7113-4709-4C4F-A0E7-4A2ED595BD7F"])
+        self.assertEqual(plan.sections[0].items[0].annot, "опр. 1.1")
+        self.assertEqual(len(plan.sections[1].items), 1)
+        self.assertEqual([i.id[:8] for i in plan.appendix], ["14FE7B45", "5D688904", "F2942E98"])
+        self.assertEqual(plan.appendix[2].annot, "для 1.1.2")
+        self.assertEqual([x.code for x in w], ["X10"])
+
+
+class MacrosLatexTest(unittest.TestCase):
+    def test_raw(self):
+        d = Path(tempfile.mkdtemp())
+        (d / "my-org.el").write_text(MACRO_SRC, encoding="utf-8")
+        lines = roam_tex.macros_source_raw({"vault": {"emacs_macros": str(d / "my-org.el")}})
+        self.assertEqual(lines[0], "\\newcommand{\\notedef}[1]{\\providecommand{#1}{}\\renewcommand{#1}}")
+        self.assertIn("\\DeclareMathOperator{\\Var}{Var}", lines)
+        self.assertEqual(len(lines), 9)

@@ -3,7 +3,8 @@
 
 Источник правды -- сами .org файлы (sqlite-база org-roam устаревает, когда
 файлы правятся вне Emacs).  Команды: list, pending, show, context, lint, fix,
-spell, mentions, new, macros, expand, cards, guard, sync, state, pdfmap, grep-pdf.
+spell, mentions, new, macros, expand, cards, guard, sync, state, pdfmap, grep-pdf,
+handbook (plan/export/build -- PDF-конспект, см. roam_tex.py).
 
 Коды возврата: 0 -- ок, 1 -- есть находки / отказ, 2 -- ошибка использования.
 """
@@ -1604,6 +1605,10 @@ def cmd_macros(a, v: Vault):
     macros = load_macros(v.cfg)
     if not macros:
         die(f"макросы не найдены в {v.cfg['vault'].get('emacs_macros')}", 1)
+    if a.latex:
+        import roam_tex
+        sys.stdout.write(roam_tex.macros_latex(v.cfg))
+        return 0
     if a.mathjax:
         mj = {}
         for name, m in macros.items():
@@ -1810,6 +1815,53 @@ def cmd_grep_pdf(a, v: Vault):
     return 0 if hits else 1
 
 
+def cmd_handbook(a, v: Vault):
+    import roam_tex
+    if a.action == "plan":
+        c = roam_tex.course_plan(v, a.course)
+        if a.json:
+            print(json.dumps({
+                "title": c.title, "exported": sorted(c.exported),
+                "lectures": [{"number": p.number, "title": p.title, "date": p.date, "file": p.note.rel,
+                              "sections": [{"title": s.title, "ref": s.ref,
+                                            "items": [{"id": i.id, "title": v.by_id[i.id].title, "annot": i.annot}
+                                                      for i in s.items]} for s in p.sections]}
+                             for p in c.lectures],
+                "appendix": [{"lecture": p.number, "items": [{"id": i.id, "title": v.by_id[i.id].title,
+                                                              "annot": i.annot} for i in items]}
+                             for p, items in c.appendix],
+                "warnings": roam_tex.warnings_json(c.warnings)}, ensure_ascii=False, indent=1))
+        else:
+            roam_tex.print_plan(c, v)
+            roam_tex.print_warnings(c.warnings)
+        return 0
+    if a.action == "export":
+        if a.note:
+            n = v.resolve(a.note)
+            c = roam_tex.course_plan(v, a.course)
+            tex, w = roam_tex.note_to_tex(n, v, c.exported | {n.id})
+            sys.stdout.write(tex)
+            roam_tex.print_warnings(w)
+            return 0
+        c, files, w = roam_tex.render_course(v, a.course)
+        summary = roam_tex.write_files(files, a.course, dry_run=a.dry_run)
+        pre = "dry-run: " if a.dry_run else ""
+        print(f"{pre}создано {len(summary['created'])}, обновлено {len(summary['updated'])}, "
+              f"удалено {len(summary['deleted'])}, без изменений {len(summary['unchanged'])}")
+        for k in ("created", "updated", "deleted"):
+            for rel in summary[k]:
+                print(f"  {k[:3]}  {rel}")
+        roam_tex.print_warnings(w)
+        return 0
+    if a.action == "build":
+        c, files, w = roam_tex.render_course(v, a.course)
+        summary = roam_tex.write_files(files, a.course)
+        print(f"export: создано {len(summary['created'])}, обновлено {len(summary['updated'])}, "
+              f"удалено {len(summary['deleted'])}; предупреждений {len(w)}")
+        return roam_tex.build(a.course, open_pdf=a.open)
+    return 2
+
+
 # --------------------------------------------------------------------------
 # cli
 # --------------------------------------------------------------------------
@@ -1874,6 +1926,7 @@ def build_parser() -> argparse.ArgumentParser:
     s = sub.add_parser("macros", help="LaTeX-макросы из конфига Emacs")
     s.add_argument("--json", action="store_true")
     s.add_argument("--mathjax", action="store_true")
+    s.add_argument("--latex", action="store_true", help="блок макросов как есть (handbook/common/macros.tex)")
     s.set_defaults(fn=cmd_macros)
 
     s = sub.add_parser("expand", help="stdin→stdout: раскрыть макросы")
@@ -1915,6 +1968,15 @@ def build_parser() -> argparse.ArgumentParser:
     s.add_argument("course")
     s.add_argument("regex")
     s.set_defaults(fn=cmd_grep_pdf)
+
+    s = sub.add_parser("handbook", help="PDF-конспект курса: plan | export | build")
+    s.add_argument("action", choices=["plan", "export", "build"])
+    s.add_argument("course")
+    s.add_argument("--json", action="store_true", help="plan: JSON")
+    s.add_argument("--dry-run", action="store_true", help="export: только сводка")
+    s.add_argument("--note", help="export: tex одной заметки в stdout")
+    s.add_argument("--open", action="store_true", help="build: открыть PDF")
+    s.set_defaults(fn=cmd_handbook)
     return p
 
 

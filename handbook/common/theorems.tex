@@ -1,0 +1,94 @@
+% Окружения утверждений (ручной файл; основа -- hse-uberhandbook/common/theorems.tex).
+% Отличия от uberhandbook: нумерация по главам («теорема 1.2», как в конспекте);
+% окружения proposition («Утверждение») и method («Метод»); example и remark без
+% бокса; список утверждений (\tcblistof{thms}); \proofpart / \proofstep для шагов
+% доказательства; пустой заголовок не оставляет висячего двоеточия.
+\usepackage{amsthm}
+
+\usepackage[most]{tcolorbox}
+\tcbuselibrary{breakable,skins}
+
+\usepackage{xparse}
+
+\newcounter{theorem}[chapter]
+\renewcommand{\thetheorem}{\thechapter.\arabic{theorem}}
+
+\tcbset{
+  thmbox/.style={
+    before skip=8pt,
+    after skip=10pt,
+    enhanced,
+    breakable,
+    colback=white,
+    colframe=black,
+    boxrule=0.8pt,
+    arc=0pt,
+    left=2mm, right=2mm, top=1.5mm, bottom=1.5mm,
+    boxsep=1.2mm,
+    title filled,
+    colbacktitle=gray!15,
+    coltitle=black,
+    fonttitle=\normalfont,
+  },
+  methodbox/.style={
+    thmbox,
+    colbacktitle=blue!8,
+  },
+}
+
+% #1 -- вид («Теорема»), #2 -- заголовок, #3 -- стиль бокса
+\NewDocumentEnvironment{_boxedthm}{ m O{} O{thmbox} }
+{%
+  \refstepcounter{theorem}%
+  \addcontentsline{thms}{tcolorbox}{\protect\numberline{\thetheorem}#1\IfBlankF{#2}{: #2}}%
+  \begin{tcolorbox}[
+    #3,
+    title={%
+      {\bfseries #1~\thetheorem}%
+      \IfBlankF{#2}{:\ {\normalfont\itshape #2}}%
+    },
+  ]%
+}
+{%
+  \end{tcolorbox}%
+}
+
+\NewDocumentEnvironment{theorem}{ O{} }{\begin{_boxedthm}{Теорема}[#1]}{\end{_boxedthm}}
+\NewDocumentEnvironment{lemma}{ O{} }{\begin{_boxedthm}{Лемма}[#1]}{\end{_boxedthm}}
+\NewDocumentEnvironment{corollary}{ O{} }{\begin{_boxedthm}{Следствие}[#1]}{\end{_boxedthm}}
+\NewDocumentEnvironment{definition}{ O{} }{\begin{_boxedthm}{Определение}[#1]}{\end{_boxedthm}}
+\NewDocumentEnvironment{proposition}{ O{} }{\begin{_boxedthm}{Утверждение}[#1]}{\end{_boxedthm}}
+\NewDocumentEnvironment{method}{ O{} }{\begin{_boxedthm}{Метод}[#1][methodbox]}{\end{_boxedthm}}
+
+% Небоксовые: пример (нумеруется, попадает в список) и замечание (без номера).
+% #1 -- вид, #2 -- заголовок
+\NewDocumentEnvironment{_plainthm}{ m O{} }
+{%
+  \refstepcounter{theorem}%
+  \addcontentsline{thms}{tcolorbox}{\protect\numberline{\thetheorem}#1\IfBlankF{#2}{: #2}}%
+  \par\addvspace{8pt}%
+  \noindent\textbf{#1~\thetheorem}%
+  \IfBlankF{#2}{:\ {\normalfont\itshape #2}}%
+  \ \normalfont\ignorespaces
+}
+{%
+  \par\addvspace{10pt}%
+}
+\NewDocumentEnvironment{example}{ O{} }{\begin{_plainthm}{Пример}[#1]}{\end{_plainthm}}
+\NewDocumentEnvironment{remark}{ O{} }
+{%
+  \par\addvspace{6pt}%
+  \noindent\textbf{Замечание}%
+  \IfBlankF{#1}{\ {\normalfont\itshape (#1)}}%
+  .\ \normalfont\ignorespaces
+}
+{%
+  \par\addvspace{8pt}%
+}
+\NewDocumentEnvironment{boxedexample}{ O{} }{\begin{_boxedthm}{Пример}[#1]}{\end{_boxedthm}}
+
+\newtheorem*{proofsketch}{Набросок доказательства}
+
+% Шаги доказательства: \proofpart{⇒} -- крупный шаг, \proofstep{…} -- подшаг.
+\NewDocumentCommand{\proofpart}{m}{\par\medskip\noindent{\itshape #1.}\par\nobreak\smallskip\noindent\ignorespaces}
+\NewDocumentCommand{\proofstep}{m}{\par\smallskip\noindent{\itshape #1.}\enspace\ignorespaces}
