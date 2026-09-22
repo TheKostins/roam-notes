@@ -7,8 +7,9 @@
 Пусть $E \subset \R^n$ -- [[id:316B5BFA-8B9F-4267-9086-D6593AAB5F9B][выпуклое множество]], $f: E \rightarrow \R$ -- [[id:1CA14F2C-637F-41DE-9E97-72075D19E97F][выпуклая]] и [[id:957FA09D-8883-40A5-B4C7-237D9F815A42][дифференцируемая]];
 возьмем  $x^{*} \in E$
 Тогда $\nabla f(x^{*}) = 0 \Leftrightarrow x^{*}$ -- точка минимума ($\nabla f$ -- [[id:1756907B-1FF2-4F62-8553-759B8509281C][градиент]])
-
+/Rem/: Для $\Leftarrow$ нужно, чтобы $x^{*} \subset \operatorname{Int} E$
 * Доказательство
+** $\Rightarrow$
 Возьмем неравенство из [[id:18BD8497-CEBD-4962-8144-474B489606C3][дифференциального критерия выпуклости]]
 \[
 f(y) \ge f(x) + \left\langle \nabla f(x); y-x \right\rangle\ \forall x, y \in E
@@ -23,3 +24,25 @@ f(y) \ge f(x) + \left\langle \nabla f(x); y-x \right\rangle\ \forall x, y \in E
 \]
 
 Причем оно достигается, так как $x^{*} \in E$.
+
+** $\Leftarrow$
+Давайте возьмем произвольное направление $h\in \R^n$,
+Так как $x^{*}$ -- внутренняя точка $E$,  найдется окрестность этой точки -- $U$, такая, что $U \subset E$.
+А из этого следует, что $\exists \varepsilon >0:\ x^{*} + th \in U,\ |t| < \varepsilon$
+Рассмотрим $g(t) = f(x^{*} + th)$, она определена на $(-\varepsilon; \varepsilon)$.
+Так как $x^{*}$ -- точка минимума $f$, то $0$ -- точка минимума $g$, так как $g(0) = f(x^{*})$
+$g$ -- дифференцируема. Тогда по [[id:1E03F05F-22CC-4D55-BCF1-EBB5774765F0][теореме Ферма]] $g^{\prime}(0) = 0$.
+
+Что представляет их себя $g^{\prime}(t)$:
+\[
+g^{\prime}(t) = \frac{\partial }{\partial t} f (x^{*} + th) = f^{\prime}(x^{*} + th) h = (\nabla f( x^{*} + th))^T h = \left\langle
+\nabla f(x^{*} +th); h
+\right\rangle
+\]
+
+Но мы доказали, что для произвольного  $h$, $g^{\prime}(0) = \left\langle \nabla f (x^{*}); h \right\rangle = 0$ 
+Получается, если взять $h = \nabla f(x^{*})$ и подставить в производную, то
+\[
+\left\langle \nabla f(x^{*}) ; \nabla f(x^{*}) \right\rangle = \| \nabla f (x^{*}) \| ^2 = 0 \Rightarrow \nabla f(x^{*}) = \overline{0}
+\]
+o
