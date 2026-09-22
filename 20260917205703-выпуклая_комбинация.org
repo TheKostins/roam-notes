@@ -6,3 +6,24 @@
 
 Пусть $V$ -- [[id:1B626AA4-35C8-4C7C-9D3D-D8C26D98F40C][векторное пространство]]. $x_k \in V, 1 \le k \le n, \sum\limits_{k=1}^n \lambda_k = 1, \lambda_k \ge 0$
 Тогда $\sum\limits_{k=1}^n \lambda_k x_k$ -- выпуклая комбинация
+
+* Anki :noexport:
+:PROPERTIES:
+:ANKI_DECK: Notes::metopt
+:END:
+** Выпуклая комбинация: определение
+:PROPERTIES:
+:ANKI_NOTE_TYPE: Basic
+:END:
+*** Front
+Метопт. Что такое выпуклая комбинация точек \(x_1, \dots, x_n \in V\)?
+*** Back
+\(\sum_{k=1}^n \lambda_k x_k\), где \(\lambda_k \ge 0\) и \(\sum_{k=1}^n \lambda_k = 1\).
+** Выпуклая комбинация: условия на коэффициенты
+:PROPERTIES:
+:ANKI_NOTE_TYPE: Cloze
+:END:
+*** Text
+Метопт. \(\sum_{k=1}^n \lambda_k x_k\) — выпуклая комбинация, если {{c1::\(\lambda_k \ge 0\)}} и {{c2::\(\sum_{k=1}^n \lambda_k = 1\)}}
+*** Back Extra
+Оба условия нужны: без неотрицательности получаем аффинную комбинацию, без суммы 1 — коническую.

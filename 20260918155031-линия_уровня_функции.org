@@ -6,3 +6,16 @@
 
 Пусть $E$ -- произвольное множество, $f: E \rightarrow \R$, $c \in \R$
 Тогда множество $f_c = \left\{ x \in E \ | \ f(x) = c  \right\}$ -- /линия уровня/
+
+* Anki :noexport:
+:PROPERTIES:
+:ANKI_DECK: Notes::metopt
+:END:
+** Линия уровня: определение
+:PROPERTIES:
+:ANKI_NOTE_TYPE: Basic
+:END:
+*** Front
+Метопт. Что такое линия уровня \(f_c\) функции \(f\colon E \to \mathbb{R}\) для \(c \in \mathbb{R}\)?
+*** Back
+\(f_c = \{ x \in E \mid f(x) = c \}\) — множество точек, где \(f\) принимает значение \(c\).

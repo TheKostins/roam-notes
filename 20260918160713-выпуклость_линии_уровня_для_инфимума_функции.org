@@ -18,3 +18,16 @@
 \mathrm{Lev}_f(m) = \left\{ x  \in E\ |\ f(x) \le m \right\} = \left\{ x \in E\ |\ f(x) = m \right\} = f_m
 \]
 Получили в точности [[id:BF27A4AF-11BF-4A0D-85DF-5F7790BD58A9][линию уровня функции]]
+
+* Anki :noexport:
+:PROPERTIES:
+:ANKI_DECK: Notes::metopt
+:END:
+** Линия уровня инфимума: формулировка
+:PROPERTIES:
+:ANKI_NOTE_TYPE: Basic
+:END:
+*** Front
+Метопт. \(f\colon E \to \mathbb{R}\) выпукла, \(m = \inf_{x \in E} f(x)\). Что верно про линию уровня \(f_m = \{ f = m \}\)?
+*** Back
+Она выпукла: \(f_m = \mathrm{Lev}_f(m) = \{ f \le m \}\), так как \(f \ge m\) всюду, а множество подуровня выпуклой функции выпукло (если инфимум не достигается, \(f_m = \varnothing\)).

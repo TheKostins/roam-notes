@@ -13,3 +13,24 @@ x, y \in \bigcap_{\alpha} C_{\alpha} \Rightarrow \forall \alpha\ x,y \in C_{\alp
 \[
 \Rightarrow \forall 0 \le \lambda \le 1\ \lambda x + (1-\lambda) y \in \bigcap_{\alpha} C_{\alpha}
 \]
+
+* Anki :noexport:
+:PROPERTIES:
+:ANKI_DECK: Notes::metopt
+:END:
+** Пересечение выпуклых: формулировка
+:PROPERTIES:
+:ANKI_NOTE_TYPE: Basic
+:END:
+*** Front
+Метопт. Что можно сказать о пересечении \(\bigcap_{\alpha} C_{\alpha}\) произвольного семейства выпуклых множеств?
+*** Back
+Оно выпукло (семейство может быть любым, в том числе бесконечным).
+** Пересечение выпуклых: идея доказательства
+:PROPERTIES:
+:ANKI_NOTE_TYPE: Basic
+:END:
+*** Front
+Метопт. Почему пересечение выпуклых множеств выпукло? (одна строка)
+*** Back
+\(x, y \in \bigcap C_{\alpha} \Rightarrow x, y \in C_{\alpha}\ \forall \alpha \Rightarrow \lambda x + (1-\lambda) y \in C_{\alpha}\ \forall \alpha \Rightarrow \lambda x + (1-\lambda) y \in \bigcap C_{\alpha}\).

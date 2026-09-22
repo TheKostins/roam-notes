@@ -72,3 +72,32 @@ u = \sum\limits_{i=1}^n \lambda_i x_i,\quad v = \sum\limits_{j=1}^m \eta_jy_j,\q
 
 Следовательно, мы доказали, что $\forall u, v \in S\ \forall \phi \in [0; 1]\ \phi u + (1-\phi) v \in S$
 Это в точности определение [[id:316B5BFA-8B9F-4267-9086-D6593AAB5F9B][выпуклого множества]]
+
+* Anki :noexport:
+:PROPERTIES:
+:ANKI_DECK: Notes::metopt
+:END:
+** Внутреннее описание conv: формулировка
+:PROPERTIES:
+:ANKI_NOTE_TYPE: Basic
+:END:
+*** Front
+Метопт. Как выпуклая оболочка \(\mathrm{conv}(M)\) описывается «изнутри», через точки \(M\)?
+*** Back
+\[ \mathrm{conv}(M) = \left\{ \sum_{k=1}^n \lambda_k x_k \;\middle|\; x_k \in M,\ \lambda_k \ge 0,\ \sum_{k=1}^n \lambda_k = 1 \right\} \] — множество всех выпуклых комбинаций точек \(M\).
+** Внутреннее описание conv: план доказательства
+:PROPERTIES:
+:ANKI_NOTE_TYPE: Basic
+:END:
+*** Front
+Метопт. План доказательства \(\mathrm{conv}(M) = S\), где \(S\) — все выпуклые комбинации точек \(M\)?
+*** Back
+\(S \subset \mathrm{conv}(M)\): каждое выпуклое \(Q \supset M\) содержит выпуклые комбинации точек \(M\) (лемма), значит и их пересечение. \(\mathrm{conv}(M) \subset S\): \(S\) выпукло и \(M \subset S\), а \(\mathrm{conv}(M)\) — наименьшее такое.
+** Внутреннее описание conv: почему S выпукло
+:PROPERTIES:
+:ANKI_NOTE_TYPE: Basic
+:END:
+*** Front
+Метопт. Почему множество \(S\) всех выпуклых комбинаций точек \(M\) само выпукло?
+*** Back
+\(\phi u + (1-\phi) v\) для \(u = \sum \lambda_i x_i\), \(v = \sum \eta_j y_j\) — комбинация \(n+m\) точек с коэффициентами \(\phi\lambda_i\), \((1-\phi)\eta_j\); они неотрицательны и в сумме дают \(\phi \cdot 1 + (1-\phi) \cdot 1 = 1\).

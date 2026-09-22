@@ -31,3 +31,40 @@ g(z) = f(\lambda (Ax + b) + (1-\lambda)(Ay + b)) \le \lambda f(Ax + b) + (1-\lam
 ** 4. Композиция с монотонной выпуклой функцией
 Обозначим $F(x) = (f_1(x), \dots, f_m(x))$. По выпуклости каждой $f_k$: $F(z) \le \lambda F(x) + (1-\lambda) F(y)$ покоординатно.
 $\Phi$ не убывает по каждому аргументу, поэтому $\Phi(F(z)) \le \Phi(\lambda F(x) + (1-\lambda) F(y))$, а по выпуклости $\Phi$ правая часть $\le \lambda \Phi(F(x)) + (1-\lambda) \Phi(F(y))$.
+
+* Anki :noexport:
+:PROPERTIES:
+:ANKI_DECK: Notes::metopt
+:END:
+** Преобразования, сохраняющие выпуклость: аффинная замена
+:PROPERTIES:
+:ANKI_NOTE_TYPE: Cloze
+:END:
+*** Text
+Метопт. \(f\) выпукла, \(\mathcal{A}(x) = Ax + b\) — аффинное. Тогда \(g(x) = f(Ax + b)\) — {{c1::выпуклая}} на \(\{ x \mid Ax + b \in E \}\). Ключ доказательства: аффинное отображение {{c2::сохраняет выпуклые комбинации}}
+*** Back Extra
+\(A(\lambda x + (1-\lambda) y) + b = \lambda (Ax + b) + (1-\lambda)(Ay + b)\).
+** Преобразования, сохраняющие выпуклость: sup
+:PROPERTIES:
+:ANKI_NOTE_TYPE: Basic
+:END:
+*** Front
+Метопт. \(f_\alpha\) — семейство выпуклых функций, \(\phi(x) = \sup_\alpha f_\alpha(x)\) конечен. Что верно про \(\phi\) и почему?
+*** Back
+\(\phi\) выпукла: \(f_\alpha(z) \le \lambda f_\alpha(x) + (1-\lambda) f_\alpha(y) \le \lambda \phi(x) + (1-\lambda) \phi(y)\), правая часть не зависит от \(\alpha\) — берём \(\sup\) слева.
+** Преобразования, сохраняющие выпуклость: inf по части переменных
+:PROPERTIES:
+:ANKI_NOTE_TYPE: Basic
+:END:
+*** Front
+Метопт. \(f(x, y)\) выпукла по совокупности \((x, y)\), \(\phi(x) = \inf_y f(x, y)\) конечен. Что верно про \(\phi\)?
+*** Back
+\(\phi\) выпукла. Доказательство: взять \(y_1, y_2\) с \(f(x_i, y_i) \lt \phi(x_i) + \varepsilon\), применить выпуклость \(f\) к точкам \((x, y_1)\), \((y, y_2)\), затем \(\varepsilon \to 0\).
+** Преобразования, сохраняющие выпуклость: композиция
+:PROPERTIES:
+:ANKI_NOTE_TYPE: Basic
+:END:
+*** Front
+Метопт. \(f_1, \dots, f_m\) выпуклы, \(\Phi\colon \mathbb{R}^m \to \mathbb{R}\). При каких условиях на \(\Phi\) функция \(\Phi(f_1(x), \dots, f_m(x))\) выпукла?
+*** Back
+\(\Phi\) выпукла и неубывающая по каждому аргументу. Монотонность нужна, чтобы из \(F(z) \le \lambda F(x) + (1-\lambda) F(y)\) (покоординатно) следовало \(\Phi(F(z)) \le \Phi(\lambda F(x) + (1-\lambda) F(y))\).

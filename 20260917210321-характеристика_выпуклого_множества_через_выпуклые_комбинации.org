@@ -30,3 +30,24 @@ $\sum\limits_{k=1}^{m+1} \lambda_k x_k = \sum\limits_{k=1}^{m} \lambda_k x_k + \
 
 Получили, что $\sum\limits_{k=1}^{m+1} \lambda_k x_k = \sum\limits_{k=1}^{m} \lambda_k x_k + \lambda_{m+1}x_{m+1} = (1-\lambda_{m+1})y + \lambda_{m+1}x_{m+1}$
 А по [[id:316B5BFA-8B9F-4267-9086-D6593AAB5F9B][определению выпуклости]] этот объект лежит в множестве.
+
+* Anki :noexport:
+:PROPERTIES:
+:ANKI_DECK: Notes::metopt
+:END:
+** Характеристика через выпуклые комбинации: формулировка
+:PROPERTIES:
+:ANKI_NOTE_TYPE: Basic
+:END:
+*** Front
+Метопт. Как выпуклость множества \(C\) характеризуется через выпуклые комбинации?
+*** Back
+\(C\) выпукло \(\Leftrightarrow\) \(C\) содержит все выпуклые комбинации своих точек (любого числа точек).
+** Характеристика через выпуклые комбинации: идея ⇒
+:PROPERTIES:
+:ANKI_NOTE_TYPE: Basic
+:END:
+*** Front
+Метопт. Как доказать, что выпуклое \(C\) содержит выпуклые комбинации любого числа своих точек?
+*** Back
+Индукция по числу точек \(m\): \(\sum_{k=1}^{m+1} \lambda_k x_k = (1-\lambda_{m+1})\, y + \lambda_{m+1} x_{m+1}\), где \(y = \sum_{k=1}^{m} \frac{\lambda_k}{1-\lambda_{m+1}} x_k \in C\) по предположению индукции (случай \(\lambda_{m+1} = 1\) — отдельно).

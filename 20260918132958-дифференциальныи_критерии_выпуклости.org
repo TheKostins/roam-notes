@@ -111,3 +111,40 @@ f(x) \ge f(z) + \left\langle \nabla f(z); x - z \right\rangle \tag{2}
 Подставим $z$ в $f(z)$ и запишем итоговое неравенство.
 Итого  $\forall x,y \in E\ \forall \lambda \in [0;1]\ \lambda f(y) + (1-\lambda) f(x) \ge f(\lambda y + (1-\lambda) x)$
 Получили определение выпуклой функции
+
+* Anki :noexport:
+:PROPERTIES:
+:ANKI_DECK: Notes::metopt
+:END:
+** Дифф. критерий выпуклости: формулировка
+:PROPERTIES:
+:ANKI_NOTE_TYPE: Cloze
+:END:
+*** Text
+Метопт. \(E \subset \mathbb{R}^n\) выпукло, \(f\colon E \to \mathbb{R}\) дифференцируема. \(f\) выпукла \(\Leftrightarrow\) \(\forall x, y \in E\): {{c1::\(f(y) \ge f(x) + \langle \nabla f(x); y - x \rangle\)}}
+*** Back Extra
+График лежит не ниже любой касательной гиперплоскости. Одномерный аналог: \(f(y) \ge f(x) + f'(x)(y-x)\).
+** Дифф. критерий выпуклости: идея ⇒
+:PROPERTIES:
+:ANKI_NOTE_TYPE: Basic
+:END:
+*** Front
+Метопт. Идея доказательства «\(f\) выпукла \(\Rightarrow f(y) \ge f(x) + \langle \nabla f(x); y-x \rangle\)»?
+*** Back
+Сведение к одномерному случаю: \(g(t) = f(x + t(y-x))\) выпукла на \([0;1]\), значит \(g(1) \ge g(0) + g'(0)\), а \(g'(0) = \langle \nabla f(x); y - x \rangle\).
+** Дифф. критерий выпуклости: идея ⇐
+:PROPERTIES:
+:ANKI_NOTE_TYPE: Basic
+:END:
+*** Front
+Метопт. Идея доказательства «\(f(y) \ge f(x) + \langle \nabla f(x); y-x \rangle\ \forall x,y \Rightarrow f\) выпукла»?
+*** Back
+Записать неравенство в точке \(z = \lambda x + (1-\lambda) y\) дважды (для \(x\) и для \(y\)), умножить на \(\lambda\) и \(1-\lambda\), сложить: поправки \(\lambda(x-z) + (1-\lambda)(y-z) = 0\) уничтожаются, остаётся \(\lambda f(x) + (1-\lambda) f(y) \ge f(z)\).
+** Дифф. критерий выпуклости: производная вдоль прямой
+:PROPERTIES:
+:ANKI_NOTE_TYPE: Basic
+:END:
+*** Front
+Метопт. Чему равна \(g'(t)\) для \(g(t) = f(x + t(y-x))\), где \(f\colon \mathbb{R}^n \to \mathbb{R}\) дифференцируема?
+*** Back
+\(g'(t) = \langle \nabla f(x + t(y-x)); y - x \rangle\) — производная композиции: строка \(f'\) умножается на столбец \(y - x\).

@@ -14,3 +14,24 @@ $f$ -- выпуклая, если:
 - [[id:1CD538BF-6F40-472A-A670-D38F093E4DF1][Выпуклость множества подуровня выпуклой функции]]
 - [[id:035B8935-65A9-4BB4-BDA3-60A60FF278F0][Наименьшее значение выпуклой функции достигается в точке с нулевым градиентом]]
 - [[id:6BC7D685-C429-45A3-B563-269840CA0664][Преобразования, сохраняющие выпуклость]]
+
+* Anki :noexport:
+:PROPERTIES:
+:ANKI_DECK: Notes::metopt
+:END:
+** Выпуклая функция: определение
+:PROPERTIES:
+:ANKI_NOTE_TYPE: Basic
+:END:
+*** Front
+Метопт. Когда функция \(f\colon E \to \mathbb{R}\) на выпуклом \(E\) называется выпуклой?
+*** Back
+\[ \forall x, y \in E\ \forall \lambda \in [0;1]\quad f(\lambda x + (1-\lambda) y) \le \lambda f(x) + (1-\lambda) f(y) \]
+** Выпуклая функция: неравенство
+:PROPERTIES:
+:ANKI_NOTE_TYPE: Cloze
+:END:
+*** Text
+Метопт. \(f\) выпукла на выпуклом \(E\) \(\Leftrightarrow\) \(\forall x, y \in E\ \forall \lambda \in [0;1]\): \(f(\lambda x + (1-\lambda) y)\) {{c1::\(\le\)}} {{c2::\(\lambda f(x) + (1-\lambda) f(y)\)}}
+*** Back Extra
+Хорда лежит не ниже графика. Почему область определения должна быть выпуклой: иначе \(f(\lambda x + (1-\lambda) y)\) не определено.

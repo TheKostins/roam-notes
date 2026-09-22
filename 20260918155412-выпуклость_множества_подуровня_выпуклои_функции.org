@@ -22,3 +22,24 @@ x,y \in \mathrm{Lev}_f(c) \Rightarrow \lambda f(x) + (1-\lambda)f(y) \le \lambda
 
 Но тогда, $f(\lambda x + (1-\lambda)y) \le c \Rightarrow (\lambda x + (1-\lambda)y) \in \mathrm{Lev}_{f}(c)$
 Итого $\mathrm{Lev}_f(c)$ -- выпуклое [[id:316B5BFA-8B9F-4267-9086-D6593AAB5F9B][по определению]].
+
+* Anki :noexport:
+:PROPERTIES:
+:ANKI_DECK: Notes::metopt
+:END:
+** Множество подуровня: формулировка
+:PROPERTIES:
+:ANKI_NOTE_TYPE: Basic
+:END:
+*** Front
+Метопт. \(f\colon E \to \mathbb{R}\) выпукла на выпуклом \(E\), \(c \in \mathbb{R}\). Что верно про \(\mathrm{Lev}_f(c) = \{ x \in E \mid f(x) \le c \}\)?
+*** Back
+Оно выпукло (для любого \(c\)).
+** Множество подуровня: идея доказательства
+:PROPERTIES:
+:ANKI_NOTE_TYPE: Basic
+:END:
+*** Front
+Метопт. Почему \(\mathrm{Lev}_f(c) = \{ f \le c \}\) выпукло для выпуклой \(f\)?
+*** Back
+\(x, y \in \mathrm{Lev}_f(c)\): \(f(\lambda x + (1-\lambda) y) \le \lambda f(x) + (1-\lambda) f(y) \le \lambda c + (1-\lambda) c = c\).
