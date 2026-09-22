@@ -2,11 +2,32 @@
 :ID:       6BC7D685-C429-45A3-B563-269840CA0664
 :END:
 #+title: Преобразования, сохраняющие выпуклость
-#+filetags: :theorem:metopt:
+#+filetags: :metopt:theorem:
 
-1. [[id:B9EF495E-CDBE-4E80-B401-8AFEAB0DCCAC][Афинные преобразования]]: $f$ -- выпуклая, $f(Ax +b)$ -- выпуклая 
-2. $f_{\alpha}$ -- семейство выпуклых функций, Тогда $\phi(x) = \sup_{\alpha} f_{\alpha}(x)$ -- выпуклая
-3. $f(x;y): \R^n \times \R^m \rightarrow \R$ -- выпуклая.
-   Тогда $\phi(x) = \inf_y f(x,y)$ -- выпуклая.
-4. $\Phi: \R^n \rightarrow \R$ -- монотонно неубывающая и выпуклая, $f_k$ -- выпуклые.
-   Тогда $\Phi(f_1,f_2,...,f_n)$ -- выпуклая
+1. [[id:B9EF495E-CDBE-4E80-B401-8AFEAB0DCCAC][Аффинные преобразования]]: $f: E \rightarrow \R$ -- [[id:1CA14F2C-637F-41DE-9E97-72075D19E97F][выпуклая]], $\mathcal{A}(x) = Ax + b$ -- аффинное. Тогда $g(x) = f(Ax + b)$ -- выпуклая на $\left\{ x\ |\ Ax + b \in E \right\}$
+2. $f_{\alpha}$ -- семейство [[id:1CA14F2C-637F-41DE-9E97-72075D19E97F][выпуклых функций]] на $E$, и $\sup_{\alpha} f_{\alpha}(x) < +\infty\ \forall x \in E$. Тогда $\phi(x) = \sup_{\alpha} f_{\alpha}(x)$ -- выпуклая
+3. $f(x,y): \R^n \times \R^m \rightarrow \R$ -- выпуклая по совокупности переменных $(x, y)$.
+   Тогда $\phi(x) = \inf_y f(x,y)$ -- выпуклая (если $\inf$ конечен при всех $x$).
+4. $\Phi: \R^m \rightarrow \R$ -- выпуклая и неубывающая по каждому аргументу, $f_1, \dots, f_m$ -- выпуклые.
+   Тогда $\Phi(f_1(x), \dots, f_m(x))$ -- выпуклая
+
+* Доказательство
+Везде $\lambda \in [0;1]$, $z = \lambda x + (1-\lambda) y$, проверяется определение [[id:1CA14F2C-637F-41DE-9E97-72075D19E97F][выпуклой функции]].
+** 1. Аффинное преобразование
+Пусть $Ax + b, Ay + b \in E$. [[id:B9EF495E-CDBE-4E80-B401-8AFEAB0DCCAC][Аффинное отображение]] сохраняет выпуклые комбинации: $Az + b = \lambda (Ax + b) + (1-\lambda)(Ay + b)$, так что $Az + b \in E$ (область определения $g$ выпукла) и
+\[
+g(z) = f(\lambda (Ax + b) + (1-\lambda)(Ay + b)) \le \lambda f(Ax + b) + (1-\lambda) f(Ay + b) = \lambda g(x) + (1-\lambda) g(y)
+\]
+** 2. Супремум семейства
+Для каждого $\alpha$: $f_{\alpha}(z) \le \lambda f_{\alpha}(x) + (1-\lambda) f_{\alpha}(y) \le \lambda \phi(x) + (1-\lambda) \phi(y)$, так как $f_{\alpha} \le \phi$ поточечно.
+Правая часть не зависит от $\alpha$, поэтому можно взять $\sup$ по $\alpha$ слева: $\phi(z) \le \lambda \phi(x) + (1-\lambda) \phi(y)$.
+** 3. Инфимум по части переменных
+Возьмем $\varepsilon > 0$ и $y_1, y_2$ такие, что $f(x, y_1) < \phi(x) + \varepsilon$, $f(y, y_2) < \phi(y) + \varepsilon$ (существуют по определению $\inf$).
+Точка $(z,\ \lambda y_1 + (1-\lambda) y_2) = \lambda (x, y_1) + (1-\lambda)(y, y_2)$, и по выпуклости $f$ по совокупности переменных
+\[
+\phi(z) \le f(z,\ \lambda y_1 + (1-\lambda) y_2) \le \lambda f(x, y_1) + (1-\lambda) f(y, y_2) < \lambda \phi(x) + (1-\lambda) \phi(y) + \varepsilon
+\]
+Устремим $\varepsilon \rightarrow 0$.
+** 4. Композиция с монотонной выпуклой функцией
+Обозначим $F(x) = (f_1(x), \dots, f_m(x))$. По выпуклости каждой $f_k$: $F(z) \le \lambda F(x) + (1-\lambda) F(y)$ покоординатно.
+$\Phi$ не убывает по каждому аргументу, поэтому $\Phi(F(z)) \le \Phi(\lambda F(x) + (1-\lambda) F(y))$, а по выпуклости $\Phi$ правая часть $\le \lambda \Phi(F(x)) + (1-\lambda) \Phi(F(y))$.

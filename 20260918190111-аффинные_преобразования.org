@@ -1,0 +1,16 @@
+:PROPERTIES:
+:ID:       B9EF495E-CDBE-4E80-B401-8AFEAB0DCCAC
+:END:
+#+title: Аффинные преобразования
+#+filetags: :metopt:definition:
+
+Пусть $V, W$ -- [[id:1B626AA4-35C8-4C7C-9D3D-D8C26D98F40C][векторные пространства]]. Отображение $\mathcal{A}: V \rightarrow W$ -- /аффинное/, если $\mathcal{A}(x) = Ax + b$, где $A: V \rightarrow W$ -- линейный оператор, $b \in W$.
+
+* Свойство: сохраняет выпуклые комбинации
+Для любых $x, y \in V$ и $\lambda \in \R$
+\[
+\mathcal{A}(\lambda x + (1-\lambda) y) = \lambda \mathcal{A}(x) + (1-\lambda) \mathcal{A}(y)
+\]
+Следствие: образ и прообраз [[id:316B5BFA-8B9F-4267-9086-D6593AAB5F9B][выпуклого множества]] при аффинном отображении -- выпуклые.
+** Доказательство
+По линейности $A$: $\mathcal{A}(\lambda x + (1-\lambda) y) = \lambda Ax + (1-\lambda) Ay + b$. Так как $\lambda + (1-\lambda) = 1$, то $b = \lambda b + (1-\lambda) b$, и правая часть равна $\lambda (Ax + b) + (1-\lambda)(Ay + b)$.

@@ -1,7 +1,0 @@
-:PROPERTIES:
-:ID:       B9EF495E-CDBE-4E80-B401-8AFEAB0DCCAC
-:END:
-#+title: Афинные преобразования
-#+filetags: :definition:
-
-Это $\mathcal{A} = Ax + b$, где $A$ -- линейный оператор
