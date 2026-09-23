@@ -14,6 +14,8 @@
 ** Линия уровня: определение
 :PROPERTIES:
 :ANKI_NOTE_TYPE: Basic
+:ANKI_NOTE_ID: 1790070704988
+:ANKI_NOTE_HASH: 9b9a97da2d430e43b11627a746eaaac6
 :END:
 *** Front
 Метопт. Что такое линия уровня \(f_c\) функции \(f\colon E \to \mathbb{R}\) для \(c \in \mathbb{R}\)?

@@ -30,6 +30,8 @@ x,y \in \mathrm{Lev}_f(c) \Rightarrow \lambda f(x) + (1-\lambda)f(y) \le \lambda
 ** Множество подуровня: формулировка
 :PROPERTIES:
 :ANKI_NOTE_TYPE: Basic
+:ANKI_NOTE_ID: 1790070704989
+:ANKI_NOTE_HASH: 98a1c35cdc730f7ba76b19318c15296d
 :END:
 *** Front
 Метопт. \(f\colon E \to \mathbb{R}\) выпукла на выпуклом \(E\), \(c \in \mathbb{R}\). Что верно про \(\mathrm{Lev}_f(c) = \{ x \in E \mid f(x) \le c \}\)?
@@ -38,6 +40,8 @@ x,y \in \mathrm{Lev}_f(c) \Rightarrow \lambda f(x) + (1-\lambda)f(y) \le \lambda
 ** Множество подуровня: идея доказательства
 :PROPERTIES:
 :ANKI_NOTE_TYPE: Basic
+:ANKI_NOTE_ID: 1790070704990
+:ANKI_NOTE_HASH: 1d15499ceed07fe5a66d11265efc20e1
 :END:
 *** Front
 Метопт. Почему \(\mathrm{Lev}_f(c) = \{ f \le c \}\) выпукло для выпуклой \(f\)?

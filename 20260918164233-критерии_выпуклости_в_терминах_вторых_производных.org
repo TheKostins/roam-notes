@@ -98,6 +98,8 @@ f(\lambda y + (1-\lambda) x) = f (x + \lambda (y - x)) = \phi(\lambda) \le \lamb
 ** Критерий вторых производных: формулировка
 :PROPERTIES:
 :ANKI_NOTE_TYPE: Cloze
+:ANKI_NOTE_ID: 1790070704992
+:ANKI_NOTE_HASH: 01b601066012dcf3beee4502288808fe
 :END:
 *** Text
 Метопт. \(E \subset \mathbb{R}^n\) открыто и выпукло, \(f\colon E \to \mathbb{R}\) дважды дифференцируема. \(f\) выпукла \(\Leftrightarrow\) {{c1::\(\nabla^2 f(x) \ge 0\ \forall x \in E\)}} (гессиан {{c2::неотрицательно определён}})
@@ -106,6 +108,8 @@ f(\lambda y + (1-\lambda) x) = f (x + \lambda (y - x)) = \phi(\lambda) \le \lamb
 ** Критерий вторых производных: план доказательства
 :PROPERTIES:
 :ANKI_NOTE_TYPE: Basic
+:ANKI_NOTE_ID: 1790070704993
+:ANKI_NOTE_HASH: 298b56c88674f4b2d7ec2aa9f028ccca
 :END:
 *** Front
 Метопт. План доказательства критерия «\(f\) выпукла \(\Leftrightarrow \nabla^2 f \ge 0\)»?
@@ -114,6 +118,8 @@ f(\lambda y + (1-\lambda) x) = f (x + \lambda (y - x)) = \phi(\lambda) \le \lamb
 ** Критерий вторых производных: зачем открытость E
 :PROPERTIES:
 :ANKI_NOTE_TYPE: Basic
+:ANKI_NOTE_ID: 1790070704994
+:ANKI_NOTE_HASH: 8f2d339e255272205a8eb1f496464529
 :END:
 *** Front
 Метопт. Зачем в критерии выпуклости через \(\nabla^2 f \ge 0\) требуется открытость \(E\)?
@@ -122,6 +128,8 @@ f(\lambda y + (1-\lambda) x) = f (x + \lambda (y - x)) = \phi(\lambda) \le \lamb
 ** Критерий вторых производных: вторая производная вдоль прямой
 :PROPERTIES:
 :ANKI_NOTE_TYPE: Cloze
+:ANKI_NOTE_ID: 1790070704995
+:ANKI_NOTE_HASH: fb7dc96b71d156df0b72d84d738d00a3
 :END:
 *** Text
 Метопт. Для \(\phi(t) = f(x + th)\): \(\phi'(t) = \langle \nabla f(x + th); h \rangle\), \(\phi''(t) = \) {{c1::\(h^T \nabla^2 f(x + th)\, h\)}}

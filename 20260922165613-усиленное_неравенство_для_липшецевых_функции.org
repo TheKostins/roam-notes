@@ -1,0 +1,70 @@
+:PROPERTIES:
+:ID:       379E4CAD-A44B-4631-8DAF-F3DC708EAEDE
+:END:
+#+title: Усиленное неравенство для Липшецевых функций
+#+filetags: :theorem:metopt:
+
+Пусть $f: E \rightarrow \R$ -- функция с Липшщецевыими градиентами
+Тогда
+\[
+\forall x,y \in E\ \left| f(y) -f(x) - \left\langle \nabla f(x); y-x  \right\rangle \right|\le \frac{L}{2} \| y - x\|^2_2
+\]
+
+/Rem/: 
+Если мы раскроем модуль и посмотрим на верхнюю границу, то получим:
+\[
+\forall x,y \in E\ f(y) - f(x) - \left\langle \nabla f(x); y-x \right\rangle \le \frac{L}{2} \| y -x \|^2
+ \]
+ Что равносильно $f(y) \le f(x) + \left\langle \nabla f(x); y-x \right\rangle + \frac{L}{2} \| y-x \|^2$,
+ а это означает, что функция должна быть меньше вписанной параболы, что обратно [[id:22E546FC-186F-4A67-85AA-2C85DCEF9021][сильной выпуклости]]
+
+* Доказательство
+
+/Rem/: Заметим, что для функции $\phi \in C^1[0;1]$ верно, что $\phi(1) - \phi(0) = \int\limits_0^1 \phi^{\prime}(x)dx$
+Давайте рассмотрим $\phi(t) = f(x + t(y-x))$, тогда $\phi(1) = f(y),\ \phi(0)=f(x)$
+Тогда давайте представим $f(y)-f(x)$, как интеграл  от $\phi^{\prime}$.
+Мы знаем, что $\phi^{\prime}(t) = f^{\prime}(x + t(y-x)) (y-x) = \left\langle \nabla f(x + t(y-x)); y-x \right\rangle$
+
+Давайте это применим 
+\begin{multline*}
+|f(y) -f(x) - \left\langle \nabla f(x); y-x  \right\rangle | =  \\
+\left| \int\limits_0^1 \left\langle \nabla f(x+t(y-x)); y-x \right\rangle dt - \left\langle \nabla f(x); y-x \right\rangle \right|
+\end{multline*}
+
+Так как $\left\langle \nabla f(x); y-x \right\rangle$ -- константа, ее можно представить так $\int\limits_0^1 \left\langle \nabla f(x); y-x \right\rangle dx$
+
+Давайте теперь сгруппируем интегралы, а подинтегральную сумму скалярных произведений
+схлопнем по линейности
+
+\begin{multline*}
+\left| \int\limits_0^1 \left\langle \nabla f(x+t(y-x)); y-x \right\rangle dt - \left\langle \nabla f(x); y-x \right\rangle \right| = \\
+\left| \int\limits_0^1 \left\langle \nabla f(x + t(y-x)) - \nabla f(x); y-x \right\rangle dt\right|
+\end{multline*}
+
+Еще мы знаем, что модуль интеграла меньше интеграла модуля 
+
+\begin{multline*}
+\left| \int\limits_0^1 \left\langle \nabla f(x + t(y-x)) - \nabla f(x); y-x \right\rangle dt\right| \le
+ \int\limits_0^1 \left| \left\langle \nabla f(x + t(y-x)) - \nabla f(x); y-x \right\rangle \right| dt
+\end{multline*}
+
+А так-же мы можем применить неравенство КБШ для скалярного произведения
+\[
+\left\langle \nabla f(x + t(y-x)) - \nabla f(x); y-x \right\rangle \le \| \nabla f(x + t(y-x)) - \nabla f(x) \| \cdot \| y-x \|
+\]
+
+Если взять [[id:7DD1C7AB-1A49-4675-9F21-5A16C717F670][условие Липшецевости]] для точек $x + t(y-x)$ и $x$, то получим
+\[
+\| \nabla f(x +  t(y-x)) - f(x) \| \le L \| x + t(y-x) - x \| = t L \| y-x\|
+\]
+
+Итого мы оценили это сверху, как
+\[
+\int\limits_{0}^1 t L \| y -x \|  \| y -x \| dt =  \frac{L}{2} \| y -x \|^2
+\]
+
+
+
+
+
+

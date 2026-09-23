@@ -17,6 +17,8 @@
 ** Выпуклая оболочка: определение
 :PROPERTIES:
 :ANKI_NOTE_TYPE: Basic
+:ANKI_NOTE_ID: 1790070704970
+:ANKI_NOTE_HASH: 0a058dbb745ab8bcaa55bf511bdf613d
 :END:
 *** Front
 Метопт. Что такое выпуклая оболочка \(\mathrm{conv}(M)\) множества \(M \subset V\)? (внешнее определение)

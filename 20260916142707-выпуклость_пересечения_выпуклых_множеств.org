@@ -21,6 +21,8 @@ x, y \in \bigcap_{\alpha} C_{\alpha} \Rightarrow \forall \alpha\ x,y \in C_{\alp
 ** Пересечение выпуклых: формулировка
 :PROPERTIES:
 :ANKI_NOTE_TYPE: Basic
+:ANKI_NOTE_ID: 1790070704960
+:ANKI_NOTE_HASH: d135bc08fc3d7951016e2b5597f8c82e
 :END:
 *** Front
 Метопт. Что можно сказать о пересечении \(\bigcap_{\alpha} C_{\alpha}\) произвольного семейства выпуклых множеств?
@@ -29,6 +31,8 @@ x, y \in \bigcap_{\alpha} C_{\alpha} \Rightarrow \forall \alpha\ x,y \in C_{\alp
 ** Пересечение выпуклых: идея доказательства
 :PROPERTIES:
 :ANKI_NOTE_TYPE: Basic
+:ANKI_NOTE_ID: 1790070704961
+:ANKI_NOTE_HASH: 82572e81a8cedbfd69e980a998b0ef3a
 :END:
 *** Front
 Метопт. Почему пересечение выпуклых множеств выпукло? (одна строка)

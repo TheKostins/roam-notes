@@ -53,6 +53,8 @@ g^{\prime}(t) = \frac{\partial }{\partial t} f (x^{*} + th) = f^{\prime}(x^{*} +
 ** Нулевой градиент: достаточность
 :PROPERTIES:
 :ANKI_NOTE_TYPE: Basic
+:ANKI_NOTE_ID: 1790070704984
+:ANKI_NOTE_HASH: 8fb40329df05e12d725699ab31794f92
 :END:
 *** Front
 Метопт. \(E\) выпукло, \(f\colon E \to \mathbb{R}\) выпукла и дифференцируема, \(\nabla f(x^*) = 0\) в точке \(x^* \in E\). Что следует?
@@ -61,6 +63,8 @@ g^{\prime}(t) = \frac{\partial }{\partial t} f (x^{*} + th) = f^{\prime}(x^{*} +
 ** Нулевой градиент: необходимость и её условие
 :PROPERTIES:
 :ANKI_NOTE_TYPE: Basic
+:ANKI_NOTE_ID: 1790070704985
+:ANKI_NOTE_HASH: 28649a21f1279cf3205a89cf7720412a
 :END:
 *** Front
 Метопт. \(f\) выпукла и дифференцируема на выпуклом \(E\), \(x^*\) — точка наименьшего значения. Когда отсюда следует \(\nabla f(x^*) = 0\), и почему условие нужно?
@@ -69,6 +73,8 @@ g^{\prime}(t) = \frac{\partial }{\partial t} f (x^{*} + th) = f^{\prime}(x^{*} +
 ** Нулевой градиент: идея ⇐
 :PROPERTIES:
 :ANKI_NOTE_TYPE: Basic
+:ANKI_NOTE_ID: 1790070704986
+:ANKI_NOTE_HASH: 62061d8883d8665f7546a5286e970332
 :END:
 *** Front
 Метопт. Как из «\(x^*\) — внутренний минимум \(f\)» вывести \(\nabla f(x^*) = 0\)?
@@ -77,6 +83,8 @@ g^{\prime}(t) = \frac{\partial }{\partial t} f (x^{*} + th) = f^{\prime}(x^{*} +
 ** Нулевой градиент: роль выпуклости
 :PROPERTIES:
 :ANKI_NOTE_TYPE: Basic
+:ANKI_NOTE_ID: 1790070704987
+:ANKI_NOTE_HASH: 954ef4a14c2fda942453a89eb60856b7
 :END:
 *** Front
 Метопт. В теореме «\(\nabla f(x^*) = 0 \Leftrightarrow x^*\) — минимум» в каком направлении используется выпуклость \(f\) и что она даёт?

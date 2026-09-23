@@ -41,6 +41,8 @@ $V$ -- [[id:1B626AA4-35C8-4C7C-9D3D-D8C26D98F40C][векторное прост�
 ** Взвешенная сумма Минковского: формулировка
 :PROPERTIES:
 :ANKI_NOTE_TYPE: Cloze
+:ANKI_NOTE_ID: 1790070704966
+:ANKI_NOTE_HASH: 541ed495352b3e30bc678950dd271aa5
 :END:
 *** Text
 Метопт. \(C_1, \dots, C_n\) выпуклы, \(w_k \in \mathbb{R}\). Тогда \(\sum_{k=1}^n w_k C_k = \left\{ \sum_{k=1}^n w_k x_k \mid x_k \in C_k \right\}\) — {{c1::выпуклое множество}}
@@ -49,6 +51,8 @@ $V$ -- [[id:1B626AA4-35C8-4C7C-9D3D-D8C26D98F40C][векторное прост�
 ** Взвешенная сумма Минковского: идея доказательства
 :PROPERTIES:
 :ANKI_NOTE_TYPE: Basic
+:ANKI_NOTE_ID: 1790070704967
+:ANKI_NOTE_HASH: fd093a056343cb6591512571bc23045f
 :END:
 *** Front
 Метопт. Идея доказательства выпуклости \(\sum w_k C_k\) для выпуклых \(C_k\)?
@@ -57,6 +61,8 @@ $V$ -- [[id:1B626AA4-35C8-4C7C-9D3D-D8C26D98F40C][векторное прост�
 ** Взвешенная сумма Минковского: пример
 :PROPERTIES:
 :ANKI_NOTE_TYPE: Basic
+:ANKI_NOTE_ID: 1790070704968
+:ANKI_NOTE_HASH: 6d37c0b52a0414bc678e4d71446b3d2e
 :END:
 *** Front
 Метопт. \(C_1\) — квадрат со стороной 2, \(C_2\) — круг радиуса 1. Что такое \(C_1 + \frac{1}{2} C_2\)?

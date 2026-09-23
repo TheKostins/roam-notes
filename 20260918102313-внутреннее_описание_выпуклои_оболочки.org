@@ -80,6 +80,8 @@ u = \sum\limits_{i=1}^n \lambda_i x_i,\quad v = \sum\limits_{j=1}^m \eta_jy_j,\q
 ** Внутреннее описание conv: формулировка
 :PROPERTIES:
 :ANKI_NOTE_TYPE: Basic
+:ANKI_NOTE_ID: 1790070704975
+:ANKI_NOTE_HASH: 6ea6f1d7043d4eb2881737951c4e8d50
 :END:
 *** Front
 Метопт. Как выпуклая оболочка \(\mathrm{conv}(M)\) описывается «изнутри», через точки \(M\)?
@@ -88,6 +90,8 @@ u = \sum\limits_{i=1}^n \lambda_i x_i,\quad v = \sum\limits_{j=1}^m \eta_jy_j,\q
 ** Внутреннее описание conv: план доказательства
 :PROPERTIES:
 :ANKI_NOTE_TYPE: Basic
+:ANKI_NOTE_ID: 1790070704976
+:ANKI_NOTE_HASH: 1ca7e22c5e270a84c72f3153d4c855e9
 :END:
 *** Front
 Метопт. План доказательства \(\mathrm{conv}(M) = S\), где \(S\) — все выпуклые комбинации точек \(M\)?
@@ -96,6 +100,8 @@ u = \sum\limits_{i=1}^n \lambda_i x_i,\quad v = \sum\limits_{j=1}^m \eta_jy_j,\q
 ** Внутреннее описание conv: почему S выпукло
 :PROPERTIES:
 :ANKI_NOTE_TYPE: Basic
+:ANKI_NOTE_ID: 1790070704977
+:ANKI_NOTE_HASH: 0957a185f5a2764da3e1f668e2305843
 :END:
 *** Front
 Метопт. Почему множество \(S\) всех выпуклых комбинаций точек \(M\) само выпукло?

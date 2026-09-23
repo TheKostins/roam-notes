@@ -1,0 +1,35 @@
+:PROPERTIES:
+:ID:       94DADA28-87E4-4E36-B289-8415BCE750FC
+:END:
+#+title: Критерий сильной выпуклости в терминах вторых производных
+#+filetags: :theorem:metopt:
+Пусть $f: E \rightarrow \R$, $f \in C^2$ (дважды [[id:957FA09D-8883-40A5-B4C7-237D9F815A42][дифференцируема]]), тогда 
+$f$ -- $\mu$-[[id:22E546FC-186F-4A67-85AA-2C85DCEF9021][сильно выпукла]] $\Leftrightarrow \forall x \in E\ \nabla f(x) \ge \mu I$ , где $I$ -- матрица идентичности 
+Так-же равносильно:
+- $\nabla f(x) - \mu I \ge 0\ \forall x \in E$
+- $\inf_x (\lambda_{\mathrm{min}} \nabla f(x)) \ge \mu$
+
+* Доказательство
+
+Возьмем $\phi(x) = f(x) - \frac{\mu}{2} \|x\|^2$. Одна дважды [[id:957FA09D-8883-40A5-B4C7-237D9F815A42][дифференцируема]].
+Нужно доказать [[id:1CA14F2C-637F-41DE-9E97-72075D19E97F][выпуклость]] $\phi$, применим [[id:94DADA28-87E4-4E36-B289-8415BCE750FC][критерий вторых производных]].
+
+$\phi(x)$ -- выпуклая $\Leftrightarrow \forall x \in E\ \nabla^2 \phi(x) \ge 0$. Давайте посмотрим на [[id:592AD816-1D80-48E6-8399-8524FBC1E8F3][гессиан]] $\phi$.
+По линейности $\nabla^2 \phi(x) = \nabla^2 \left( f(x) - \frac{\mu}{2} \| x \|^2 \right) = \nabla^2 f(x)- \mu I$.
+Мы знаем, что $\nabla \left( \frac{\mu}{2} \| x \|^2 \right) = \mu x$, а $\nabla (\mu x) = \mu \nabla (x) = \mu I$.
+Итого мы требуем $\forall x \nabla^2\phi(x) = \nabla^2 f(x) - \mu I \ge 0$. Что и требуется условием
+
+** Утверждение про $\lambda_{min}$
+
+Пусть $h \ne 0$ -- [[id:57D369D6-D748-41A2-9BDA-38D2FFC6601A][собственный вектор]] с числом $\lambda$ для $\nabla^2 f(x)$, где $x$ -- произвольный из $E$
+Еще мы знаем, что $\nabla^2 f(x) -\mu I \ge 0 \Leftrightarrow \left\langle (\nabla^2 f(x) - \mu I)h; h\right\rangle \ge 0$
+
+Заметим, что $(\nabla^2 f(x) - \mu I) h = \nabla^2 f(x) h - \mu I h$
+А так как $h$ -- [[id:57D369D6-D748-41A2-9BDA-38D2FFC6601A][собственный вектор]] $\nabla^2 f(x)$, то это равно $\lambda h - \mu h = (\lambda - \mu) h$
+Итого мы получили $\left\langle (\lambda-\mu) h; h \right\rangle \ge 0 \Leftrightarrow (\lambda - \mu) \| h \|^2 \ge 0$
+Так как $\| h \|^2 > 0$, то $(\lambda - \mu) \| h \|^2 \ge 0$ равносильно $(\lambda - \mu) \ge 0$ 
+Чтобы $\lambda -\mu \ge 0$ было верно для любого $\lambda$, мы как раз и требуем, чтобы $\inf_x (\lambda_{\mathrm{min}} \nabla^2f(x)) \ge \mu$ ( тогда все собственные числа будут больше $\mu$).
+
+
+
+

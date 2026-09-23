@@ -21,6 +21,8 @@
 ** Выпуклое множество: определение
 :PROPERTIES:
 :ANKI_NOTE_TYPE: Basic
+:ANKI_NOTE_ID: 1790070704954
+:ANKI_NOTE_HASH: 03d4ed618a94e7b3dfe33336cd00110b
 :END:
 *** Front
 Метопт. Когда множество \(C\) в векторном пространстве \(V\) называется выпуклым?
@@ -29,6 +31,8 @@
 ** Выпуклое множество: формула
 :PROPERTIES:
 :ANKI_NOTE_TYPE: Cloze
+:ANKI_NOTE_ID: 1790070704958
+:ANKI_NOTE_HASH: d5b9a69845e44156ed0c21e711afbd52
 :END:
 *** Text
 Метопт. \(C \subset V\) выпукло \(\Leftrightarrow\) \(\forall x, y \in C\ \forall \lambda \in [0;1]\): {{c1::\(\lambda x + (1-\lambda) y \in C\)}}

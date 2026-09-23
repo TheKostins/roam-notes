@@ -119,6 +119,8 @@ f(x) \ge f(z) + \left\langle \nabla f(z); x - z \right\rangle \tag{2}
 ** Дифф. критерий выпуклости: формулировка
 :PROPERTIES:
 :ANKI_NOTE_TYPE: Cloze
+:ANKI_NOTE_ID: 1790070704980
+:ANKI_NOTE_HASH: ac15a755da7cacf8c040d721c4526889
 :END:
 *** Text
 Метопт. \(E \subset \mathbb{R}^n\) выпукло, \(f\colon E \to \mathbb{R}\) дифференцируема. \(f\) выпукла \(\Leftrightarrow\) \(\forall x, y \in E\): {{c1::\(f(y) \ge f(x) + \langle \nabla f(x); y - x \rangle\)}}
@@ -127,6 +129,8 @@ f(x) \ge f(z) + \left\langle \nabla f(z); x - z \right\rangle \tag{2}
 ** Дифф. критерий выпуклости: идея ⇒
 :PROPERTIES:
 :ANKI_NOTE_TYPE: Basic
+:ANKI_NOTE_ID: 1790070704981
+:ANKI_NOTE_HASH: 6c39481b204157242f6e79d587de4603
 :END:
 *** Front
 Метопт. Идея доказательства «\(f\) выпукла \(\Rightarrow f(y) \ge f(x) + \langle \nabla f(x); y-x \rangle\)»?
@@ -135,6 +139,8 @@ f(x) \ge f(z) + \left\langle \nabla f(z); x - z \right\rangle \tag{2}
 ** Дифф. критерий выпуклости: идея ⇐
 :PROPERTIES:
 :ANKI_NOTE_TYPE: Basic
+:ANKI_NOTE_ID: 1790070704982
+:ANKI_NOTE_HASH: 58dedb3125aa843f92fc10290d242268
 :END:
 *** Front
 Метопт. Идея доказательства «\(f(y) \ge f(x) + \langle \nabla f(x); y-x \rangle\ \forall x,y \Rightarrow f\) выпукла»?
@@ -143,6 +149,8 @@ f(x) \ge f(z) + \left\langle \nabla f(z); x - z \right\rangle \tag{2}
 ** Дифф. критерий выпуклости: производная вдоль прямой
 :PROPERTIES:
 :ANKI_NOTE_TYPE: Basic
+:ANKI_NOTE_ID: 1790070704983
+:ANKI_NOTE_HASH: 6b600155c809df999cac8ddf31ca1a63
 :END:
 *** Front
 Метопт. Чему равна \(g'(t)\) для \(g(t) = f(x + t(y-x))\), где \(f\colon \mathbb{R}^n \to \mathbb{R}\) дифференцируема?

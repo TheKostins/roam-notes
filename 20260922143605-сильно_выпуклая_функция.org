@@ -1,0 +1,8 @@
+:PROPERTIES:
+:ID:       22E546FC-186F-4A67-85AA-2C85DCEF9021
+:END:
+#+title: Сильно выпуклая функция
+#+filetags: :definition:metopt:
+$f$ -- сильно выпуклая $\Leftrightarrow \exists \mu > 0: f(x) - \frac{\mu}{2}\|x\|^2$ -- выпуклая 
+Еще $f$ можно назвать $\mu$-сильно выпуклой.
+

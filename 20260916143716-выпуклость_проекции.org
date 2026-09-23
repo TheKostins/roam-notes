@@ -26,6 +26,8 @@ $P_U(\lambda a + (1-\lambda) b) = \lambda P_U a + (1-\lambda) P_U b \in P_U C$
 ** Проекция выпуклого: формулировка
 :PROPERTIES:
 :ANKI_NOTE_TYPE: Basic
+:ANKI_NOTE_ID: 1790070704963
+:ANKI_NOTE_HASH: e0803a01dc2f6ddacbdb46927df3ea5f
 :END:
 *** Front
 Метопт. \(V\) — гильбертово, \(U \subset V\) — замкнутое подпространство, \(P_U\) — проекция на \(U\), \(C \subset V\) выпукло. Что верно про \(P_U C\)?
@@ -34,6 +36,8 @@ $P_U(\lambda a + (1-\lambda) b) = \lambda P_U a + (1-\lambda) P_U b \in P_U C$
 ** Проекция выпуклого: ключевое свойство
 :PROPERTIES:
 :ANKI_NOTE_TYPE: Basic
+:ANKI_NOTE_ID: 1790070704964
+:ANKI_NOTE_HASH: da7f06bbe5db5f8d2473711ae3f2a788
 :END:
 *** Front
 Метопт. Какое свойство проекции \(P_U\) обеспечивает выпуклость \(P_U C\) для выпуклого \(C\)?

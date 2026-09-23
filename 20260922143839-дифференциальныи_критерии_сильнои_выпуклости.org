@@ -1,0 +1,52 @@
+:PROPERTIES:
+:ID:       1B5A3E25-56E8-4D5E-9CF6-E2731DA77604
+:END:
+#+title: Дифференциальный критерий сильной выпуклости
+#+filetags: :theorem:metopt:
+
+Если $f: E \rightarrow \R$ -- [[id:957FA09D-8883-40A5-B4C7-237D9F815A42][дифференцируемая]], то
+$f$ -- $\mu$-[[id:22E546FC-186F-4A67-85AA-2C85DCEF9021][сильно выпуклая]] $\Leftrightarrow \forall x, y \in E\ f(y) \ge f(x) + \left\langle \nabla f(x); y-x \right\rangle + \frac{\mu}{2} \|y-x\|^2$
+
+/Rem/ Если для [[id:1CA14F2C-637F-41DE-9E97-72075D19E97F][обычной выпуклости]] мы подпирали функцию прямой (касательной), то в этом случае мы подпираем уже параболой
+
+/Rem/ Если $y\rightarrow +\infty$, то правая часть тоже $\rightarrow +\infty$
+
+* Доказательство
+
+Возьмем функцию $\phi(x) = f(x) - \frac{\mu}{2} \|x\|^2$. Она  дифференцируема.
+Докажем, что она выпуклая, используем [[id:18BD8497-CEBD-4962-8144-474B489606C3][дифференциальный критерий выпуклости]].
+
+$\phi$ -- выпуклая и дифференцируема $\Leftrightarrow \forall x,y \in E\ \phi(y) \ge \phi(x) + \left\langle \nabla \phi(x), y-x \right\rangle$
+
+Заметим $\nabla \phi(x) = \nabla f(x) - \mu x$, так как [[id:1756907B-1FF2-4F62-8553-759B8509281C][градиент]] -- линеен, а градиент $\|x\|^2$ -- это $2x$.
+Давайте теперь раскроем $\phi$ в неравенстве:
+\[
+f(y) - \frac{\mu}{2} \| y \|^2 \ge f(x) - \frac{\mu}{2} \| x \|^2 + \left\langle \nabla f(x) - \mu x; y-x \right\rangle
+\]
+
+Давайте раскроем скалярное произведение в правой части:
+\[
+\left\langle \nabla f(x) - \mu x; y-x \right\rangle =  \left\langle \nabla f(x); y-x \right\rangle - \mu \left\langle x; y - x \right\rangle =  \left\langle \nabla f(x); y-x \right\rangle - \mu \left\langle x; y \right\rangle  +  \mu \left\langle x; x \right\rangle
+\]
+
+Тогда
+\[
+f(y) - \frac{\mu}{2} \| y \|^2  \ge f(x) - \frac{\mu}{2} \|x\|^2 \left\langle \nabla f(x); y-x \right\rangle - \mu \left\langle x; y \right\rangle  +  \mu \left\langle x; x \right\rangle
+\]
+Перенесем норму $y$ на право и заменим $\mu \left\langle x;x \right\rangle = \mu \|x \|^{2}$,
+\[
+f(y) \ge f(x) - \frac{\mu}{2} \| x \|^2 + \mu \| x \|^2 + \frac{\mu}{2} \| y \|^2 + \left\langle \nabla f(x); y-x \right\rangle - \mu \left\langle x;y \right\rangle  
+\]
+Итого получим
+\[
+f (y) \ge f(x) + \frac{\mu}{2} \| x \|^2 + \frac{\mu}{2} \| y \|^2 - \mu \left\langle x;y \right\rangle + \left\langle \nabla f(x); y-x \right\rangle
+\]
+
+Еще заметим, что  $\|y-x\|^2 = \|x\|^2 +\|y\|^2 - 2 \left\langle x;y \right\rangle$, давайте используем эту формулу 
+Итого 
+\[
+f(y) \ge \frac{\mu}{2} \|y-x\|^2 + \left\langle \nabla f(x); y-x \right\rangle
+\]
+Получили тождественность определению 
+
+

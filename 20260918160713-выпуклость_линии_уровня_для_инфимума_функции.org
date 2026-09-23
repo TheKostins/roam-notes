@@ -26,6 +26,8 @@
 ** Линия уровня инфимума: формулировка
 :PROPERTIES:
 :ANKI_NOTE_TYPE: Basic
+:ANKI_NOTE_ID: 1790070704991
+:ANKI_NOTE_HASH: 557efe3448849d038ca3754fff80a8d2
 :END:
 *** Front
 Метопт. \(f\colon E \to \mathbb{R}\) выпукла, \(m = \inf_{x \in E} f(x)\). Что верно про линию уровня \(f_m = \{ f = m \}\)?

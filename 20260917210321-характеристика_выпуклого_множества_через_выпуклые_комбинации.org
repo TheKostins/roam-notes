@@ -38,6 +38,8 @@ $\sum\limits_{k=1}^{m+1} \lambda_k x_k = \sum\limits_{k=1}^{m} \lambda_k x_k + \
 ** Характеристика через выпуклые комбинации: формулировка
 :PROPERTIES:
 :ANKI_NOTE_TYPE: Basic
+:ANKI_NOTE_ID: 1790070704973
+:ANKI_NOTE_HASH: 8085f37a8b2c9bc6f7a30b7f5ec99736
 :END:
 *** Front
 Метопт. Как выпуклость множества \(C\) характеризуется через выпуклые комбинации?
@@ -46,6 +48,8 @@ $\sum\limits_{k=1}^{m+1} \lambda_k x_k = \sum\limits_{k=1}^{m} \lambda_k x_k + \
 ** Характеристика через выпуклые комбинации: идея ⇒
 :PROPERTIES:
 :ANKI_NOTE_TYPE: Basic
+:ANKI_NOTE_ID: 1790070704974
+:ANKI_NOTE_HASH: e3841426b0f8f6d7f7255a691ffaec37
 :END:
 *** Front
 Метопт. Как доказать, что выпуклое \(C\) содержит выпуклые комбинации любого числа своих точек?

@@ -14,6 +14,8 @@
 ** Выпуклая комбинация: определение
 :PROPERTIES:
 :ANKI_NOTE_TYPE: Basic
+:ANKI_NOTE_ID: 1790070704971
+:ANKI_NOTE_HASH: 602dadba0043ce1f2f0a6f02e189d994
 :END:
 *** Front
 Метопт. Что такое выпуклая комбинация точек \(x_1, \dots, x_n \in V\)?
@@ -22,6 +24,8 @@
 ** Выпуклая комбинация: условия на коэффициенты
 :PROPERTIES:
 :ANKI_NOTE_TYPE: Cloze
+:ANKI_NOTE_ID: 1790070704972
+:ANKI_NOTE_HASH: fe4fa563b1a875d5e95cc1a953029e84
 :END:
 *** Text
 Метопт. \(\sum_{k=1}^n \lambda_k x_k\) — выпуклая комбинация, если {{c1::\(\lambda_k \ge 0\)}} и {{c2::\(\sum_{k=1}^n \lambda_k = 1\)}}

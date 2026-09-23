@@ -22,6 +22,8 @@ $f$ -- выпуклая, если:
 ** Выпуклая функция: определение
 :PROPERTIES:
 :ANKI_NOTE_TYPE: Basic
+:ANKI_NOTE_ID: 1790070704978
+:ANKI_NOTE_HASH: 329eb77872df772c91428afc05827452
 :END:
 *** Front
 Метопт. Когда функция \(f\colon E \to \mathbb{R}\) на выпуклом \(E\) называется выпуклой?
@@ -30,6 +32,8 @@ $f$ -- выпуклая, если:
 ** Выпуклая функция: неравенство
 :PROPERTIES:
 :ANKI_NOTE_TYPE: Cloze
+:ANKI_NOTE_ID: 1790070704979
+:ANKI_NOTE_HASH: 38d92b112ea586e81a57214c449fe9fe
 :END:
 *** Text
 Метопт. \(f\) выпукла на выпуклом \(E\) \(\Leftrightarrow\) \(\forall x, y \in E\ \forall \lambda \in [0;1]\): \(f(\lambda x + (1-\lambda) y)\) {{c1::\(\le\)}} {{c2::\(\lambda f(x) + (1-\lambda) f(y)\)}}
