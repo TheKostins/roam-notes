@@ -2,12 +2,12 @@
 :ID:       53558BAA-700E-46BE-9EAB-6A2F65A5B4C0
 :END:
 #+title: Неравенство Йенсена
-#+filetags: :definition:metopt:
+#+filetags: :metopt:theorem:
 
-Пусть $f$ -- выпуклая на $E$, Тогда
+Пусть $f$ -- [[id:1CA14F2C-637F-41DE-9E97-72075D19E97F][выпуклая]] на $E$, тогда
 \[
-\forall x_i \in E, 0 \le \lambda_i, \sum\limits_{i=1}^n \lambda_1 = 1\quad f\left(\sum\limits_{i=1}^n \lambda_i x_i\right) \le
+\forall x_i \in E, 0 \le \lambda_i, \sum\limits_{i=1}^n \lambda_i = 1\quad f\left(\sum\limits_{i=1}^n \lambda_i x_i\right) \le
 \sum\limits_{i=1}^n \lambda_i f(x_i)
 \]
 * Доказательство
-Упражнение 
+Упражнение
