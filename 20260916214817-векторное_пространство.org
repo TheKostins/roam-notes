@@ -2,7 +2,21 @@
 :ID:       1B626AA4-35C8-4C7C-9D3D-D8C26D98F40C
 :END:
 #+title: Векторное пространство
-#+filetags: :definition:
-Backfill
+#+filetags: :calc:definition:
 
+Пусть $K$ -- поле (в курсе $K = \R$, реже $\C$). Множество $V$ с операциями сложения $V \times V \rightarrow V$ и умножения на скаляр $K \times V \rightarrow V$ называется *векторным* (линейным) пространством над $K$, если $\forall x, y, z \in V\ \forall \alpha, \beta \in K$:
 
+1. $(x + y) + z = x + (y + z)$
+2. $x + y = y + x$
+3. $\exists\, 0 \in V:\ x + 0 = x$
+4. $\forall x\ \exists\, (-x) \in V:\ x + (-x) = 0$
+5. $\alpha (\beta x) = (\alpha \beta) x$
+6. $1 \cdot x = x$
+7. $\alpha (x + y) = \alpha x + \alpha y$
+8. $(\alpha + \beta) x = \alpha x + \beta x$
+
+Примеры: $\R^n$; матрицы $\R^{m \times n}$; непрерывные функции $C[a;b]$; многочлены степени не выше $k$.
+
+/Rem/: В курсе почти всегда $V = \R^n$. Для [[id:316B5BFA-8B9F-4267-9086-D6593AAB5F9B][выпуклых множеств]] важно, что поле вещественное: определение использует $\lambda \in [0;1]$ и комбинации $\lambda x + (1 - \lambda) y$.
+
+/Rem/: Дополнительные структуры на $V$: [[id:F2942E98-6115-4600-AA3F-E0F687D9C732][скалярное произведение]] (и порожденная им норма $\norm{x} = \sqrt{\left\langle x; x \right\rangle}$), полнота по этой норме -- [[id:5D688904-8445-47B5-9D39-8BCC39F9C354][гильбертово пространство]].
