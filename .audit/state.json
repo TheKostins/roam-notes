@@ -372,10 +372,10 @@
   },
   "94DADA28-87E4-4E36-B289-8415BCE750FC": {
    "audited": {
-    "body_hash": "1fe1cb95e3c664ee",
-    "commit": "f82c995",
+    "body_hash": "6dcf7445da747030",
+    "commit": "0d553df",
     "date": "2026-09-23",
-    "open": 6,
+    "open": 3,
     "report": "2026-09-23-1024-audit.md"
    },
    "title": "Критерий сильной выпуклости в терминах вторых производных"
