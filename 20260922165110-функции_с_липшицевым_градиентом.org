@@ -21,6 +21,8 @@
 ** Липшицев градиент: определение
 :PROPERTIES:
 :ANKI_NOTE_TYPE: Cloze
+:ANKI_NOTE_ID: 1790163409903
+:ANKI_NOTE_HASH: 347f3278cbcd4683de712be179517e89
 :END:
 *** Text
 Метопт. \(f \in C^{1,1}_L\) (липшицев градиент) \(\Leftrightarrow\) \(\forall x, y \in E\): {{c1::\(\|\nabla f(x) - \nabla f(y)\| \le L\|x - y\|\)}}
@@ -29,6 +31,8 @@
 ** Липшицев градиент: не путать с липшицевой функцией
 :PROPERTIES:
 :ANKI_NOTE_TYPE: Basic
+:ANKI_NOTE_ID: 1790163409904
+:ANKI_NOTE_HASH: bde91bb4e5fa7eba4400bcad110b5ce1
 :END:
 *** Front
 Метопт. Пример функции с липшицевым градиентом, которая сама не липшицева?

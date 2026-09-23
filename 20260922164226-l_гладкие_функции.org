@@ -22,6 +22,8 @@
 ** L-гладкие функции: определение
 :PROPERTIES:
 :ANKI_NOTE_TYPE: Basic
+:ANKI_NOTE_ID: 1790163409901
+:ANKI_NOTE_HASH: 4e9087198c86ee4d86fcff139e05731c
 :END:
 *** Front
 Метопт. Что означает запись \(f \in C^{n,k}_L\)?
@@ -30,6 +32,8 @@
 ** L-гладкие функции: норма
 :PROPERTIES:
 :ANKI_NOTE_TYPE: Basic
+:ANKI_NOTE_ID: 1790163409902
+:ANKI_NOTE_HASH: 686c762e7424bc312ac749b5148fa975
 :END:
 *** Front
 Метопт. Какая норма стоит в определении \(C^{n,k}_L\) при \(k = 1\) и при \(k = 2\)?

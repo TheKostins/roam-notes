@@ -80,6 +80,8 @@ $\| A \| = \sup\limits_{h \ne 0} \frac{\| A h \|}{\| h\|} \Rightarrow \|Ah \| \l
 ** Аппроксимация до 3 степени: формулировка
 :PROPERTIES:
 :ANKI_NOTE_TYPE: Cloze
+:ANKI_NOTE_ID: 1790163409913
+:ANKI_NOTE_HASH: 93d371e444e11039afe73340cfc6dac1
 :END:
 *** Text
 Метопт. \(f\colon \mathbb{R}^n \to \mathbb{R}\), \(f \in C^{2,2}_L\) (липшицев гессиан). Остаток квадратичного приближения: {{c1::\(\left| f(x+y) - f(x) - \langle \nabla f(x); y \rangle - \frac{1}{2}\langle \nabla^2 f(x) y; y \rangle \right| \le \frac{L}{6}\|y\|^3\)}}
@@ -88,6 +90,8 @@ $\| A \| = \sup\limits_{h \ne 0} \frac{\| A h \|}{\| h\|} \Rightarrow \|Ah \| \l
 ** Аппроксимация до 3 степени: откуда L/6
 :PROPERTIES:
 :ANKI_NOTE_TYPE: Basic
+:ANKI_NOTE_ID: 1790163409914
+:ANKI_NOTE_HASH: 7f9631f0827a1ebca5b21171c9bf6da0
 :END:
 *** Front
 Метопт. Откуда в оценке остатка для \(f \in C^{2,2}_L\) берётся константа \(\frac{L}{6}\)?

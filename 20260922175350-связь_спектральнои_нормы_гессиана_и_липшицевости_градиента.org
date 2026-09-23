@@ -31,6 +31,8 @@
 ** Спектральная норма гессиана ⇒ липшицев градиент: формулировка
 :PROPERTIES:
 :ANKI_NOTE_TYPE: Cloze
+:ANKI_NOTE_ID: 1790163409909
+:ANKI_NOTE_HASH: f41cb767a0cdf3fb771762e545c1fcbf
 :END:
 *** Text
 Метопт. \(E\) выпукло, \(f \in C^2\). Если \(\forall x \in E\ \|\nabla^2 f(x)\| \le L\) (спектральная норма), то {{c1::\(\nabla f\) \(L\)-липшицев}}
@@ -39,6 +41,8 @@
 ** Спектральная норма гессиана: через собственные значения
 :PROPERTIES:
 :ANKI_NOTE_TYPE: Basic
+:ANKI_NOTE_ID: 1790163409910
+:ANKI_NOTE_HASH: 3f5e8fee883858b9b799dc98c480f0bc
 :END:
 *** Front
 Метопт. Во что превращается условие \(\|\nabla^2 f(x)\| \le L\) в терминах собственных значений гессиана?

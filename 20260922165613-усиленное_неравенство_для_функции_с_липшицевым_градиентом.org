@@ -70,6 +70,8 @@
 ** Усиленное неравенство: формулировка
 :PROPERTIES:
 :ANKI_NOTE_TYPE: Cloze
+:ANKI_NOTE_ID: 1790163409905
+:ANKI_NOTE_HASH: 85fdcfd44b1f870b46e8f0b1326ec6c4
 :END:
 *** Text
 Метопт. \(E\) выпукло, \(f \in C^{1,1}_L\). Тогда \(\forall x, y \in E\): {{c1::\(\left| f(y) - f(x) - \langle \nabla f(x); y - x \rangle \right| \le \frac{L}{2}\|y - x\|^2\)}}
@@ -78,6 +80,8 @@
 ** Усиленное неравенство: идея
 :PROPERTIES:
 :ANKI_NOTE_TYPE: Basic
+:ANKI_NOTE_ID: 1790163409906
+:ANKI_NOTE_HASH: 7bbca8a6b2c77cc07f70dc7652638ca3
 :END:
 *** Front
 Метопт. Идея доказательства \(\left| f(y) - f(x) - \langle \nabla f(x); y - x \rangle \right| \le \frac{L}{2}\|y - x\|^2\) для \(f \in C^{1,1}_L\)?

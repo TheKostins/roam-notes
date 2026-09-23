@@ -82,6 +82,8 @@ f(z) \le m - \frac{\mu}{8} \| x_1 - x_2 \|^{2} < m
 ** Единственность минимума: формулировка
 :PROPERTIES:
 :ANKI_NOTE_TYPE: Basic
+:ANKI_NOTE_ID: 1790163409893
+:ANKI_NOTE_HASH: b94f28e44a3c86cc96af27c860cb9ec2
 :END:
 *** Front
 Метопт. Сколько точек минимума у дифференцируемой \(\mu\)-сильно выпуклой функции \(f\colon \mathbb{R}^n \to \mathbb{R}\)?
@@ -90,6 +92,8 @@ f(z) \le m - \frac{\mu}{8} \| x_1 - x_2 \|^{2} < m
 ** Единственность минимума: единственность
 :PROPERTIES:
 :ANKI_NOTE_TYPE: Basic
+:ANKI_NOTE_ID: 1790163409894
+:ANKI_NOTE_HASH: e0f64f738eb90f93966dae028590edbd
 :END:
 *** Front
 Метопт. Почему у сильно выпуклой функции не может быть двух точек минимума \(x_1 \ne x_2\)?
@@ -98,6 +102,8 @@ f(z) \le m - \frac{\mu}{8} \| x_1 - x_2 \|^{2} < m
 ** Единственность минимума: существование
 :PROPERTIES:
 :ANKI_NOTE_TYPE: Basic
+:ANKI_NOTE_ID: 1790163409895
+:ANKI_NOTE_HASH: 7ca2d7821353a6b014b06e81c3cb6df3
 :END:
 *** Front
 Метопт. Идея доказательства существования минимума у дифференцируемой сильно выпуклой \(f\colon \mathbb{R}^n \to \mathbb{R}\)?
@@ -106,6 +112,8 @@ f(z) \le m - \frac{\mu}{8} \| x_1 - x_2 \|^{2} < m
 ** Единственность минимума: зачем R^n
 :PROPERTIES:
 :ANKI_NOTE_TYPE: Basic
+:ANKI_NOTE_ID: 1790163409896
+:ANKI_NOTE_HASH: 05de848c35ed4ff2f60456f706b5ff6f
 :END:
 *** Front
 Метопт. Почему в теореме о минимуме сильно выпуклой функции нужно, чтобы \(f\) была задана на всём \(\mathbb{R}^n\)?

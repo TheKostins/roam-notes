@@ -19,6 +19,8 @@ $f$ -- сильно выпуклая $\Leftrightarrow \exists \mu > 0: f(x) - \f
 ** Сильно выпуклая функция: определение
 :PROPERTIES:
 :ANKI_NOTE_TYPE: Basic
+:ANKI_NOTE_ID: 1790163409887
+:ANKI_NOTE_HASH: 3a0bdac80bb36d4bbbcd7d92a8fb1c99
 :END:
 *** Front
 Метопт. Когда функция \(f\colon E \to \mathbb{R}\) на выпуклом \(E \subset \mathbb{R}^n\) называется \(\mu\)-сильно выпуклой?
@@ -27,6 +29,8 @@ $f$ -- сильно выпуклая $\Leftrightarrow \exists \mu > 0: f(x) - \f
 ** Сильно выпуклая функция: равносильное определение
 :PROPERTIES:
 :ANKI_NOTE_TYPE: Cloze
+:ANKI_NOTE_ID: 1790163409888
+:ANKI_NOTE_HASH: fd70e372a2b23da34dcfa3607edb1acd
 :END:
 *** Text
 Метопт. \(f\) \(\mu\)-сильно выпукла \(\Leftrightarrow\) \(\forall x, y \in E\ \forall \lambda \in [0;1]\): \(f(\lambda x + (1-\lambda)y) \le \lambda f(x) + (1-\lambda) f(y)\) {{c1::\(- \frac{\mu}{2}\lambda(1-\lambda)\|x-y\|^2\)}}

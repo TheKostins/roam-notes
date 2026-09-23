@@ -62,6 +62,8 @@ $A q_i = \lambda_i q_i$, $\left\langle q_i; q_j \right\rangle = 0$ при $i \ne
 ** Критерий сильной выпуклости через гессиан: формулировка
 :PROPERTIES:
 :ANKI_NOTE_TYPE: Cloze
+:ANKI_NOTE_ID: 1790163409897
+:ANKI_NOTE_HASH: 07f73ec0bac57f854446763c91ae5a9a
 :END:
 *** Text
 Метопт. \(E \subset \mathbb{R}^n\) открыто и выпукло, \(f \in C^2(E)\). \(f\) \(\mu\)-сильно выпукла \(\Leftrightarrow\) \(\forall x \in E\): {{c1::\(\nabla^2 f(x) \ge \mu I\)}} \(\Leftrightarrow\) {{c2::\(\inf_{x \in E} \lambda_{\min}(\nabla^2 f(x)) \ge \mu\)}}
@@ -70,6 +72,8 @@ $A q_i = \lambda_i q_i$, $\left\langle q_i; q_j \right\rangle = 0$ при $i \ne
 ** Критерий сильной выпуклости через гессиан: λ_min ⇐
 :PROPERTIES:
 :ANKI_NOTE_TYPE: Basic
+:ANKI_NOTE_ID: 1790163409898
+:ANKI_NOTE_HASH: 4f5a280e96674b1e992ff41a04413cf8
 :END:
 *** Front
 Метопт. Как из «все собственные значения симметричной \(A\) не меньше \(\mu\)» вывести \(\langle (A - \mu I)h; h \rangle \ge 0\) для всех \(h\)?
@@ -78,6 +82,8 @@ $A q_i = \lambda_i q_i$, $\left\langle q_i; q_j \right\rangle = 0$ при $i \ne
 ** Критерий сильной выпуклости через гессиан: пример
 :PROPERTIES:
 :ANKI_NOTE_TYPE: Basic
+:ANKI_NOTE_ID: 1790163409900
+:ANKI_NOTE_HASH: 1e63563f74f680050d7704eeed10d689
 :END:
 *** Front
 Метопт. При каких \(\mu\) функция \(f(x) = \frac{1}{2} x^T A x\) (\(A = A^T\)) \(\mu\)-сильно выпукла?

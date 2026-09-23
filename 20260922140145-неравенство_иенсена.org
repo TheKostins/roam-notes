@@ -59,6 +59,8 @@ f \left( \sum\limits_{i=1}^{n+1} \lambda_i x_i  \right) = f(sy + \lambda_{n+1} x
 ** Неравенство Йенсена: формулировка
 :PROPERTIES:
 :ANKI_NOTE_TYPE: Cloze
+:ANKI_NOTE_ID: 1790163409882
+:ANKI_NOTE_HASH: ef1b33a2b6c4fd34b09eceefef21c4fa
 :END:
 *** Text
 Метопт. Неравенство Йенсена: \(f\) выпукла на \(E\), \(x_i \in E\), \(\lambda_i \ge 0\), \(\sum_{i=1}^n \lambda_i = 1\). Тогда {{c1::\(f\left(\sum_{i=1}^n \lambda_i x_i\right) \le \sum_{i=1}^n \lambda_i f(x_i)\)}}
@@ -67,6 +69,8 @@ f \left( \sum\limits_{i=1}^{n+1} \lambda_i x_i  \right) = f(sy + \lambda_{n+1} x
 ** Неравенство Йенсена: идея доказательства
 :PROPERTIES:
 :ANKI_NOTE_TYPE: Basic
+:ANKI_NOTE_ID: 1790163409885
+:ANKI_NOTE_HASH: 04c128c20ddcf8f09e2a4681f01770db
 :END:
 *** Front
 Метопт. Идея доказательства неравенства Йенсена?

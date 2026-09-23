@@ -56,6 +56,8 @@ f(y) \ge f(x) + \frac{\mu}{2} \|y-x\|^2 + \left\langle \nabla f(x); y-x \right\r
 ** Дифф. критерий сильной выпуклости: формулировка
 :PROPERTIES:
 :ANKI_NOTE_TYPE: Cloze
+:ANKI_NOTE_ID: 1790163409889
+:ANKI_NOTE_HASH: b3febc22e10fcd1f40782d40063aaba2
 :END:
 *** Text
 Метопт. \(E \subset \mathbb{R}^n\) выпукло, \(f\colon E \to \mathbb{R}\) дифференцируема. \(f\) \(\mu\)-сильно выпукла \(\Leftrightarrow\) \(\forall x, y \in E\): {{c1::\(f(y) \ge f(x) + \langle \nabla f(x); y - x \rangle + \frac{\mu}{2}\|y - x\|^2\)}}
@@ -64,6 +66,8 @@ f(y) \ge f(x) + \frac{\mu}{2} \|y-x\|^2 + \left\langle \nabla f(x); y-x \right\r
 ** Дифф. критерий сильной выпуклости: идея
 :PROPERTIES:
 :ANKI_NOTE_TYPE: Basic
+:ANKI_NOTE_ID: 1790163409891
+:ANKI_NOTE_HASH: e3e6b1a9324d0e864ab4ad196f914fda
 :END:
 *** Front
 Метопт. Идея доказательства дифференциального критерия сильной выпуклости?

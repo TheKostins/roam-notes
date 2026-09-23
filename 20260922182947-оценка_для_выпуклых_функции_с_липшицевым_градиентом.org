@@ -57,6 +57,8 @@ f(x) + \left\langle \nabla f(x); y -x \right\rangle + \frac{1}{2L} \| \nabla f(y
 ** Оценка для выпуклых с липшицевым градиентом: формулировка
 :PROPERTIES:
 :ANKI_NOTE_TYPE: Cloze
+:ANKI_NOTE_ID: 1790163409915
+:ANKI_NOTE_HASH: 85cff270fa3cc9a982fbd4f3c2ba517e
 :END:
 *** Text
 Метопт. \(f\colon \mathbb{R}^n \to \mathbb{R}\) выпукла, \(f \in C^{1,1}_L\). Тогда \(\forall x, y\): {{c1::\(f(x) + \langle \nabla f(x); y - x \rangle + \frac{1}{2L}\|\nabla f(y) - \nabla f(x)\|^2 \le f(y)\)}}
@@ -65,6 +67,8 @@ f(x) + \left\langle \nabla f(x); y -x \right\rangle + \frac{1}{2L} \| \nabla f(y
 ** Оценка для выпуклых с липшицевым градиентом: идея
 :PROPERTIES:
 :ANKI_NOTE_TYPE: Basic
+:ANKI_NOTE_ID: 1790163409916
+:ANKI_NOTE_HASH: 3468768780cbc7c3120f5feb36af482b
 :END:
 *** Front
 Метопт. Идея доказательства \(f(x) + \langle \nabla f(x); y - x \rangle + \frac{1}{2L}\|\nabla f(y) - \nabla f(x)\|^2 \le f(y)\) для выпуклой \(f \in C^{1,1}_L\)?
@@ -73,6 +77,8 @@ f(x) + \left\langle \nabla f(x); y -x \right\rangle + \frac{1}{2L} \| \nabla f(y
 ** Оценка для выпуклых с липшицевым градиентом: зачем R^n
 :PROPERTIES:
 :ANKI_NOTE_TYPE: Basic
+:ANKI_NOTE_ID: 1790163409917
+:ANKI_NOTE_HASH: 2b24bf0d15998ef8cfc1f28278233642
 :END:
 *** Front
 Метопт. Зачем в оценке \(\ldots + \frac{1}{2L}\|\nabla f(y) - \nabla f(x)\|^2 \le f(y)\) для выпуклых функций нужно \(f\colon \mathbb{R}^n \to \mathbb{R}\)?
