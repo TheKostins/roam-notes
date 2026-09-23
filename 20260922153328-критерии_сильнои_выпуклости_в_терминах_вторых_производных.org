@@ -54,3 +54,32 @@ $A q_i = \lambda_i q_i$, $\left\langle q_i; q_j \right\rangle = 0$ при $i \ne
 Пусть $f(x) = \frac{1}{2} x^T A x$, $A = A^T$. Тогда $\nabla f(x) = Ax$ и $\nabla^2 f(x) = A$ для всех $x$, поэтому $f$ -- $\mu$-сильно выпукла ровно при $0 < \mu \le \lambda_{\mathrm{min}}(A)$.
 - $A = \mathrm{diag}(2, 1)$: $f(x) = x_1^2 + \frac{1}{2} x_2^2$ -- $1$-сильно выпукла.
 - $A = \mathrm{diag}(1, 0)$: $f(x) = \frac{1}{2} x_1^2$ выпукла, но не сильно выпукла. Вдоль оси $x_2$ она постоянна, поэтому у нее бесконечно много точек минимума -- ср. с [[id:51CC880D-BF19-43E2-9599-FB31A9A7367F][единственностью минимума сильно выпуклой функции]].
+
+* Anki :noexport:
+:PROPERTIES:
+:ANKI_DECK: Notes::metopt
+:END:
+** Критерий сильной выпуклости через гессиан: формулировка
+:PROPERTIES:
+:ANKI_NOTE_TYPE: Cloze
+:END:
+*** Text
+Метопт. \(E \subset \mathbb{R}^n\) открыто и выпукло, \(f \in C^2(E)\). \(f\) \(\mu\)-сильно выпукла \(\Leftrightarrow\) \(\forall x \in E\): {{c1::\(\nabla^2 f(x) \ge \mu I\)}} \(\Leftrightarrow\) {{c2::\(\inf_{x \in E} \lambda_{\min}(\nabla^2 f(x)) \ge \mu\)}}
+*** Back Extra
+Критерий выпуклости через вторые производные для \(\phi = f - \frac{\mu}{2}\|x\|^2\), \(\nabla^2 \phi = \nabla^2 f - \mu I\).
+** Критерий сильной выпуклости через гессиан: λ_min ⇐
+:PROPERTIES:
+:ANKI_NOTE_TYPE: Basic
+:END:
+*** Front
+Метопт. Как из «все собственные значения симметричной \(A\) не меньше \(\mu\)» вывести \(\langle (A - \mu I)h; h \rangle \ge 0\) для всех \(h\)?
+*** Back
+Спектральная теорема: ортонормированный базис из собственных векторов \(q_i\). Для \(h = \sum c_i q_i\): \(\langle (A - \mu I)h; h \rangle = \sum (\lambda_i - \mu) c_i^2 \ge 0\).
+** Критерий сильной выпуклости через гессиан: пример
+:PROPERTIES:
+:ANKI_NOTE_TYPE: Basic
+:END:
+*** Front
+Метопт. При каких \(\mu\) функция \(f(x) = \frac{1}{2} x^T A x\) (\(A = A^T\)) \(\mu\)-сильно выпукла?
+*** Back
+При \(0 \lt \mu \le \lambda_{\min}(A)\), так как \(\nabla^2 f = A\). При \(\lambda_{\min}(A) = 0\) (например, \(A = \mathrm{diag}(1, 0)\)) \(f\) выпукла, но не сильно.

@@ -11,3 +11,24 @@ $f$ -- сильно выпуклая $\Leftrightarrow \exists \mu > 0: f(x) - \f
 \[
 \forall x, y \in E\ \forall \lambda \in [0;1]\ f(\lambda x + (1-\lambda)y) \le \lambda f(x) + (1-\lambda) f(y) - \frac{\mu}{2}\lambda(1-\lambda)\|x-y\|^2
 \]
+
+* Anki :noexport:
+:PROPERTIES:
+:ANKI_DECK: Notes::metopt
+:END:
+** Сильно выпуклая функция: определение
+:PROPERTIES:
+:ANKI_NOTE_TYPE: Basic
+:END:
+*** Front
+Метопт. Когда функция \(f\colon E \to \mathbb{R}\) на выпуклом \(E \subset \mathbb{R}^n\) называется \(\mu\)-сильно выпуклой?
+*** Back
+Если \(\mu \gt 0\) и функция \(f(x) - \frac{\mu}{2}\|x\|^2\) выпукла.
+** Сильно выпуклая функция: равносильное определение
+:PROPERTIES:
+:ANKI_NOTE_TYPE: Cloze
+:END:
+*** Text
+Метопт. \(f\) \(\mu\)-сильно выпукла \(\Leftrightarrow\) \(\forall x, y \in E\ \forall \lambda \in [0;1]\): \(f(\lambda x + (1-\lambda)y) \le \lambda f(x) + (1-\lambda) f(y)\) {{c1::\(- \frac{\mu}{2}\lambda(1-\lambda)\|x-y\|^2\)}}
+*** Back Extra
+Неравенство выпуклости с квадратичным запасом.

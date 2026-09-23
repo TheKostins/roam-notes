@@ -49,3 +49,32 @@ f(x) - \left\langle \nabla f(x); x \right\rangle \le f(y) - \left\langle \nabla 
 \[
 f(x) + \left\langle \nabla f(x); y -x \right\rangle + \frac{1}{2L} \| \nabla f(y) - \nabla f(x) \|^2  \le f(y)
 \]
+
+* Anki :noexport:
+:PROPERTIES:
+:ANKI_DECK: Notes::metopt
+:END:
+** Оценка для выпуклых с липшицевым градиентом: формулировка
+:PROPERTIES:
+:ANKI_NOTE_TYPE: Cloze
+:END:
+*** Text
+Метопт. \(f\colon \mathbb{R}^n \to \mathbb{R}\) выпукла, \(f \in C^{1,1}_L\). Тогда \(\forall x, y\): {{c1::\(f(x) + \langle \nabla f(x); y - x \rangle + \frac{1}{2L}\|\nabla f(y) - \nabla f(x)\|^2 \le f(y)\)}}
+*** Back Extra
+Усиление дифференциального критерия выпуклости за счёт липшицевости градиента.
+** Оценка для выпуклых с липшицевым градиентом: идея
+:PROPERTIES:
+:ANKI_NOTE_TYPE: Basic
+:END:
+*** Front
+Метопт. Идея доказательства \(f(x) + \langle \nabla f(x); y - x \rangle + \frac{1}{2L}\|\nabla f(y) - \nabla f(x)\|^2 \le f(y)\) для выпуклой \(f \in C^{1,1}_L\)?
+*** Back
+\(\phi(y) = f(y) - \langle \nabla f(x); y \rangle\) выпукла и \(\nabla \phi(x) = 0\), значит \(x\) — точка минимума \(\phi\). Для \(z = y - \frac{1}{L}\nabla \phi(y)\) усиленное неравенство даёт \(\phi(x) \le \phi(z) \le \phi(y) - \frac{1}{2L}\|\nabla \phi(y)\|^2\); подставить \(\phi\).
+** Оценка для выпуклых с липшицевым градиентом: зачем R^n
+:PROPERTIES:
+:ANKI_NOTE_TYPE: Basic
+:END:
+*** Front
+Метопт. Зачем в оценке \(\ldots + \frac{1}{2L}\|\nabla f(y) - \nabla f(x)\|^2 \le f(y)\) для выпуклых функций нужно \(f\colon \mathbb{R}^n \to \mathbb{R}\)?
+*** Back
+В доказательстве нужна точка \(z = y - \frac{1}{L}\nabla \phi(y)\) и \(\phi(x) \le \phi(z)\); на меньшем множестве \(z\) может выйти за его пределы.

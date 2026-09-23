@@ -48,3 +48,24 @@ f (y) \ge f(x) + \frac{\mu}{2} \| x \|^2 + \frac{\mu}{2} \| y \|^2 - \mu \left\l
 f(y) \ge f(x) + \frac{\mu}{2} \|y-x\|^2 + \left\langle \nabla f(x); y-x \right\rangle
 \]
 Все переходы -- равносильности, поэтому получили в точности неравенство из условия: оба направления доказаны
+
+* Anki :noexport:
+:PROPERTIES:
+:ANKI_DECK: Notes::metopt
+:END:
+** Дифф. критерий сильной выпуклости: формулировка
+:PROPERTIES:
+:ANKI_NOTE_TYPE: Cloze
+:END:
+*** Text
+Метопт. \(E \subset \mathbb{R}^n\) выпукло, \(f\colon E \to \mathbb{R}\) дифференцируема. \(f\) \(\mu\)-сильно выпукла \(\Leftrightarrow\) \(\forall x, y \in E\): {{c1::\(f(y) \ge f(x) + \langle \nabla f(x); y - x \rangle + \frac{\mu}{2}\|y - x\|^2\)}}
+*** Back Extra
+Для выпуклости функцию подпирает касательная, для сильной выпуклости — парабола.
+** Дифф. критерий сильной выпуклости: идея
+:PROPERTIES:
+:ANKI_NOTE_TYPE: Basic
+:END:
+*** Front
+Метопт. Идея доказательства дифференциального критерия сильной выпуклости?
+*** Back
+Дифференциальный критерий выпуклости для \(\phi(x) = f(x) - \frac{\mu}{2}\|x\|^2\) (\(\nabla \phi = \nabla f - \mu x\)), раскрыть через \(\|y-x\|^2 = \|x\|^2 + \|y\|^2 - 2\langle x; y\rangle\). Все переходы — равносильности.

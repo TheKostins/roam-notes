@@ -28,3 +28,24 @@
 \|  \nabla^2 f(x)h  \| \le L \| h \|
 \]
 Так как $h$ произвольный, по определению спектральной нормы $\| \nabla^2 f(x) \| = \sup\limits_{h \ne 0} \frac{\| \nabla^2 f(x) h \|}{\| h \|} \le L$.
+
+* Anki :noexport:
+:PROPERTIES:
+:ANKI_DECK: Notes::metopt
+:END:
+** Оценка нормы гессиана сверху: формулировка
+:PROPERTIES:
+:ANKI_NOTE_TYPE: Basic
+:END:
+*** Front
+Метопт. Пусть \(E\) открыто, \(f \in C^{2,1}_L\) (\(\nabla f\) \(L\)-липшицев). Какая оценка верна для гессиана?
+*** Back
+\(\|\nabla^2 f(x)\| \le L\ \forall x \in E\) (спектральная норма). С обратным утверждением: для \(f \in C^2\) \(\nabla f\) \(L\)-липшицев \(\Leftrightarrow \|\nabla^2 f\| \le L\).
+** Оценка нормы гессиана сверху: идея
+:PROPERTIES:
+:ANKI_NOTE_TYPE: Basic
+:END:
+*** Front
+Метопт. Идея доказательства \(\|\nabla^2 f(x)\| \le L\) для функции с \(L\)-липшицевым градиентом?
+*** Back
+\(\nabla f(x + th) - \nabla f(x) = \nabla^2 f(x)\, th + o(t)\), по норме \(\le Lt\|h\|\); делим на \(t \gt 0\), \(t \to 0+\): \(\|\nabla^2 f(x) h\| \le L\|h\|\) для всех \(h\), затем \(\sup\) по \(h\) — определение спектральной нормы.

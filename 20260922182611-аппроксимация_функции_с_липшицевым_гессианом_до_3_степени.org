@@ -72,3 +72,24 @@ $\| A \| = \sup\limits_{h \ne 0} \frac{\| A h \|}{\| h\|} \Rightarrow \|Ah \| \l
 \]
 
 Итого левая часть неравенства не больше $\frac{L}{6} \| y \|^3$.
+
+* Anki :noexport:
+:PROPERTIES:
+:ANKI_DECK: Notes::metopt
+:END:
+** Аппроксимация до 3 степени: формулировка
+:PROPERTIES:
+:ANKI_NOTE_TYPE: Cloze
+:END:
+*** Text
+Метопт. \(f\colon \mathbb{R}^n \to \mathbb{R}\), \(f \in C^{2,2}_L\) (липшицев гессиан). Остаток квадратичного приближения: {{c1::\(\left| f(x+y) - f(x) - \langle \nabla f(x); y \rangle - \frac{1}{2}\langle \nabla^2 f(x) y; y \rangle \right| \le \frac{L}{6}\|y\|^3\)}}
+*** Back Extra
+Квадратичная модель точна до \(O(\|y\|^3)\) — на этом строится метод Ньютона.
+** Аппроксимация до 3 степени: откуда L/6
+:PROPERTIES:
+:ANKI_NOTE_TYPE: Basic
+:END:
+*** Front
+Метопт. Откуда в оценке остатка для \(f \in C^{2,2}_L\) берётся константа \(\frac{L}{6}\)?
+*** Back
+Двукратный Ньютон–Лейбниц для \(\phi(t) = f(x + ty)\): остаток \(= \int_0^1\int_0^t \langle (\nabla^2 f(x + \tau y) - \nabla^2 f(x))y; y \rangle\, d\tau\, dt\); подынтегральное \(\le L\tau\|y\|^3\), а \(\int_0^1\int_0^t \tau\, d\tau\, dt = \frac{1}{6}\).

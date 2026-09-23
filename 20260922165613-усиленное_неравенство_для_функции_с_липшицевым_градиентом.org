@@ -62,3 +62,24 @@
 \[
 \left| f(y) -f(x) - \left\langle \nabla f(x); y-x \right\rangle \right| \le \int\limits_{0}^1 t L \| y -x \|  \| y -x \| dt =  \frac{L}{2} \| y -x \|^2
 \]
+
+* Anki :noexport:
+:PROPERTIES:
+:ANKI_DECK: Notes::metopt
+:END:
+** Усиленное неравенство: формулировка
+:PROPERTIES:
+:ANKI_NOTE_TYPE: Cloze
+:END:
+*** Text
+Метопт. \(E\) выпукло, \(f \in C^{1,1}_L\). Тогда \(\forall x, y \in E\): {{c1::\(\left| f(y) - f(x) - \langle \nabla f(x); y - x \rangle \right| \le \frac{L}{2}\|y - x\|^2\)}}
+*** Back Extra
+Верхняя половина: график не выше параболы \(f(x) + \langle \nabla f(x); y-x \rangle + \frac{L}{2}\|y-x\|^2\) — двойственно сильной выпуклости.
+** Усиленное неравенство: идея
+:PROPERTIES:
+:ANKI_NOTE_TYPE: Basic
+:END:
+*** Front
+Метопт. Идея доказательства \(\left| f(y) - f(x) - \langle \nabla f(x); y - x \rangle \right| \le \frac{L}{2}\|y - x\|^2\) для \(f \in C^{1,1}_L\)?
+*** Back
+Ньютон–Лейбниц для \(\phi(t) = f(x + t(y-x))\): левая часть \(= \left|\int_0^1 \langle \nabla f(x + t(y-x)) - \nabla f(x); y - x \rangle dt\right|\); модуль под интеграл, КБШ и липшицевость дают \(\le tL\|y-x\|^2\), \(\int_0^1 t\,dt = \frac{1}{2}\).

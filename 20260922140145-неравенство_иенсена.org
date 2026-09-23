@@ -51,3 +51,24 @@ f(y) = f \left(  \sum\limits_{i=1}^n \frac{\lambda_i}{s} x_i \right) \le \sum\li
 \[
 f \left( \sum\limits_{i=1}^{n+1} \lambda_i x_i  \right) = f(sy + \lambda_{n+1} x_{n+1}) \le sf(y) + \lambda_{n+1} f(x_{n+1}) \le \sum\limits_{i=1}^n \lambda_i f(x_i) + \lambda_{n+1} f(x_{n+1}) = \sum\limits_{i=1}^{n+1} \lambda_i f(x_i)
 \]
+
+* Anki :noexport:
+:PROPERTIES:
+:ANKI_DECK: Notes::metopt
+:END:
+** Неравенство Йенсена: формулировка
+:PROPERTIES:
+:ANKI_NOTE_TYPE: Cloze
+:END:
+*** Text
+Метопт. Неравенство Йенсена: \(f\) выпукла на \(E\), \(x_i \in E\), \(\lambda_i \ge 0\), \(\sum_{i=1}^n \lambda_i = 1\). Тогда {{c1::\(f\left(\sum_{i=1}^n \lambda_i x_i\right) \le \sum_{i=1}^n \lambda_i f(x_i)\)}}
+*** Back Extra
+Значение в выпуклой комбинации не больше выпуклой комбинации значений; при \(n = 2\) это определение выпуклости.
+** Неравенство Йенсена: идея доказательства
+:PROPERTIES:
+:ANKI_NOTE_TYPE: Basic
+:END:
+*** Front
+Метопт. Идея доказательства неравенства Йенсена?
+*** Back
+Индукция по \(n\). Переход: \(s = 1 - \lambda_{n+1}\), \(y = \sum_{i=1}^n \frac{\lambda_i}{s} x_i \in E\) — выпуклая комбинация; \(\sum \lambda_i x_i = s y + \lambda_{n+1} x_{n+1}\): определение выпуклости, затем предположение индукции для \(f(y)\).
