@@ -21,11 +21,31 @@ $\phi(x)$ -- выпуклая $\Leftrightarrow \forall x \in E\ \nabla^2 \phi(x)
 
 ** Утверждение про $\lambda_{\min}$
 
+*** $\Rightarrow$
 Пусть $h \ne 0$ -- [[id:57D369D6-D748-41A2-9BDA-38D2FFC6601A][собственный вектор]] с числом $\lambda$ для $\nabla^2 f(x)$, где $x$ -- произвольный из $E$
-Еще мы знаем, что $\nabla^2 f(x) -\mu I \ge 0 \Leftrightarrow \left\langle (\nabla^2 f(x) - \mu I)h; h\right\rangle \ge 0$
+Еще мы знаем, что $\nabla^2 f(x) -\mu I \ge 0 \Rightarrow \left\langle (\nabla^2 f(x) - \mu I)h; h\right\rangle \ge 0$
 
 Заметим, что $(\nabla^2 f(x) - \mu I) h = \nabla^2 f(x) h - \mu I h$
 А так как $h$ -- [[id:57D369D6-D748-41A2-9BDA-38D2FFC6601A][собственный вектор]] $\nabla^2 f(x)$, то это равно $\lambda h - \mu h = (\lambda - \mu) h$
 Итого мы получили $\left\langle (\lambda-\mu) h; h \right\rangle \ge 0 \Leftrightarrow (\lambda - \mu) \| h \|^2 \ge 0$
 Так как $\| h \|^2 > 0$, то $(\lambda - \mu) \| h \|^2 \ge 0$ равносильно $(\lambda - \mu) \ge 0$
 Чтобы $\lambda -\mu \ge 0$ было верно для любого $\lambda$, мы как раз и требуем, чтобы $\inf_x (\lambda_{\mathrm{min}} \nabla^2f(x)) \ge \mu$ ( тогда все собственные числа будут не меньше $\mu$).
+
+*** $\Leftarrow$
+Пусть $\inf_{x \in E} (\lambda_{\mathrm{min}} \nabla^2 f(x)) \ge \mu$, то есть для каждого $x \in E$ все [[id:9D2905FC-8E68-4E6F-9243-364269F795B0][собственные значения]] $A := \nabla^2 f(x)$ не меньше $\mu$.
+Нужно проверить $\left\langle (A - \mu I)h; h \right\rangle \ge 0$ для /любого/ $h \in \R^n$, а не только для собственного вектора.
+
+$f \in C^2$, поэтому $A$ -- симметричная матрица ([[id:592AD816-1D80-48E6-8399-8524FBC1E8F3][гессиан]]). По спектральной теореме у нее есть ортонормированный базис из собственных векторов $q_1, \dots, q_n$:
+$A q_i = \lambda_i q_i$, $\left\langle q_i; q_j \right\rangle = 0$ при $i \ne j$, $\| q_i \| = 1$.
+
+Разложим $h = \sum\limits_{i=1}^n c_i q_i$. Тогда
+\[
+(A - \mu I) h = \sum\limits_{i=1}^n c_i (A q_i - \mu q_i) = \sum\limits_{i=1}^n c_i (\lambda_i - \mu) q_i
+\]
+и по ортонормированности базиса
+\[
+\left\langle (A - \mu I)h; h \right\rangle = \sum\limits_{i=1}^n \sum\limits_{j=1}^n c_i c_j (\lambda_i - \mu) \left\langle q_i; q_j \right\rangle = \sum\limits_{i=1}^n (\lambda_i - \mu) c_i^2 \ge 0,
+\]
+так как каждое $\lambda_i \ge \mu$. Значит, $\nabla^2 f(x) - \mu I \ge 0$ для всех $x \in E$.
+
+/Rem/: Здесь существенна симметричность. У несимметричной матрицы собственные значения ничего не говорят о знаке $\left\langle Ah; h \right\rangle$: у $A = \begin{pmatrix} 1 & -4 \\ 0 & 1 \end{pmatrix}$ оба собственных значения равны $1$, но при $h = (1, 1)^T$ получаем $\left\langle Ah; h \right\rangle = -2 < 0$.
