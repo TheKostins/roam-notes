@@ -397,10 +397,10 @@
   },
   "81C8B68E-DAAD-4B86-BAEB-AB0E1C07442F": {
    "audited": {
-    "body_hash": "a56317ce1c433da4",
-    "commit": "c7e94a0",
+    "body_hash": "f312093f7cfac2b9",
+    "commit": "b1ffd50",
     "date": "2026-09-23",
-    "open": 1,
+    "open": 0,
     "report": "2026-09-23-1245-audit.md"
    },
    "title": "Аппроксимация функции с липшицевым гессианом до 3 степени"
