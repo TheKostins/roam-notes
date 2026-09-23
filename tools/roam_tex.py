@@ -47,7 +47,7 @@ UNICODE_MATH = {
 }
 
 BULLET_RE = re.compile(r"^([ \t]*)(-|\+|\d+[.)])[ \t]+(.*)$")
-REM_RE = re.compile(r"^[ \t]*/Rem/:[ \t]*")
+REM_RE = re.compile(r"^[ \t]*/Rem/:?[ \t]*")
 TOK_RE = re.compile("[\uE000\uE002](\\d+)\uE001")
 _ESC = {"%": r"\%", "&": r"\&", "#": r"\#", "_": r"\_", "~": r"\textasciitilde{}",
         "^": r"\textasciicircum{}", "$": r"\$"}
@@ -205,7 +205,9 @@ def segment(lines: list[str], base_line: int, ctx: Ctx) -> list:
         para = lines[i:j]
         rm = REM_RE.match(masked[i])
         if rm:
-            para[0] = para[0][rm.end():]
+            # cut on the original line: in `masked` math is blanked to spaces,
+            # and the trailing [ \t]* would swallow a leading formula
+            para[0] = para[0][REM_RE.match(lines[i]).end():]
             blocks.append(Rem("\n".join(para), base_line + i))
         else:
             blocks.append(Para("\n".join(para), base_line + i))
@@ -332,6 +334,25 @@ def _render_link(raw: str, ctx: Ctx, line: int) -> str:
     return "\\url{%s}" % target
 
 
+_BREAK_END = tuple(".,;:!?(") + ("---", "\\\\")
+_UPPER_RE = re.compile(r"[А-ЯЁA-Z]")
+
+
+def _sentence_breaks(s: str) -> str:
+    """Notes often end a phrase at a line end without a period and start the
+    next phrase with a capital letter; joined into one paragraph this reads as
+    «...формулу Итого».  Keep such a break visible with `\\\\`.
+    Runs on protected text: math/links are tokens, a display is \uE002n\uE001."""
+    lines = s.split("\n")
+    for k in range(len(lines) - 1):
+        prev, nxt = lines[k].rstrip(), lines[k + 1].lstrip()
+        if (prev and nxt and not prev.endswith(_BREAK_END)
+                and not re.search("\uE002\\d+\uE001$", prev)
+                and _UPPER_RE.match(nxt)):
+            lines[k] = prev + " \\\\"
+    return "\n".join(lines)
+
+
 def prose_to_tex(text: str, ctx: Ctx, line0: int = 0) -> str:
     """Convert a prose span (paragraph, list item, heading title) to LaTeX.
     Math and links are protected first, so nothing below can touch them."""
@@ -352,6 +373,7 @@ def prose_to_tex(text: str, ctx: Ctx, line0: int = 0) -> str:
                  f"символ «{ch}» в прозе выведен как формула")
         return "$%s$" % UNICODE_MATH[ch]
     s = re.sub("[%s]" % re.escape("".join(UNICODE_MATH)), uni, s)
+    s = _sentence_breaks(s)
 
     def restore(m: re.Match) -> str:
         kind, sub, raw, line = tokens[int(m.group(1))]
@@ -455,7 +477,11 @@ def _render_steps(note: Note, h, ctx: Ctx, depth: int) -> str:
 def note_to_tex(note: Note, vault: Vault, exported: set[str]) -> tuple[str, list[TexWarning]]:
     ctx = Ctx(note, vault, exported)
     env = note_env(note, ctx)
-    title = prose_to_tex(note.title, ctx, note.kw_line("title") or 0)
+    title = note.title
+    if env == "theorem" and re.match(r"Теорема\s+\S", title):
+        # «Теорема: Теорема Ферма» -> «Теорема: Ферма»
+        title = re.sub(r"^Теорема\s+", "", title)
+    title = prose_to_tex(title, ctx, note.kw_line("title") or 0)
     out = [f"{GENERATED}", f"% {note.rel} (body {note.body_hash()[:12]})", ""]
 
     top = [h for h in note.headings if h.parent is None]

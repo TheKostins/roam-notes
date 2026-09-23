@@ -22,9 +22,9 @@
   \]
 
   Заметим, что $I$~--- выпукло, так как для любых $t_1, t_2 \in I$
-  точки $x + t_1h \in E$  и $x+ t_2h \in E$
+  точки $x + t_1h \in E$  и $x+ t_2h \in E$ \\
   Но $E$~--- выпукло, следовательно отрезок $[x + t_1 h; x + t_2h] \subset E$,
-  а из этого следует, что отрезок $[t_1; t_2] \subset I$, так как $\forall t \in [t_1; t_2]\ x + th \in E$
+  а из этого следует, что отрезок $[t_1; t_2] \subset I$, так как $\forall t \in [t_1; t_2]\ x + th \in E$ \\
   А это ровно так, как мы определяем принадлежность к $I$.
 
   Возьмем произвольные $l, t \in I$ и $\lambda \in [0;1]$
@@ -44,8 +44,8 @@
   f(\lambda (x + th) + (1-\lambda)(x + lh)) \le \lambda f(x + th) + (1-\lambda)f(x + lh)
   \]
 
-  Но $\lambda f(x + th) + (1-\lambda)f(x + lh) = \lambda \phi(t) + (1-\lambda) \phi(l)$
-  Тогда мы получим $\phi(\lambda t + (1-\lambda) l) \le \lambda \phi(t) + (1 - \lambda)\phi(l)\ \forall l,t \in I, \lambda \in [0;1]$
+  Но $\lambda f(x + th) + (1-\lambda)f(x + lh) = \lambda \phi(t) + (1-\lambda) \phi(l)$ \\
+  Тогда мы получим $\phi(\lambda t + (1-\lambda) l) \le \lambda \phi(t) + (1 - \lambda)\phi(l)\ \forall l,t \in I, \lambda \in [0;1]$ \\
   Мы доказали, что $\phi$~--- выпуклая.
 
   \proofstep{$\Rightarrow$}
@@ -60,7 +60,7 @@
   \proofstep{$\Rightarrow$}
   Мы все еще пользуемся произвольными $x \in E$, $h \in \R^n$.
 
-  Рассмотрим $\phi^{\prime}(t) = \left( f(x+th) \right)^{\prime}_t = f^{\prime}(x + th) (x + th)^{\prime}_t = \left\langle \nabla f (x + th); h \right\rangle$ (см. \hyperref[note:1756907B-1FF2-4F62-8553-759B8509281C]{градиент})
+  Рассмотрим $\phi^{\prime}(t) = \left( f(x+th) \right)^{\prime}_t = f^{\prime}(x + th) (x + th)^{\prime}_t = \left\langle \nabla f (x + th); h \right\rangle$ (см. \hyperref[note:1756907B-1FF2-4F62-8553-759B8509281C]{градиент}) \\
   Вторая производная:
   \[
   \phi^{\prime \prime}(t) = \left(  \left\langle \nabla f(x +th); h \right\rangle \right)^{\prime}_t =
@@ -85,11 +85,11 @@
   А из произвольности $x \in E$, мы получаем квантор $\forall x \in E\ \nabla^2 f(x) \ge 0$ (То что требовалось в определении)
 
   \proofstep{$\Leftarrow$}
-  Давайте возьмем произвольные $x \in E, h \in \R^{n}$
-  Тогда $\phi(t) := f(x + th)$  (по построению)
+  Давайте возьмем произвольные $x \in E, h \in \R^{n}$ \\
+  Тогда $\phi(t) := f(x + th)$  (по построению) \\
   Вторая производная все так же равна $h^T \nabla^2f(x +th) h$,
   Мы уже имеем неотрицательную определенность Гессиана,
   а следовательно вторая производная будет всегда неотрицательна
-  (следует из определения неотрицательной определенности)
+  (следует из определения неотрицательной определенности) \\
   Тогда $\phi$~--- выпуклая по \hyperref[note:9CEE854D-ED37-4C08-82EB-E41B36C43EA6]{одномерному случаю}, а $f$ по предыдущей выкладке.
 \end{proof}

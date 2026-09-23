@@ -299,6 +299,27 @@ class TexBlockTest(unittest.TestCase):
         self.assertIn("Пусть $x$.", head)
         self.assertEqual(rest, "\n\\begin{remark}\n  Текст $y$.\n\\end{remark}\n\n\\begin{remark}\n  Ещё.\n\\end{remark}\n")
 
+    def test_rem_leading_math_and_no_colon(self):
+        out, _ = tex("Пусть $x$.\n/Rem/: $y$ велико.\n\n/Rem/ Без двоеточия.")
+        head, rest = out.split("\\end{theorem}\n")
+        self.assertNotIn("Rem", head)
+        self.assertIn("\\begin{remark}\n  $y$ велико.\n\\end{remark}", rest)
+        self.assertIn("\\begin{remark}\n  Без двоеточия.\n\\end{remark}", rest)
+
+    def test_sentence_breaks(self):
+        out, _ = tex("Используем формулу\nИтого $x$\nИ еще.\nКонец фразы.\nТогда\n$x = y$\nи $z$\n\\[\na\n\\]\nДалее.")
+        self.assertIn("Используем формулу \\\\\n  Итого $x$ \\\\\n  И еще.\n  Конец фразы.\n  Тогда\n  $x = y$\n  и $z$\n  \\[\n  a\n  \\]\n  Далее.", out)
+
+    def test_theorem_title_prefix(self):
+        n = make_note(":PROPERTIES:\n:ID:       %s\n:END:\n#+title: Теорема Ферма\n#+filetags: :calc:theorem:\n\nТекст.\n" % TEX_ID)
+        real = roam.VAULT
+        roam.VAULT = n.path.parent
+        try:
+            out, _ = roam_tex.note_to_tex(n, FakeVault([n]), {TEX_ID})
+        finally:
+            roam.VAULT = real
+        self.assertIn("\\begin{theorem}[{Ферма}]", out)
+
     def test_proof_parts(self):
         out, w = tex("A.\n* Доказательство\nВезде $\\lambda$.\n** $\\Rightarrow$\nB.\n*** $g$ -- выпуклая\nC.\n** 2. Шаг.\nD.")
         self.assertIn("\\begin{proof}\n  Везде $\\lambda$.\n\n  \\proofpart{$\\Rightarrow$}\n  B.\n\n  \\proofstep{$g$~--- выпуклая}\n  C.\n\n  \\proofpart{2. Шаг}\n  D.\n\\end{proof}", out)
