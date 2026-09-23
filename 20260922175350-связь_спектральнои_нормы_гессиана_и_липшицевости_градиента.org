@@ -1,0 +1,25 @@
+:PROPERTIES:
+:ID:       4B6D53BA-E599-4DEA-A557-550BD32042BA
+:END:
+#+title: Связь спектральной нормы гессиана и липшицевости градиента
+#+filetags: :metopt:theorem:
+
+Пусть $f: E \rightarrow \R$, $E$ -- [[id:316B5BFA-8B9F-4267-9086-D6593AAB5F9B][выпуклое]] и $f \in C^2$
+И $\exists L:\ \forall x\ \| \nabla^2 f(x) \| \le L$, где $\| \cdot \|$ -- спектральная норма ([[id:592AD816-1D80-48E6-8399-8524FBC1E8F3][гессиан]])
+Тогда $f \in C^{1,1}_L$
+
+/Rem/: Верно и обратное -- [[id:DAA0DAE4-4B48-4A2F-9459-54790B6B129F][оценка нормы гессиана сверху]], так что для $f \in C^2$: $\nabla f$ -- $L$-липшицев $\Leftrightarrow \| \nabla^2 f(x) \| \le L\ \forall x$.
+
+/Rem/: $\nabla^2 f(x)$ симметрична, поэтому по [[id:3BE0BBCE-AAB0-4CB4-8FA6-45277C0889CF][спектральной теореме]] $\| \nabla^2 f(x) \| = \max_i \abs{\lambda_i}$, и условие равносильно $-L I \le \nabla^2 f(x) \le L I$. Для $\mu$-сильно выпуклой $f$ получаем $\mu I \le \nabla^2 f(x) \le L I$, откуда снова видно $\mu \le L$.
+
+* Доказательство
+
+Вспомним [[id:5821D7FE-1F9F-4578-BA2B-D60FDB0C69D3][теорему Лагранжа для векторнозначных функций]]:
+Пусть $g: E \rightarrow \R^{n}$,  $E$ -- выпукло и $g$ -- дифференцируема на $E$
+Тогда $\forall a,b \in E\ \exists c \in [a;b]:\ \| g(b) - g(a) \| \le \| g^{\prime}(c) \| \cdot \| b -a \|$
+
+Рассмотрим $g(x) := \nabla f(x)$ и получим
+\[
+\| \nabla f(a) - \nabla f(b) \| \le \| \nabla^2 f(c) \| \cdot \| b - a \|  \le  L \| b - a \|
+\]
+Получили определение [[id:7DD1C7AB-1A49-4675-9F21-5A16C717F670][липшицевости градиента]]

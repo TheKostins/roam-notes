@@ -1,0 +1,13 @@
+:PROPERTIES:
+:ID:       81C8B68E-DAAD-4B86-BAEB-AB0E1C07442F
+:END:
+#+title: Аппроксимация функции с липшицевым гессианом до 3 степени
+#+filetags: :metopt:theorem:
+Пусть $f: \R^n \rightarrow \R$, $f \in C^{2,2}_L$ ([[id:7E287F4B-AC3E-4CF5-9D32-3BC2BC52D01A][липшицев гессиан]]). Тогда
+\[
+\left| f(x+y) - f(x) - \left\langle \nabla f(x) ; y \right\rangle -
+\frac{1}{2} \left\langle \nabla^2f(x) y; y \right\rangle \right| \le \frac{L}{6} \|y\|^{3}
+\]
+
+* Доказательство
+Упражнение
