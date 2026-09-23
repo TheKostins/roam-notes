@@ -177,8 +177,8 @@
   },
   "379E4CAD-A44B-4631-8DAF-F3DC708EAEDE": {
    "audited": {
-    "body_hash": "a10895d6e4ee64d5",
-    "commit": "c7e94a0",
+    "body_hash": "26fec989378c12ab",
+    "commit": "db22060",
     "date": "2026-09-23",
     "open": 0,
     "report": "2026-09-23-1245-audit.md"
@@ -397,8 +397,8 @@
   },
   "81C8B68E-DAAD-4B86-BAEB-AB0E1C07442F": {
    "audited": {
-    "body_hash": "f312093f7cfac2b9",
-    "commit": "b1ffd50",
+    "body_hash": "62a5bf4472706e65",
+    "commit": "db22060",
     "date": "2026-09-23",
     "open": 0,
     "report": "2026-09-23-1245-audit.md"
@@ -480,6 +480,16 @@
    },
    "title": "Критерий сильной выпуклости в терминах вторых производных"
   },
+  "957FA09D-8883-40A5-B4C7-237D9F815A42": {
+   "audited": {
+    "body_hash": "a82bf45c5c8d58d2",
+    "commit": "db22060",
+    "date": "2026-09-23",
+    "open": 0,
+    "report": "2026-09-23-1245-audit.md"
+   },
+   "title": "Дифференцируемая функция"
+  },
   "9CEE854D-ED37-4C08-82EB-E41B36C43EA6": {
    "audited": {
     "body_hash": "02f42c324a241933",
@@ -509,6 +519,16 @@
     "report": "2026-09-20-2113-audit.md"
    },
    "title": "Скалярное произведение матриц"
+  },
+  "AD362344-ECDC-4627-B344-8356744E6E53": {
+   "audited": {
+    "body_hash": "9c4dc28745c75fae",
+    "commit": "db22060",
+    "date": "2026-09-23",
+    "open": 0,
+    "report": "2026-09-23-1245-audit.md"
+   },
+   "title": "Формула Ньютона-Лейбница"
   },
   "B9EF495E-CDBE-4E80-B401-8AFEAB0DCCAC": {
    "audited": {
