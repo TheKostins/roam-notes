@@ -20,7 +20,7 @@
 
 * Доказательство
 
-/Rem/: Заметим, что для функции $\phi \in C^1[0;1]$ верно, что $\phi(1) - \phi(0) = \int\limits_0^1 \phi^{\prime}(x)dx$
+/Rem/: Заметим, что для функции $\phi \in C^1[0;1]$ верно ([[id:AD362344-ECDC-4627-B344-8356744E6E53][формула Ньютона-Лейбница]]), что $\phi(1) - \phi(0) = \int\limits_0^1 \phi^{\prime}(x)dx$
 Давайте рассмотрим $\phi(t) = f(x + t(y-x))$, тогда $\phi(1) = f(y),\ \phi(0)=f(x)$
 Тогда давайте представим $f(y)-f(x)$, как интеграл  от $\phi^{\prime}$.
 Мы знаем, что $\phi^{\prime}(t) = f^{\prime}(x + t(y-x)) (y-x) = \left\langle \nabla f(x + t(y-x)); y-x \right\rangle$

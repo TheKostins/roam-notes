@@ -12,7 +12,7 @@
 * Доказательство
 Аналогично [[id:379E4CAD-A44B-4631-8DAF-F3DC708EAEDE][усиленному неравенству для функций с липшицевым градиентом]]
 
-Давайте возьмем $\phi(t) = f(x + ty)$. Мы знаем, что (Ньютон-Лейбниц) $\phi(1) - \phi(0)= \int\limits_0^1 \phi^{\prime}(t) dt$.
+Давайте возьмем $\phi(t) = f(x + ty)$. Мы знаем, что ([[id:AD362344-ECDC-4627-B344-8356744E6E53][Ньютон-Лейбниц]]) $\phi(1) - \phi(0)= \int\limits_0^1 \phi^{\prime}(t) dt$.
 Но нам нужно подняться на порядок выше, чем в [[id:379E4CAD-A44B-4631-8DAF-F3DC708EAEDE][усиленном неравенстве]].
 Давайте тогда выразим $\phi^{\prime}(t)$ также через Ньютона-Лейбница (можем сделать так, так как $\phi^{\prime\prime}$ непрерывна: $f \in C^2$). $\phi^{\prime}(t) - \phi^{\prime}(0) = \int\limits_0^t \phi^{\prime\prime}(u) du$.  (пришлось еще добавить $\phi^{\prime}(0)$, чтобы получилась разность).
 Тогда $\phi(1) - \phi(0) = \int\limits_0^1 \int\limits_0^t \phi^{\prime\prime}(u) du dt + \phi^{\prime}(0)\Rightarrow \int\limits_0^1 \int\limits_0^t \phi^{\prime\prime}(u) du dt = \phi(1) - \phi(0) - \phi^{\prime}(0)$
