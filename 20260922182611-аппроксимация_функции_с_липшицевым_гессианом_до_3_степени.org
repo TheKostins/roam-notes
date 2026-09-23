@@ -10,4 +10,65 @@
 \]
 
 * Доказательство
-Упражнение
+Аналогично [[id:379E4CAD-A44B-4631-8DAF-F3DC708EAEDE][усиленному неравенству для функций с липшицевым градиентом]]
+
+Давайте возьмем $\phi(t) = f(x + ty)$. Мы знаем, что (Ньютон-Лейбниц) $\phi(1) - \phi(0)= \int\limits_0^1 \phi^{\prime}(t) dt$.
+Но нам нужно подняться на порядок выше, чем в [[id:379E4CAD-A44B-4631-8DAF-F3DC708EAEDE][усиленном неравенстве]].
+Давайте тогда выразим $\phi^{\prime}(t)$ также через Ньютона-Лейбница (можем сделать так, так как $\phi^{\prime\prime}$ непрерывна: $f \in C^2$). $\phi^{\prime}(t) - \phi^{\prime}(0) = \int\limits_0^t \phi^{\prime\prime}(u) du$.  (пришлось еще добавить $\phi^{\prime}(0)$, чтобы получилась разность).
+Тогда $\phi(1) - \phi(0) = \int\limits_0^1 \int\limits_0^t \phi^{\prime\prime}(u) du dt + \phi^{\prime}(0)\Rightarrow \int\limits_0^1 \int\limits_0^t \phi^{\prime\prime}(u) du dt = \phi(1) - \phi(0) - \phi^{\prime}(0)$
+Давайте теперь посчитаем сами производные
+$\phi^{\prime}(t) = \left\langle \nabla f(x + ty); y \right\rangle$, $\phi^{\prime\prime}(t) = \left\langle \nabla^2 f(x + ty)y; y \right\rangle$ (второе слагаемое сократилось так как $y^{\prime}_t = 0$).
+
+Заметим, что $\phi(1) = f(x+y), \phi(0) = f(x), \phi^{\prime}(0) = \left\langle \nabla f(x); y \right\rangle, \phi^{\prime\prime}(0) = \left\langle \nabla^2 f(x)y; y \right\rangle$.
+Подставим это в модуль из неравенства  и получим $\left| \phi(1) - \phi(0) - \phi^{\prime}(0) - \frac{1}{2} \phi^{\prime\prime} (0) \right|$.
+
+Заметим, что первая тройка заменяется интегралом, а так как $\frac{1}{2} \phi^{\prime\prime}(0)$ -- константа, ее тоже можно занести под интеграл: $c \cdot \int\limits_0^1 \int\limits_0^t du dt  = c \cdot \int\limits_0^1 t dt =  c \cdot \frac{1}{2} \Rightarrow \frac{1}{2}\phi^{\prime\prime}(0) = \int\limits_0^1 \int\limits_0^t \phi^{\prime\prime}(0) du dt$
+
+Давайте запишем модуль, как объединенный интеграл
+\[
+\left| \phi(1) - \phi(0) - \phi^{\prime}(0) - \frac{1}{2} \phi^{\prime\prime} (0) \right| = \left| \int\limits_0^1 \int\limits_0^t \left[ \phi^{\prime\prime}(u)-\phi^{\prime\prime}(0) \right]du dt  \right|
+\]
+Оценим интегралом от модуля сверху
+\[
+\left| \int\limits_0^1 \int\limits_0^t \left[ \phi^{\prime\prime}(u)-\phi^{\prime\prime}(0) \right]du dt  \right| \le
+ \int\limits_0^1 \int\limits_0^t \left| \phi^{\prime\prime}(u)-\phi^{\prime\prime}(0) \right|du dt
+\]
+Давайте теперь подставим вторые производные
+\[
+\int\limits_0^1 \int\limits_0^t \left| \phi^{\prime\prime}(u)-\phi^{\prime\prime}(0) \right|du dt =
+ \int\limits_0^1 \int\limits_0^t \left| \left\langle \nabla^2 f(x + uy)y; y  \right\rangle - \left\langle \nabla^2f(x)y;  y \right\rangle \right|du dt
+\]
+Свернем скалярные произведения по аргументу
+\[
+ \int\limits_0^1 \int\limits_0^t \left| \left\langle \nabla^2 f(x + uy)y; y  \right\rangle - \left\langle \nabla^2f(x)y;  y \right\rangle \right|du dt  =
+ \int\limits_0^1 \int\limits_0^t \left| \left\langle \nabla^2 f(x + uy)y - \nabla^2 f(x) y; y  \right\rangle \right|du dt
+\]
+Применим [[id:D0601ACD-8C91-4A93-B0E4-AC0D529C6A5C][КБШ]] для скалярного произведения
+\[
+ \int\limits_0^1 \int\limits_0^t \left| \left\langle \nabla^2 f(x + uy)y - \nabla^2 f(x) y; y  \right\rangle \right|du dt \le
+ \int\limits_0^1 \int\limits_0^t \| \nabla^2 f(x + uy)y - \nabla^2f(x)y\| \cdot \| y\| du dt
+\]
+
+Заметим, что $\| \nabla^2 f(x + uy)y - \nabla^2f(x)y\| = \| (\nabla^2 f(x + uy) - \nabla^2f(x)) y\|$
+Если взять матрицу $A:= (\nabla^2 f(x + uy) - \nabla^2f(x))$, то
+$\| A \| = \sup\limits_{h \ne 0} \frac{\| A h \|}{\| h\|} \Rightarrow \|Ah \| \le \|A\| \|h\|\ \forall h$
+Тогда оценим сверху $\|Ay\|$
+\[
+ \int\limits_0^1 \int\limits_0^t \| \nabla^2 f(x + uy)y - \nabla^2f(x)y\| \cdot \| y\| du dt  \le
+ \int\limits_0^1 \int\limits_0^t \| \nabla^2 f(x + uy) - \nabla^2f(x)\| \cdot \| y\|^2 du dt
+\]
+Тут у нас разность гессианов, так как у нас $L$ гладкие 2 производные, то можем еще оценить сверху
+\[
+ \int\limits_0^1 \int\limits_0^t \| \nabla^2 f(x + uy) - \nabla^2f(x)\| \cdot \| y\|^2 du dt
+ \le
+ \int\limits_0^1 \int\limits_0^t L \| x + uy - x \| \cdot \| y\|^2 du dt =
+ \int\limits_0^1 \int\limits_0^t L u \| y \| \cdot \| y\|^2 du dt
+\]
+Давайте теперь вынесем константы за интеграл и посчитаем
+\[
+ \int\limits_0^1 \int\limits_0^t L u \| y \| \cdot \| y\|^2 du dt =
+ L \|y\|^3  \cdot \int\limits_0^1 \int\limits_0^t u\, du dt = L \|y\|^3 \cdot \int\limits_0^1 \frac{t^2}{2}\,dt
+ = \frac{L}{6} \| y \|^3
+\]
+
+Итого левая часть неравенства не больше $\frac{L}{6} \| y \|^3$.
