@@ -10,4 +10,44 @@
 \sum\limits_{i=1}^n \lambda_i f(x_i)
 \]
 * Доказательство
-Упражнение
+
+Идея аналогична доказательству: [[id:42DFF6DC-CC9D-40AA-9D6F-218DCF613833][Характеристика выпуклого множества через выпуклые комбинации]]
+
+Доказывать будем по индукции.
+База: $n=1$,  тогда $\lambda_1 = 1 \Rightarrow f(\lambda_1 x_1) \le \lambda_1 f(x_1) \Leftrightarrow f(x_1) \le f(x_1)$. Очевидно;
+
+Давайте рассмотрим переход: $n \rightarrow n+1$
+Имеем $\lambda_i \ge 0,\ \sum\limits_{i=1}^{n+1} \lambda_i = 1$. Если $\lambda_{n+1} = 1$, то мы опять вернемся к вырожденному случаю из базы,
+так как остальные $\lambda_i = 0, i < n+1$. Далее будем считать, что $\lambda_{n+1} \ne 1$.
+
+Пусть $s:= 1 - \lambda_{n+1}$, тогда
+\[
+\sum\limits_{i=1}^{n+1} \lambda_i x_i = \sum\limits_{i=1}^n \lambda_i x_i + \lambda_{n+1} x_{n+1} =
+s \cdot \frac{1}{s} \cdot \sum\limits_{i=1}^n \lambda_i x_i + \lambda_{n+1} x_{n+1}
+\]
+
+Рассмотрим $\frac{1}{s} \sum\limits_{i=1}^n \lambda_i x_i$. Это комбинация из $n$ точек, рассмотрим коэффициенты
+$\sum\limits_{i=1}^n \frac{\lambda_i}{s} = \frac{1-\lambda_{n+1}}{1-\lambda_{n+1}} = 1$, причем они все неотрицательные, так как $\lambda_i \ge 0$ и $s > 0$.
+
+Так как [[id:42DFF6DC-CC9D-40AA-9D6F-218DCF613833][выпуклое множество содержит все свои выпуклые комбинации]], то $y := \sum\limits_{i=1}^n \frac{\lambda_i}{s} x_i \in E$.
+
+Итого, мы получили, что
+\[
+\sum\limits_{i=1}^{n+1} \lambda_i x_i = s y + \lambda_{n+1}x_{n+1} = (1-\lambda_{n+1}) y + \lambda_{n+1}x_{n+1}
+\]
+
+Воспользуемся определением [[id:1CA14F2C-637F-41DE-9E97-72075D19E97F][выпуклости функции]].
+\[
+f( (1 - \lambda_{n+1})y + \lambda_{n+1} x_{n+1} ) \le (1-\lambda_{n+1}) f(y) + \lambda_{n+1} f(x_{n+1})
+\]
+Давайте теперь рассмотрим $f(y)$, это функция от [[id:8583F986-A6E8-4BBB-B2FB-BA0E9BBE58BF][выпуклой комбинации]] из $n$ точек.
+Значит мы можем применить индукционное предположение:
+\[
+f(y) = f \left(  \sum\limits_{i=1}^n \frac{\lambda_i}{s} x_i \right) \le \sum\limits_{i=1}^n \frac{\lambda_i}{s} f(x_i)
+\]
+
+Но тогда $(1-\lambda_{n+1}) f(y) = s f(y) \le \sum\limits_{i=1}^n \lambda_i f(x_i)$
+Итого
+\[
+f \left( \sum\limits_{i=1}^{n+1} \lambda_i x_i  \right) = f(sy + \lambda_{n+1} x_{n+1}) \le sf(y) + \lambda_{n+1} f(x_{n+1}) \le \sum\limits_{i=1}^n \lambda_i f(x_i) + \lambda_{n+1} f(x_{n+1}) = \sum\limits_{i=1}^{n+1} \lambda_i f(x_i)
+\]
