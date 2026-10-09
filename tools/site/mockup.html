@@ -1,0 +1,208 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Метод золотого сечения · Заметки</title>
+<script>
+  // Макет: выбор шрифтовой пары и темы читается до загрузки стилей и MathJax.
+  (function () {
+    var h = document.documentElement;
+    try {
+      h.dataset.pair = localStorage.getItem('pair') || 'stix';
+      var t = localStorage.getItem('theme');
+      if (t) h.dataset.theme = t;
+    } catch (e) { h.dataset.pair = 'stix'; }
+    var fonts = { stix: 'mathjax-stix2', alegreya: 'mathjax-pagella', fira: 'mathjax-fira', literata: 'mathjax-newcm' };
+    window.MathJax = {
+      tex: {
+        inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\\]']],
+        macros: { conv: '\\mathrm{conv}', R: '\\mathbb{R}', N: '\\mathbb{N}', eps: '\\varepsilon',
+                  abs: ['\\left|#1\\right|', 1], norm: ['\\left\\lVert#1\\right\\rVert', 1] }
+      },
+      output: { font: fonts[h.dataset.pair] || 'mathjax-newcm' }
+    };
+  })();
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=STIX+Two+Text:ital,wght@0,400;0,600;0,700;1,400&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono&family=Alegreya:ital,wght@0,400;0,700;1,400&family=Alegreya+Sans:wght@400;500;700&family=JetBrains+Mono&family=Fira+Sans:ital,wght@0,400;0,500;0,600;1,400&family=Fira+Code&family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,600;0,7..72,700;1,7..72,400&family=Geologica:wght@400;500;600;700&display=swap">
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml-nofont.js"></script>
+<link rel="stylesheet" href="site.css">
+</head>
+<body>
+
+<header class="topbar">
+  <button class="ib" id="menu" aria-label="Меню"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+  <div class="brand"><a href="#">Заметки · метопт</a></div>
+  <button class="ib" id="msearch" aria-label="Поиск"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg></button>
+  <button class="ib theme-toggle" aria-label="Тема"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg></button>
+</header>
+<div class="scrim" id="scrim"></div>
+
+<div class="shell">
+<aside class="left">
+  <div class="brand"><a href="#">Заметки</a><small>kost</small></div>
+  <div class="search">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+    <input id="q" type="search" placeholder="Поиск по заметкам" autocomplete="off">
+    <kbd>/</kbd>
+  </div>
+  <nav class="explorer">
+    <div class="nav-h">Методы оптимизации</div>
+    <ul>
+      <li><details><summary>Лекция 4: выпуклость и градиент</summary><ul>
+        <li><a href="#"><i class="ty" style="background:var(--blue-s)"></i>Выпуклое множество</a></li>
+        <li><a href="#"><i class="ty" style="background:var(--blue-s)"></i>Выпуклая функция</a></li>
+        <li><a href="#"><i class="ty" style="background:var(--orange-s)"></i>Критерий выпуклости через градиент</a></li>
+        <li><a href="#"><i class="ty" style="background:var(--aqua-s)"></i>Градиентный спуск</a></li>
+        <li><a href="#"><i class="ty" style="background:var(--orange-s)"></i>Сходимость градиентного спуска для функции с липшицевым градиентом</a></li>
+      </ul></details></li>
+      <li><details open><summary>Лекция 5: одномерная оптимизация</summary><ul>
+        <li><a href="#"><i class="ty" style="background:var(--blue-s)"></i>Скорость сходимости</a></li>
+        <li><a href="#"><i class="ty" style="background:var(--blue-s)"></i>Линейная сходимость</a></li>
+        <li><a href="#"><i class="ty" style="background:var(--blue-s)"></i>Унимодальная функция</a></li>
+        <li><a href="#"><i class="ty" style="background:var(--yellow-s)"></i>Монотонность унимодальной функции</a></li>
+        <li><a href="#"><i class="ty" style="background:var(--aqua-s)"></i>Точная одномерная оптимизация</a></li>
+        <li><a href="#" class="current"><i class="ty" style="background:var(--green-s)"></i>Метод золотого сечения</a></li>
+        <li><a href="#"><i class="ty" style="background:var(--green-s)"></i>Метод парабол</a></li>
+        <li><a href="#" class="stub"><i class="ty" style="background:var(--bg3)"></i>Метод Брента</a></li>
+      </ul></details></li>
+      <li><details><summary>Лекция 6: неточная оптимизация</summary><ul>
+        <li><a href="#"><i class="ty" style="background:var(--blue-s)"></i>Условие Армихо</a></li>
+        <li><a href="#"><i class="ty" style="background:var(--blue-s)"></i>Условие Вульфа</a></li>
+        <li><a href="#"><i class="ty" style="background:var(--orange-s)"></i>Существование шага для Армихо, Вульфа</a></li>
+        <li><a href="#"><i class="ty" style="background:var(--aqua-s)"></i>Алгоритм backtracking</a></li>
+      </ul></details></li>
+      <li><details><summary>Вне плана</summary><ul>
+        <li><a href="#"><i class="ty" style="background:var(--green-s)"></i>Тест корней</a></li>
+      </ul></details></li>
+    </ul>
+    <div class="nav-h">Математический анализ</div>
+    <ul><li><details><summary>Пререквизиты</summary><ul>
+      <li><a href="#"><i class="ty" style="background:var(--orange-s)"></i>Теорема Лагранжа</a></li>
+    </ul></details></li></ul>
+    <div class="nav-h">Ещё</div>
+    <ul><li><a href="#">⌘ Граф всех заметок</a></li><li><a href="#"># Теги</a></li></ul>
+  </nav>
+  <div class="left-foot">
+    <button class="btn theme-toggle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>Тема</button>
+    <select class="btn" id="pair" title="Шрифтовая пара (только в макете)">
+      <option value="stix">STIX Two + Plex</option>
+      <option value="alegreya">Alegreya + Pagella</option>
+      <option value="literata">Literata + Geologica</option>
+      <option value="fira">Fira Sans + Fira Math</option>
+    </select>
+  </div>
+</aside>
+
+<main>
+<article>
+  <div class="crumbs"><a href="#">Метопт</a><span>/</span><a href="#">Лекция 5</a></div>
+  <h1>Метод золотого сечения</h1>
+  <div class="meta">
+    <span class="tag type example">example</span>
+    <span class="tag">metopt</span>
+    <span>·</span><span>4 окт 2026</span>
+    <span>·</span><a href="#">лекция 5</a>
+  </div>
+
+  <p>Пусть \(f\) унимодальна на \([a;b]\) и непрерывна на нём; НУО \(l[a;b] = 1\), где \(l\) функция длины отрезка.</p>
+  <p>Мы хотим выбрать такие две точки \(x \lt y\) из этого отрезка, чтобы сократить отрезок, где лежит минимум, используя свойство: <a class="id" href="#">монотонность унимодальной функции</a>. Далее будем называть такие точки \(x, y\) <em>тестовыми</em>, так как в них мы и будем вычислять значение функции.</p>
+  <p>Но мы хотим сделать что-то немного более хитрое. <strong>Мы хотим считать функцию только один раз за итерацию, а не два.</strong></p>
+  <p>Для этого зададим ограничения на тестовые точки.</p>
+  <ol>
+    <li>\(l[a,x] = l[y,b]\): каждый раз сокращаем отрезок на одну величину. Обозначим \(l[a;y] = K\), \(l[a;x] = 1-K\). Это гарантирует скорость сходимости (мы всегда знаем размер оставшегося отрезка), иначе отрезки были бы неравными, и скорость определялась бы бо́льшим из них.</li>
+    <li>Одна из тестовых точек текущего отрезка должна стать тестовой точкой нового отрезка (это и обеспечивает вычисление функции один раз). Пусть после обрезания остался отрезок \([a;y]\). Тогда новый \(y_1\) должен стоять от начала на расстоянии \(K \cdot K\), и мы хотим, чтобы он совпал с \(x\).</li>
+  </ol>
+  <p>Исходя из этих ограничений имеем \(1 - K = K^2\) (расстояние до \(x\) равно расстоянию до \(y_1\), чтобы точки совпадали):</p>
+  \[
+  1 - K = K^2 \Leftrightarrow K^2 + K - 1 = 0,\quad 0 \lt K \lt 1 \Rightarrow K = \frac{\sqrt{5} - 1}{2} \approx 0.618
+  \]
+  <p>Это равносильно условию</p>
+  \[
+  \frac{l[a;x]}{l[a;y]} = \frac{l[a;y]}{l[a;b]}
+  \]
+  <p>В этом равенстве и говорится, что \([a;y]\) становится новым \([a;b]\), а \([a;x]\) должен стать новым \([a;y]\).</p>
+
+  <div class="rem">
+    <p>Если вместо \(K\) брать точки по Фибоначчи, получится <a class="id stub" href="#">метод Фибоначчи</a> с чуть лучшей константой на фиксированном числе итераций.</p>
+  </div>
+
+  <p>Собственно сам алгоритм</p>
+<pre><code><span class="tok-n">K</span> = (sqrt(5) - 1) / 2
+x = b - K*(b-a); y = a + K*(b-a)
+fx = f(x); fy = f(y)
+
+<span class="tok-k">while</span> b - a &gt; eps:
+    <span class="tok-k">if</span> fx &lt; fy:  <span class="tok-c"># минимум в [a;y]</span>
+        b = y
+        y = x; fy = fx
+        x = b - K*(b-y)
+        fx = f(x)
+    <span class="tok-k">else</span>:
+        a = x
+        x = y; fx = fy
+        y = a + K*(b-a)
+        fy = f(y)</code></pre>
+
+  <div class="statement theorem">
+    <div class="lead">Утверждение</div>
+    <p>Сходимость линейная: \(\abs{x_k - x^{*}} \le I_k = K^k I_0\), где \(I_k\) длина отрезка на \(k\)-й итерации.</p>
+  </div>
+
+  <details class="proof" id="proof">
+    <summary>Доказательство <span class="hint">свёрнуто</span></summary>
+    <div class="body">
+      <p>\(\abs{x_k - x^{*}} \le I_k\), где \(I_k\) длина отрезка на \(k\)-й итерации, поскольку минимум всегда остаётся внутри текущего отрезка по <a class="id" href="#">монотонности унимодальной функции</a>.</p>
+      <p>А считается она так: \(I_k = K \cdot I_{k-1} = K^k I_0\). Итого \(\abs{x_k - x^{*}} \le K^k I_0\), что и есть <a class="id" href="#">линейная скорость</a> с константой \(K \approx 0.618\).</p>
+    </div>
+  </details>
+
+  <div class="foot"><span>Файл <code>20261004181419-метод_золотого_сечения.org</code></span><span>Изменено 4 окт 2026</span></div>
+
+  <div class="below">
+    <section class="toc"><h3>Оглавление</h3><ul><li><a href="#">Ограничения на точки</a></li><li><a href="#">Алгоритм</a></li><li><a href="#proof">Доказательство</a></li></ul></section>
+    <section><h3>Локальный граф</h3><div class="graph"><canvas data-graph="local"></canvas><button class="expand" aria-label="Развернуть"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></button></div>
+      <div class="legend"><span><i style="background:var(--blue-s)"></i>определение</span><span><i style="background:var(--orange-s)"></i>теорема</span><span><i style="background:var(--green-s)"></i>пример</span><span><i style="background:var(--aqua-s)"></i>метод</span><span><i style="background:var(--bg3)"></i>заглушка</span></div></section>
+    <section class="backlinks"><h3>Сюда ссылаются</h3><ul>
+      <li><a href="#"><b>Точная одномерная оптимизация</b><span>…если функция унимодальна, подходят методы золотого сечения и парабол…</span></a></li>
+      <li><a href="#"><b>Метод Брента</b><span>…комбинирует золотое сечение с параболической интерполяцией…</span></a></li>
+      <li><a href="#"><b>Метопт. Лекция 5</b><span>План лекции</span></a></li>
+    </ul></section>
+  </div>
+</article>
+</main>
+
+<aside class="right">
+  <h3>Оглавление</h3>
+  <nav class="toc"><ul><li><a href="#" class="active">Ограничения на точки</a></li><li><a href="#">Алгоритм</a></li><li><a href="#proof">Доказательство</a></li></ul></nav>
+  <h3>Локальный граф</h3>
+  <div class="graph"><canvas data-graph="local"></canvas><button class="expand" aria-label="Развернуть"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></button></div>
+  <div class="legend"><span><i style="background:var(--blue-s)"></i>определение</span><span><i style="background:var(--orange-s)"></i>теорема</span><span><i style="background:var(--green-s)"></i>пример</span><span><i style="background:var(--aqua-s)"></i>метод</span><span><i style="background:var(--bg3)"></i>заглушка</span></div>
+  <h3>Сюда ссылаются</h3>
+  <nav class="backlinks"><ul>
+    <li><a href="#"><b>Точная одномерная оптимизация</b><span>…если функция унимодальна, подходят методы золотого сечения и парабол…</span></a></li>
+    <li><a href="#"><b>Метод Брента</b><span>…комбинирует золотое сечение с параболической интерполяцией…</span></a></li>
+    <li><a href="#"><b>Метопт. Лекция 5</b><span>План лекции</span></a></li>
+  </ul></nav>
+</aside>
+</div>
+
+<script>
+window.MOCK_GRAPH = { nodes: [
+  { id: 'me', t: 'Метод золотого сечения', k: 'example', u: '#' },
+  { id: 'a', t: 'Монотонность унимодальной функции', k: 'property', u: '#' },
+  { id: 'b', t: 'Линейная сходимость', k: 'definition', u: '#' },
+  { id: 'c', t: 'Точная одномерная оптимизация', k: 'method', u: '#' },
+  { id: 'd', t: 'Метод Брента', k: 'stub', u: '#' },
+  { id: 'e', t: 'Метод Фибоначчи', k: 'stub', u: '#' },
+  { id: 'f', t: 'Лекция 5', k: 'lecture', u: '#' },
+  { id: 'g', t: 'Унимодальная функция', k: 'definition', u: '#' },
+  { id: 'h', t: 'Скорость сходимости', k: 'definition', u: '#' },
+  { id: 'i', t: 'Метод парабол', k: 'example', u: '#' } ],
+  links: [['me','a'],['me','b'],['c','me'],['d','me'],['me','e'],['f','me'],['a','g'],['b','h'],['c','i'],['d','i'],['f','c'],['f','i'],['f','g']] };
+</script>
+<script src="site.js"></script>
+</body>
+</html>

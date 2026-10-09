@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="ru" data-pair="stix">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{title}} · {{site_title}}</title>
+<meta name="description" content="{{description}}">
+<link rel="canonical" href="{{canonical}}">
+<script>
+  (function () {
+    try { var t = localStorage.getItem('theme'); if (t) document.documentElement.dataset.theme = t; } catch (e) {}
+    window.MathJax = {
+      tex: { inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\\]']], macros: {{mathjax_macros}} },
+      output: { font: 'mathjax-stix2' }
+    };
+  })();
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=STIX+Two+Text:ital,wght@0,400;0,600;0,700;1,400&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono&display=swap">
+<link rel="stylesheet" href="{{root}}site.css">
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml-nofont.js"></script>
+</head>
+<body>
+
+<header class="topbar">
+  <button class="ib" id="menu" aria-label="Меню"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+  <div class="brand"><a href="{{root}}">{{site_title}}</a></div>
+  <button class="ib" id="msearch" aria-label="Поиск"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg></button>
+  <button class="ib theme-toggle" aria-label="Тема"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg></button>
+</header>
+<div class="scrim" id="scrim"></div>
+
+<div class="shell">
+<aside class="left">
+  <div class="brand"><a href="{{root}}">{{site_title}}</a><small>{{site_author}}</small></div>
+  <div class="search">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+    <input id="q" type="search" placeholder="Поиск по заметкам" autocomplete="off">
+    <kbd>/</kbd>
+  </div>
+  <div id="results" class="results" hidden></div>
+  <nav class="explorer">
+{{explorer}}
+  </nav>
+  <div class="left-foot">
+    <button class="btn theme-toggle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>Тема</button>
+  </div>
+</aside>
+
+<main>
+<article>
+{{article}}
+  <div class="below">
+{{aside}}
+  </div>
+</article>
+</main>
+
+<aside class="right">
+{{aside}}
+</aside>
+</div>
+
+<script>window.SITE = {root: "{{root}}", id: "{{id}}"};</script>
+<script src="{{root}}site.js"></script>
+</body>
+</html>
