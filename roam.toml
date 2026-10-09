@@ -5,7 +5,7 @@
 # (backfill -- заглушка «дописать позже»).
 workflow_tags = ["review", "hub", "lecture", "image", "backfill"]
 # Теги типа заметки.
-type_tags = ["definition", "theorem", "lemma", "example", "method", "property"]
+type_tags = ["definition", "theorem", "lemma", "example", "method", "property", "concept"]
 # Откуда читать LaTeX-макросы (my/notes-latex-macros).
 emacs_macros = "~/.config/emacs/lisp/my-org.el"
 # Тело короче этого (в символах) считается заглушкой.

@@ -1,6 +1,0 @@
-:PROPERTIES:
-:ID:       A41F2186-96FE-49CF-BBBB-E232841ADF7B
-:END:
-#+title: Критерий Армихо-Вульфа
-#+filetags: :theorem:metopt:
-

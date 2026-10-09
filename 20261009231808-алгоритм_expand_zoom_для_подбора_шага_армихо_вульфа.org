@@ -1,0 +1,7 @@
+:PROPERTIES:
+:ID:       029DC119-FA48-470A-8502-E75491432AB0
+:END:
+#+title: Алгоритм Expand & zoom для подбора шага Армихо-Вульфа
+#+filetags: :backfill:metopt:method:
+
+backfill
