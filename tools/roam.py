@@ -4,7 +4,8 @@
 Источник правды -- сами .org файлы (sqlite-база org-roam устаревает, когда
 файлы правятся вне Emacs).  Команды: list, pending, show, context, lint, fix,
 spell, mentions, new, macros, expand, cards, guard, sync, state, pdfmap, grep-pdf,
-handbook (plan/export/build -- PDF-конспект, см. roam_tex.py).
+handbook (plan/export/build -- PDF-конспект, см. roam_tex.py),
+site (plan/export/check/serve -- HTML-сайт, см. roam_html.py).
 
 Коды возврата: 0 -- ок, 1 -- есть находки / отказ, 2 -- ошибка использования.
 """
@@ -732,11 +733,30 @@ def parse_macros_source(src: str) -> dict[str, dict]:
     return macros
 
 
+def parse_macros_tex(src: str) -> dict[str, dict]:
+    """Тот же набор из handbook/common/macros.tex (строки \\notedef / \\DeclareMathOperator)."""
+    macros: dict[str, dict] = {}
+    for line in src.splitlines():
+        s = line.strip()
+        d = _NOTEDEF_RE.match(s)
+        if d:
+            macros["\\" + d.group(1)] = {"args": int(d.group(2) or 0), "body": d.group(3)}
+            continue
+        o = _DMO_RE.match(s)
+        if o:
+            macros["\\" + o.group(1)] = {"args": 0, "body": "\\operatorname{%s}" % o.group(2)}
+    return macros
+
+
 def load_macros(cfg: dict) -> dict[str, dict]:
+    """Макросы из my-org.el; без Emacs (CI) -- из handbook/common/macros.tex."""
     p = Path(cfg["vault"].get("emacs_macros", "")).expanduser()
-    if not p.is_file():
-        return {}
-    return parse_macros_source(p.read_text(encoding="utf-8"))
+    if p.is_file():
+        return parse_macros_source(p.read_text(encoding="utf-8"))
+    fallback = VAULT / "handbook" / "common" / "macros.tex"
+    if fallback.is_file():
+        return parse_macros_tex(fallback.read_text(encoding="utf-8"))
+    return {}
 
 
 def _read_arg(s: str, i: int) -> tuple[str, int]:
@@ -1862,6 +1882,53 @@ def cmd_handbook(a, v: Vault):
     return 2
 
 
+def cmd_site(a, v: Vault):
+    import roam_html
+    site = roam_html.Site(v)
+    out = (Path(a.out) if a.out else VAULT / site.cfg["out"]).resolve()
+    if a.action == "plan":
+        roam_html.print_plan(site)
+        roam_html.print_warnings(site.warnings)
+        return 0
+    if a.action == "check":
+        files, w = roam_html.render_site(site)
+        print(f"страниц {sum(1 for f in files if f.endswith('.html'))}, файлов {len(files)}")
+        roam_html.print_warnings(w)
+        return 1 if w else 0
+    if a.action == "export" and a.note:
+        n = v.resolve(a.note)
+        page = site.pages.get(n.id)
+        if page is None:
+            die(f"«{n.title}» не публикуется (курс вне [site].publish или exclude)")
+        article, toc, w = roam_html.note_article(page, site)
+        sys.stdout.write(article + "\n")
+        roam_html.print_warnings(w)
+        return 0
+    if a.action in ("export", "serve"):
+        files, w = roam_html.render_site(site)
+        summary = roam_html.write_site(files, out, dry_run=a.dry_run)
+        pre = "dry-run: " if a.dry_run else ""
+        print(f"{pre}{out}: создано {len(summary['created'])}, обновлено {len(summary['updated'])}, "
+              f"удалено {len(summary['deleted'])}, без изменений {len(summary['unchanged'])}")
+        if a.dry_run or a.verbose:
+            for k in ("created", "updated", "deleted"):
+                for rel in summary[k]:
+                    print(f"  {k[:3]}  {rel}")
+        roam_html.print_warnings(w)
+        if a.action == "serve":
+            import http.server
+            import functools
+            handler = functools.partial(http.server.SimpleHTTPRequestHandler, directory=str(out))
+            print(f"\nhttp://localhost:{a.port}/  (Ctrl-C чтобы остановить)")
+            with http.server.ThreadingHTTPServer(("127.0.0.1", a.port), handler) as srv:
+                try:
+                    srv.serve_forever()
+                except KeyboardInterrupt:
+                    pass
+        return 0
+    return 2
+
+
 # --------------------------------------------------------------------------
 # cli
 # --------------------------------------------------------------------------
@@ -1977,6 +2044,15 @@ def build_parser() -> argparse.ArgumentParser:
     s.add_argument("--note", help="export: tex одной заметки в stdout")
     s.add_argument("--open", action="store_true", help="build: открыть PDF")
     s.set_defaults(fn=cmd_handbook)
+
+    s = sub.add_parser("site", help="HTML-сайт из заметок: plan | export | check | serve")
+    s.add_argument("action", choices=["plan", "export", "check", "serve"])
+    s.add_argument("--out", help="каталог вывода (по умолчанию [site].out из roam.toml)")
+    s.add_argument("--dry-run", action="store_true", help="export: только сводка")
+    s.add_argument("--note", help="export: HTML статьи одной заметки в stdout")
+    s.add_argument("-v", "--verbose", action="store_true", help="export: перечислить файлы")
+    s.add_argument("--port", type=int, default=8788, help="serve: порт (8788)")
+    s.set_defaults(fn=cmd_site)
     return p
 
 

@@ -7,3 +7,6 @@ __pycache__/
 
 # handbook: сборки latexmk
 handbook/**/build/
+
+# site: HTML-экспорт (roam.py site export)
+/site/

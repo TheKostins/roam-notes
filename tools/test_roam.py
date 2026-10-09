@@ -1,4 +1,5 @@
 """python3 -m unittest tools/test_roam.py  (или: cd tools && python3 -m unittest)"""
+import json
 import sys
 import tempfile
 import unittest
@@ -241,7 +242,7 @@ def tex(body: str, tags: str = ":metopt:theorem:", exported=None, extra_notes=()
 
 
 def other_note():
-    return make_note(":PROPERTIES:\n:ID:       %s\n:END:\n#+title: Другая\n#+filetags: :metopt:definition:\n\nТело другой заметки достаточно длинное.\n"
+    return make_note(":PROPERTIES:\n:ID:       %s\n:END:\n#+title: Другая\n#+filetags: :metopt:definition:\n\nТело другой заметки достаточно длинное, чтобы не быть заглушкой.\n"
                      % AAA, name="20260101000001-другая.org")
 
 
@@ -407,3 +408,121 @@ class MacrosLatexTest(unittest.TestCase):
         self.assertEqual(lines[0], "\\newcommand{\\notedef}[1]{\\providecommand{#1}{}\\renewcommand{#1}}")
         self.assertIn("\\DeclareMathOperator{\\Var}{Var}", lines)
         self.assertEqual(len(lines), 9)
+
+
+# --------------------------------------------------------------------------
+# site: org → HTML (roam_html.py)
+# --------------------------------------------------------------------------
+import roam_html  # noqa: E402
+
+
+class FakeSiteVault(FakeVault):
+    def __init__(self, notes):
+        super().__init__(notes)
+        self.cfg["site"] = {"publish": ["metopt"], "title": "T"}
+        self.courses = {"metopt": {"name": "Метопт", "deck": "Notes::metopt"}}
+        self.type_tags = {"definition", "theorem", "lemma", "example", "method", "property"}
+
+
+def site_of(*notes):
+    real = roam.VAULT
+    roam.VAULT = notes[0].path.parent
+    try:
+        v = FakeSiteVault(list(notes))
+        return roam_html.Site(v), v
+    finally:
+        roam.VAULT = real
+
+
+PAD = "Это тестовая заметка с достаточно длинным телом, чтобы не считаться заглушкой."
+
+
+def article(body: str, tags: str = ":metopt:theorem:", extra=()):
+    text = (":PROPERTIES:\n:ID:       %s\n:END:\n#+title: Тест\n#+filetags: %s\n\n%s\n\n%s\n" % (TEX_ID, tags, PAD, body))
+    n = make_note(text)
+    site, v = site_of(n, *extra)
+    html_out, toc, w = roam_html.note_article(site.pages[TEX_ID], site)
+    return html_out, toc, [x.code for x in w]
+
+
+class HtmlTest(unittest.TestCase):
+    def test_inline(self):
+        out, _, w = article("Пусть $x < y$ и /курсив/, *жирный*, =код=, a -- b.")
+        self.assertIn("\\(x &lt; y\\)", out)
+        self.assertIn("<em>курсив</em>", out)
+        self.assertIn("<strong>жирный</strong>", out)
+        self.assertIn("<code>код</code>", out)
+        self.assertIn("a — b", out)
+        self.assertEqual(w, [])
+
+    def test_statement_box_and_proof(self):
+        out, toc, w = article("Формулировка теоремы $x$.\n\n* Доказательство\nШаг один.\n** Часть\nШаг два.")
+        self.assertIn('<div class="statement theorem">', out)
+        self.assertIn('<details class="proof" id="s1">', out)
+        self.assertIn("<h3>Часть</h3>", out)
+        self.assertEqual(toc, [("s1", "Доказательство")])
+        self.assertEqual(w, [])
+
+    def test_example_not_boxed(self):
+        out, _, _ = article("Длинный пример без рамки, который не является заглушкой.", tags=":metopt:example:")
+        self.assertNotIn('class="statement', out)
+        self.assertIn("<p>Длинный пример", out)
+
+    def test_links(self):
+        other = other_note()
+        out, _, w = article("См. [[id:%s][другую]] и [[id:00000000-0000-0000-0000-000000000000][нет]] и [[https://x.y][сайт]]."
+                            % AAA, extra=(other,))
+        self.assertIn('<a class="id" href="../../metopt/другая/">другую</a>', out)
+        self.assertIn('<span class="id missing">нет</span>', out)
+        self.assertIn('class="ext" href="https://x.y"', out)
+        self.assertEqual(w, ["X03"])
+
+    def test_stub_link_and_page(self):
+        stub = make_note(":PROPERTIES:\n:ID:       %s\n:END:\n#+title: Заглушка\n#+filetags: :metopt:backfill:\n\nbackfill\n"
+                         % AAA, name="20260101000002-заглушка.org")
+        out, _, w = article("См. [[id:%s][заглушку]]." % AAA, extra=(stub,))
+        self.assertIn('<a class="id stub" href="../../metopt/заглушка/">заглушку</a>', out)
+        site, _ = site_of(stub)
+        html_out, _, _ = roam_html.note_article(site.pages[AAA], site)
+        self.assertIn('class="stub-note"', html_out)
+
+    def test_src_and_table(self):
+        out, _, w = article("Текст.\n#+begin_src python\n  x = 1 < 2\n#+end_src\n\n| a | b |\n|---|---|\n| 1 | $x$ |")
+        self.assertIn('<pre><code class="lang-python">x = 1 &lt; 2</code></pre>', out)
+        self.assertIn("<th>a</th>", out)
+        self.assertIn("<td>\\(x\\)</td>", out)
+        self.assertEqual(w, [])
+
+    def test_rem_and_list(self):
+        out, _, _ = article("/Rem/: замечание $y$.\n\n1. первый\n2. второй\n   - вложенный")
+        self.assertIn('<aside class="rem">', out)
+        self.assertIn("<ol>\n<li>первый</li>\n<li>второй\n<ul>\n<li>вложенный</li>\n</ul></li>\n</ol>", out)
+
+    def test_noexport_dropped(self):
+        out, toc, _ = article("Тело.\n* Anki :noexport:\n** Карточка\n*** Front\nсекрет")
+        self.assertNotIn("секрет", out)
+        self.assertEqual(toc, [])
+
+    def test_slug_collision(self):
+        a = make_note(":PROPERTIES:\n:ID:       %s\n:END:\n#+title: Один\n#+filetags: :metopt:definition:\n\nДостаточно длинное тело заметки номер один.\n" % TEX_ID,
+                      name="20260101000001-один.org")
+        b = make_note(":PROPERTIES:\n:ID:       %s\n:END:\n#+title: Один\n#+filetags: :metopt:definition:\n\nДостаточно длинное тело заметки номер два.\n" % AAA,
+                      name="20260102000001-один.org")
+        site, _ = site_of(a, b)
+        urls = {site.pages[TEX_ID].url, site.pages[AAA].url}
+        self.assertEqual(len(urls), 2)
+        self.assertIn("S01", [w.code for w in site.warnings])
+
+    def test_render_site_files(self):
+        n = make_note(":PROPERTIES:\n:ID:       %s\n:END:\n#+title: Тест\n#+filetags: :metopt:definition:\n\nДостаточно длинное тело заметки $x$.\n" % TEX_ID)
+        site, _ = site_of(n)
+        files, w = roam_html.render_site(site)
+        self.assertIn("metopt/тестовая_заметка/index.html", files)
+        for f in ("index.html", "metopt/index.html", "graph/index.html", "tags/index.html", "tags/metopt/index.html",
+                  "graph.json", "search.json", "id-map.json", "site.css", "site.js", ".nojekyll"):
+            self.assertIn(f, files)
+        page = files["metopt/тестовая_заметка/index.html"]
+        self.assertIn('href="../../site.css"', page)
+        self.assertIn("{{", page) if False else self.assertNotIn("{{", page)
+        g = json.loads(files["graph.json"])
+        self.assertEqual([n["id"] for n in g["nodes"]], [TEX_ID])

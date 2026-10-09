@@ -11,6 +11,17 @@ emacs_macros = "~/.config/emacs/lisp/my-org.el"
 # Тело короче этого (в символах) считается заглушкой.
 stub_chars = 40
 
+# HTML-сайт (tools/roam_html.py, `roam.py site`). Вывод -- каталог out (в .gitignore).
+[site]
+title = "Заметки"
+author = "kost"
+base_url = ""                 # https://<user>.github.io/<repo>/ -- для canonical
+publish = ["metopt", "calc"]  # курсы, которые выводятся (порядок = порядок в проводнике)
+exclude = []                  # UUID заметок, которые не публиковать
+show_status = false           # показывать статус проверки (audited/pending)
+out = "site"
+intro = ""
+
 # Курс = тег предмета. Первый не-workflow тег заметки должен быть курсом:
 # из него my/anki-deck-for-buffer выводит деку.
 [courses.metopt]
