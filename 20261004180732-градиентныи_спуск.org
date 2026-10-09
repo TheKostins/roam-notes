@@ -1,0 +1,6 @@
+:PROPERTIES:
+:ID:       359746AF-AD15-4429-B6EB-2034ADCBE0B3
+:END:
+#+title: Градиентный спуск
+#+filetags: :definition:metopt:
+Backfill TODO

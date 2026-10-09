@@ -1,0 +1,9 @@
+:PROPERTIES:
+:ID:       DF2405BF-8B31-47EB-8DEF-B1A88034717C
+:END:
+#+title: Линейная сходимость
+#+filetags: :definition:metopt:
+
+Последовательность $r_k$  -- [[id:C42D2C19-B35F-4C0E-AFEB-D880CBB72176][невязок]]. Сходится линейно, если $\exists C > 0, q \in (0;1)$ такие, что
+$r_k \le Cq^k$ для любого $k \in \N_{0}$
+

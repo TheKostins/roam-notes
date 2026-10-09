@@ -1,0 +1,86 @@
+:PROPERTIES:
+:ID:       85D9D77D-13A2-42E0-BF93-AD085E0134B9
+:END:
+#+title: Сходимость градиентного спуска для сильно выпуклых функций с липшицевым градиентом 
+#+filetags: :theorem:metopt:
+
+Пусть $f \in C^{1,1}_L$ ([[id:7DD1C7AB-1A49-4675-9F21-5A16C717F670][Функции с липшицевым градиентом]]), $\mu$-[[id:22E546FC-186F-4A67-85AA-2C85DCEF9021][сильно выпуклая]].
+$\alpha_k = \frac{1}{L}, d_k=-\nabla f(x_k)$
+
+Тогда $x_k \rightarrow x^{*}$, причем
+\[
+\| x_k -x^{*}\|^2 \le \left( 1 - \frac{\mu}{L} \right)^k \|x_0 -x^{*}\|^2
+\]
+
+* Доказательство
+Из [[id:C3B64D64-D35B-42AC-B683-6736227CBBBC][Сходимость градиентного спуска для функций с Липшицевым градиентом]] можно вывести отдельно, что
+\[
+\frac{1}{2L}\| \nabla f(y)\|^2 \le f(y) - f(x^{*})
+\]
+
+Из [[id:1B5A3E25-56E8-4D5E-9CF6-E2731DA77604][дифференциального критерий сильной выпуклости]] следует, что
+\[
+f(y) \ge f(x) + \left\langle \nabla f(x); y-x \right\rangle + \frac{\mu}{2} \|y-x\|^2
+\]
+
+Пусть $x_{k+1} = x_k -\alpha \nabla f(x_k)$
+
+Тогда
+\[
+\| x_{k+1} - x^{*}\|^2 = \|x_k - x^{*} - \alpha \nabla f(x_k)\|^2
+= \|x_k - x^{*}\|^2 - 2 \left\langle x_k - x^{*}; \alpha \nabla f(x_k) \right\rangle + \| \alpha \nabla f(x_k)\|^2
+\]
+
+
+Заметим, что
+\[
+f(y) \ge f(x) + \left\langle \nabla f(x); y-x \right\rangle + \frac{\mu}{2} \|y-x\|^2 \Leftrightarrow -
+\left\langle \nabla f(x); y-x \right\rangle \ge f(x) - f(y) + \frac{\mu}{2} \|y-x\|^2
+\]
+Применим это для $y:=x^{*}, x:=x_{k}$. 
+\[
+-\left\langle \nabla f(x); x^{*}-x_k \right\rangle \ge f(x_k) - f(x^*) + \frac{\mu}{2} \|x_k-x^*\|^2
+\]
+Тогда давайте занесем минус в скалярное произведение
+\[
+\left\langle \nabla f(x); x_k - x^{*} \right\rangle \ge f(x_k) - f(x^*) + \frac{\mu}{2} \|x_k-x^*\|^2
+\]
+Домножим все неравенство на $-1$
+\[- \left\langle \nabla f(x); x_k - x^{*} \right\rangle \le  f(x^*) - f(x_k) - \frac{\mu}{2} \|x_k-x^*\|^2
+\]
+
+
+
+Так-же заметим, что 
+\[
+\| \alpha \nabla f(x_k)\|^2 = \frac{1}{L^2} \| \nabla f(x_k)\|^2 \]
+По неравенству из спуска
+\[
+\frac{1}{L^2} \| \nabla f(x_k)\|^2   = \frac{2}{L} \cdot \frac{1}{2L} \| \nabla f(x_k)\|
+\le \frac{2}{L} (f(x_k) - f(x^{*}))
+\]
+
+Далее давайте применим эти оценки к $\|x_{k+1} - x^{*}\|^2$
+\begin{multline*}
+\| x_{k+1} - x^{*}\|^2 = \|x_k - x^{*} - \alpha \nabla f(x_k)\|^2
+= \|x_k - x^{*}\|^2 - 2 \left\langle x_k - x^{*}; \alpha \nabla f(x_k) \right\rangle + \| \alpha \nabla f(x_k)\|^2 \\
+\le \|x_k - x^{*}\| + 2\alpha \left( f(x^{*}) - f(x_k) - \frac{\mu}{2} \|x_k - x^{*}\|^2\right)
++ \frac{2}{L} (f(x_k) - f(x^{*}))
+\end{multline*}
+
+Заменим $\alpha = \frac{1}{L}$ и сгруппируем слагаемые.
+\begin{multline*}
+\|x_k - x^{*}\| + \frac{2}{L} \left( f(x^{*}) - f(x_k) - \frac{\mu}{2} \|x_k - x^{*}\|^2\right) + \frac{2}{L} (f(x_k) - f(x^{*})) = \\
+\| x_k - x^{*}\| \left( 1 - \frac{\mu}{L} \right) + \frac{2}{L} (f(x^{*}) - f(x_k) + f(x_k) - f(x^{*})) = \| x_k - x^{*}\| \left( 1 - \frac{\mu}{L} \right) 
+\end{multline*}
+
+Итого получили, что
+\[
+\| x_{k+1} - x^{*}\|^2 \le \|x_k - x^{*}\| \left( 1- \frac{\mu}{L} \right) \le \ ... \le
+\|x_0 - x^{*}\| \left( 1- \frac{\mu}{L} \right)^{k+1}
+\]
+
+Получили [[id:DF2405BF-8B31-47EB-8DEF-B1A88034717C][линейную сходимость]] для невязки $\|x_{k} - x^{*}\|$. $C = \|x_0- x^{*}\|$, $q = 1 -\frac{\mu}{L}$
+
+
+

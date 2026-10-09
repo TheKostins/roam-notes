@@ -1,0 +1,146 @@
+:PROPERTIES:
+:ID:       62FB8C56-D3E8-4C77-9577-0C5F16B9EF1B
+:END:
+#+title: Метопт Лекция 5
+#+filetags: :lecture:
+#+date: 2026-09-29
+
+** Th:
+$f \in C_m^{2,2}, \exists x^{*}, \exists \mu,: \ \nabla^2 f(x^{*}) > \mu$,
+$x_{k+1} = x_k - (\nabla^2 f(x_k))^{-1} \nabla f(x_{k})$
+
+Тогда $R, C:\ \forall \| x- x^{*}\| < R, \| x_k - x_{k+1} \| \le \| x_k - x^{*}\|^2$
+ 
+*** Док-во
+Было $\exists R>\forall \|x-x^{*}\| < R,\ \| (\nabla^2 f(x_1)^{-1})\| \le \frac{2}{\mu}$
+
+\[\| x_{k+1} - x^{*} = \| x_k - (\nabla^2 f(x_k))^{-1} \nabla f(x_k) - x_k \|
+\]
+Заметим, что $\nabla f(x^{*}) = 0$, прибавим его; Пусть $H_k :=  \nabla^2 f(x_k)$
+
+\[= \| H_k^{-1} ( H_k (x_k - x^{*})) - (\nabla f(x) - \nabla f(x^{*})) \|
+\]
+
+Мы знаем, что
+\[ \nabla f(x_k) - \nabla f(x^{*})= \int\limits_0^1 \nabla^2 f(x^{*} + \tau (x_k - x^{*}))(x_k - x^{*})\,d\tau
+\]
+Тогда
+\begin{multline*}
+\| H_k^{-1} ( H_k (x_k - x^{*})) - (\nabla f(x) - \nabla f(x^{*})) \| = \\ \left\|
+H_k^{-1} \left( \int\limits_0^1 \nabla^2 f(x_k) (x_k-x)d\tau -  \int\limits_0^1 \nabla^2 f( x^{*} + \tau (x_k - x^{*}) (x_k - x^{*})\,d\tau \right)\right\|
+\end{multline*}
+
+По норме матрицы  
+
+\begin{multline*}
+\left\| H_k^{-1} \left( \int\limits_0^1 \nabla^2 f(x_k) (x_k-x)d\tau -  \int\limits_0^1 \nabla^2 f( x^{*} + \tau (x_k - x^{*}) (x_k - x^{*})\,d\tau \right)\right\| \\
+\le
+ \| H_k^{-1}\| \cdot \left\| \int\limits_0^1 \nabla^2 f(x_k) (x_k-x)d\tau -  \int\limits_0^1 \nabla^2 f( x^{*} + \tau (x_k - x^{*}) (x_k - x^{*})\,d\tau \right\| \\
+\le \| H_k^{-1}\| \cdot  \int\limits_0^1 \left\| \nabla^2 f(x_k) (x_k-x) -  \nabla^2 f( x^{*} + \tau (x_k - x^{*}) (x_k - x^{*}) \right\|\,d\tau \\
+\le \| H_k^{-1}\| \cdot  \int\limits_0^1 \left\| \nabla^2 f(x_k) -  \nabla^2 f( x^{*} + \tau (x_k - x^{*}))\| \cdot \| x_k - x^{*} \right\|\,d\tau 
+\end{multline*}
+
+Давайте воспользуемся липшицевостью
+\[\le  \| H_k^{-1} \int\limits_0^1 M \| x_k - x^{*} \tau(x_k-x^{*}) \| \cdot \| x_k - x^{*} \|\, d\tau
+\]
+Итого
+\[\|x_{k+1} - x^{*} \| \le \| H_k^{-1} \| \cdot M \int\limits_0^1 (1-\tau) \| x_k-x_{k_1} \|^2 \,d\tau \le \frac{2}{\mu} M
+\cdot \frac{1}{2} \| x_k - x_{k+1} \|^2,\ R^{\prime} = \min  \left( R; \frac{1}{2} \right)\]
+Доказали ли мы cходимость. Применим итерационно.
+\[
+\| x_{k+1} -x^{*} \| \le C \| x_k - x^{*} \|^2 \le C^{k+1} \| x_0 - x^{*} \|^{2^k}
+\]
+
+** Th о глобальной сходимости метода Ньютона
+Пусть $f \in C^{1,1}_L$ -- $\mu$ -сильно выпуклая и $x_{k+1} = x_k - \alpha_k (\nabla f(x_k))^{-1} \nabla f(x_k)$,
+где $\alpha_k$ -- выполняет условие Армиха-Вульфа
+
+Тогда $\nabla f(x_k)\rightarrow 0$, и при этом $\min_{1 \le i \le k} \| \nabla f(x_i) \| \le \frac{C}{\sqrt{k}}$
+
+*** Доказательство
+Достаточно доказать,что
+\[
+\cos^2 \theta_k = \left (\frac{\left\langle \nabla f(x_k); \alpha_k\right\rangle}{\|\nabla f(x_k)\| \cdot \| \alpha_k \|} \right )^2 > c
+\]
+
+
+/Rem/: $f(x_k + 1) \le f(x_k) - \frac{C_1 (1-C_2)}{L} \cos \theta_k \| \nabla f(x_k)\|^2 \le f(x_{k})-\mathrm{const}$
+
+
+Выведем в случае $\alpha_k = (\nabla^2 f(x_k))^{-1} \nabla f(x_k)$
+/Факт/: $A = A^T \Rightarrow \lambda_{\min} A \|x\|^2 \le \left\langle A x; x \right\rangle \le \lambda_{\max} A \| x\|^2$ 
+
+\[\cos^2 \theta_k =  \left(\frac{\left\langle \nabla f (x_k); (\nabla^2 f(x_k))^{-1} \nabla f(x_k) \right\rangle}{\| \nabla f(x_k) \|^2 \| (\nabla^2 f(x_k))^{-1} \nabla f(x_k) \|} \right )^2
+\ge  \frac{\lambda_{\min}^2 (\nabla^2 f(x_k))^{-1} \| \nabla f(x_k) \|^4}{\| \nabla f (x_k )\|^2 \cdot \lambda_{\max}^2 (\nabla^2 f(x_k))^{-1} \| \nabla f(x_k) \|^2}
+\]
+Сократим квадраты $\| \nabla f(x_k) \|$ и воспользуемся оценкой для сильновыпуклой и липш
+
+$\mu E \le \nabla^2 f(x) \le L E,\ \frac{1}{L}E \le ( \nabla^2 f(x_k))^{-1} \le \frac{1}{\mu}E$
+
+** Метод Нестерова 
+
+$x_{k+1} = y_k + \frac{1}{L} \nabla f(y_k)$
+$y_{k+1} = x_{k+1} + \left( \frac{1-q}{1+q} \right) (x_{k+1} - x_k)$
+
+
+** Оценивающие последовательности
+/Def/: Набор функций $\left\{\varphi_k \right\}_0^{\infty}$ и $\left\{ \lambda_k \right\}_0^{\infty},\ \lambda_k \ge 0$, называется
+*оценивающей последовательностью* для функции $f$, если $\lambda_k \rightarrow 0$,
+и $\forall x \in \R^n\ \forall k\  \varphi_k (x) \le (1-\lambda_k) f(x) + \lambda_k \varphi_0(x)$
+
+*** Лемма 1.
+Пусть $\left\{ \varphi_k \right\}$ и $\left\{ \lambda_k \right\}$ -- оценивающая последовательность, $x^{*}$ -- точка оптимума $f$ ($f^{*} = f(x^{*})$)
+и $\exists \left\{ x_k \right\}:\ f(x_k) \le \varphi^{*}_k := \min_x \varphi_k(x)$ 
+Тогда
+\[ f(x_k) - f^{*} \le \lambda_k (\varphi_0 (x^{*}) - f^{*}) \rightarrow 0
+\]
+**** Док-во
+\[f(x_k) \le \varphi_k^{*} \le (1-\lambda_k)f(x^{*}) + \lambda_k \varphi_0 (x^{*}) \Rightarrow f(x_k) - f^{*} \le \lambda_k (\varphi_0 (x^{*}) - f^{*})
+\]
+
+*** Лемма 2 (О конструкции оценивающей последовательности)
+
+Пусть:
+- $f$ -- $\mu$ -сильно выпуклая, $f \in C^1$
+- $\varphi_0$ -- произвольная функция
+- $\left\{ y_n \right\}$ -- произвольная последовательность
+- $\left\{ \alpha_k \right\}$ - последовательность из $\R$, причем $\alpha_k \in (0;1)$ и, $\sum \alpha_k \rightarrow 0$
+
+
+Тогда последовательность $\left\{ \varphi_k \right\}$ и $\lambda_k$ удовлетворяет условиям
+$\lambda_{k+1} = (1-\alpha_k)\lambda_k, \lambda_0=1$,
+\[\varphi_{k+1}(x) = (1-\alpha_k)\varphi_k + \alpha_k \left( f(y_k) + \left\langle \nabla f(y_k); x-yk \right\rangle + \frac{\mu}{2}\|x -y_k\|^2\right)
+\] (*)
+
+Докажем по индукции $\varphi_k (x) \le (1-\lambda_k) f(x) + \lambda_k \varphi_0(x)$
+
+База $k=0$,
+\[\varphi_0(x) \le (1-\lambda_0) f(x) f(x) + \lambda_0 \varphi_0(x) = \varphi_0(x)
+\]
+
+Переход $k \rightarrow k+1$
+$\alpha_k f(x)$ мы получили оценив (*) по $\mu$ сильно выпуклости, так как это описывающая парабола.
+\[\varphi_{k+1}\le (1-\alpha_k)\varphi_k + \alpha_k f(x) = (1 - \lambda_{k+1})f(x) + (1-\alpha_k)\varphi_k(x) + \lambda_k + f(x) (\alpha_k - ( 1- \lambda_{k+1} ))
+\]
+Заметим, что $\alpha_k - (1-\lambda_{k+1}) = \alpha_k - (1- (1- \alpha_k) \lambda_k)$
+\begin{multline*}
+(1 - \lambda_{k+1})f(x) + (1-\alpha_k)\varphi_k(x) + \lambda_k + f(x) (\alpha_k - ( 1- \lambda_{k+1} )) = \\
+(1 - \lambda_{k+1})f(x) + (1-\alpha_k)\varphi_k(x) + \lambda_k + f(x) (\alpha_k - (1- (1- \alpha_k) \lambda_k)) = \\
+(1-\lambda_{k+1}) f(x) + (1-\alpha_k)( \varphi_k - (1- \lambda_k)f(x)) \le (1-\lambda_k)f(x) + (1-\alpha_k)\lambda_k \varphi_0 =  (1-\lambda_k)f(x) + \lambda_{k+1}
+\end{multline*}
+
+Что будет, если $\varphi_0$ -- выпуклая: тогда $\varphi_k$ будут выпуклыми, как линейная комбинация выпуклой и квадратичной формы.
+
+*** Лемма 3
+Пусть $\varphi_0 = \varphi_0^{*} + \frac{\mu}{2} \| x-v_0\|^2$, тогда
+\[
+\varphi_k = \varphi^{*}_k + \frac{\mu}{2} \| x- v_k \|^2
+\], а $v_{k+1} = (1-\alpha_k)v_k + \alpha_ky_k = \frac{\alpha_k}{\mu}\nabla f (y_k)$
+\[\varphi_{k+1}^{*} = (1-\alpha_{k}) + \alpha_k f(y_k) - \frac{\alpha_k^2}{2\mu} \| \nabla f(y_k) \|^2 + \alpha_k (1-\alpha_k)
+\left( \frac{\mu}{2} \| y_k -v_k\|^2 + \left\langle \nabla f(y); v_k -y_k \right\rangle \right)
+\]
+
+
+
+
+

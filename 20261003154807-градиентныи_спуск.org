@@ -1,0 +1,6 @@
+:PROPERTIES:
+:ID:       2A1A2CCA-F6A1-45F3-A657-A88CDE91CEFC
+:END:
+#+title: Градиентный спуск
+#+filetags: :definition:metopt:
+TODO: Backfill

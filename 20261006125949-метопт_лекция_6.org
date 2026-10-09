@@ -1,0 +1,191 @@
+:PROPERTIES:
+:ID:       92788ED9-AC42-43B8-9879-9741979AEF13
+:END:
+#+title: Метопт. Лекция 6
+#+filetags: :metopt:lecture:
+#+date: 2026-10-06
+
+
+** Лемма 3
+Пусть $\varphi_0 = \varphi_0^{*} + \frac{\mu}{2} \| x-v_0\|^2$, тогда
+\[
+\varphi_k = \varphi^{*}_k + \frac{\mu}{2} \| x- v_k \|^2
+\],
+\[v_{k+1} = (1-\alpha_k)v_k + \alpha_ky_k = \frac{\alpha_k}{\mu}\nabla f (y_k)\]
+\[\varphi_{k+1}^{*} = (1-\alpha_{k}) + \alpha_k f(y_k) - \frac{\alpha_k^2}{2\mu} \| \nabla f(y_k) \|^2 + \alpha_k (1-\alpha_k)
+\left( \frac{\mu}{2} \| y_k -v_k\|^2 + \left\langle \nabla f(y); v_k -y_k \right\rangle \right)
+\]
+
+/Rem/: $v_k$ -- центрирование, а $\varphi^{*}_k$ -- наименьшее значение функции.
+Без доказательства 
+
+** Th: Ускоренный метод Нестерова
+
+Пусть $\left\{ \varphi_k \right\}$ -- оценивающая последовательность из леммы ,
+$\alpha_k = \sqrt{\frac{\mu}{L}}$, $f$ -- $\mu$ сильно выпуклая и $f \in C_L^{1,1}$
+
+Введем $y_k = \frac{1}{1+\alpha}(\alpha v_k +x_k)$, $x_{k+1} = y_k - \frac{1}{L} \nabla f(y_k)$
+
+Тогда $f(x_k) \le \varphi^{*}_k$
+
+/Rem/: Лемма 1 дает оценку $f(x_k) - f^{*} \le \lambda_k (\varphi_0 (x^{*}) - f^{*})$, а $\lambda_k = (1-\alpha_k)\lambda_{k-1} = \left(1-\sqrt{\frac{\mu}{L}}\right)\lambda_{k-1} =\left( 1 - \sqrt{\frac{\mu}{L}} \right)^k$
+Тогда $f(x_k) - f^{*} \le \left( 1 - \sqrt{\frac{\mu}{L}} \right)^k (\varphi_0(x^{*}) - f^{*})$
+
+
+/TODO/: Что это должно говорить о сходимости?
+
+*** Доказательство
+Докажем по индукции
+Пусть $f(x_k) \le \varphi^{*}_k$
+
+\begin{multline*}
+\varphi^{*}_{k+1} = (1-\alpha)\underbrace{\varphi_k^{*}}_{\ge f(x_k)} +\, ...\, \ge \\
+(1-\alpha)f(x_k) + \alpha f(x_k) - \frac{\alpha^2}{2\mu} \| \nabla f(y_k)\|^2 + \alpha(1-\alpha) \left(
+\frac{\mu}{2} \| y_k - v_k\|^2 + \left\langle \nabla f(y_k); v_k-y_k \right\rangle
+\right)
+\end{multline*}
+Заметим, что по выпуклости
+\[
+f(x_k) \ge f(y_k) + \left\langle \nabla f(y_k); x_k - y_k \right\rangle
+\]
+А так-же сгруппируем по $\alpha, (1-\alpha)$.
+Еще оценим снизу $\alpha(1-\alpha) \frac{\mu}{2} \| y_k - v_k\|^2 \ge 0$
+тогда получим оценку оригинального неравентсва
+\[
+\ge (1-\alpha) \left\langle \nabla f(y_k); x_k - y_{k} \right\rangle + f(y_k) - \frac{\alpha^2}{2\mu} \|\nabla f(y_k)\|^2 + \alpha(1-\alpha)
+\left\langle \nabla f(y_k); v_k - y_k \right\rangle
+\]
+\[
+= f(y_k) - \frac{\alpha^2}{2\mu} \| \nabla f(y_k)\|^2 + (1-\alpha) \left\langle \nabla f(y_k); x_k - y_k + \alpha v_k - \alpha y_k \right\rangle
+\]
+
+Было: $x_{k+1}= y_k - \frac{1}{L} \nabla f(y_k) \Rightarrow f(x_{k+1}) \le f(y_k) - \frac{1}{2L} \| \nabla f(y_k)\|^2$
+(Из сходимости град. спуска для функции с липш. градиентом)
+Заметим, $\alpha = \sqrt{\frac{\mu}{L}} \Rightarrow \frac{\alpha^2}{2\mu} = \frac{1}{2L}$ (это дает оценку левой  части)
+
+Теперь посмотрим на скалярное произведение 
+\[
+y_k = \frac{1}{1 + \alpha}(\alpha v_k + x_k) \Rightarrow x_k + \alpha v_k - (1+\alpha)y_k = x_k + \alpha v_k - \alpha v_k - x_k = 0
+\]
+Оно занулилось
+
+итого $\ge f(x_{k+1}) + 0$
+
+Осталось только определить $\varphi_0^{*}$ и $x_0$ для град спуска.
+$\varphi^{*}_0 \ge f(x_0)$, $\varphi_0^{*} = f(x_0)$
+
+
+
+*** Замечания
+1. Если $v_k$ выразить из блока в скалярном произведении и подставить в левый блок в конце доказательства, то можно избавиться от $v_k$: $x_{k+1} = y_k - \frac{1}{L} \nabla f(y_k)$, $y_k = x_k + \beta (x_k - x_{k-1})$, где $\beta = \frac{1-\alpha}{1+\alpha}$
+2. Метод тяжелого шарика $x_{k+1} = x_k - \alpha_k \nabla f(x_k) + \beta (x_k - x_{k-1})$ (градиент считается в точке с инерцией)
+
+
+** Th: Метод тяжелого шарика (Без Доказательства)
+Пусть $x^{*}$ -- невырожденная точка минимума $f$, причем $\mu E \le \nabla^2f(x) \le LE$
+
+Тогда при $0 \le \beta < 1$, $0 < \alpha < \frac{2(1+\beta)}{L}$ найдется
+\[
+\varepsilon > 0:\ \forall x_1, x_0: (\|x_0 - x^{*}\| < \varepsilon \wedge \|x_1 - x^{*}\| < \varepsilon)
+\]
+Для низ Метод шарика сходится $(x_k \rightarrow x^{*})$, причем $\|x_k - x^{*}\| \le C(\delta) (q + \delta)^{k},\ q \in[0;1], \delta \in [0; 1-q]$
+
+При этом если
+\[
+\alpha = \frac{4}{\sqrt{L} + \sqrt{\mu}}, \beta = \left( \frac{\sqrt{L} - \sqrt{M}}{\sqrt{L} + \sqrt{\mu}} \right)^2 \Rightarrow q^{*} = \frac{\sqrt{L}-\sqrt{\mu}}{\sqrt{L} + \sqrt{\mu}}
+\]
+Без доказательства
+
+* Квазиньютоновские методы
+** Метод Ньютона
+\[
+x_{k+1} = x_k - (\nabla^2 f(x_k))^{-1} \nabla f(x_k)
+\]
+
+Плюсы:
++ Сверхлинейная сходимость
++ афинная инвариантность
+
+
+Минусы
+- Память для Гессиана
+- Обращение матрицы
+
+
+** Квазиньютоновские методы в общем
+Тут мы используем последовательность матриц, а не просто матрицу вторых производных
+\[
+x_{k+1} = x_k - B_k^{-1} \nabla f(x_k),\quad f(x) \approx f(x_k) + \left\langle \nabla f(x_k); x -x_k \right\rangle + \frac{1}{2} \left\langle B_k(x-x_k); x-x_k \right\rangle
+\]
+
+Хотим, чтобы $B_{k+1} = F(B_k, ...) \Rightarrow B_k^{-1} = G (B_k^{-1}, ...)$
+
+(Лектор говорит, что мы пока ничего не выводим и манипулируем фактами)
+
+Что ествественно для $B_k$?
+- $B_k = B_k^T$
+- $B_k > 0$
+- $\nabla f(x_{k+1}) - \nabla f(x_k) = \int\limits_0^1 \nabla^2 f (x_k + \tau (x_{k+1} - x_k))\, d \tau (x_{k+1} - x_k)$
+  Пусть $d_k := x_{k+1} - x_k$, $y_k = \nabla f(x_{k+1}) - \nabla f(x_k)$. Тогда $y_k = B_{k+1}d_k$ -- условие касательной.
+  (Так мы пытаемся связать приращение аргумента с приращением производной)
+
+
+Неизвестна $B_k$ это $\frac{n(n+1)}{2}$ неизвестных;
+У нас есть условие положительности -- $n$ неравентсв (критерий Сильвестра)
+А так-же условие касательной ($n$ уравнений)
+
+Получается система не полная, тогда появляется разнообразие для методов.
+
+** Пример 1: BFGS
+Идея: Хотим получить положительную определенность матрицы. Как это получить? Давайте конструировать ее так, чтобы это свойство появилось.
+Если $B_k = J_kJ_k^T$ -- симметрична, при этом $\det J_k \ne 0 \Rightarrow B_k > 0$
+$J_{k+1}$ ищется как решение задачи:
+\[
+\left\{\begin{array}{l}
+\|J_{k+1} - J_k\| \rightarrow \min \\
+y_k = J_{k+1}J_{k+1}^Td_k
+\end{array}\right.
+\]
+
+** Пример 2: SR1
+Пусть $B_{k+2} = B_k + \sigma_k v_k v_k^T$, где $\sigma_kv_kv_k^T$ -- низкоранговое 
+
+** Замечание 1: Необходимые условия для условия секущих.
+Знаем, что $y_k = B_{k+1}d_k$, тогда домножим на $d_k^T$
+$d_k^Ty_k = d_k^TB_{k+1}d_k > 0$
+Значение: Если не выполнено $d_k^T y_k > 0$, то условие секущих не выполнено.
+** Замечание 2
+Если выполнено одно из двух условий:
+- $f$ -- $\mu$ -сильно выпуклая
+- $x_{k+1} = x_k  -\alpha_k B_k^{-1} \nabla f(x_k), \alpha_k = A \cdot B$
+
+
+Тогда $d^Ty_k > 0$.
+Док-во: упражнение
+
+
+** Теорема Условие Денниса-Морре
+Пусть $f \in C^{2,2}_M, \nabla f (x^{*}) > 0$  и $x_{k+1} = x_k - B^{-1}_k \nabla f(x_k)$
+И пусть $x_k \rightarrow x^{*}$
+Тогда $x_k$ сходится локально сверхлинейно $\Leftrightarrow$ $\lim \frac{\|(B_k - \nabla^2 f(x_k)) d_k\|}{\| d_k \|} = 0$
+
+*** Доказательство
+Только $\Leftarrow$
+
+$f \in C_M^{2,2}, \nabla^2f(x^{*}) > 0 \Rightarrow \exists R,C\ \forall \|x_0 -x^{*}\| < R\ x_{k+1} = x_k - (\nabla^2 f(x_k))^{-1}\nabla f(x_k)$ -- сходится сверхлинейно; ( $\|x_{k+1} - x^{*}\| \le C \| x_k - x^{*}\|^2$)
+
+Пусть
+\[
+d_k = x_{k+1} - x_k = - B_k^{-1} \nabla f(x_k)
+\]
+$d_k^N$ -- ньютоновский спуск.
+Докажем, что  $d_k - d_k^N = o(d_k)$
+
+\[
+d_k - d_k^N = (\nabla^2 f(x_k))^{-1} (\nabla^2 f(x_k) d_k + \nabla f (x_k))
+\]
+
+  
+
+
+

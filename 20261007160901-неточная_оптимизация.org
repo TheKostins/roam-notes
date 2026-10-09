@@ -1,0 +1,8 @@
+:PROPERTIES:
+:ID:       A818191F-B1A6-492C-B38D-5369D169161C
+:END:
+#+title: Неточная одномерная оптимизация
+#+filetags: :metopt:concept:
+
+Методы:
+- 

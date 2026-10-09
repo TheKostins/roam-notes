@@ -1,0 +1,53 @@
+:PROPERTIES:
+:ID:       C143295F-C422-4FEE-95AD-3D6B620BC0E8
+:END:
+#+title: Существование шага для Армихо-Вульфа
+#+filetags: :theorem:metopt:
+
+Пусть $\phi: \R \rightarrow \R \in C^1(\R)$  (непрерывно [[id:957FA09D-8883-40A5-B4C7-237D9F815A42][дифференцируема]]);
+Требуем выполнения [[id:5330B23D-95DD-4D5D-B4A3-63EBADB1DB7D][Условий Армихо-Вульфа]] (HУО, считаем что $a = 0$).
+Следовательно, требуем $\phi^{\prime}(0) < 0$, $0 < c_1 < c_2 < 1$,
+
+Тогда:  $\exists \alpha^{\prime}$ такое, что
+1. $\phi(\alpha^{\prime}) < \phi(0) + c_1\phi^{\prime}(0)\alpha^{\prime}$
+2. $|\phi^{\prime}(\alpha^{\prime})| < c_2 |\phi^{\prime}(0)|$
+
+
+* Доказательство
+** Выполнение пункта 1
+Пусть $g(\alpha):= \phi(0) + c_1 \phi^{\prime}(0)\alpha$  -- прямая из 1 условия
+Заведем $\psi(\alpha) = \phi(\alpha) - g(\alpha) = \phi(\alpha) - \phi(0) - c_1 \phi^{\prime}(0)\alpha$ (функция оценки неравенства)
+Разложим $\phi$ в ряд Тейлора в точке 0. $\phi(\alpha) = \phi(0) + \phi^{\prime}(0) \alpha + o(\alpha)$
+Итого
+\[
+\psi(\alpha) = \phi(0) + \phi^{\prime}(0)\alpha + o(\alpha) - \phi(0) - c_1\phi^{\prime}(0)\alpha = (1 - c_1)\phi^{\prime}(0)\alpha + o(\alpha)
+\]
+Рассмотрим
+\[
+\lim_{\alpha \rightarrow 0} \frac{\psi(\alpha)}{\alpha} = \lim_{\alpha\rightarrow0} ((1-c_1)\phi^{\prime}(0) + o(1)) = (1-c_1)\phi^{\prime}(0) < 0
+\]
+Причем, несложно заметить, что $\psi(0) = 0$. Тогда предел $\lim_{\alpha \rightarrow 0} \frac{\psi(\alpha)}{\alpha} = \frac{\psi(\alpha) - \psi(0)}{\alpha} = \psi^{\prime}(0)$ .
+
+Получается, что производная в нуле отрицательная, следовательно $\psi$ -- убывает на некотором промежутке $(0;\delta)$. И так как $\psi(0) = 0$, то $\exists a^{\prime} \in (0; \delta)$, такое что $\psi(\alpha^{\prime}) < 0$.
+
+Получили выполнение неравенства в $\alpha^{\prime}$ 
+
+** Выполнение пункта 2
+Заметим, что $\phi$ -- ограничена снизу, а $g$ убывает монотонно; Следовательно, при достаточно большом $\alpha$, $g$ станет меньше $\phi$, а тогда будет верно, что $\psi = \phi - g$ станет положительной. 
+
+Мы получили, что $\psi(\alpha^{\prime}) < 0$ и $\exists \beta:\  \psi(\beta) > 0$. Так как $\psi$ -- непрерывна, как разность двух непрерывных, то по теореме о промежуточном значении у $\psi$ есть хотя-бы один положительный ноль.
+Они положительные так как $\alpha^{\prime} > 0$, а $\beta > \alpha^{\prime}$.
+
+Пусть $\alpha^{\prime\prime}$ -- самый близкий к $\alpha^{\prime}$ ноль $\psi$. Тогда имеем $\psi(0) = \psi(\alpha^{\prime\prime}) = 0$. Причем $\psi$ -- дифференцируема (очев). Тогда по теореме Ролля: $\exists c \in (0; \alpha^{\prime\prime}):\ \psi^{\prime}(c) = 0$
+
+Рассмотрим $\psi^{\prime}(c)$:
+\[
+\psi^{\prime}(c) = \phi^{\prime}(c) - c_1\phi^{\prime}(0) = 0
+\]
+Тогда
+\[| \phi^{\prime}(c) | = c_1 | \phi^{\prime}(0) | < c_2 | \phi^{\prime}(0) |
+\]
+$c_1 < c_2$ по условию
+
+** Подходит ли $c$ для 1 пункта?
+Мы знаем, что $c \in (0; \alpha^{\prime\prime})$. А еще, что $\alpha^{\prime\prime}$ -- самый первый ноль $\psi$, после $0$. Из этого следует, что на $(0 ; \alpha^{\prime\prime})$. В доказательстве для 1 пункта мы поняли, что $\psi^{\prime}(0) < 0$ и $\psi(0) = 0$. Из этих утверждений следует, что  на $(0;\alpha^{\prime\prime})$ $\psi < 0 \Rightarrow \psi(c) < 0$. 
