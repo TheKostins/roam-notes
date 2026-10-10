@@ -657,8 +657,8 @@
   },
   "85D9D77D-13A2-42E0-BF93-AD085E0134B9": {
    "audited": {
-    "body_hash": "25afe5c4578c34e9",
-    "commit": "64c1d82",
+    "body_hash": "298e0549d12f07fd",
+    "commit": "263a0a5",
     "date": "2026-10-10",
     "open": 0,
     "report": "2026-10-10-0953-audit.md"
