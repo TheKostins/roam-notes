@@ -5,7 +5,7 @@
 #+filetags: :metopt:theorem:
 
 Пусть $f: \R^n \to \R$, $f \in C_L^{1,1}$ -- [[id:7DD1C7AB-1A49-4675-9F21-5A16C717F670][Функции с липшицевым градиентом]], и $f^{*} = \inf_x f(x) > - \infty$.
-Возьмем $\alpha_k = \frac{1}{L}$, а $x_{k+1} = x_k - \alpha_k \nabla f (x_k)$ (см. [[id:2A1A2CCA-F6A1-45F3-A657-A88CDE91CEFC][Градиентный спуск]])
+Возьмем $\alpha_k = \frac{1}{L}$, а $x_{k+1} = x_k - \alpha_k \nabla f (x_k)$ (см. [[id:BEEE81AD-13FC-4846-A160-C72E31760BEE][Градиентный спуск]])
 
 Тогда: Градиентный спуск сходится -- означает, что $\| \nabla f(x_k)\| \rightarrow 0$, причем
 \[
