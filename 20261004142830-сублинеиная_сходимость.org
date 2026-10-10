@@ -5,3 +5,16 @@
 #+filetags: :metopt:definition:
 
 Последовательность $r_k \to 0$ -- [[id:C42D2C19-B35F-4C0E-AFEB-D880CBB72176][невязок]] -- сходится /сублинейно/, если она не сходится [[id:DF2405BF-8B31-47EB-8DEF-B1A88034717C][линейно]]. Пример: $r_k = \frac{1}{k}$.
+
+* Anki :noexport:
+:PROPERTIES:
+:ANKI_DECK: Notes::metopt
+:END:
+** Сублинейная сходимость: определение
+:PROPERTIES:
+:ANKI_NOTE_TYPE: Basic
+:END:
+*** Front
+Метопт. Когда последовательность невязок \(r_k \to 0\) сходится сублинейно?
+*** Back
+Если она не сходится линейно: нет \(C \gt 0\), \(q \in (0;1)\) с \(r_k \le Cq^k\). Пример: \(r_k = 1/k\).

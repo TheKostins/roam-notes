@@ -39,3 +39,32 @@ r_n \le C q^n \Rightarrow \sqrt[n]{r_n} \le C^{\frac{1}{n}} q \rightarrow q < 1
 \]
 Но при этом $\limsup \sqrt[n]{r_n} = a = 1$.
 Противоречие
+
+* Anki :noexport:
+:PROPERTIES:
+:ANKI_DECK: Notes::metopt
+:END:
+** Тест корней: формулировка
+:PROPERTIES:
+:ANKI_NOTE_TYPE: Cloze
+:END:
+*** Text
+Метопт. Тест корней: \(r_k \gt 0\), \(r_k \to 0\), \(a = \limsup_n \sqrt[n]{r_n}\). Если \(0 \le a \lt 1\) — сходимость {{c1::линейная}}; \(a = 0\) — {{c2::сверхлинейная}}; \(a = 1\) — {{c3::сублинейная}}.
+*** Back Extra
+Условие \(r_k \to 0\) даёт \(a \le 1\), случаи исчерпывающие.
+** Тест корней: идея для a < 1
+:PROPERTIES:
+:ANKI_NOTE_TYPE: Basic
+:END:
+*** Front
+Метопт. Тест корней: как из \(\limsup \sqrt[n]{r_n} = a \lt 1\) получить \(r_n \le Cq^n\)?
+*** Back
+Берём \(a \lt q \lt 1\); с некоторого \(N\) \(\sqrt[n]{r_n} \lt q\), то есть \(r_n \lt q^n\); для \(n \lt N\) берём \(C = \max(1, \max_{n \lt N} r_n/q^n)\).
+** Тест корней: идея для a = 1
+:PROPERTIES:
+:ANKI_NOTE_TYPE: Basic
+:END:
+*** Front
+Метопт. Тест корней: почему при \(\limsup \sqrt[n]{r_n} = 1\) сходимость не линейная?
+*** Back
+Если бы \(r_n \le Cq^n\), то \(\sqrt[n]{r_n} \le C^{1/n} q \to q \lt 1\), и \(\limsup \le q \lt 1\) — противоречие.

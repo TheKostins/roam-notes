@@ -63,3 +63,24 @@ f(x - \alpha \nabla f(x)) <  f(x - 0 \cdot \nabla f(x)) - c_1 \alpha \| \nabla f
 \[\alpha \ge \min \left\{ \alpha_0; \frac{2\beta(1-c_1)}{L} \right\}\]
 
 То есть $\alpha$ это шаг порядка $\frac{1}{L}$.
+
+* Anki :noexport:
+:PROPERTIES:
+:ANKI_DECK: Notes::metopt
+:END:
+** Backtracking: алгоритм
+:PROPERTIES:
+:ANKI_NOTE_TYPE: Basic
+:END:
+*** Front
+Метопт. Как работает backtracking для подбора шага и почему он останавливается?
+*** Back
+Начать с \(\alpha_0\); пока нарушено условие Армихо \(\phi(\alpha) \gt \phi(0) + c_1\alpha\phi'(0)\), умножать \(\alpha\) на \(\beta \in (0;1)\). Останавливается, так как Армихо выполнено на всём \((0;\delta)\), а \(\beta^k\alpha_0 \to 0\).
+** Backtracking: оценка шага
+:PROPERTIES:
+:ANKI_NOTE_TYPE: Cloze
+:END:
+*** Text
+Метопт. Backtracking для \(f \in C^{1,1}_L\), \(d = -\nabla f(x)\): условие Армихо выполнено при \(\alpha \lt\) {{c1::\(2(1 - c_1)/L\)}}, поэтому найденный шаг \(\alpha \ge\) {{c2::\(\min\{\alpha_0;\ 2\beta(1 - c_1)/L\}\)}} — порядка \(1/L\).
+*** Back Extra
+Из усиленного неравенства \(f(x - \alpha\nabla f(x)) \le f(x) - \alpha(1 - L\alpha/2)\|\nabla f(x)\|^2\); предыдущий шаг \(\alpha/\beta\) был отвергнут.
