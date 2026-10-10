@@ -14,19 +14,11 @@
 
 * Доказательство
 
-Воспользуемся [[id:379E4CAD-A44B-4631-8DAF-F3DC708EAEDE][Усиленное неравенство для функций с липшицевым градиентом]]
+По [[id:FFEA1F1D-B70C-4B4A-9386-8344A2A3BBC4][оценке убывания за шаг]] при $x = x_k$, $y = x_{k+1} = x_k - \alpha \nabla f(x_k)$:
 \[
-\forall y,x \in E\ f(y) \le f(x) + \left\langle \nabla f(x); y-x \right\rangle + \frac{L}{2} \|y-x\|^2
+f(x_{k+1}) \le f(x_k) - \alpha \left( 1 - \frac{L\alpha}{2} \right) \|\nabla f(x_k)\|^2
 \]
-Пусть $x = x_k$, а $y$ можно обозначить несколькими способами: $y = x_{k+1} = x_k - \alpha_k \nabla f(x) = x- \alpha \nabla f(x)$, тогда
-\begin{multline*}
-f(y) \le f(x) + \left\langle \nabla f(x); x - \alpha \nabla f(x) - x \right\rangle + \frac{L}{2} \|x - \alpha \nabla f(x) - x\|^2 \\
-= f(x) - \alpha \|\nabla f(x)\|^2 + \frac{\alpha^2L}{2} \|\nabla f(x)\|^2 = f(x) - \alpha \left(1  - \frac{L\alpha}{2}\right) \| \nabla f(x) \|^2
-\end{multline*}
-
-Получили $f(y) \le f(x) - \alpha \left( 1 - \frac{L\alpha}{2} \right) \|\nabla f(x)\|^2$
-Множитель $\alpha(1 - L\alpha/2)$ максимален при $\alpha = 1/L$ -- это и есть выбор шага.
-Мы обозначали, что $y = x_{k+1}, x = x_k$. Давайте подставим еще и  $\alpha = \frac{1}{L}$
+Подставим $\alpha = \frac{1}{L}$
 Тогда
 \[
 f(x_{k+1}) \le f(x_k) - \frac{1}{L} \left( 1 - \frac{1}{2}  \right) \|\nabla f(x_k)\|^2 = f(x_k) - \frac{1}{2L} \| \nabla f(x_k)\|^2
