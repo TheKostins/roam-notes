@@ -607,8 +607,8 @@
   },
   "85D9D77D-13A2-42E0-BF93-AD085E0134B9": {
    "audited": {
-    "body_hash": "bdc4a107614bd0ac",
-    "commit": "968e301",
+    "body_hash": "25afe5c4578c34e9",
+    "commit": "64c1d82",
     "date": "2026-10-10",
     "open": 0,
     "report": "2026-10-10-0953-audit.md"
@@ -672,8 +672,8 @@
   },
   "950F2C19-C2C7-42CD-9CDF-0B9AC03A3DC8": {
    "audited": {
-    "body_hash": "695c14ccb05508b8",
-    "commit": "968e301",
+    "body_hash": "0c279e92f336652f",
+    "commit": "64c1d82",
     "date": "2026-10-10",
     "open": 0,
     "report": "2026-10-10-0953-audit.md"
@@ -782,11 +782,11 @@
   },
   "BEEE81AD-13FC-4846-A160-C72E31760BEE": {
    "audited": {
-    "body_hash": "a91e31f73db2487a",
-    "commit": "d0f456f",
-    "date": "2026-10-09",
+    "body_hash": "65aff4a6562e0ba7",
+    "commit": "64c1d82",
+    "date": "2026-10-10",
     "open": 0,
-    "report": "2026-10-09-2310-audit.md"
+    "report": "2026-10-10-0953-audit.md"
    },
    "title": "Виды градиентного спуска"
   },
@@ -827,11 +827,11 @@
   },
   "C3B64D64-D35B-42AC-B683-6736227CBBBC": {
    "audited": {
-    "body_hash": "ccbde9b8c09e4ad2",
-    "commit": "d0f456f",
-    "date": "2026-10-09",
+    "body_hash": "c5f1b150053ef277",
+    "commit": "64c1d82",
+    "date": "2026-10-10",
     "open": 0,
-    "report": "2026-10-09-2310-audit.md"
+    "report": "2026-10-10-0953-audit.md"
    },
    "title": "Сходимость градиентного спуска для функций с липшицевым градиентом"
   },
