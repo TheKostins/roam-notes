@@ -32,6 +32,8 @@
 ** Условия Армихо-Вульфа: формулы
 :PROPERTIES:
 :ANKI_NOTE_TYPE: Cloze
+:ANKI_NOTE_ID: 1791617146767
+:ANKI_NOTE_HASH: 0782a44c92d474979cc152793353fb63
 :END:
 *** Text
 Метопт. \(\phi \in C^1\), \(\phi'(a) \lt 0\), \(0 \lt c_1, c_2 \lt 1\). Условие Армихо: {{c1::\(\phi(\alpha_k) \lt \phi(a) + c_1 (\alpha_k - a)\, \phi'(a)\)}}. Условие Вульфа: {{c2::\(|\phi'(\alpha_k)| \lt c_2 |\phi'(a)|\)}}.
@@ -40,6 +42,8 @@
 ** Условия Армихо-Вульфа: смысл
 :PROPERTIES:
 :ANKI_NOTE_TYPE: Basic
+:ANKI_NOTE_ID: 1791617146769
+:ANKI_NOTE_HASH: 4dc86b030674062892973ffabc81f869
 :END:
 *** Front
 Метопт. Какой смысл у условия Армихо и у условия Вульфа?
@@ -48,6 +52,8 @@
 ** Условия Армихо-Вульфа: сильное и слабое
 :PROPERTIES:
 :ANKI_NOTE_TYPE: Basic
+:ANKI_NOTE_ID: 1791617146772
+:ANKI_NOTE_HASH: e3105278611d57f9ace82b50fd395ce8
 :END:
 *** Front
 Метопт. Чем сильное условие Вульфа отличается от слабого?

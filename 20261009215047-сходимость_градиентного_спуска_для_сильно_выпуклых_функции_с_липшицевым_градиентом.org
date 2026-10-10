@@ -95,6 +95,8 @@ f(y) \ge f(x) + \left\langle \nabla f(x); y-x \right\rangle + \frac{\mu}{2} \|y-
 ** Сходимость ГС (сильно выпуклые): формулировка
 :PROPERTIES:
 :ANKI_NOTE_TYPE: Basic
+:ANKI_NOTE_ID: 1791617146795
+:ANKI_NOTE_HASH: a74132c2656edd74a40353c9b4a82320
 :END:
 *** Front
 Метопт. Сходимость ГС для \(\mu\)-сильно выпуклой \(f \in C^{1,1}_L\) с шагом \(1/L\): что утверждается?
@@ -103,6 +105,8 @@ f(y) \ge f(x) + \left\langle \nabla f(x); y-x \right\rangle + \frac{\mu}{2} \|y-
 ** Сходимость ГС (сильно выпуклые): идея доказательства
 :PROPERTIES:
 :ANKI_NOTE_TYPE: Basic
+:ANKI_NOTE_ID: 1791617146798
+:ANKI_NOTE_HASH: 5e2f5f93fa277068cbd2c8540ecec485
 :END:
 *** Front
 Метопт. Идея доказательства сходимости ГС для сильно выпуклых функций (шаг \(1/L\)).
@@ -111,6 +115,8 @@ f(y) \ge f(x) + \left\langle \nabla f(x); y-x \right\rangle + \frac{\mu}{2} \|y-
 ** Сходимость ГС (сильно выпуклые): два неравенства
 :PROPERTIES:
 :ANKI_NOTE_TYPE: Basic
+:ANKI_NOTE_ID: 1791617146801
+:ANKI_NOTE_HASH: 53364651473964c2d6d87434b485a4a1
 :END:
 *** Front
 Метопт. Какие два неравенства используются в доказательстве сходимости ГС для сильно выпуклых функций?
@@ -119,6 +125,8 @@ f(y) \ge f(x) + \left\langle \nabla f(x); y-x \right\rangle + \frac{\mu}{2} \|y-
 ** Сходимость ГС (сильно выпуклые): константы
 :PROPERTIES:
 :ANKI_NOTE_TYPE: Basic
+:ANKI_NOTE_ID: 1791617146803
+:ANKI_NOTE_HASH: 948fa8332f2033fd79327b88591ca5da
 :END:
 *** Front
 Метопт. ГС для сильно выпуклой \(f\): с какими \(C, q\) линейно сходится невязка \(\|x_k - x^{*}\|^2\), и почему \(q \lt 1\)?

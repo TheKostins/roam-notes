@@ -71,6 +71,8 @@ f(x_{k+1}) \le f(x_k) - \frac{1}{L} \left( 1 - \frac{1}{2}  \right) \|\nabla f(x
 ** Сходимость ГС (C11): формулировка
 :PROPERTIES:
 :ANKI_NOTE_TYPE: Basic
+:ANKI_NOTE_ID: 1791617146675
+:ANKI_NOTE_HASH: c059ed43e41cb3b2ceaaa70d66a8416e
 :END:
 *** Front
 Метопт. Сходимость градиентного спуска для \(f \in C^{1,1}_L\), \(f^{*} = \inf f \gt -\infty\), шаг \(1/L\): что утверждается?
@@ -79,6 +81,8 @@ f(x_{k+1}) \le f(x_k) - \frac{1}{L} \left( 1 - \frac{1}{2}  \right) \|\nabla f(x
 ** Сходимость ГС (C11): один шаг
 :PROPERTIES:
 :ANKI_NOTE_TYPE: Cloze
+:ANKI_NOTE_ID: 1791617146681
+:ANKI_NOTE_HASH: 29b9e23ee3703ae81cb90b7a96b5662d
 :END:
 *** Text
 Метопт. Для \(f \in C^{1,1}_L\) один шаг ГС с \(\alpha = 1/L\) даёт {{c1::\(f(x_{k+1}) \le f(x_k) - \frac{1}{2L}\|\nabla f(x_k)\|^2\)}}.
@@ -87,6 +91,8 @@ f(x_{k+1}) \le f(x_k) - \frac{1}{L} \left( 1 - \frac{1}{2}  \right) \|\nabla f(x
 ** Сходимость ГС (C11): идея доказательства
 :PROPERTIES:
 :ANKI_NOTE_TYPE: Basic
+:ANKI_NOTE_ID: 1791617146685
+:ANKI_NOTE_HASH: ba3140c61b904aa7b69b74cb029fa1e6
 :END:
 *** Front
 Метопт. Идея доказательства сходимости ГС для \(f \in C^{1,1}_L\) (шаг \(1/L\)).
@@ -95,6 +101,8 @@ f(x_{k+1}) \le f(x_k) - \frac{1}{L} \left( 1 - \frac{1}{2}  \right) \|\nabla f(x
 ** Сходимость ГС (C11): что именно сходится
 :PROPERTIES:
 :ANKI_NOTE_TYPE: Basic
+:ANKI_NOTE_ID: 1791617146690
+:ANKI_NOTE_HASH: 587904c2d3e20ff9a338a6a83c70dd91
 :END:
 *** Front
 Метопт. В теореме о сходимости ГС для \(f \in C^{1,1}_L\): для чего получена оценка \(c/\sqrt{k}\) и обязана ли норма градиента убывать монотонно?

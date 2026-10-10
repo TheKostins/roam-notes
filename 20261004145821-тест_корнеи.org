@@ -47,6 +47,8 @@ r_n \le C q^n \Rightarrow \sqrt[n]{r_n} \le C^{\frac{1}{n}} q \rightarrow q < 1
 ** Тест корней: формулировка
 :PROPERTIES:
 :ANKI_NOTE_TYPE: Cloze
+:ANKI_NOTE_ID: 1791617146719
+:ANKI_NOTE_HASH: c086009a527dedb1946cddd62bae1175
 :END:
 *** Text
 Метопт. Тест корней: \(r_k \gt 0\), \(r_k \to 0\), \(a = \limsup_n \sqrt[n]{r_n}\). Если \(0 \le a \lt 1\) — сходимость {{c1::линейная}}; \(a = 0\) — {{c2::сверхлинейная}}; \(a = 1\) — {{c3::сублинейная}}.
@@ -55,6 +57,8 @@ r_n \le C q^n \Rightarrow \sqrt[n]{r_n} \le C^{\frac{1}{n}} q \rightarrow q < 1
 ** Тест корней: идея для a < 1
 :PROPERTIES:
 :ANKI_NOTE_TYPE: Basic
+:ANKI_NOTE_ID: 1791617146722
+:ANKI_NOTE_HASH: 37a8513f50687e1930bb2a98a8eba1a6
 :END:
 *** Front
 Метопт. Тест корней: как из \(\limsup \sqrt[n]{r_n} = a \lt 1\) получить \(r_n \le Cq^n\)?
@@ -63,6 +67,8 @@ r_n \le C q^n \Rightarrow \sqrt[n]{r_n} \le C^{\frac{1}{n}} q \rightarrow q < 1
 ** Тест корней: идея для a = 1
 :PROPERTIES:
 :ANKI_NOTE_TYPE: Basic
+:ANKI_NOTE_ID: 1791617146725
+:ANKI_NOTE_HASH: 375e9847add6044383a8625c3b62fe98
 :END:
 *** Front
 Метопт. Тест корней: почему при \(\limsup \sqrt[n]{r_n} = 1\) сходимость не линейная?

@@ -16,6 +16,8 @@ $r_k \le Cq^k$ для любого $k \in \N_{0}$
 ** Линейная сходимость: определение
 :PROPERTIES:
 :ANKI_NOTE_TYPE: Basic
+:ANKI_NOTE_ID: 1791617146704
+:ANKI_NOTE_HASH: d9d602018cf0f0250e8a7ac9a8b7c710
 :END:
 *** Front
 Метопт. Когда последовательность невязок \(r_k\) сходится линейно?
@@ -24,6 +26,8 @@ $r_k \le Cq^k$ для любого $k \in \N_{0}$
 ** Линейная сходимость: почему «линейная»
 :PROPERTIES:
 :ANKI_NOTE_TYPE: Basic
+:ANKI_NOTE_ID: 1791617146708
+:ANKI_NOTE_HASH: 58f5d4d5f8546cd8d5dbb243b8630019
 :END:
 *** Front
 Метопт. Почему сходимость \(r_k \le Cq^k\) называют линейной?

@@ -29,6 +29,8 @@
 ** Метод Брента: устройство
 :PROPERTIES:
 :ANKI_NOTE_TYPE: Basic
+:ANKI_NOTE_ID: 1791617146753
+:ANKI_NOTE_HASH: 5f10401934aeac2e1209b3abac9c779f
 :END:
 *** Front
 Метопт. Как устроен метод Брента (одномерная оптимизация)?

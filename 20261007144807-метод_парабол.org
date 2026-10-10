@@ -40,6 +40,8 @@ u = \frac{-b}{2a} = x_2 - \frac{(x_2 - x_1)^2(f_2 - f_3) - (x_2 - x_3)^2(f_2 - f
 ** Метод парабол: идея
 :PROPERTIES:
 :ANKI_NOTE_TYPE: Basic
+:ANKI_NOTE_ID: 1791617146756
+:ANKI_NOTE_HASH: 206c96eaf8360bd797ee34b019ac0c76
 :END:
 *** Front
 Метопт. В чём идея метода парабол (одномерная оптимизация)?
@@ -48,6 +50,8 @@ u = \frac{-b}{2a} = x_2 - \frac{(x_2 - x_1)^2(f_2 - f_3) - (x_2 - x_3)^2(f_2 - f
 ** Метод парабол: вершина в отрезке
 :PROPERTIES:
 :ANKI_NOTE_TYPE: Basic
+:ANKI_NOTE_ID: 1791617146759
+:ANKI_NOTE_HASH: db6cc443e9ef365df5a8e3fbe87f5c5f
 :END:
 *** Front
 Метопт. Метод парабол: почему при \(f_2 \lt f_1\), \(f_2 \lt f_3\) вершина параболы \(u \in [x_1; x_3]\)?
@@ -56,6 +60,8 @@ u = \frac{-b}{2a} = x_2 - \frac{(x_2 - x_1)^2(f_2 - f_3) - (x_2 - x_3)^2(f_2 - f
 ** Метод парабол: сходимость
 :PROPERTIES:
 :ANKI_NOTE_TYPE: Basic
+:ANKI_NOTE_ID: 1791617146761
+:ANKI_NOTE_HASH: 03ddc09be86b8268d2976fb6b259c2c3
 :END:
 *** Front
 Метопт. Какова сходимость метода парабол и в чём его слабость?

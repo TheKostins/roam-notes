@@ -28,6 +28,8 @@
 ** Условие Армихо: интерпретация
 :PROPERTIES:
 :ANKI_NOTE_TYPE: Basic
+:ANKI_NOTE_ID: 1791617146775
+:ANKI_NOTE_HASH: 499134533d3075f976c4fc271fee4e11
 :END:
 *** Front
 Метопт. Как геометрически прочитать условие Армихо \(\phi(\alpha_k) \lt \phi(a) + c_1(\alpha_k - a)\phi'(a)\)?

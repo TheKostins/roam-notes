@@ -18,6 +18,8 @@
 ** Неточная одномерная оптимизация: определение
 :PROPERTIES:
 :ANKI_NOTE_TYPE: Basic
+:ANKI_NOTE_ID: 1791617146764
+:ANKI_NOTE_HASH: 81cb4fff1c8a2e96ce97bffd52e5a01c
 :END:
 *** Front
 Метопт. Что такое неточная одномерная оптимизация при выборе шага?

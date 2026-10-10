@@ -27,6 +27,8 @@
 ** Условие Вульфа: интерпретация
 :PROPERTIES:
 :ANKI_NOTE_TYPE: Basic
+:ANKI_NOTE_ID: 1791617146777
+:ANKI_NOTE_HASH: 523b47a7b98067e0a00e733b9c414de1
 :END:
 *** Front
 Метопт. Как геометрически прочитать условие Вульфа \(|\phi'(\alpha_k)| \lt c_2|\phi'(a)|\)?

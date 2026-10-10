@@ -71,6 +71,8 @@ f(x - \alpha \nabla f(x)) <  f(x - 0 \cdot \nabla f(x)) - c_1 \alpha \| \nabla f
 ** Backtracking: алгоритм
 :PROPERTIES:
 :ANKI_NOTE_TYPE: Basic
+:ANKI_NOTE_ID: 1791617146791
+:ANKI_NOTE_HASH: 8bd48c1cc5878798657e600cae819f10
 :END:
 *** Front
 Метопт. Как работает backtracking для подбора шага и почему он останавливается?
@@ -79,6 +81,8 @@ f(x - \alpha \nabla f(x)) <  f(x - 0 \cdot \nabla f(x)) - c_1 \alpha \| \nabla f
 ** Backtracking: оценка шага
 :PROPERTIES:
 :ANKI_NOTE_TYPE: Cloze
+:ANKI_NOTE_ID: 1791617146793
+:ANKI_NOTE_HASH: 89411d94c9ba30177c91d314076754ed
 :END:
 *** Text
 Метопт. Backtracking для \(f \in C^{1,1}_L\), \(d = -\nabla f(x)\): условие Армихо выполнено при \(\alpha \lt\) {{c1::\(2(1 - c_1)/L\)}}, поэтому найденный шаг \(\alpha \ge\) {{c2::\(\min\{\alpha_0;\ 2\beta(1 - c_1)/L\}\)}} — порядка \(1/L\).

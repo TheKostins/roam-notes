@@ -16,6 +16,8 @@
 ** Сверхлинейная сходимость: определение
 :PROPERTIES:
 :ANKI_NOTE_TYPE: Basic
+:ANKI_NOTE_ID: 1791617146715
+:ANKI_NOTE_HASH: d45e449f7b382a27a0d0cddace87eaef
 :END:
 *** Front
 Метопт. Когда последовательность невязок \(r_k\) сходится сверхлинейно?

@@ -24,6 +24,8 @@ x_{k+1} = x_k + \alpha_kd_k
 ** Виды градиентного спуска: схема
 :PROPERTIES:
 :ANKI_NOTE_TYPE: Cloze
+:ANKI_NOTE_ID: 1791617146729
+:ANKI_NOTE_HASH: 213bee88b9d46291be790886ecf95532
 :END:
 *** Text
 Метопт. Общая схема метода спуска: \(x_{k+1} = x_k + \alpha_k d_k\), где \(d_k\) — {{c1::направление спуска}}, \(\alpha_k\) — {{c2::шаг}}; градиентный спуск — случай {{c3::\(d_k = -\nabla f(x_k)\)}}.
@@ -32,6 +34,8 @@ x_{k+1} = x_k + \alpha_kd_k
 ** Виды градиентного спуска: выбор шага
 :PROPERTIES:
 :ANKI_NOTE_TYPE: Cloze
+:ANKI_NOTE_ID: 1791617146732
+:ANKI_NOTE_HASH: 3987c6451d8af34ecfa09f0bc23e32ba
 :END:
 *** Text
 Метопт. Шаг \(\alpha_k\) в методе спуска выбирают: фиксированным; {{c1::точной одномерной оптимизацией \(\alpha_k = \arg\min_{\alpha \gt 0} f(x_k + \alpha d_k)\)}}; {{c2::неточно — например, по условиям Армихо-Вульфа}}.

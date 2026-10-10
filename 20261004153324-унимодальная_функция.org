@@ -13,6 +13,8 @@
 ** Унимодальная функция: определение
 :PROPERTIES:
 :ANKI_NOTE_TYPE: Basic
+:ANKI_NOTE_ID: 1791617146734
+:ANKI_NOTE_HASH: 162a217073e8388fba366abcc7ff2ec0
 :END:
 *** Front
 Метопт. Когда функция \(\phi\colon [a;b] \to \mathbb{R}\) называется унимодальной на \([a;b]\)?

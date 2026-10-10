@@ -21,6 +21,8 @@
 ** Теорема Ролля: формулировка
 :PROPERTIES:
 :ANKI_NOTE_TYPE: Basic
+:ANKI_NOTE_ID: 1791617146815
+:ANKI_NOTE_HASH: 65a58f555081c24efe03a9fe4a785301
 :END:
 *** Front
 Матан. Теорема Ролля: условия и заключение.
@@ -29,6 +31,8 @@
 ** Теорема Ролля: идея доказательства
 :PROPERTIES:
 :ANKI_NOTE_TYPE: Basic
+:ANKI_NOTE_ID: 1791617146818
+:ANKI_NOTE_HASH: 67c0953f13a0a4987b99c68961b1c8e7
 :END:
 *** Front
 Матан. Идея доказательства теоремы Ролля.

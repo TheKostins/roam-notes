@@ -16,6 +16,8 @@
 ** Порядок метода: определение
 :PROPERTIES:
 :ANKI_NOTE_TYPE: Basic
+:ANKI_NOTE_ID: 1791617146806
+:ANKI_NOTE_HASH: ee67984517a59ef2d5e974cc84d53b2a
 :END:
 *** Front
 Метопт. Что такое метод оптимизации \(k\)-го порядка?
