@@ -730,6 +730,16 @@
    },
    "title": "Точная одномерная оптимизация"
   },
+  "923C47F1-1761-45C7-BA2F-DDDEB653B507": {
+   "audited": {
+    "body_hash": "20b7ff9291bd1a94",
+    "commit": "38d0a80",
+    "date": "2026-10-10",
+    "open": 0,
+    "report": "2026-10-10-0953-audit.md"
+   },
+   "title": "Метопт. Лекция 3: Начало оптимизаций"
+  },
   "94DADA28-87E4-4E36-B289-8415BCE750FC": {
    "audited": {
     "body_hash": "4bfb31b484f3b759",
@@ -942,8 +952,8 @@
   },
   "C3B64D64-D35B-42AC-B683-6736227CBBBC": {
    "audited": {
-    "body_hash": "d5c9460d4137e548",
-    "commit": "9d7eaee",
+    "body_hash": "e16aa3acf182f751",
+    "commit": "38d0a80",
     "date": "2026-10-10",
     "open": 0,
     "report": "2026-10-10-0953-audit.md"
@@ -1042,11 +1052,11 @@
   },
   "F16921E1-67C5-4EDE-A55F-AD11D8257A69": {
    "audited": {
-    "body_hash": "ac63d74a87388b8f",
-    "commit": "d0f456f",
-    "date": "2026-10-09",
+    "body_hash": "d20fc92042fc9fc4",
+    "commit": "38d0a80",
+    "date": "2026-10-10",
     "open": 0,
-    "report": "2026-10-09-2310-audit.md"
+    "report": "2026-10-10-0953-audit.md"
    },
    "cards": {
     "body_hash": "ac63d74a87388b8f",
@@ -1079,6 +1089,16 @@
     "date": "2026-10-10"
    },
    "title": "Формула Тейлора с остаточным членом Пеано"
+  },
+  "FFEA1F1D-B70C-4B4A-9386-8344A2A3BBC4": {
+   "audited": {
+    "body_hash": "7d72493f0803fe99",
+    "commit": "38d0a80",
+    "date": "2026-10-10",
+    "open": 0,
+    "report": "2026-10-10-0953-audit.md"
+   },
+   "title": "Оценка убывания за шаг градиентного спуска"
   }
  },
  "version": 1
