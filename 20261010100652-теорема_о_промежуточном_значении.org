@@ -1,0 +1,7 @@
+:PROPERTIES:
+:ID:       6ADBECA2-157A-4C66-B4C4-F5F2AF0899AE
+:END:
+#+title: Теорема о промежуточном значении
+#+filetags: :calc:theorem:backfill:
+
+backfill

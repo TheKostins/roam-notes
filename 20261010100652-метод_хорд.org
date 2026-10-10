@@ -1,0 +1,7 @@
+:PROPERTIES:
+:ID:       4890DA70-921C-483F-BF3B-7D66161F056E
+:END:
+#+title: Метод хорд
+#+filetags: :metopt:method:backfill:
+
+backfill

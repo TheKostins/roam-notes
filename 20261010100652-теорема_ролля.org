@@ -1,0 +1,7 @@
+:PROPERTIES:
+:ID:       85DC4D66-3AE3-4619-BBEC-9A8113EBF85F
+:END:
+#+title: Теорема Ролля
+#+filetags: :calc:theorem:backfill:
+
+backfill

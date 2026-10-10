@@ -1,0 +1,7 @@
+:PROPERTIES:
+:ID:       F7C9E077-9CAB-4149-83B4-67923B49E2F6
+:END:
+#+title: Формула Тейлора с остаточным членом Пеано
+#+filetags: :calc:theorem:backfill:
+
+backfill
