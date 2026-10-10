@@ -18,7 +18,7 @@
 \[
 \forall y,x \in E\ f(y) \le f(x) + \left\langle \nabla f(x); y-x \right\rangle + \frac{L}{2} \|y-x\|^2
 \]
-[[id:85D9D77D-13A2-42E0-BF93-AD085E0134B9][Сходимость градиентного спуска для сильно выпуклых функций с липшицевым градиентом]]Пусть $x = x_k$, а $y$ можно обозначить несколькими способами: $y = x_{k+1} = x_k - \alpha_k \nabla f(x) = x- \alpha \nabla f(x)$, тогда
+Пусть $x = x_k$, а $y$ можно обозначить несколькими способами: $y = x_{k+1} = x_k - \alpha_k \nabla f(x) = x- \alpha \nabla f(x)$, тогда
 \begin{multline*}
 f(y) \le f(x) + \left\langle \nabla f(x); x - \alpha \nabla f(x) - x \right\rangle + \frac{L}{2} \|x - \alpha \nabla f(x) - x\|^2 \\
 = f(x) - \alpha \|\nabla f(x)\|^2 + \frac{\alpha^2L}{2} \|\nabla f(x)\|^2 = f(x) - \alpha \left(1  - \frac{L\alpha}{2}\right) \| \nabla f(x) \|^2
