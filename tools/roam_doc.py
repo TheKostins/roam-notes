@@ -119,6 +119,85 @@ class Quote:
     line: int
 
 
+@dataclass
+class Code:
+    lang: str | None
+    text: str
+    line: int
+
+
+@dataclass
+class Table:
+    rows: list[list[str] | None]   # None = разделитель
+    line: int
+
+
+BEGIN_RE = re.compile(r"^[ \t]*#\+begin_(src|example)(?:[ \t]+(\S+))?", re.I)
+END_RE = re.compile(r"^[ \t]*#\+end_(src|example)[ \t]*$", re.I)
+
+
+def segment_ext(lines: list[str], base: int, ctx: "Ctx") -> list:
+    """segment() плюс блоки кода (#+begin_src / #+begin_example) и org-таблицы
+    (Code / Table).  Общий для HTML- и LaTeX-экспорта."""
+    out: list = []
+    buf: list[str] = []
+    buf_base = base
+    i, n = 0, len(lines)
+    # строки внутри display-математики: там `|…|` -- не таблица
+    text = "\n".join(lines)
+    frags, _ = scan_math(text)
+    in_disp = [False] * n
+    for f in frags:
+        if f.kind in ("display", "env", "ddollar"):
+            a = text.count("\n", 0, f.start)
+            b = text.count("\n", 0, max(f.end - 1, f.start))
+            for k in range(a, b + 1):
+                in_disp[k] = True
+
+    def flush() -> None:
+        nonlocal buf
+        if any(l.strip() for l in buf):
+            out.extend(segment(buf, buf_base, ctx))
+        buf = []
+
+    while i < n:
+        m = BEGIN_RE.match(lines[i])
+        if m:
+            flush()
+            j = i + 1
+            while j < n and not END_RE.match(lines[j]):
+                j += 1
+            body = lines[i + 1:j]
+            ind = min((len(l) - len(l.lstrip()) for l in body if l.strip()), default=0)
+            out.append(Code(m.group(2) if m.group(1).lower() == "src" else None,
+                            "\n".join(l[ind:] for l in body), base + i))
+            i = j + 1
+            buf_base = base + i
+            continue
+        if (lines[i].lstrip().startswith("|") and not in_disp[i]
+                and (base + i) not in ctx.note.excluded):
+            flush()
+            j = i
+            rows: list = []
+            while j < n and lines[j].lstrip().startswith("|") and not in_disp[j]:
+                t = lines[j].strip()
+                if re.match(r"^\|[-+|]*\|?$", t):
+                    rows.append(None)
+                else:
+                    rows.append([c.strip() for c in t.strip("|").split("|")])
+                j += 1
+            out.append(Table(rows, base + i))
+            i = j
+            buf_base = base + i
+            continue
+        if not buf:
+            buf_base = base + i
+        buf.append(lines[i])
+        i += 1
+    flush()
+    return out
+
+
 def indent_of(s: str) -> int:
     return len(s) - len(s.lstrip(" \t"))
 
@@ -427,11 +506,11 @@ def lecture_plan(note: Note, vault: Vault) -> tuple[Plan, list[DocWarning]]:
                         if not links:
                             ctx.warn("X10", sub.line + 1, f"пункт плана без ссылки: {sub.lines[0].strip()[:60]}")
                             continue
-                        nid, desc, annot = links[0]
-                        sec.items.append(PlanItem(nid, desc, annot, sub.line + 1))
+                        for nid, desc, annot in links:
+                            sec.items.append(PlanItem(nid, desc, annot, sub.line + 1))
                 if direct and not it.children:
-                    nid, desc, annot = direct[0]
-                    sec.items.append(PlanItem(nid, desc, annot, it.line + 1))
+                    for nid, desc, annot in direct:
+                        sec.items.append(PlanItem(nid, desc, annot, it.line + 1))
                 plan.sections.append(sec)
             else:
                 if not plan.sections or plan.sections[-1].title is not None:
@@ -439,8 +518,8 @@ def lecture_plan(note: Note, vault: Vault) -> tuple[Plan, list[DocWarning]]:
                 if not direct:
                     ctx.warn("X10", it.line + 1, f"пункт плана без ссылки: {it.lines[0].strip()[:60]}")
                     continue
-                nid, desc, annot = direct[0]
-                plan.sections[-1].items.append(PlanItem(nid, desc, annot, it.line + 1))
+                for nid, desc, annot in direct:
+                    plan.sections[-1].items.append(PlanItem(nid, desc, annot, it.line + 1))
 
     h = find_heading(note, "вне конспекта")
     if h is not None:

@@ -23,6 +23,7 @@ import roam
 from roam import LINK_RE, Note, Vault, blank_ranges, mask_links, scan_math
 import roam_doc
 from roam_doc import (
+    Code, Table, BEGIN_RE, END_RE, segment_ext,  # noqa: F401
     DocWarning, Ctx, Para, Rem, ListBlock, Quote, segment, protect,
     EMPH_RE, BOLD_RE, DASH_RE, sentence_breaks, own_body, children,
     HEADING_KIND, TOK_RE, Plan, lecture_plan, lectures_of, rel_of,
@@ -272,68 +273,7 @@ def prose_to_html(text: str, ctx: HCtx, line0: int = 0) -> str:
 # blocks
 # --------------------------------------------------------------------------
 
-@dataclass
-class Code:
-    lang: str | None
-    text: str
-    line: int
-
-
-@dataclass
-class Table:
-    rows: list[list[str] | None]   # None = разделитель
-    line: int
-
-
-def segment_html(lines: list[str], base: int, ctx: HCtx) -> list:
-    """segment() из roam_doc плюс блоки кода и таблицы, которых LaTeX-экспорт
-    не поддерживает (там они X09)."""
-    out: list = []
-    buf: list[str] = []
-    buf_base = base
-    i, n = 0, len(lines)
-
-    def flush() -> None:
-        nonlocal buf
-        if any(l.strip() for l in buf):
-            out.extend(segment(buf, buf_base, ctx))
-        buf = []
-
-    while i < n:
-        m = BEGIN_RE.match(lines[i])
-        if m:
-            flush()
-            j = i + 1
-            while j < n and not END_RE.match(lines[j]):
-                j += 1
-            body = lines[i + 1:j]
-            ind = min((len(l) - len(l.lstrip()) for l in body if l.strip()), default=0)
-            out.append(Code(m.group(2) if m.group(1).lower() == "src" else None,
-                            "\n".join(l[ind:] for l in body), base + i))
-            i = j + 1
-            buf_base = base + i
-            continue
-        if lines[i].lstrip().startswith("|") and (base + i) not in ctx.note.excluded:
-            flush()
-            j = i
-            rows: list = []
-            while j < n and lines[j].lstrip().startswith("|"):
-                s = lines[j].strip()
-                if re.match(r"^\|[-+|]*\|?$", s):
-                    rows.append(None)
-                else:
-                    rows.append([c.strip() for c in s.strip("|").split("|")])
-                j += 1
-            out.append(Table(rows, base + i))
-            i = j
-            buf_base = base + i
-            continue
-        if not buf:
-            buf_base = base + i
-        buf.append(lines[i])
-        i += 1
-    flush()
-    return out
+segment_html = segment_ext   # Code / Table теперь в roam_doc
 
 
 FIG_RE = re.compile(r"^\s*\[\[file:[^\]]+\](?:\[[^\]]*\])?\]\s*$")

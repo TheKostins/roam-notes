@@ -349,10 +349,56 @@ class TexBlockTest(unittest.TestCase):
         for bad in ("Anki", "ANKI_", ":PROPERTIES:", "Карточка"):
             self.assertNotIn(bad, out)
 
-    def test_unknown_heading(self):
+    def test_property_heading(self):
         out, w = tex("Опр.\n* Свойство: X\nтекст\n** Доказательство\nдок.")
         self.assertIn("\\begin{proposition}[{Свойство: X}]\\label[proposition]{note:%s:1}\n  текст\n\\end{proposition}\n\n\\begin{proof}\n  док.\n\\end{proof}" % TEX_ID, out)
+        self.assertNotIn("X01", w)
+
+    def test_unknown_heading_paragraph(self):
+        out, w = tex("Опр.\n* Почему это работает?\nтекст")
+        self.assertIn("\\paragraph*{Почему это работает?}\nтекст", out)
+        self.assertNotIn("proposition", out)
         self.assertIn("X01", w)
+
+    def test_interpretation_heading_is_remark(self):
+        out, w = tex("Опр.\n* Интерпретация.\nтекст")
+        self.assertIn("\\begin{remark}[Интерпретация]\n  текст\n\\end{remark}", out)
+        self.assertEqual(w, [])
+
+    def test_code_block(self):
+        out, w = tex("Алгоритм:\n#+begin_src python\n  x = 1  # комментарий\n  y = x\n#+end_src\nДалее.")
+        self.assertIn("\\begin{Verbatim}[fontsize=\\small]\n  x = 1  # комментарий\n  y = x\n  \\end{Verbatim}", out)
+        self.assertNotIn("X09", w)
+
+    def test_table(self):
+        out, w = tex("Таблица:\n| Класс | Невязка |\n|---|---|\n| $f \\in C$ | $\\norm{x}$ |\nКонец.")
+        self.assertIn("\\begin{tabular}{l l}\n    \\hline\n    Класс & Невязка \\\\\n    \\hline\n    $f \\in C$ & $\\norm{x}$ \\\\\n    \\hline\n  \\end{tabular}", out)
+        self.assertNotIn("X09", w)
+
+    def test_table_not_in_display_math(self):
+        out, w = tex("Пусть\n\\[\n|x| \\le 1\n\\]\nДалее.")
+        self.assertNotIn("tabular", out)
+        self.assertIn("|x| \\le 1", out)
+
+    def test_image_link(self):
+        out, w = tex("Текст.\n\n[[file:images/armijo.png]]\n\nДалее.")
+        self.assertIn("\\begin{center}\n    \\includegraphics[width=.8\\linewidth]{../../images/armijo.png}\n  \\end{center}", out)
+        self.assertNotIn("X04", w)
+
+    def test_concept_env(self):
+        out, w = tex("Понятие.", tags=":metopt:concept:")
+        self.assertIn("\\begin{concept}[{Тест}]\\label[concept]{note:%s}" % TEX_ID, out)
+        self.assertNotIn("X11", w)
+
+    def test_theorem_title_prefix_kept_for_lowercase(self):
+        n = make_note(":PROPERTIES:\n:ID:       %s\n:END:\n#+title: Теорема о промежуточном значении\n#+filetags: :calc:theorem:\n\nТекст.\n" % TEX_ID)
+        real = roam.VAULT
+        roam.VAULT = n.path.parent
+        try:
+            out, _ = roam_tex.note_to_tex(n, FakeVault([n]), {TEX_ID})
+        finally:
+            roam.VAULT = real
+        self.assertIn("\\begin{theorem}[{Теорема о промежуточном значении}]", out)
 
     def test_example_heading(self):
         out, _ = tex("S.\n* Пример\nПусть $C_1$.")
@@ -375,7 +421,7 @@ LECTURE = """:PROPERTIES:
    - [[id:08CF7113-4709-4C4F-A0E7-4A2ED595BD7F][Пересечение]] — свойство 1.1.1
    - Конус — /нет заметки/
 2. Выпуклые функции (1.2)
-   - [[id:1CA14F2C-637F-41DE-9E97-72075D19E97F][Выпуклая функция]] — опр. 1.4
+   - [[id:1CA14F2C-637F-41DE-9E97-72075D19E97F][Выпуклая функция]], [[id:AAAAAAAA-0000-0000-0000-000000000001][Другая]] — опр. 1.4
 
 * Вне конспекта
 - [[id:14FE7B45-F304-4C15-8086-3535589FA04A][Сумма Минковского]] — для свойства 1.1.3
@@ -394,7 +440,9 @@ class PlanTest(unittest.TestCase):
         self.assertEqual([i.id for i in plan.sections[0].items],
                          ["316B5BFA-8B9F-4267-9086-D6593AAB5F9B", "08CF7113-4709-4C4F-A0E7-4A2ED595BD7F"])
         self.assertEqual(plan.sections[0].items[0].annot, "опр. 1.1")
-        self.assertEqual(len(plan.sections[1].items), 1)
+        self.assertEqual([i.id[:8] for i in plan.sections[1].items], ["1CA14F2C", "AAAAAAAA"])
+        self.assertEqual(plan.sections[1].items[0].annot, None)
+        self.assertEqual(plan.sections[1].items[1].annot, "опр. 1.4")
         self.assertEqual([i.id[:8] for i in plan.appendix], ["14FE7B45", "5D688904", "F2942E98"])
         self.assertEqual(plan.appendix[2].annot, "для 1.1.2")
         self.assertEqual([x.code for x in w], ["X10"])

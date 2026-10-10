@@ -75,6 +75,7 @@
   \par\addvspace{10pt}%
 }
 \NewDocumentEnvironment{example}{ O{} }{\begin{_plainthm}{Пример}[#1]}{\end{_plainthm}}
+\NewDocumentEnvironment{concept}{ O{} }{\begin{_plainthm}{Понятие}[#1]}{\end{_plainthm}}
 \NewDocumentEnvironment{remark}{ O{} }
 {%
   \par\addvspace{6pt}%
@@ -92,3 +93,10 @@
 % Шаги доказательства: \proofpart{⇒} -- крупный шаг, \proofstep{…} -- подшаг.
 \NewDocumentCommand{\proofpart}{m}{\par\medskip\noindent{\itshape #1.}\par\nobreak\smallskip\noindent\ignorespaces}
 \NewDocumentCommand{\proofstep}{m}{\par\smallskip\noindent{\itshape #1.}\enspace\ignorespaces}
+
+% Повтор заметки в другой главе: ссылка на первый экземпляр вместо второго.
+% #1 -- id заметки, #2 -- заголовок
+\NewDocumentCommand{\noteagain}{m m}{%
+  \par\addvspace{6pt}\noindent
+  {\itshape См.}\ \hyperref[note:#1]{\textbf{#2}} (стр.~\pageref{note:#1}).%
+  \par\addvspace{8pt}}

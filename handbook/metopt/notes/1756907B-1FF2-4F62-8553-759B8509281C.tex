@@ -19,16 +19,14 @@
   \]
 \end{definition}
 
-\begin{proposition}[{Производная вдоль прямой}]\label[proposition]{note:1756907B-1FF2-4F62-8553-759B8509281C:1}
-  Пусть $x \in E$, $h \in \R^n$ и $g(t) = f(x + th)$ (для тех $t$, при которых $x + th \in E$). Тогда
-  \[
-  g^{\prime}(t) = \left\langle \nabla f(x + th); h \right\rangle
-  \]
-\end{proposition}
+\paragraph*{Производная вдоль прямой}
+Пусть $x \in E$, $h \in \R^n$ и $g(t) = f(x + th)$ (для тех $t$, при которых $x + th \in E$). Тогда
+\[
+g^{\prime}(t) = \left\langle \nabla f(x + th); h \right\rangle
+\]
 
-\begin{proof}
-  $g = f \circ l$, где $l(t) = x + th$, $l: \R \rightarrow \R^n$ и $l^{\prime}(t) = h$ (столбец $n \times 1$). По правилу дифференцирования композиции:
-  \[
-  g^{\prime}(t) = f^{\prime}(l(t)) l^{\prime}(t) = (\nabla f(x + th))^T h = \left\langle \nabla f(x + th); h \right\rangle
-  \]
-\end{proof}
+\proofpart{Доказательство}
+$g = f \circ l$, где $l(t) = x + th$, $l: \R \rightarrow \R^n$ и $l^{\prime}(t) = h$ (столбец $n \times 1$). По правилу дифференцирования композиции:
+\[
+g^{\prime}(t) = f^{\prime}(l(t)) l^{\prime}(t) = (\nabla f(x + th))^T h = \left\langle \nabla f(x + th); h \right\rangle
+\]
