@@ -647,11 +647,11 @@
   },
   "8EDDABAC-D2BE-4EC9-8297-DBAC52F70D28": {
    "audited": {
-    "body_hash": "8cd401a46290d923",
-    "commit": "d0f456f",
-    "date": "2026-10-09",
+    "body_hash": "296c8df052df2753",
+    "commit": "f30b93d",
+    "date": "2026-10-10",
     "open": 0,
-    "report": "2026-10-09-2310-audit.md"
+    "report": "2026-10-10-0953-audit.md"
    },
    "title": "Точная одномерная оптимизация"
   },
