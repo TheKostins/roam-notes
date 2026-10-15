@@ -1,0 +1,28 @@
+:PROPERTIES:
+:ID:       C0ED5501-CFC6-42BA-A53A-1B346CBA545D
+:END:
+#+title: Метод Ньютона
+#+filetags: :definition:metopt:
+
+Метод Ньютона: $x_{k+1}= x_k- \left( \nabla^2 f(x) \right)^{-1} \nabla f(x)$
+- [[id:E65D8936-717A-43EB-B5EE-49EF70A7FE7A][Локальная сходимость метода Ньютона]]
+* Идея за формулой 
+Что хорошо аппроксимирует нашу функцию? Рад Тейлора!
+\[
+f(x+d) \approx f(x) + \left\langle \nabla f(x); d \right\rangle + \frac{1}{2} \left\langle \nabla^2 f(x)d; d \right\rangle
+\]
+
+Далее давайте оптимизировать нашу аппроксимацию
+\[
+m(d):= f(x) + \left\langle \nabla f(x); d \right\rangle + \frac{1}{2} \left\langle \nabla^2 f(x)d; d \right\rangle
+\]
+
+Нас интересует ноль производной
+\[
+\nabla m(d) = \nabla f(x) + \nabla^2f(x)d = 0 \Leftrightarrow d = - \left( \nabla^2 f(x) \right)^{-1} \nabla f(x)
+\]
+
+
+/Rem/: Если $\nabla^2 f(x) > 0$, тогда она обратима и $- \left\langle (\nabla^2 f(x) )^{-1}  \nabla f(x); \nabla f(x) \right\rangle =\left\langle -(\nabla^2 f(x) )^{-1}  \nabla f(x); \nabla f(x) \right\rangle < 0$
+
+

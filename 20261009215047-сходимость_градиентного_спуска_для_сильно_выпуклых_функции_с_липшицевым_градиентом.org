@@ -47,12 +47,8 @@ f(y) \ge f(x) + \left\langle \nabla f(x); y-x \right\rangle + \frac{\mu}{2} \|y-
 \left\langle \nabla f(x_k); x_k - x^{*} \right\rangle \ge f(x_k) - f(x^*) + \frac{\mu}{2} \|x_k-x^*\|^2
 \]
 Домножим все неравенство на $-1$
-\[
-- \left\langle \nabla f(x_k); x_k - x^{*} \right\rangle \le  f(x^*) - f(x_k) - \frac{\mu}{2} \|x_k-x^*\|^2
+\[- \left\langle \nabla f(x_k); x_k - x^{*} \right\rangle \le  f(x^*) - f(x_k) - \frac{\mu}{2} \|x_k-x^*\|^2
 \]
-
-
-
 Также заметим, что
 \[
 \| \alpha \nabla f(x_k)\|^2 = \frac{1}{L^2} \| \nabla f(x_k)\|^2

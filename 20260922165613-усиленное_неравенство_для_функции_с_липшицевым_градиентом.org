@@ -43,11 +43,10 @@
 
 Еще мы знаем, что модуль интеграла не больше интеграла модуля
 
-\begin{multline*}
+\[
 \left| \int\limits_0^1 \left\langle \nabla f(x + t(y-x)) - \nabla f(x); y-x \right\rangle dt\right| \le
  \int\limits_0^1 \left| \left\langle \nabla f(x + t(y-x)) - \nabla f(x); y-x \right\rangle \right| dt
-\end{multline*}
-
+\]
 А также мы можем применить неравенство [[id:D0601ACD-8C91-4A93-B0E4-AC0D529C6A5C][КБШ]] для скалярного произведения
 \[
 \left| \left\langle \nabla f(x + t(y-x)) - \nabla f(x); y-x \right\rangle \right| \le \| \nabla f(x + t(y-x)) - \nabla f(x) \| \cdot \| y-x \|

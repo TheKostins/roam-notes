@@ -1,0 +1,14 @@
+:PROPERTIES:
+:ID:       866FE52A-109C-4912-B61C-F29BBD475F6D
+:END:
+#+title: Оценивающая последовательность
+#+filetags: :definition:metopt:
+
+Набор функций $\left\{ \varphi_k \right\}_0^{\infty}$ и $\left\{ \lambda_k \right\}_0^{\infty}, \lambda_k \ge0$ называется /оценивающей последовательностью/
+для функции $f$, если $\lambda_k \rightarrow 0$ и
+\[
+\forall x \in \R^n\ \forall k\ \varphi_k(x) \le (1-\lambda_k) f(x) + \lambda_k \varphi_0 (x)
+\]
+
+/Rem/: Каждая $\varphi_k$ меньше  линейной комбинация изначальной функции $\varphi_0$ с оцениваемой функцией $f$.
+

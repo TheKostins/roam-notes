@@ -1,0 +1,25 @@
+:PROPERTIES:
+:ID:       D21EBF43-7558-45EE-8198-60958E391E03
+:END:
+#+title: Оценка невязки через оценивающую последовательность
+#+filetags: :lemma:metopt:
+
+Пусть:
+- $\left\{ \varphi_k \right\}$ и $\left\{ \lambda_k \right\}$ -- [[id:866FE52A-109C-4912-B61C-F29BBD475F6D][оценивающая последовательность]].
+- $x^{*}$ -- точка оптимума
+- $\exists \left\{ x_k \right\}:\ f(x_k) \le \varphi_k^{*} := \min_x \varphi_k(x)$ 
+
+
+Тогда
+\[
+f(x_k) - f(x^{*}) \le \lambda_k(\varphi_0(x^{*}) - f(x^{*})) \rightarrow 0
+\]
+
+* Доказательство
+\[
+f(x_k) \le \varphi_k^{*} \le (1-\lambda_k) f(x^{*}) + \lambda_k \varphi_0(x^{*})
+\]
+Давайте вычтем $f(x^{*})$ с обоих сторон
+\[
+f(x_k) - f(x^{*}) \le (1-\lambda_k) f(x^{*}) + \lambda_k \varphi_0(x^{*}) - f(x^{*}) = \lambda_k (\varphi_0(x^{*}) - f(x^{*}))
+\]

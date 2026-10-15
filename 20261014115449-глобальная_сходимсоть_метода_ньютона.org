@@ -1,0 +1,72 @@
+:PROPERTIES:
+:ID:       CC41F7D2-EECB-46E4-817A-756E7CB9B7C0
+:END:
+#+title: Глобальная сходимсоть метода Ньютона
+#+filetags: :theorem:
+
+Пусть
+- $f \in C_L^{1,1}$ ([[id:7DD1C7AB-1A49-4675-9F21-5A16C717F670][Функции с липшицевым градиентом]]),
+- $f$ -- $\mu$-[[id:22E546FC-186F-4A67-85AA-2C85DCEF9021][сильно выпуклая]]
+- $x_{k+1} = x_k - \alpha_k(\nabla^2 f(x_k))^{-1}\nabla f(x_k)$ (направление по [[id:C0ED5501-CFC6-42BA-A53A-1B346CBA545D][Ньютону]])
+- $\alpha_k$ -- выполняет [[id:5330B23D-95DD-4D5D-B4A3-63EBADB1DB7D][Условия Армихо-Вульфа]]
+
+
+Тогда $\nabla f(x_k)\rightarrow0$, при этом $\min_{1\le i \le k} \|\nabla f(x_i)\| \le \frac{C}{\sqrt{k}}$
+
+* Доказательство
+
+Пусть $\cos \theta_k$ -- [[id:E4AE9B25-BDB9-4A54-8CCB-09809F20B79D][косинус угла между производной и направлением спуска]]. 
+Нам достаточно доказать, что
+\[
+\cos^2 \theta_k = \left( \frac{\left\langle \nabla f(x_k); d_k \right\rangle}{\|\nabla f(x_k)\| \cdot \| d_k \|} \right)^2 > c
+\]
+Это следует из [[id:93FC9CC4-79FA-4CEA-9B10-9DBFB2C07850][оценки на шаг Армихо Вульфа]] и [[id:36F6E1BA-41DB-460D-A9C6-B980621727D4][сходимости градиентного спуска с шагом Армихо-Вульфа]]
+
+Давайте заметим, что
+\[
+A = A^T \Rightarrow \lambda_{\min}(A) \|x\|^2 \le \left\langle Ax;x \right\rangle \le \lambda_{\max}(A) \|x\|^2
+\]
+Это достаточно очевидно, см. [[ID:4f4E5575-ABE6-4D9B-9C61-B76A3AA9701C][собственные значения симметричных матриц]] 
+
+Тогда
+\[
+\cos^2 \theta_k = \left( \frac{\left\langle \nabla f(x_k); (\nabla^2 f(x_k))^{-1} \nabla f(x_k) \right\rangle}{\|\nabla f(x_k) \| \cdot \| (\nabla^2 f(x_k))^{-1} \nabla f(x_{k})\|} \right)^2
+\]
+Оценим числитель снизу, заметим что он в подходит под наше замечание про оценку $\left\langle Ax;x \right\rangle$, 
+так как Гессиан -- симметричен;
+\[
+\left\langle \nabla f(x_k); (\nabla^2 f(x_k))^{-1} \nabla f(x_k) \right\rangle \ge 
+\lambda_{\min}\left ((\nabla^2 f(x_k))^{-1}\right) \|\nabla f(x_k)\|^2
+\]
+
+
+Оценим произведение нормы матрицы на вектор
+\[
+\| (\nabla^2 f(x_k))^{-1} \nabla f(x_{k})\| \le \|(\nabla^2 f(x_k))^{-1}\| \cdot \|\nabla f(x_k)\|
+\le \lambda_{\max}\left ((\nabla^2 f(x_k))^{-1} \right) \|\nabla f(x_k)\|
+\]
+Последнее неравенство по свойству нормы матрицы
+
+Тогда вся дробь
+\begin{multline*}
+\frac{\left\langle \nabla f(x_k); (\nabla^2 f(x_k))^{-1} \nabla f(x_k) \right\rangle}{\|\nabla f(x_k) \| \cdot \| (\nabla^2 f(x_k))^{-1} \nabla f(x_{k})\|} \\
+\ge \frac{\lambda_{\min}\left ((\nabla^2 f(x_k))^{-1}\right) \|\nabla f(x_k)\|^2
+}{
+\|\nabla f(x_k)\| \lambda_{\max}\left ((\nabla^2 f(x_k))^{-1} \right) \|\nabla f(x_k)\|
+} = \frac{\lambda_{\min}\left ((\nabla^2 f(x_k))^{-1}\right)}{\lambda_{\max}\left ((\nabla^2 f(x_k))^{-1} \right)}
+\end{multline*}
+
+Давайте воспользуемся [[id:94DADA28-87E4-4E36-B289-8415BCE750FC][критерием сильной выпуклости в терминах вторых производных]] и
+[[id:4B6D53BA-E599-4DEA-A557-550BD32042BA][связью спектральной нормы гессиана и липшицевости градиента]], тогда мы получим такие неравенства
+\[
+\lambda_{\min}(\nabla^2 f(x)) \ge \mu \quad \lambda_{\max}(\nabla^2 f(x)) \le L  
+\]
+Тогда
+\[
+\lambda_{\min}\left ((\nabla^2 f(x_k))^{-1}\right) \ge \frac{1}{L}\quad
+\lambda_{\max}\left ((\nabla^2 f(x_k))^{-1} \right) \le \frac{1}{\mu}
+\]
+Итого
+\[
+\cos^2 \theta_k \ge \left( \frac{\mu}{L} \right)^2
+\]

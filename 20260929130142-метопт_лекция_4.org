@@ -2,7 +2,7 @@
 :ID:       62FB8C56-D3E8-4C77-9577-0C5F16B9EF1B
 :END:
 #+title: Метопт Лекция 5
-#+filetags: :lecture:
+#+filetags: :metopt:lecture:
 #+date: 2026-09-29
 
 ** Th:

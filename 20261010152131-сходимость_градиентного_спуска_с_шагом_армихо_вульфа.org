@@ -1,0 +1,79 @@
+:PROPERTIES:
+:ID:       36F6E1BA-41DB-460D-A9C6-B980621727D4
+:END:
+#+title: Сходимость градиентного спуска с шагом Армихо-Вульфа
+#+filetags:
+
+Пусть:
+- $f \in C_L^{1,1}$ ([[id:7DD1C7AB-1A49-4675-9F21-5A16C717F670][Функции с липшицевым градиентом]])
+- $\exists f^{*}$ -- минимальное значение функции
+- Зафиксируем $0<c_{1}<c_2<1$ из [[id:5330B23D-95DD-4D5D-B4A3-63EBADB1DB7D][Условия Армихо-Вульфа]]
+- $\exists C >0:\ |\cos \theta_k| > C$ (из [[id:93FC9CC4-79FA-4CEA-9B10-9DBFB2C07850][Оценка на шаг Армихо-Вульфа для градиентного спуска]])
+- $\alpha_k$ -- подчиняется [[id:5330B23D-95DD-4D5D-B4A3-63EBADB1DB7D][Условия Армихо-Вульфа]]
+
+
+Тогда $\|\nabla f(x_k)\|^2 \rightarrow 0$ и верна такая оценка:
+\[
+\min_{0\le k \le n} \| \nabla f(x_k)\|^2 \le \sqrt{\frac{L (f(x_0) - f^{*})}{(n+1)c_1(1-c_2)C^2}}
+\]
+
+* Доказательство:
+Хотим доказать, что
+\[
+f(x_{k+1}) \le f(x_k) - \mathrm{const} \cdot \|\nabla f(x_k)\|^2
+\]
+А дальше с помощью трюка с телескопической суммой из [[id:C3B64D64-D35B-42AC-B683-6736227CBBBC][Сходимость градиентного спуска для функций с липшицевым градиентом]] можно вывести такую оценку;
+
+Заметим, что [[id:15611E05-13FC-4FB0-AE00-A4BB857A29E6][Условие Армихо]] влечет за собой оценку (Это описано в [[id:DF0CC2BA-9234-47D3-8988-7A1DAFC9B114][Градиентный спуск с шагом Армихо-Вульфа]])
+\[
+f(x_{k+1}) \le f(x_k) + c_1\alpha_k \left\langle \nabla f(x_k);d_k \right\rangle
+\]
+
+Давайте выпишем [[id:93FC9CC4-79FA-4CEA-9B10-9DBFB2C07850][Оценка на шаг Армихо-Вульфа для градиентного спуска]] для $\alpha_k$
+\[
+\alpha_k \ge \frac{(c_2-1)\|\nabla f(x_k)\|}{L \|d_k\|} \cdot cos \theta_k
+\]
+Так как $\left\langle \nabla f(x_k);d_k \right\rangle < 0$ (это обсуждалось в [[id:DF0CC2BA-9234-47D3-8988-7A1DAFC9B114][Градиентный спуск с шагом Армихо-Вульфа]]), то
+уменьшение параметра $\alpha$ перед ним увеличит значение (т.к. число отрицательное).
+тогда
+\begin{multline*}
+f(x_{k+1}) \le f(x_k) + c_1\alpha_k \left\langle \nabla f(x_k);d_k \right\rangle \le \\
+f(x_k) + \frac{c_1(c_2-1)\|\nabla f(x_k)\|}{L \|d_k\|} \cdot cos \theta_k \cdot \left\langle \nabla f(x_k); d_k \right\rangle
+\end{multline*}
+Заметим, что
+\[
+\frac{1}{\|d_k\|} \cdot \left\langle \nabla f(x_k); d_k \right\rangle = \cos \theta_k \cdot \|\nabla f(x_k)\|
+\]
+Тогда
+\begin{multline*}
+f(x_{k+1}) \le
+f(x_k) + \frac{c_1(c_2-1)\|\nabla f(x_k)\|}{L \|d_k\|} \cdot cos \theta_k \cdot \left\langle \nabla f(x_k); d_k \right\rangle = \\
+f(x_k) + \frac{c_1(c_2-1)\cos^2 \theta_k \|\nabla f(x_k)\|^2}{L} 
+\end{multline*}
+Воспользуемся ограниченностью $\cos \theta_k$ снизу. Оценка верхняя так как $c_2 - 1 < 0$, следовательно вычитать мы будем меньше. Получим
+\[
+f(x_{k+1}) \le f(x_k) + \frac{c_1(c_2-1)C^2}{L} \cdot \| \nabla f(x_k)\|^2
+\]
+
+Далее воспользуемся трюком с суммой
+\[- \frac{c_1(c_2-1)C^2}{L} \cdot \sum\limits_{k=0}^n \| \nabla f(x_k)\|^2 \le \sum\limits_{k=0}^n [f(x_k)-f(x_{k+1})] = f(x_0) - f(x_{k+1}) \le f(x_0) - f^{*}
+\]
+Оценим:
+\[
+\sum\limits_{k=0}^n \|\nabla f(x_k)\|^2 \ge (n+1) \min_{0\le k\le n} \|\nabla f(x_k)\|^2
+\]
+
+Итого
+\[- \frac{c_1(c_2-1)C^2}{L} \cdot (n+1) \min_{0\le k\le n} \|\nabla f(x_k)\|^2 \le f(x_0) -f^{*}
+\]
+Что равносильно 
+\[
+\min_{0\le k\le n} \| \nabla f(x_k)\| \le \sqrt{\frac{L (f(x_0) - f^{*})}{(n+1)c_1(1-c_2)C^{2}}}
+\]
+
+
+/Rem/: Примечание про оптимальность. Если посмотреть на идею из [[id:FFEA1F1D-B70C-4B4A-9386-8344A2A3BBC4][Оценка убывания за шаг градиентного спуска]], то нам нужно будет максимизировать константу перед $\|\nabla f(x)\|^2$, чтобы аппроксимация была наиболее точной.
+Тогда нам нужно, чтобы $C \rightarrow 1 \Rightarrow \cos \theta_k \rightarrow -1$, а так как $0 < c_1 < c_2 < 1$, то $c_1(1-c_2) \rightarrow \frac{1}{4}$.
+Можно пренебречь строгостью и взять $c_1 =c_2 = \frac{1}{2}$.
+
+

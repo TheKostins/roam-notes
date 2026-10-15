@@ -1,0 +1,87 @@
+:PROPERTIES:
+:ID:       C67AAFD8-D294-480B-B58E-C284BFF76D50
+:END:
+#+title: Лемма о конструкции оценивающей последовательности
+#+filetags: :lemma:metopt:
+
+Пусть
+- $f$ -- $\mu$-[[id:22E546FC-186F-4A67-85AA-2C85DCEF9021][сильно выпуклая]]
+- $f \in C^1(\R)$
+- $\left\{ y_n \right\}$ -- произвольная последовательность
+- $\left\{ \alpha_k \right\}$ - последовательность из $\R$, причем $\alpha_k \in (0;1)$ и $\sum \alpha_k \rightarrow + \infty$
+
+
+Тогда последовательность $\left\{ \varphi_k \right\}$ и $\left\{\lambda_k\right\}$ удовлетворяет условиям
+\[
+\lambda_{k+1} = (1-\alpha_k)\lambda_k,\quad \lambda_0 = 1
+\]
+\[
+\varphi_{k+1}(x) = (1-\alpha_k)\varphi_k + \alpha_k \left( f(y_k) + \left\langle \nabla f(y_k); x-y_k \right\rangle +
+\frac{\mu}{2} \|x-y_k\|^2 \right)
+\]
+
+Причем $\left\{ \varphi_k \right\},\, \left\{ \lambda_k \right\}$ является [[id:866FE52A-109C-4912-B61C-F29BBD475F6D][оценивающей последовательностью]] 
+
+* Доказательство
+
+** $\lambda_k \rightarrow 0$
+\[
+\lambda_{k+1} = (1-\alpha_k) \lambda_k = (1-\alpha_k)(1-\alpha_{k-1})\lambda_{k-1} = \, ...\, = \prod\limits_{i=1}^k (1-\alpha_i)
+\]
+Давайте логарифмируем, чтобы получить сумму;
+\[
+\ln \lambda_{k+1} = \sum\limits_{i=1}^k \ln(1 - \alpha_i) \le - \sum\limits_{i=1}^k a_i \rightarrow - \infty
+\]
+(см. [[id:41B4A714-C1F8-4267-9948-E13E99B30587][Оценка логарифма сверху]])
+
+Следовательно,  $\lambda_{k+1} \rightarrow 0$
+
+** $\varphi_k(x) \le (1-\lambda_k)f(x) + \lambda_k\varphi_0(x)$
+
+По индукции будем доказывать, что
+\[
+\varphi_k(x) \le (1-\lambda_k)f(x) + \lambda_k\varphi_0(x)
+\]
+
+База, при $k=0$
+\[
+\varphi_0(x) \le (1-\lambda_0) f(x) + \lambda_0 \varphi_0(x)
+\]
+Но $\lambda_0 = 1$, тогда
+\[
+\varphi_0(x) \le (1-\lambda_0) f(x) + \lambda_0 \varphi_0(x) = 0 \cdot f(x) + 1 \cdot \varphi_0(x)
+\]
+Очевидно
+
+Переход  $k \rightarrow k+1$
+Пусть:
+\[
+\ell_k(x):= f(y_k) + \left\langle \nabla f(y_k); x-y_k \right\rangle + \frac{\mu}{2} \|x-y_k\|^2
+\]
+Тогда
+\[
+\varphi_{k+1}(x) = (1-\alpha_k)\varphi_k + \alpha_k \ell_k(x)
+\]
+Так как $f$ -- сильно выпуклая, то $\ell_k(x) \le f(x)$, получим
+\[
+\varphi_{k+1}(x) \le (1-\alpha_k)\varphi_k + \alpha_k f(x)
+\]
+Применим индукционное предположение для $\varphi_k$
+\[
+\varphi_k(x) \le (1-\lambda_k) f(x) + \lambda_k \varphi_0(x)
+\]
+Получаем
+\[
+\varphi_{k+1}(x) \le (1-\alpha_k)(1-\lambda_k) \cdot f(x) + (1-\alpha_k)\lambda_k \cdot \varphi_0(x) + \alpha_k f(x)
+\]
+Заметим, что $(1-\alpha_k)\lambda_k = \lambda_{k+1}$ -- по определению и
+\[
+(1-\alpha_k)(1-\lambda_k) = 1 - \alpha_k - \lambda_k + \alpha_k\lambda_k = 1-\alpha_k - \lambda_k(1 - \alpha_k) = 1-\alpha_k - \lambda_{k+1}
+\]
+Давайте посмотрим теперь на неравенство 
+\[
+\varphi_{k+1}(x) \le (1-\alpha_k-\lambda_k) \cdot f(x) + \lambda_{k+1} \cdot \varphi_0(x) + \alpha_k f(x) =
+(1-\lambda_{k+1})f(x) + \lambda_{k+1} \varphi_0(x)
+\]
+
+ЧТД

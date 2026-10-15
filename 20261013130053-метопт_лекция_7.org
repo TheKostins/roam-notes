@@ -1,0 +1,206 @@
+:PROPERTIES:
+:ID:       F8D8BA58-A307-4BAC-BB0B-C63B5D80B435
+:END:
+#+title: Метопт. Лекция 7
+#+filetags: :metopt:lecture:
+#+date: 2026-10-13
+
+
+* Th: Условие Денниса-Морре
+Пусть $f \in C^{2,2}_M, \nabla f (x^{*}) > 0$  и $x_{k+1} = x_k - B^{-1}_k \nabla f(x_k)$
+И пусть $x_k \rightarrow x^{*}$
+Тогда $x_k$ сходится локально сверхлинейно $\Leftrightarrow$ $\lim \frac{\|(B_k - \nabla^2 f(x_k)) d_k\|}{\| d_k \|} = 0$
+
+** Доказательство (только $\Leftarrow$ )
+$f \in C_M^{2,2}, \nabla^2f(x^{*}) > 0 \Rightarrow \exists R,C\ \forall \|x_0 -x^{*}\| < R\ \tilde{x}_{k+1} = \underbace{x_k - (\nabla^2 f(x_k))^{-1}\nabla f(x_k)}_{x_k + d_k^N}$ -- сходится сверхлинейно; ( $\|\tilde{x}_{k+1} - x^{*}\| \le C \| x_k - x^{*}\|^2$)
+
+Пусть
+\[
+d_k = x_{k+1} - x_k = - B_k^{-1} \nabla f(x_k)
+\]
+$d_k^N$ -- ньютоновский спуск.
+Докажем, что  $d_k - d_k^N = o(d_k)$
+
+/Rem/: Точка $\tilde{x}_{k+1}$ -- следующая точка, вычисленная Ньютоновским методом. $x_{k+1}$ -- Квази-Ньютоновским
+
+Докажем, что $d_k - d^N_k = o(d_{k})$
+
+\[
+d_k - d_k^N = (\nabla^2 f(x_k))^{-1} (\nabla^2 f(x_k) d_k + \nabla f (x_k))
+\]
+Заметим, что $\nabla f(x_k) - B_kd_k$, тогда
+\[
+(\nabla^2 f(x_k))^{-1} (\nabla^2 f(x_k) d_k + \nabla f (x_k)) =
+(\nabla^2 f(x_k))^{-1} (\nabla^2 f(x_k) - B_K)d_k
+\]
+Тогда
+\[
+\| d_k - d_k^N\| = \|(\nabla^2 f(x_k))^{-1} (\nabla^2 f(x_k) - B_k)d_k\| = O(\|(\nabla^2 f(x_k) - B_k) d_k\|) = o(d_k)
+\]
+Последнее равенство достигается, так как мы в условиях требуем $\lim \frac{\|(B_k - \nabla^2 f(x_k)) d_k\|}{\| d_k \|} = 0$
+
+От сюда \[
+\|x_{k+1} - x^{*}\| = \|x_k + d_k - x^{*}\| \le \|x_k + d_k^N - x^{*}\| + \|d_k - d_k^N\| \le C\|x^k - x^{*}\|^2 + o(d_k)
+\]
+Так как $\|\tilde{x}_{k+1} - x^{*}\| \le C \|x^k -x^{*}\|$ 
+
+Заметим, что $\|x^k -x^{*}\| \rightarrow 0$, тогда 
+\[
+C\|x^k - x^{*}\|^2 + o(d_k) = o(\|x_k - x^{*}\|) + o(\|d_k\|)
+\]
+
+Еще
+\begin{multline*}
+\|x_{k+1} - x^{*}\| = o(\|x_k - x^{*}\|) \Leftrightarrow \\
+\Leftrightarrow \forall \varepsilon >0 \ \exists N:\ \forall n \ge N\ \|x_{n+1} - x^{*}\| \le \varepsilon \|x_n - x^{*}\| \le \varepsilon^{n-N} \|x_N - x^{*}\|
+\end{multline*}
+
+Осталось доказать, что
+\[
+\| d_k\| = O(\|x_k -x^{*}\|)
+\]
+
+Рассмотрим
+\[
+\|d_k\| \le \|x_{k+1} - x^{*}\| + \|x_k - x^{*}\| = o(\|x_k - x^{*}\|) + \|x_k - x^{*}\| + o(\|d_k\|) =
+O(\|x_k - x^{*}\|) + o(\|d_k\|)
+\]
+
+
+* Th Сверхлинейная сходимость Квази-Ньютоновских методов
+
+Предположения:
+- $f \in C^{2,2}_M$
+- $\exists x^{*}$ и $\nabla^2 f(x^{*}) > 0$
+- $B_k^T = B_k$, $B_k > 0$
+- $B_{k+1}d_k = y_k$
+- $x_k \rightarrow x^{*}$
+
+Пусть $\|(B_{k+1} - B_k)d_k\| = o(d_k)$, тогда $x_k$ -- сходится сверхлинейно.
+
+/Rem/: Тут играет роль условие секущих (в отличии от остальных )
+
+** Доказательство
+
+Хотим проверить условия Денниса-Морре, для этого нам нужно проверить, что
+\[
+\| (B_k - \nabla^2 f(x_k)) d_k\| = o (\|d_k\|)
+\]
+Давайте доказывать: 
+\[
+\| (B_k - \nabla^2 f(x_k)) d_k\| \le
+\|(B_{k+1} - B_k)d_k\| + \|(B_{k+1} - \nabla^2 f(x_k))d_k\|
+\]
+Так как $\|(B_{k+1} - B_k)d_k = o(d_k)$, то достаточно доказать, что   $\|(B_{k+1 - \nabla^2 f(x_k)})d_k\| = o(d_k)$
+
+Знаем $B_{k+1}d_k = y_k = \nabla f(x_{k+1}) - \nabla f(x_k)$
+\[
+\|(B_{k+1} - \nabla^2 f(x_k))d_k\| = \|( \nabla f(x_{k+1}) - \nabla f(x_k) - \nabla^2 f(x_k))\|
+\]
+По теореме Римана
+\[
+ \|( \nabla f(x_{k+1}) - \nabla f(x_k) - \nabla^2 f(x_k))\| = 
+\left\| \int\limits_0^1 \left[ \nabla^2 f(x_k + \tau d_k) - \nabla^2 f(x_k) \right]\, d\tau d_k\|  \right\|
+\]
+\begin{multline*}
+\left\| \int\limits_0^1 \left[ \nabla^2 f(x_k + \tau d_k) - \nabla^2 f(x_k) \right]\, d\tau d_k \right\| \le
+ \int\limits_0^1 \left\| \nabla^2 f(x_k + \tau d_k) - \nabla^2 f(x_k) \right\|\, d\tau \|d_k\| \\
+\le \int\limits_0^1 M \|x_k + \tau d_k -x_k\|\, d\tau \|d_k\| = O(\|d_k\|^2) = o(\|d_k\|)
+\end{multline*}
+* SGD Стохастический градиентный спуск
+Рассматриваем функции вида
+\[
+F = \frac{1}{N} \sum\limits_{i=1}^N f_i(x)
+\]
+$f_i \in C^1(\R^{n})$
+
+Метод SGD:
+\[
+\left \{
+\begin{array}[l]
+ i_k \tilde \mathrm{Uniform} f(1...N) \Leftrightarrow \Pb(i_k = i) = \frac{1}{N} \\
+ g_k = \nabla f_{ik} (x_k) \\
+ x_{k+1} = x_k - \alpha_k g_k
+\end{array}\right.
+\]
+
+/Rem/: $f \in C^{1,0}_L \Leftrightarrow (|f(x) - f(y)| \le L \|x-y\|)$
+Тогда $\|\nabla f\| \le L$
+
+** Док-во
+\[y = x + th,\quad |f(x+th) -f (x)| = |\nabla^T f(x) th + o(t)| \le L \|th\|\]
+\[
+\left| \frac{f(x+th) -f(x)}{t} \right| \le L\|h\|
+\]
+$t \rightarrow 0$
+\[
+\left| \frac{\partial f}{\partial h} (x) \right| \le L \|h\|
+\]
+
+* Th О сходимости SGD для выпуклых функций
+
+Пусть $f_i \in C^{0,1}_L$ и $F$ -- выпуклая и $\exists x^{*}$.
+$x_{k+1}=x_k - \alpha_k \nabla f_{ik}(x_k)=x_k - \alpha_kg_k$
+
+Тогда
+\[
+\E[ F (\overline{x}_k) ] - F^{*} \le \frac{\|x^{*} - x_0\|^2 + \left( \sum\limits_{i=0}^k \alpha_i^2 \right)L^2}{2 \sum\limits_{i=0}^k \alpha_i}, \quad \overline{x}_k = \frac{\sum\limits_{i=0}^k \alpha_i x_i}{\sum\limits_{i=0}^k\alpha_i}
+\] 
+
+
+
+/Rem/: Давайте посчитаем $\E_{i_k} \nabla f_{ik} = \sum\limits_{i=1}^N \frac{1}{N} \nabla f_i(x_k) = \nabla F(x_k)$ (это несмещенная оценка)
+/Rem/: Рассмотрим $f(\omega) = \frac{1}{N} \sum\limits_{i=1}^N \frac{1}{2} (y_i - x_i\omega)^2$, рассмотрим SGD с постоянным шагом для этой функции. $f_i$ -- это парабола. На каждой итерации мы выбираем случайные параболы и двигаемся в сторону их центра. Тогда мы постоянно будем ходить в случайном направлении и не сойдемся. Если бы мы взяли уменьшающийся шаг, тогда бы амплитуда постепенно уменьшалась и мы бы сошлись хотя-бы где-то.
+
+** Док-во.
+
+\[
+\|x_{k+1}-x^{*}\|^2 = \|x_k - \alpha_k g_k - x^{*}\|^2 = \|x_k - x^{*}\|^2 + \alpha^2\|g\|^2 - 2\alpha \left\langle g_k; x_k -x^{*}\right\rangle
+\]
+Возьмем мат ожидание по $i_k$
+
+/Rem/: $x_k$ -- не зависит от $i_k$, а $x_{k+1}$ уже да. Так-же мат ожидание $g_k$ мы уже посчитали, по линейности его можно поставить внутрь скалярного произведения.
+\[
+\E_{i_k} \|x_{k+1} - x^{*}\|^{2} = \|x_k - x^{*}\|^2 + \alpha_k^2 \E \|g_k\|^2 - 2\alpha_k \left\langle \nabla F(x_k); x_k -x^{*} \right\rangle
+\]
+
+$F$ -- выпуклая, тогда
+\[
+F(x^{*}) \ge F(x_k) + \left\langle \nabla F(x_k), x^{*}-x_k \right\rangle \Leftrightarrow F(x_k)- F(x^{*}) \le \left\langle \nabla F(x_k); x_k - x^{*} \right\rangle
+\]
+Домножим на $2\alpha_k$
+
+\[
+2\alpha_k (F(x_k)- F(x^{*})) \le 2\alpha_k (\left\langle \nabla F(x_k); x_k - x^{*} \right\rangle) =
+\|x_k - x^{*}\|^2 + \alpha_k^2 \E \|g_k\|^2 - \E_{i_k} \|x_{k+1} - x^{*}\|^2
+\]
+Возьмем $\E_{i_0,...,i_{k-1}}$ от всей строчки (это т. Фубини)
+
+\[
+2\alpha_k ( \E [F(x_k)] - F(x^{*})) \le \E \|x_k - x^{*}\|^2 + \alpha^2_k \E \|g_k\|^2 - \E \||x_{k+1} -x^{*}\|
+\]
+Просуммируем по $k$, получается сумма телескоп
+\[
+\sum\limits_{i=0}^k 2\alpha_i (\E [F(x_k)] - F(x^{*})) \le \E \|x_0 - x^{*}\|^2 - \underbrace{\E \|x_{k+1} - x^{*}\|^2}_{\ge 0} + \sum\limits_{i=0}^k \alpha_i^2\E \| g_i\|^2
+\]
+
+Заметим, что $\E \|x_0 - x^{*}\|^2 = \|x_0 - x^{*}\|^2$, а $\|g_i\| \le L$, так как $f_{i} \in C_L^{0,1}$
+\[
+\sum\limits_{i=0}^k 2\alpha_i (\E [F(x_k)] - F(x^{*})) \le \|x_0 - x^{*}\|^2 \sum\limits_{i=0}^k \alpha_i^2 L^2
+\]
+
+А еще $F$ -- выпуклая, тогда $F(\sum \lambda_ix_i) \le \sum \lambda_i F(x_i)$, $\lambda_i = \frac{\alpha_i}{\sum\limits_i$
+Поделим все на $\sum \alpha_i$
+\[
+2 ( \E F(\overline{x}_k) - F(x^{*})) \le 2 \sum\limits_0^k \frac{\alpha_i (\E F(x_i) - F(x_i))}{\sum\limits_0^k \alpha_i} \le \frac{\|x_0 - x^{*}\| + \sum\limits_0^k \alpha_i L^2}{ \sum\limits_0^k \alpha_i}
+\]
+
+* Th О  сходимости SGD для выпуклых, о сходимости 
+
+Пусть $f$ и $F$ удовлетворяют условниям выше, $\alpha_i = \frac{1}{\sqrt{i}}$, тогда SGD сходится сублинейно  и
+\[
+\E (F(x_k) - F(x^{*})) = O \left( \frac{\ln k}{\sqrt{k}} \right)
+\]
+** Док-во:
+TODO
+

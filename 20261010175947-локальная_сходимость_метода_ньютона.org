@@ -1,0 +1,169 @@
+:PROPERTIES:
+:ID:       CDA139F9-5438-41E1-96B1-11A751BE40C5
+:END:
+#+title: Локальная сходимость метода Ньютона
+#+filetags: :theorem:metopt:
+
+Пусть:
+- $f \in C_M^{2,2}$ ([[id:7DD1C7AB-1A49-4675-9F21-5A16C717F670][Функции с липшицевым градиентом]]),
+- $\exists x^{*} = \mathrm{armgin\,} f$,
+- $\exists \mu > 0:\ \nabla^2f(x^{*})>\mu I$
+
+$x_k$ -- считается по схеме [[id:C0ED5501-CFC6-42BA-A53A-1B346CBA545D][метода Ньютона]];
+\[
+x_{k+1} = x_k - (\nabla^2 f(x_k))^{-1} \nabla f(x_k)
+\]
+
+Тогда $\exists R,C: \forall\ \|x - x^{*}\| < R\quad x_k \rightarrow x^{*}$, причем $\|x_{k+1} - x_k\| \le C \|x_k - x^{*}\|^2$
+
+/Rem/: То есть внутри какого-то шара с центром в точке минимума сходимость будет [[id:FDA5DA6F-DE0F-437E-A4F4-89757BA7F538][квадратичной]], а следовательно  [[id:9FA20DA5-3A95-4683-9CB5-C6C9A903C86A][сверхлинейной]].
+* Доказательство
+/Rem/ $f: \R \rightarrow \R^n$, то
+\[
+\int\limits_a^b f(x) dx = \left( \begin{array}[c] \int\limits_a^b f_1(x) dx \\ \vdots \\ \int\limits_a^b f_n(x) dx \end{array} \right)
+\]
+
+
+Давайте посмотрим на Гессиан.
+\[
+\nabla^2f(x^{*}) > \mu I \Rightarrow  \lambda_{\min} (\nabla^2 f(x^{*})) > \mu
+\]
+
+/Rem/: Тут оценка на Гессиан строится только в конкретной точке $x^{*}$, а не для всех $x$
+
+Мы знаем, что $\lambda_{\min}$ -- непрерывная функция ([[id:5A4CF475-D55C-4CAA-9A68-BD8D3B60AEA9][Непрерывность собственных чисел положительно полуопределенной матрицы]]); Тогда по непрерывности мы можем выбрать такую $R^{\prime}$ окрестность $x^{*}$, что
+\[
+\forall \|x-x^{*}\| < R^{\prime} \Rightarrow | \lambda_{\min}(\nabla^2 f(x)) - \lambda_{\min}(\nabla^2 f(x^{*})) | < \varepsilon
+\]
+Давайте возьмем $\varepsilon = \frac{\mu}{2}$. Тогда 
+\[
+\exists\, R^{\prime}:\  \|x-x^{*}\| < R^{\prime} \Rightarrow |\lambda_{\min}(\nabla^2f (x^{*})) - \lambda_{\min}(\nabla^2 f(x))| < \frac{\mu}{2}
+\]
+Раскроем модуль и запишем правое неравенство
+\begin{multline*}
+\lambda_{\min}(\nabla^2f (x^{*})) - \lambda_{\min}(\nabla^2 f(x)) < \frac{\mu}{2} \Leftrightarrow \\
+ -  \lambda_{\min}(\nabla^2 f(x)) < \frac{\mu}{2} - \lambda_{\min}(\nabla^2f (x^{*})) \Leftrightarrow \\
+  \lambda_{\min}(\nabla^2 f(x)) > \lambda_{\min}(\nabla^2f (x^{*})) - \frac{\mu}{2}  > \mu - \frac{\mu}{2} = \frac{\mu}{2}
+\end{multline*}
+
+Итого мы получили, что 
+\[
+\exists\, R^{\prime}:\  \|x-x^{*}\| < R^{\prime} \Rightarrow \lambda_{\min}(\nabla^2 f(x)) > \frac{\mu}{2}
+\]
+Тогда
+\[
+\|(\nabla^2 f(x))^{-1} \| =\lambda_{\max} \left( (\nabla^2 f(x))^{-1} \right) = \frac{1}{\lambda_{\min} (\nabla^2 f(x))} < \frac{2}{\mu}
+\]
+
+
+Давайте теперь посмотрим на [[id:C42D2C19-B35F-4C0E-AFEB-D880CBB72176][невязку]]
+\[
+\|x_{k+1} - x^{*}\| = \|x_k - (\nabla^2 f(x))^{-1} \nabla f(x_k) -x_k\|
+\]
+Заметим, что $\nabla f(x^{*}) = 0$ (точка min), тогда давайте прибавим $H^{-1}_k \nabla f(x^{*}) = 0$.
+Еще определим $H_k := \nabla^2 f(x_k)$.
+Тогда
+\begin{multline*}
+\|x_{k+1} - x^{*}\| = \|x_k - (\nabla^2 f(x))^{-1} \nabla f(x_k) -x^{*}\| = \\
+= \| x_k - H_k^{-1} \nabla f(x_k) - x^{*} +  H_k^{-1}\nabla f(x^{*})\| = 
+\end{multline*}
+Давайте  вынесем $H_k^{-1}$ за скобки; Воспользуемся тем, что $H_k^{-1} H_k x = x$
+\[
+\| x_k - H_k^{-1} \nabla f(x_k) - x^{*} +  H_k^{-1}\nabla f(x^{*})\| =
+\| H_k^{-1} [H_k (x_k - x^{*}) - (\nabla f(x_k) - \nabla f(x^{*}))]\|
+\]
+
+По [[id:AD362344-ECDC-4627-B344-8356744E6E53][формуле Ньютона-Лейбница]]
+
+\begin{multline*}
+\phi(\tau) := \nabla f(x^{*} + (x_k - x^{*})\tau) \Rightarrow \phi^{\prime}^{\tau}(\tau) = (\nabla f(x^{*} + (x_k - x^{*}) \tau))^{\prime}_{\tau} \\ =  \nabla^2 f(x^{*} + (x_k - x^{*}) \tau) (x_k - x^{*})
+\end{multline*}
+Следовательно
+\[
+\nabla f(x_k) - \nabla f(x^{*}) = \phi(1) - \phi(0) = \int\limits_0^1 \phi^{\prime}(\tau)\, d\tau
+=  \int\limits_0^1 \nabla^2 f(x^{*} + (x_k - x^{*})\tau)\,d \tau \cdot (x_k - x^{*})
+\]
+
+Итого
+\[
+\nabla f(x_k) - \nabla f(x^{*}) = \int\limits_0^1 \nabla^2 f(x^{*} + (x_k - x^{*})\tau)\,d \tau \cdot (x_k - x^{*})
+\]
+
+Тогда
+\begin{multline*}
+\|H^k^{-1}[H_k(x_k - x^{*}) - (\nabla f(x_k) - \nabla f(x^{*}))]\| \\
+ = \left\|
+H_k^{-1} \left[ \int\limits_0^1 (\nabla^2 f(x_k))(x_k-x^{*})\,d\tau -
+\int\limits_0^1 \nabla^2f (x^{*} + (x_k - x^{*}) \tau )\,d\tau \cdot (x_k - x^{*})  \right]
+\right\|
+\end{multline*}
+Мы занесли $H_k(x_k -x^{*}) =  (\nabla^2 f(x_k)) (x_k - x^{*})$ под интеграл, как константу.
+
+Давайте оценим получившееся выражение, как норму матрицы на вектор
+\begin{multline*}
+\left\|
+H_k^{-1} \left[ \int\limits_0^1 (\nabla^2 f(x_k))(x_k-x^{*})\,d\tau -
+\int\limits_0^1 \nabla^2f (x^{*} + (x_k - x^{*}) \tau )\,d\tau \cdot (x_k - x^{*})  \right]
+\right\|
+\\
+\le \left\|
+H_k^{-1} \right \| \cdot \left \| \left[ \int\limits_0^1 (\nabla^2 f(x_k))(x_k-x^{*})\,d\tau -
+\int\limits_0^1 \nabla^2f (x^{*} + (x_k - x^{*}) \tau )\,d\tau \cdot (x_k - x^{*})  \right]
+\right\|
+\end{multline*}
+Теперь оценим норму интеграла интегралом нормы сверху
+\begin{multline*}
+\left\|
+H_k^{-1} \right \| \cdot \left \|\int\limits_0^1 (\nabla^2 f(x_k))(x_k-x^{*})\,d\tau -
+\int\limits_0^1 \nabla^2f (x^{*} (x_k - x^{*}) \tau )\,d\tau \cdot (x_k - x^{*})  
+\right\|  \\ \le
+\left\|
+H_k^{-1} \right \|  \cdot \int\limits_0^1  \left \|  [\nabla^2 f(x_k)-
+\nabla^2f (x^{*} + (x_k - x^{*}) \tau )] (x_k - x^{*})  \right\| \,d\tau  
+\end{multline*}
+Тут мы еще сгруппировали слагаемые по общему множителю $(x_k -x^{*})$.
+И у нас опять получилась  норма матрицы на вектор, оценим ее сверху
+\begin{multline*}
+\left\|
+H_k^{-1} \right \|  \cdot \int\limits_0^1  \left \|  [\nabla^2 f(x_k)-
+\nabla^2f (x^{*} + (x_k - x^{*}) \tau) ] (x_k - x^{*})  \right\| \,d\tau   \\
+\le
+\left\|
+H_k^{-1} \right \|  \cdot \int\limits_0^1  \left \|  \nabla^2 f(x_k)-
+\nabla^2f (x^{*} + (x_k - x^{*}) \tau) \right\| \cdot \| x_k - x^{*} \| \,d\tau  
+\end{multline*}
+Давайте оценим разность Гессианов по Липшицевости.
+\begin{multline*}
+\| H_k^{-1} \|  \cdot \int\limits_0^1  \left \|  \nabla^2 f(x_k)-
+\nabla^2f (x^{*} + (x_k - x^{*}) \tau) \right\| \cdot \| x_k - x^{*} \| \,d\tau \\
+\le 
+\| H_k^{-1}\| \cdot \int\limits_0^1 M \| x_k - x^{*} - (x_k - x^{*}) \tau\| \| x_k - x^{*} \| \,d\tau 
+\end{multline*}
+Заметим, что
+\[
+x_k - x^{*} - (x_k - x^{*})\tau = (x_k - x^{*}) (1-\tau)
+\]
+Тогда
+\begin{multline*}
+\| H_k^{-1}\| \cdot \int\limits_0^1 M \| x_k - x^{*} - (x_k - x^{*}) \tau\| \| x_k - x^{*} \| \,d\tau \\
+= 
+\| H_k^{-1}\| \cdot \int\limits_0^1 M (1-\tau) \| x_k - x^{*} \| \| x_k - x^{*} \| \,d\tau
+=  \\
+\| H_k^{-1}\| \cdot \| x_k - x^{*} \|^2  M \int\limits_0^1 (1-\tau)  \,d\tau =  \frac{1}{2} \| H_k^{-1}\| \cdot \| x_k - x^{*} \|^2 M
+\end{multline*}
+Так-же мы знаем, что
+\[
+\|H_k^{-1}\| = \lambda_{\max}(H_k^{-1}) < \frac{2}{\mu}
+\]
+Итого получаем, что
+\[
+\|x_{k+1} - x^{*}\| \le   \frac{1}{2} \| H_k^{-1}\| \cdot \| x_k - x^{*} \|^2 M < \frac{M}{\mu}\|x_k - x^{*}\|
+\]
+При $R^{\prime} = \min \left\{ R; \frac{1}{2} \right\}$ (Почему $\frac{1}{2}$?)
+
+** Скорость сходимости
+Применим оценку итерационно
+\[
+\|x_{k+1}-x^{*}\| \le C \|x_k - x^{*}\|^2 \le C^{k+1} \|x_0 - x^{*}\|^{2^k}
+\]
+Это [[id:FDA5DA6F-DE0F-437E-A4F4-89757BA7F538][квадратичная сходимость]]. Она -- [[id:4CD0DF77-0553-4E99-901D-4D4C50C9900C][сверхлинейна]]. 
