@@ -2,9 +2,9 @@
 :ID:       DF0CC2BA-9234-47D3-8988-7A1DAFC9B114
 :END:
 #+title: Градиентный спуск с шагом Армихо-Вульфа
-#+filetags: :definition:metopt:
+#+filetags: :metopt:method:
 
-Давайте использовать [[id:BEEE81AD-13FC-4846-A160-C72E31760BEE][градиентный спуск]] для функции $\phi(\alpha) = f(x_k + \alpha d_k)$
+Давайте использовать [[id:BEEE81AD-13FC-4846-A160-C72E31760BEE][градиентный спуск]] для $f$, подбирая шаг по функции $\phi(\alpha) = f(x_k + \alpha d_k)$
 \[
 x_{k+1} = x_k + \alpha_k d_k
 \]
@@ -22,13 +22,14 @@ x_{k+1} = x_k + \alpha_k d_k
 * Как это выражается через $f$?
 Давайте посмотрим, что следует из удовлетворения $\phi$ [[id:5330B23D-95DD-4D5D-B4A3-63EBADB1DB7D][Условия Армихо-Вульфа]].
 \[
-\phi(\alpha_k) \le \phi(0) + c_1\alpha \phi^{\prime}(0)\quad |\phi^{\prime}(\alpha_k)| < c_2 |\phi^{\prime}(\alpha)|
+\phi(\alpha_k) \le \phi(0) + c_1\alpha_k \phi^{\prime}(0)\quad |\phi^{\prime}(\alpha_k)| < c_2 |\phi^{\prime}(0)|
 \]
-Давайте подставим $f$. 
-\[ f(x_{k+1}) \le f(x_k) + c_1 \alpha \left\langle \nabla f(x_k); d_k \right\rangle \quad | \left\langle \nabla f(x_{k+1}); d_k \right\rangle | \le c_2  |\left\langle \nabla f(x_k); d_k \right\rangle |
+Давайте подставим $f$.
+\[
+f(x_{k+1}) \le f(x_k) + c_1 \alpha_k \left\langle \nabla f(x_k); d_k \right\rangle \quad | \left\langle \nabla f(x_{k+1}); d_k \right\rangle | \le c_2  |\left\langle \nabla f(x_k); d_k \right\rangle |
 \]
-Получили [[id:15611E05-13FC-4FB0-AE00-A4BB857A29E6][Условие Армихо]] и [[id:2084FD2F-E2AA-4081-B9D1-14CEA27EA243][Условие Вульфа]] для $f$ и $\alpha$ соответственно.
+Получили [[id:15611E05-13FC-4FB0-AE00-A4BB857A29E6][Условие Армихо]] и [[id:2084FD2F-E2AA-4081-B9D1-14CEA27EA243][Условие Вульфа]] для $f$ и шага $\alpha_k$.
 
-* См. так-же:
+* См. также:
 - [[id:93FC9CC4-79FA-4CEA-9B10-9DBFB2C07850][Оценка на шаг Армихо-Вульфа для градиентного спуска]]
 - [[id:36F6E1BA-41DB-460D-A9C6-B980621727D4][Сходимость градиентного спуска с шагом Армихо-Вульфа]]

@@ -2,18 +2,18 @@
 :ID:       93FC9CC4-79FA-4CEA-9B10-9DBFB2C07850
 :END:
 #+title: Оценка на шаг Армихо-Вульфа для градиентного спуска
-#+filetags: :lemma:metopt:
+#+filetags: :metopt:lemma:
 
 Пусть $f \in C_L^{1,1}$ ([[id:7DD1C7AB-1A49-4675-9F21-5A16C717F670][Функции с липшицевым градиентом]]),
 Мы пользуемся схемой спуска из [[id:DF0CC2BA-9234-47D3-8988-7A1DAFC9B114][Градиентный спуск с шагом Армихо-Вульфа]].
 
-Следовательно: 
+Следовательно:
 $\phi(\alpha) = f(x_k + \alpha d_k)$ -- удовлетворяет [[id:5330B23D-95DD-4D5D-B4A3-63EBADB1DB7D][Условия Армихо-Вульфа]].
-и $x_{k+1} = x_k + \alpha d_k$.
+и $x_{k+1} = x_k + \alpha_k d_k$.
 
 Тогда шаг
 \[
-\alpha \ge \frac{(c_2 - 1) \left\langle \nabla f(x_k);d_k \right\rangle}{L \|d_k\|^2}
+\alpha_k \ge \frac{(c_2 - 1) \left\langle \nabla f(x_k);d_k \right\rangle}{L \|d_k\|^2}
 \]
 
  /Rem/: Пусть $\cos \theta_k = \frac{\left\langle \nabla f(x_k); d_k \right\rangle}{\|\nabla f(x_k)\| \|d_k\|}$ -- [[id:E4AE9B25-BDB9-4A54-8CCB-09809F20B79D][угол между градиентом и направлением]].
@@ -22,39 +22,40 @@ $\phi(\alpha) = f(x_k + \alpha d_k)$ -- удовлетворяет [[id:5330B23D
 \alpha_k \ge \frac{(c_2-1) \|\nabla f(x_k)\|}{L \|d_k\|} \cdot \cos \theta_k
 \]
 
-* Доказательство 
+* Доказательство
 
 Давайте посмотрим, что следует из удовлетворения $\phi$ [[id:5330B23D-95DD-4D5D-B4A3-63EBADB1DB7D][Условия Армихо-Вульфа]].
 \[
-\phi(\alpha_k) \le \phi(0) + c_1\alpha \phi^{\prime}(0)\quad |\phi^{\prime}(\alpha_k)| < c_2 |\phi^{\prime}(\alpha)|
+\phi(\alpha_k) \le \phi(0) + c_1\alpha_k \phi^{\prime}(0)\quad |\phi^{\prime}(\alpha_k)| < c_2 |\phi^{\prime}(0)|
 \]
 Давайте подставим $f$
-\[ f(x_{k+1}) \le f(x_k) + c_1 \alpha \left\langle \nabla f(x_k); d_k \right\rangle \quad | \left\langle \nabla f(x_{k+1}); d_k \right\rangle | \le c_2  |\left\langle \nabla f(x_k); d_k \right\rangle |
+\[
+f(x_{k+1}) \le f(x_k) + c_1 \alpha_k \left\langle \nabla f(x_k); d_k \right\rangle \quad | \left\langle \nabla f(x_{k+1}); d_k \right\rangle | \le c_2  |\left\langle \nabla f(x_k); d_k \right\rangle |
 \]
 
 Давайте раскроем неравенство с модулем. Возьмем только левую часть.
 \[
 -c_2 | \left\langle \nabla f(x_k); d_k \right\rangle| \le \left\langle \nabla f(x_{k+1}); d_k \right\rangle
 \]
-Но мы знаем, что $\left\langle \nabla f(x_k); d_k \right\rangle < 0$. По этому давайте уберем модуль и слева, причем домножив на $-1$.
+Но мы знаем, что $\left\langle \nabla f(x_k); d_k \right\rangle < 0$. Поэтому давайте уберем модуль и слева, причем домножив на $-1$.
 \[
 c_2  \left\langle \nabla f(x_k); d_k \right\rangle \le \left\langle \nabla f(x_{k+1}); d_k \right\rangle
 \]
 
 Давайте посмотрим на $\left\langle \nabla f(x_{k+1}) - \nabla f(x_k); d_k \right\rangle$
-По КБШ и Липшицевости
+По [[id:D0601ACD-8C91-4A93-B0E4-AC0D529C6A5C][КБШ]] и липшицевости градиента
 \[
 \left\langle \nabla f(x_{k+1}) - \nabla f(x_k); d_k \right\rangle \le
 \| \nabla f(x_{k+1}) - \nabla f(x_k)\| \cdot \| d_k\| \le L \|x_{k+1} - x_k\| \cdot \|d_k\|
 = L \alpha_k \|d_k\|^2
-\]  
+\]
 Последнее равенство получили так: $x_{k+1} - x_k = x_k + \alpha_k d_k - x_k = \alpha_kd_k$
 
 Давайте еще рассмотрим неравенство, которое мы недавно получили:
 \[
 c_2  \left\langle \nabla f(x_k); d_k \right\rangle \le \left\langle \nabla f(x_{k+1}); d_k \right\rangle
 \]
-Давайте вычтем $\left\langle \nabla f(x_k); d_k \right\rangle$ из обоих сторон, получим:
+Давайте вычтем $\left\langle \nabla f(x_k); d_k \right\rangle$ из обеих частей, получим:
 \[
 c_2  \left\langle \nabla f(x_k); d_k \right\rangle - \left\langle \nabla f(x_k); d_k \right\rangle  \le \left\langle \nabla f(x_{k+1}); d_k \right\rangle - \left\langle \nabla f(x_k); d_k \right\rangle
 \]
@@ -63,9 +64,9 @@ c_2  \left\langle \nabla f(x_k); d_k \right\rangle - \left\langle \nabla f(x_k);
 (c_2-1) \left\langle \nabla f(x_k);d_k \right\rangle \le \left\langle \nabla f(x_{k+1}) - \nabla f(x_k); d_k \right\rangle
 \]
 
-Заметим, что у нас получилась цепочка неравенств 
+Заметим, что у нас получилась цепочка неравенств
 \[
-(c_2-1) \left\langle \nabla f(x_k);d_k \right\rangle \le \left\langle \nabla f(x_{k+1}) - \nabla f(x_k) \right\rangle
+(c_2-1) \left\langle \nabla f(x_k);d_k \right\rangle \le \left\langle \nabla f(x_{k+1}) - \nabla f(x_k); d_k \right\rangle
 \le L\alpha_k \|d_k\|^2
 \]
 
@@ -74,4 +75,3 @@ c_2  \left\langle \nabla f(x_k); d_k \right\rangle - \left\langle \nabla f(x_k);
 \frac{(c_2-1) \left\langle \nabla f(x_k); d_k \right\rangle}{L \| d_k\|^2} \le \alpha_k
 \]
 Что и нужно было доказать
-
