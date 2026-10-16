@@ -18,12 +18,6 @@ x_{k+1} = x_k - (\nabla^2 f(x_k))^{-1} \nabla f(x_k)
 
 /Rem/: То есть внутри какого-то шара с центром в точке минимума сходимость будет [[id:FDA5DA6F-DE0F-437E-A4F4-89757BA7F538][квадратичной]], а следовательно  [[id:9FA20DA5-3A95-4683-9CB5-C6C9A903C86A][сверхлинейной]].
 * Доказательство
-/Rem/ $f: \R \rightarrow \R^n$, то
-\[
-\int\limits_a^b f(x) dx = \left( \begin{array}[c] \int\limits_a^b f_1(x) dx \\ \vdots \\ \int\limits_a^b f_n(x) dx \end{array} \right)
-\]
-
-
 Давайте посмотрим на Гессиан.
 \[
 \nabla^2f(x^{*}) > \mu I \Rightarrow  \lambda_{\min} (\nabla^2 f(x^{*})) > \mu
@@ -71,6 +65,11 @@ x_{k+1} = x_k - (\nabla^2 f(x_k))^{-1} \nabla f(x_k)
 \[
 \| x_k - H_k^{-1} \nabla f(x_k) - x^{*} +  H_k^{-1}\nabla f(x^{*})\| =
 \| H_k^{-1} [H_k (x_k - x^{*}) - (\nabla f(x_k) - \nabla f(x^{*}))]\|
+\]
+
+/Rem/ $f: \R \rightarrow \R^n$, то
+\[
+\int\limits_a^b f(x) dx = \left( \begin{array}[c] \int\limits_a^b f_1(x) dx \\ \vdots \\ \int\limits_a^b f_n(x) dx \end{array} \right)
 \]
 
 По [[id:AD362344-ECDC-4627-B344-8356744E6E53][формуле Ньютона-Лейбница]]
