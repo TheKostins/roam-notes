@@ -1,21 +1,27 @@
 :PROPERTIES:
 :ID:       CC41F7D2-EECB-46E4-817A-756E7CB9B7C0
 :END:
-#+title: Глобальная сходимсоть метода Ньютона
-#+filetags: :theorem:
+#+title: Глобальная сходимость метода Ньютона
+#+filetags: :metopt:theorem:
 
 Пусть
 - $f \in C_L^{1,1}$ ([[id:7DD1C7AB-1A49-4675-9F21-5A16C717F670][Функции с липшицевым градиентом]]),
+- $f \in C^2$ (нужен [[id:592AD816-1D80-48E6-8399-8524FBC1E8F3][гессиан]])
 - $f$ -- $\mu$-[[id:22E546FC-186F-4A67-85AA-2C85DCEF9021][сильно выпуклая]]
 - $x_{k+1} = x_k - \alpha_k(\nabla^2 f(x_k))^{-1}\nabla f(x_k)$ (направление по [[id:C0ED5501-CFC6-42BA-A53A-1B346CBA545D][Ньютону]])
-- $\alpha_k$ -- выполняет [[id:5330B23D-95DD-4D5D-B4A3-63EBADB1DB7D][Условия Армихо-Вульфа]]
+- $\alpha_k$ -- выполняет [[id:5330B23D-95DD-4D5D-B4A3-63EBADB1DB7D][Условия Армихо-Вульфа]] с $0 < c_1 < c_2 < 1$
 
 
 Тогда $\nabla f(x_k)\rightarrow0$, при этом $\min_{1\le i \le k} \|\nabla f(x_i)\| \le \frac{C}{\sqrt{k}}$
 
 * Доказательство
 
-Пусть $\cos \theta_k$ -- [[id:E4AE9B25-BDB9-4A54-8CCB-09809F20B79D][косинус угла между производной и направлением спуска]]. 
+Пусть $\cos \theta_k$ -- [[id:E4AE9B25-BDB9-4A54-8CCB-09809F20B79D][косинус угла между производной и направлением спуска]].
+Здесь $d_k = -(\nabla^2 f(x_k))^{-1} \nabla f(x_k)$. Так как $\nabla^2 f(x_k) \ge \mu I > 0$, гессиан обратим и $(\nabla^2 f(x_k))^{-1} > 0$, поэтому при $\nabla f(x_k) \ne 0$
+\[
+\left\langle \nabla f(x_k); d_k \right\rangle = - \left\langle \nabla f(x_k); (\nabla^2 f(x_k))^{-1} \nabla f(x_k) \right\rangle < 0
+\]
+-- это направление спуска. В $\cos^2 \theta_k$ знак не важен, поэтому дальше минус опускаем.
 Нам достаточно доказать, что
 \[
 \cos^2 \theta_k = \left( \frac{\left\langle \nabla f(x_k); d_k \right\rangle}{\|\nabla f(x_k)\| \cdot \| d_k \|} \right)^2 > c
@@ -26,16 +32,16 @@
 \[
 A = A^T \Rightarrow \lambda_{\min}(A) \|x\|^2 \le \left\langle Ax;x \right\rangle \le \lambda_{\max}(A) \|x\|^2
 \]
-Это достаточно очевидно, см. [[ID:4f4E5575-ABE6-4D9B-9C61-B76A3AA9701C][собственные значения симметричных матриц]] 
+Это достаточно очевидно, см. [[id:3BE0BBCE-AAB0-4CB4-8FA6-45277C0889CF][спектральную теорему]]
 
 Тогда
 \[
 \cos^2 \theta_k = \left( \frac{\left\langle \nabla f(x_k); (\nabla^2 f(x_k))^{-1} \nabla f(x_k) \right\rangle}{\|\nabla f(x_k) \| \cdot \| (\nabla^2 f(x_k))^{-1} \nabla f(x_{k})\|} \right)^2
 \]
-Оценим числитель снизу, заметим что он в подходит под наше замечание про оценку $\left\langle Ax;x \right\rangle$, 
+Оценим числитель снизу, заметим что он подходит под наше замечание про оценку $\left\langle Ax;x \right\rangle$,
 так как Гессиан -- симметричен;
 \[
-\left\langle \nabla f(x_k); (\nabla^2 f(x_k))^{-1} \nabla f(x_k) \right\rangle \ge 
+\left\langle \nabla f(x_k); (\nabla^2 f(x_k))^{-1} \nabla f(x_k) \right\rangle \ge
 \lambda_{\min}\left ((\nabla^2 f(x_k))^{-1}\right) \|\nabla f(x_k)\|^2
 \]
 
@@ -45,7 +51,7 @@ A = A^T \Rightarrow \lambda_{\min}(A) \|x\|^2 \le \left\langle Ax;x \right\rangl
 \| (\nabla^2 f(x_k))^{-1} \nabla f(x_{k})\| \le \|(\nabla^2 f(x_k))^{-1}\| \cdot \|\nabla f(x_k)\|
 \le \lambda_{\max}\left ((\nabla^2 f(x_k))^{-1} \right) \|\nabla f(x_k)\|
 \]
-Последнее неравенство по свойству нормы матрицы
+Последнее неравенство: $(\nabla^2 f(x_k))^{-1} > 0$, поэтому ее спектральная норма равна $\lambda_{\max}$
 
 Тогда вся дробь
 \begin{multline*}
@@ -57,9 +63,9 @@ A = A^T \Rightarrow \lambda_{\min}(A) \|x\|^2 \le \left\langle Ax;x \right\rangl
 \end{multline*}
 
 Давайте воспользуемся [[id:94DADA28-87E4-4E36-B289-8415BCE750FC][критерием сильной выпуклости в терминах вторых производных]] и
-[[id:4B6D53BA-E599-4DEA-A557-550BD32042BA][связью спектральной нормы гессиана и липшицевости градиента]], тогда мы получим такие неравенства
+[[id:DAA0DAE4-4B48-4A2F-9459-54790B6B129F][оценкой нормы гессиана сверху]], тогда мы получим такие неравенства
 \[
-\lambda_{\min}(\nabla^2 f(x)) \ge \mu \quad \lambda_{\max}(\nabla^2 f(x)) \le L  
+\lambda_{\min}(\nabla^2 f(x)) \ge \mu \quad \lambda_{\max}(\nabla^2 f(x)) \le L
 \]
 Тогда
 \[
@@ -70,3 +76,10 @@ A = A^T \Rightarrow \lambda_{\min}(A) \|x\|^2 \le \left\langle Ax;x \right\rangl
 \[
 \cos^2 \theta_k \ge \left( \frac{\mu}{L} \right)^2
 \]
+
+Тогда по [[id:36F6E1BA-41DB-460D-A9C6-B980621727D4][сходимости градиентного спуска с шагом Армихо-Вульфа]] с $C = \frac{\mu}{L}$ (у сильно выпуклой функции $f^{*}$ существует):
+\[
+\min_{0\le k\le n} \|\nabla f(x_k)\| \le \frac{L}{\mu} \sqrt{\frac{L (f(x_0) - f^{*})}{(n+1)c_1(1-c_2)}}
+\]
+
+/Rem/: Сходятся и сами точки: для $\mu$-сильно выпуклой $f$ верно $\|\nabla f(x)\| \ge \mu \|x - x^{*}\|$, поэтому из $\|\nabla f(x_k)\| \rightarrow 0$ следует $x_k \rightarrow x^{*}$.

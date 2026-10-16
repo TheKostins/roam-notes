@@ -1,0 +1,39 @@
+:PROPERTIES:
+:ID:       5A4CF475-D55C-4CAA-9A68-BD8D3B60AEA9
+:END:
+#+title: Непрерывность минимального собственного числа симметричной матрицы
+#+filetags: :metopt:theorem:
+
+Пусть $A$ -- симметричная матрица ($A = A^T$),
+тогда $\lambda_{\min}(A)$ -- непрерывная функция
+\[
+\lambda_{\min}(A) = \min_{\|x\| = 1} \left\langle Ax;x \right\rangle = \min_{\|x\|=1} x^TAx
+\]
+
+* Доказательство
+Хотим проверить по определению непрерывности
+\[
+\forall \varepsilon >0\ \exists \delta > 0:\ \|A - B\| < \delta \Rightarrow |\lambda_{\min}(A) - \lambda_{\min}(B)| < \varepsilon,\quad A = A^T,\ B = B^T
+\]
+
+Давайте оценим $\lambda_{\min}(A) - \lambda_{\min}(B)$
+\[
+x^TAx = x^TBx + x^T(A-B)x
+\]
+По [[id:D0601ACD-8C91-4A93-B0E4-AC0D529C6A5C][КБШ]] и норме матрицы
+\[
+x^T(A-B)x = \left\langle (A-B)x; x \right\rangle \le \|(A-B)x\| \cdot \|x\| \le \|A-B\| \cdot \|x \|^2
+\]
+Возьмём $x_B$, $\|x_B\| = 1$ -- собственный вектор $B$ для $\lambda_{\min}(B)$. Тогда
+\[
+\lambda_{\min}(A) \le \left\langle Ax_B;x_B \right\rangle = \lambda_{\min}(B) + \left\langle (A-B)x_B;x_B \right\rangle \le \lambda_{\min}(B) + \|A-B\|
+\]
+Следовательно
+\[
+\lambda_{\min}(A) - \lambda_{\min}(B) \le \|A-B\| < \delta
+\]
+Поменяв $A$ и $B$ местами, получим $\lambda_{\min}(B) - \lambda_{\min}(A) \le \|A-B\|$. Значит
+\[
+|\lambda_{\min}(A) - \lambda_{\min}(B)| \le \|A-B\|,
+\]
+и можно взять $\delta = \varepsilon$.

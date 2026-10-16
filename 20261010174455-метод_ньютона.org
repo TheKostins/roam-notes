@@ -2,12 +2,13 @@
 :ID:       C0ED5501-CFC6-42BA-A53A-1B346CBA545D
 :END:
 #+title: Метод Ньютона
-#+filetags: :definition:metopt:
+#+filetags: :metopt:method:
 
-Метод Ньютона: $x_{k+1}= x_k- \left( \nabla^2 f(x) \right)^{-1} \nabla f(x)$
+Пусть $f \in C^2$ и [[id:592AD816-1D80-48E6-8399-8524FBC1E8F3][гессиан]] $\nabla^2 f(x_k)$ обратим. Метод Ньютона: $x_{k+1}= x_k- \left( \nabla^2 f(x_k) \right)^{-1} \nabla f(x_k)$
 - [[id:CDA139F9-5438-41E1-96B1-11A751BE40C5][Локальная сходимость метода Ньютона]]
-* Идея за формулой 
-Что хорошо аппроксимирует нашу функцию? Рад Тейлора!
+- [[id:CC41F7D2-EECB-46E4-817A-756E7CB9B7C0][Глобальная сходимость метода Ньютона]]
+* Идея за формулой
+Что хорошо аппроксимирует нашу функцию? [[id:F7C9E077-9CAB-4149-83B4-67923B49E2F6][Ряд Тейлора]]!
 \[
 f(x+d) \approx f(x) + \left\langle \nabla f(x); d \right\rangle + \frac{1}{2} \left\langle \nabla^2 f(x)d; d \right\rangle
 \]
@@ -23,6 +24,4 @@ m(d):= f(x) + \left\langle \nabla f(x); d \right\rangle + \frac{1}{2} \left\lang
 \]
 
 
-/Rem/: Если $\nabla^2 f(x) > 0$, тогда она обратима и $- \left\langle (\nabla^2 f(x) )^{-1}  \nabla f(x); \nabla f(x) \right\rangle =\left\langle -(\nabla^2 f(x) )^{-1}  \nabla f(x); \nabla f(x) \right\rangle < 0$
-
-
+/Rem/: Если $\nabla^2 f(x) > 0$ и $\nabla f(x) \ne 0$, тогда она обратима и $- \left\langle (\nabla^2 f(x) )^{-1}  \nabla f(x); \nabla f(x) \right\rangle =\left\langle -(\nabla^2 f(x) )^{-1}  \nabla f(x); \nabla f(x) \right\rangle < 0$ -- то есть $d$ -- направление спуска.
