@@ -1,0 +1,7 @@
+:PROPERTIES:
+:ID:       4B497C50-C541-428D-94F6-B0F0DF464A50
+:END:
+#+title: Оценивающая последовательность с квадратичной начальной функцией
+#+filetags: :metopt:lemma:backfill:
+
+backfill

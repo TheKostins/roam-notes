@@ -1,0 +1,7 @@
+:PROPERTIES:
+:ID:       BB5E3FC2-069C-44F0-92D0-B4DC13092CCA
+:END:
+#+title: Метод Нестерова
+#+filetags: :metopt:method:backfill:
+
+backfill
