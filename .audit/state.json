@@ -282,9 +282,9 @@
   },
   "36F6E1BA-41DB-460D-A9C6-B980621727D4": {
    "audited": {
-    "body_hash": "d2f762cf0ca5ab1e",
-    "commit": "928c16a",
-    "date": "2026-10-15",
+    "body_hash": "94702eb6bf16a0d8",
+    "commit": "a30986a",
+    "date": "2026-10-16",
     "open": 1,
     "report": "2026-10-15-1208-audit.md"
    },
@@ -752,10 +752,10 @@
   },
   "93FC9CC4-79FA-4CEA-9B10-9DBFB2C07850": {
    "audited": {
-    "body_hash": "2f644bf666e89117",
-    "commit": "928c16a",
-    "date": "2026-10-15",
-    "open": 1,
+    "body_hash": "f1ebcf4c01bf14e7",
+    "commit": "a30986a",
+    "date": "2026-10-16",
+    "open": 0,
     "report": "2026-10-15-1208-audit.md"
    },
    "title": "Оценка на шаг Армихо-Вульфа для градиентного спуска"
