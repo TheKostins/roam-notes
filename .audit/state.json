@@ -282,21 +282,21 @@
   },
   "36F6E1BA-41DB-460D-A9C6-B980621727D4": {
    "audited": {
-    "body_hash": "94702eb6bf16a0d8",
-    "commit": "a30986a",
+    "body_hash": "e8f3dc66621b0826",
+    "commit": "2809353",
     "date": "2026-10-16",
-    "open": 1,
-    "report": "2026-10-15-1208-audit.md"
+    "open": 0,
+    "report": "2026-10-16-1330-audit.md"
    },
    "title": "Сходимость градиентного спуска с шагом Армихо-Вульфа"
   },
   "379E4CAD-A44B-4631-8DAF-F3DC708EAEDE": {
    "audited": {
-    "body_hash": "747b6a33a7b7579f",
-    "commit": "8299eaa",
-    "date": "2026-09-23",
+    "body_hash": "943766f24834ada3",
+    "commit": "2809353",
+    "date": "2026-10-16",
     "open": 0,
-    "report": null
+    "report": "2026-10-16-1330-audit.md"
    },
    "cards": {
     "body_hash": "747b6a33a7b7579f",
@@ -354,6 +354,16 @@
     "date": "2026-09-23"
    },
    "title": "Связь сильной выпуклости и липшицевости градиента"
+  },
+  "41B4A714-C1F8-4267-9948-E13E99B30587": {
+   "audited": {
+    "body_hash": "d8b4a5b821bf8e1c",
+    "commit": "2809353",
+    "date": "2026-10-16",
+    "open": 0,
+    "report": "2026-10-16-1330-audit.md"
+   },
+   "title": "Оценка логарифма сверху"
   },
   "42DFF6DC-CC9D-40AA-9D6F-218DCF613833": {
    "audited": {
@@ -447,11 +457,11 @@
   },
   "5330B23D-95DD-4D5D-B4A3-63EBADB1DB7D": {
    "audited": {
-    "body_hash": "2feb348a2f4dbc5b",
-    "commit": "928c16a",
-    "date": "2026-10-15",
+    "body_hash": "39342fca37faeb40",
+    "commit": "2809353",
+    "date": "2026-10-16",
     "open": 0,
-    "report": "2026-10-15-1208-audit.md"
+    "report": "2026-10-16-1330-audit.md"
    },
    "cards": {
     "body_hash": "6822678aba64aded",
@@ -517,11 +527,11 @@
   },
   "5A4CF475-D55C-4CAA-9A68-BD8D3B60AEA9": {
    "audited": {
-    "body_hash": "c5b466d975812aa3",
-    "commit": "5e63eb3",
+    "body_hash": "34ed2e8d70bcb08e",
+    "commit": "2809353",
     "date": "2026-10-16",
     "open": 0,
-    "report": "2026-10-16-1221-audit.md"
+    "report": "2026-10-16-1330-audit.md"
    },
    "title": "Непрерывность минимального собственного числа симметричной матрицы"
   },
@@ -687,11 +697,11 @@
   },
   "85D9D77D-13A2-42E0-BF93-AD085E0134B9": {
    "audited": {
-    "body_hash": "298e0549d12f07fd",
-    "commit": "263a0a5",
-    "date": "2026-10-10",
+    "body_hash": "c1823f9f06ff96e9",
+    "commit": "2809353",
+    "date": "2026-10-16",
     "open": 0,
-    "report": "2026-10-10-0953-audit.md"
+    "report": "2026-10-16-1330-audit.md"
    },
    "cards": {
     "body_hash": "25afe5c4578c34e9",
@@ -714,6 +724,16 @@
     "date": "2026-10-10"
    },
    "title": "Теорема Ролля"
+  },
+  "866FE52A-109C-4912-B61C-F29BBD475F6D": {
+   "audited": {
+    "body_hash": "f86e5d3e5ab8fd67",
+    "commit": "2809353",
+    "date": "2026-10-16",
+    "open": 0,
+    "report": "2026-10-16-1330-audit.md"
+   },
+   "title": "Оценивающая последовательность"
   },
   "86FCE16B-C82E-4416-851C-0E0AD0FDA382": {
    "audited": {
@@ -972,11 +992,11 @@
   },
   "C0408924-F658-43DF-8794-0C9AA85E7580": {
    "audited": {
-    "body_hash": "0ff74c9f9f5030a0",
-    "commit": "9d7eaee",
-    "date": "2026-10-10",
+    "body_hash": "c1089454d8d9c57c",
+    "commit": "2809353",
+    "date": "2026-10-16",
     "open": 0,
-    "report": "2026-10-10-0953-audit.md"
+    "report": "2026-10-16-1330-audit.md"
    },
    "cards": {
     "body_hash": "063885512926989a",
@@ -1012,11 +1032,11 @@
   },
   "C3B64D64-D35B-42AC-B683-6736227CBBBC": {
    "audited": {
-    "body_hash": "e16aa3acf182f751",
-    "commit": "38d0a80",
-    "date": "2026-10-10",
+    "body_hash": "b801e01ac5ae3570",
+    "commit": "2809353",
+    "date": "2026-10-16",
     "open": 0,
-    "report": "2026-10-10-0953-audit.md"
+    "report": "2026-10-16-1330-audit.md"
    },
    "cards": {
     "body_hash": "c5f1b150053ef277",
@@ -1027,11 +1047,11 @@
   },
   "C42D2C19-B35F-4C0E-AFEB-D880CBB72176": {
    "audited": {
-    "body_hash": "baf08f632457e471",
-    "commit": "d0f456f",
-    "date": "2026-10-09",
+    "body_hash": "c24cb6aa99f5a8ce",
+    "commit": "2809353",
+    "date": "2026-10-16",
     "open": 0,
-    "report": "2026-10-09-2310-audit.md"
+    "report": "2026-10-16-1330-audit.md"
    },
    "cards": {
     "body_hash": "baf08f632457e471",
@@ -1039,6 +1059,16 @@
     "date": "2026-10-10"
    },
    "title": "Невязка"
+  },
+  "C67AAFD8-D294-480B-B58E-C284BFF76D50": {
+   "audited": {
+    "body_hash": "675c1a65ec2f0830",
+    "commit": "2809353",
+    "date": "2026-10-16",
+    "open": 0,
+    "report": "2026-10-16-1330-audit.md"
+   },
+   "title": "Лемма о конструкции оценивающей последовательности"
   },
   "CC41F7D2-EECB-46E4-817A-756E7CB9B7C0": {
    "audited": {
@@ -1099,6 +1129,16 @@
     "report": "2026-09-23-1024-audit.md"
    },
    "title": "Неравенство Коши-Буняковского-Шварца"
+  },
+  "D21EBF43-7558-45EE-8198-60958E391E03": {
+   "audited": {
+    "body_hash": "e53708652ff33d06",
+    "commit": "2809353",
+    "date": "2026-10-16",
+    "open": 0,
+    "report": "2026-10-16-1330-audit.md"
+   },
+   "title": "Оценка невязки через оценивающую последовательность"
   },
   "DAA0DAE4-4B48-4A2F-9459-54790B6B129F": {
    "audited": {
@@ -1202,11 +1242,11 @@
   },
   "FFEA1F1D-B70C-4B4A-9386-8344A2A3BBC4": {
    "audited": {
-    "body_hash": "7d72493f0803fe99",
-    "commit": "38d0a80",
-    "date": "2026-10-10",
+    "body_hash": "6d12afb55d891a82",
+    "commit": "2809353",
+    "date": "2026-10-16",
     "open": 0,
-    "report": "2026-10-10-0953-audit.md"
+    "report": "2026-10-16-1330-audit.md"
    },
    "title": "Оценка убывания за шаг градиентного спуска"
   }
