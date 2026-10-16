@@ -33,7 +33,6 @@ x^T(A-B)x = \left\langle (A-B)x; x \right\rangle \le \|(A-B)x\| \cdot \|x\| \le 
 \lambda_{\min}(A) - \lambda_{\min}(B) \le \|A-B\| < \delta
 \]
 Поменяв $A$ и $B$ местами, получим $\lambda_{\min}(B) - \lambda_{\min}(A) \le \|A-B\|$. Значит
-\[
-|\lambda_{\min}(A) - \lambda_{\min}(B)| \le \|A-B\|,
+\[|\lambda_{\min}(A) - \lambda_{\min}(B)| \le \|A-B\|,
 \]
 и можно взять $\delta = \varepsilon$.

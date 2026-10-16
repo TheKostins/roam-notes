@@ -59,8 +59,7 @@ f(x_{k+1}) \le f(x_k) + \frac{c_1(c_2-1)C^2}{L} \cdot \| \nabla f(x_k)\|^2
 \]
 
 Далее воспользуемся трюком с суммой
-\[
-- \frac{c_1(c_2-1)C^2}{L} \cdot \sum\limits_{k=0}^n \| \nabla f(x_k)\|^2 \le \sum\limits_{k=0}^n [f(x_k)-f(x_{k+1})] = f(x_0) - f(x_{n+1}) \le f(x_0) - f^{*}
+\[- \frac{c_1(c_2-1)C^2}{L} \cdot \sum\limits_{k=0}^n \| \nabla f(x_k)\|^2 \le \sum\limits_{k=0}^n [f(x_k)-f(x_{k+1})] = f(x_0) - f(x_{n+1}) \le f(x_0) - f^{*}
 \]
 Оценим:
 \[
@@ -68,8 +67,7 @@ f(x_{k+1}) \le f(x_k) + \frac{c_1(c_2-1)C^2}{L} \cdot \| \nabla f(x_k)\|^2
 \]
 
 Итого
-\[
-- \frac{c_1(c_2-1)C^2}{L} \cdot (n+1) \min_{0\le k\le n} \|\nabla f(x_k)\|^2 \le f(x_0) -f^{*}
+\[- \frac{c_1(c_2-1)C^2}{L} \cdot (n+1) \min_{0\le k\le n} \|\nabla f(x_k)\|^2 \le f(x_0) -f^{*}
 \]
 Что равносильно
 \[
