@@ -980,6 +980,16 @@
    },
    "title": "Аффинные преобразования"
   },
+  "BB5E3FC2-069C-44F0-92D0-B4DC13092CCA": {
+   "audited": {
+    "body_hash": "6a40c435ef95799d",
+    "commit": "785cfab",
+    "date": "2026-10-25",
+    "open": 0,
+    "report": "2026-10-25-1821-audit.md"
+   },
+   "title": "Метод Нестерова"
+  },
   "BE21881B-6DC7-45CB-94F5-9F2E94C0584F": {
    "audited": {
     "body_hash": "27c455fda576d68c",
@@ -1109,6 +1119,16 @@
     "report": "2026-10-16-1330-audit.md"
    },
    "title": "Лемма о конструкции оценивающей последовательности"
+  },
+  "C6A43F85-13E0-46B3-96A8-BCB9F34ECD57": {
+   "audited": {
+    "body_hash": "98992cece584de66",
+    "commit": "785cfab",
+    "date": "2026-10-25",
+    "open": 0,
+    "report": "2026-10-25-1821-audit.md"
+   },
+   "title": "Метод тяжёлого шарика"
   },
   "CC41F7D2-EECB-46E4-817A-756E7CB9B7C0": {
    "audited": {
