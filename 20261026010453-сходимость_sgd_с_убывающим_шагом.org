@@ -1,0 +1,7 @@
+:PROPERTIES:
+:ID:       1D5CE092-666B-427F-B03E-BF405CFD7101
+:END:
+#+title: Сходимость SGD с убывающим шагом
+#+filetags: :metopt:theorem:backfill:
+
+backfill

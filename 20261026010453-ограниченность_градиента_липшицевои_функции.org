@@ -1,0 +1,7 @@
+:PROPERTIES:
+:ID:       96D0C3C7-E202-48D2-A7C6-BD1BE9963ACF
+:END:
+#+title: Ограниченность градиента липшицевой функции
+#+filetags: :metopt:theorem:backfill:
+
+backfill
