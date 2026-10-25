@@ -6,14 +6,14 @@
 
 Мы будем рассматривать функции вида
 \[
-F = \frac{1}{N} \sum\limits_{i=1}^N f_i(x),\quad f_i \in C^1 (\R^n)
+F(x) = \frac{1}{N} \sum\limits_{i=1}^N f_i(x),\quad f_i \in C^1 (\R^n)
 \]
 
 Метод SGD:
 \[
 \left\{\begin{array}{l}
-i_{k} \sim \mathrm{U}[1,2,...,N] \Leftrightarrow \Pb(i_k = i) = \frac{1}{N} \\
-g_k = \nabla f_{ik} (x_k) \\
+i_{k} \sim \mathrm{U}\{1,\dots,N\} \Leftrightarrow \Pb(i_k = i) = \frac{1}{N} \\
+g_k = \nabla f_{i_k} (x_k) \\
 x_{k+1} = x_k - \alpha_k g_k
 \end{array}
 \right.

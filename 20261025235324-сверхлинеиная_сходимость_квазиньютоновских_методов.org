@@ -1,13 +1,13 @@
 :PROPERTIES:
 :ID:       A9E5C7FA-46FE-460E-A1B9-5B7CD72DB5B4
 :END:
-#+title: Сверхлинейная сходимость Квазиньютоновских методов
+#+title: Сверхлинейная сходимость квазиньютоновских методов
 #+filetags: :metopt:theorem:
 Пусть:
-- $f \in C^{2,2}_M$ ([[id:7DD1C7AB-1A49-4675-9F21-5A16C717F670][Функции с липшицевым градиентом]])
-- $\exists x^{*}$ и $\nabla^2 f(x^{*}) >0$
+- $f \in C^{2,2}_M$ ([[id:7E287F4B-AC3E-4CF5-9D32-3BC2BC52D01A][липшицев гессиан]])
+- $\exists x^{*}$: $\nabla f(x^{*}) = 0$ и $\nabla^2 f(x^{*}) >0$
 - $B^T_k =B_k > 0$
-- $B_{k+1}d_k=y_k$
+- $x_{k+1} = x_k - B_k^{-1}\nabla f(x_k)$, $d_k := x_{k+1} - x_k$, $y_k := \nabla f(x_{k+1}) - \nabla f(x_k)$, $B_{k+1}d_k=y_k$
 - $x_k \rightarrow x^{*}$
 
 То есть требуем условия для $B_k$ из [[id:6BA18878-DE34-46A5-ABE2-EDA09CAE56A7][квазиньютоновских методов]]
@@ -16,9 +16,9 @@
 \[
 \|(B_{k+1} - B_k)d_k\| = o(\|d_k\|)
 \]
-Тогда $x_k$ -- сходятся [[id:9FA20DA5-3A95-4683-9CB5-C6C9A903C86A][сверхлинейно]]
+Тогда $x_k$ -- сходится [[id:9FA20DA5-3A95-4683-9CB5-C6C9A903C86A][сверхлинейно]]
 
-/Rem/: Тут играет роль условие секущих (в отличии от остальных )
+/Rem/: Тут играет роль [[id:E976DE49-0091-45E1-B621-A236F8B87859][условие секущей]] (в отличие от остальных)
 
 * Доказательство
 
@@ -44,26 +44,19 @@
 \|\nabla f(x_{k+1}) - \nabla f(x_k) - \nabla^2 f(x_k)d_k\|
 \]
 
-Воспользуемся теоремой Римана
+Воспользуемся [[id:AD362344-ECDC-4627-B344-8356744E6E53][формулой Ньютона-Лейбница]]
 \[
 \nabla f(x_{k+1}) - \nabla f(x_k) = \int\limits_0^1 \nabla^2 f(x_k + \tau(x_{k+1} - x_k))\,d\tau (x_{k+1} - x_k) =
-\int\limits_0^1 \nabla^2 f(x_k + \tau d_k)\,d\tau d_k 
+\int\limits_0^1 \nabla^2 f(x_k + \tau d_k)\,d\tau d_k
 \]
 \[
- \|\nabla f(x_{k+1}) - \nabla f(x_k) - \nabla^2 f(x_k)d_k\| = 
-\left\| \int\limits_0^1 \left[ \nabla^2 f(x_k + \tau d_k) - \nabla^2 f(x_k) \right]\, d\tau d_k\|  \right\|
+ \|\nabla f(x_{k+1}) - \nabla f(x_k) - \nabla^2 f(x_k)d_k\| =
+\left\| \int\limits_0^1 \left[ \nabla^2 f(x_k + \tau d_k) - \nabla^2 f(x_k) \right]\, d\tau\, d_k \right\|
 \]
-Далее стандартно оценим сверху по интегралу от нормы и [[id:7DD1C7AB-1A49-4675-9F21-5A16C717F670][Липшицевости]]
+Далее стандартно оценим сверху по интегралу от нормы и [[id:7E287F4B-AC3E-4CF5-9D32-3BC2BC52D01A][липшицевости]] гессиана
 \begin{multline*}
-\left\| \int\limits_0^1 \left[ \nabla^2 f(x_k + \tau d_k) - \nabla^2 f(x_k) \right]\, d\tau d_k\|  \right\| \\
-\le 
+\left\| \int\limits_0^1 \left[ \nabla^2 f(x_k + \tau d_k) - \nabla^2 f(x_k) \right]\, d\tau\, d_k \right\| \\
+\le
  \int\limits_0^1 \left\| \nabla^2 f(x_k + \tau d_k) - \nabla^2 f(x_k) \right\|\, d\tau \|d_k\|   \\
-\le \int\limits_0^1 M \|x_k + \tau d_k - x_k\|\,d\tau \|d_k\| = M\|d_k\|^2 = o(\|d_k\|)
+\le \int\limits_0^1 M \|x_k + \tau d_k - x_k\|\,d\tau \|d_k\| = \frac{M}{2}\|d_k\|^2 = o(\|d_k\|)
 \end{multline*}
-
-
-
-
-
-
-

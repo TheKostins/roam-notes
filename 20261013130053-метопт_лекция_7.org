@@ -3,7 +3,7 @@
 :END:
 #+title: Метопт. Лекция 7
 #+filetags: :metopt:lecture:
-[[id:D65FB534-B7F1-4194-8E4B-D4ACAA89E6D2][Критерий Денниса-Морре]]#+date: 2026-10-13
+#+date: 2026-10-13
 
 
 * Th: Условие Денниса-Морре
@@ -42,9 +42,9 @@ d_k - d_k^N = (\nabla^2 f(x_k))^{-1} (\nabla^2 f(x_k) d_k + \nabla f (x_k))
 От сюда \[
 \|x_{k+1} - x^{*}\| = \|x_k + d_k - x^{*}\| \le \|x_k + d_k^N - x^{*}\| + \|d_k - d_k^N\| \le C\|x^k - x^{*}\|^2 + o(d_k)
 \]
-Так как $\|\tilde{x}_{k+1} - x^{*}\| \le C \|x^k -x^{*}\|$ 
+Так как $\|\tilde{x}_{k+1} - x^{*}\| \le C \|x^k -x^{*}\|$
 
-Заметим, что $\|x^k -x^{*}\| \rightarrow 0$, тогда 
+Заметим, что $\|x^k -x^{*}\| \rightarrow 0$, тогда
 \[
 C\|x^k - x^{*}\|^2 + o(d_k) = o(\|x_k - x^{*}\|) + o(\|d_k\|)
 \]
@@ -86,7 +86,7 @@ O(\|x_k - x^{*}\|) + o(\|d_k\|)
 \[
 \| (B_k - \nabla^2 f(x_k)) d_k\| = o (\|d_k\|)
 \]
-Давайте доказывать: 
+Давайте доказывать:
 \[
 \| (B_k - \nabla^2 f(x_k)) d_k\| \le
 \|(B_{k+1} - B_k)d_k\| + \|(B_{k+1} - \nabla^2 f(x_k))d_k\|
@@ -99,7 +99,7 @@ O(\|x_k - x^{*}\|) + o(\|d_k\|)
 \]
 По теореме Римана
 \[
- \|( \nabla f(x_{k+1}) - \nabla f(x_k) - \nabla^2 f(x_k))\| = 
+ \|( \nabla f(x_{k+1}) - \nabla f(x_k) - \nabla^2 f(x_k))\| =
 \left\| \int\limits_0^1 \left[ \nabla^2 f(x_k + \tau d_k) - \nabla^2 f(x_k) \right]\, d\tau d_k\|  \right\|
 \]
 \begin{multline*}
@@ -145,7 +145,7 @@ $x_{k+1}=x_k - \alpha_k \nabla f_{ik}(x_k)=x_k - \alpha_kg_k$
 Тогда
 \[
 \E[ F (\overline{x}_k) ] - F^{*} \le \frac{\|x^{*} - x_0\|^2 + \left( \sum\limits_{i=0}^k \alpha_i^2 \right)L^2}{2 \sum\limits_{i=0}^k \alpha_i}, \quad \overline{x}_k = \frac{\sum\limits_{i=0}^k \alpha_i x_i}{\sum\limits_{i=0}^k\alpha_i}
-\] 
+\]
 
 
 
@@ -195,7 +195,7 @@ F(x^{*}) \ge F(x_k) + \left\langle \nabla F(x_k), x^{*}-x_k \right\rangle \Leftr
 2 ( \E F(\overline{x}_k) - F(x^{*})) \le 2 \sum\limits_0^k \frac{\alpha_i (\E F(x_i) - F(x_i))}{\sum\limits_0^k \alpha_i} \le \frac{\|x_0 - x^{*}\| + \sum\limits_0^k \alpha_i L^2}{ \sum\limits_0^k \alpha_i}
 \]
 
-* Th О  сходимости SGD для выпуклых, о сходимости 
+* Th О  сходимости SGD для выпуклых, о сходимости
 
 Пусть $f$ и $F$ удовлетворяют условниям выше, $\alpha_i = \frac{1}{\sqrt{i}}$, тогда SGD сходится сублинейно  и
 \[
@@ -203,4 +203,3 @@ F(x^{*}) \ge F(x_k) + \left\langle \nabla F(x_k), x^{*}-x_k \right\rangle \Leftr
 \]
 ** Док-во:
 TODO
-
