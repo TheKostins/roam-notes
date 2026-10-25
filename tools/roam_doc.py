@@ -28,6 +28,18 @@ from roam import LINK_RE, Note, Vault, scan_math, blank_ranges
 
 HEADING_KIND = {"доказательство": "proof", "пример": "example", "примеры": "example",
                "замечание": "remark", "следствие": "corollary"}
+HEADING_NOTE_RE = re.compile(r"^(.*?)\s*\((.+)\)$")
+
+
+def heading_key(title: str) -> tuple[str, str]:
+    """Ключ роли заголовка и уточнение в скобках: «Доказательство (только $\\Leftarrow$)»
+    → ("доказательство", "только $\\Leftarrow$").  Скобка отделяется только у
+    известных ролей (HEADING_KIND); иначе ключ -- весь заголовок."""
+    t = re.sub(r"[.:]\s*$", "", title.strip())
+    m = HEADING_NOTE_RE.match(t)
+    if m and m.group(1).casefold() in HEADING_KIND:
+        return m.group(1).casefold(), m.group(2)
+    return t.casefold(), ""
 
 UNICODE_MATH = {
     "⇒": r"\Rightarrow", "⇐": r"\Leftarrow", "⇔": r"\Leftrightarrow",

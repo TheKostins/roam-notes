@@ -307,6 +307,11 @@ class TexBlockTest(unittest.TestCase):
         self.assertIn("\\begin{remark}\n  $y$ велико.\n\\end{remark}", rest)
         self.assertIn("\\begin{remark}\n  Без двоеточия.\n\\end{remark}", rest)
 
+    def test_rem_leading_paren_is_title(self):
+        out, _ = tex("Пусть $x$.\n/Rem/ (на лекции не было): при $\\alpha$ так.\n\n/Rem/: (a+b) -- скобка без двоеточия.")
+        self.assertIn("\\begin{remark}[на лекции не было]\n  При $\\alpha$ так.\n\\end{remark}", out)
+        self.assertIn("\\begin{remark}\n  (a+b)~--- скобка без двоеточия.\n\\end{remark}", out)
+
     def test_sentence_breaks(self):
         out, _ = tex("Используем формулу\nИтого $x$\nИ еще.\nКонец фразы.\nТогда\n$x = y$\nи $z$\n\\[\na\n\\]\nДалее.")
         self.assertIn("Используем формулу \\\\\n  Итого $x$ \\\\\n  И еще.\n  Конец фразы.\n  Тогда\n  $x = y$\n  и $z$\n  \\[\n  a\n  \\]\n  Далее.", out)
@@ -325,6 +330,12 @@ class TexBlockTest(unittest.TestCase):
         out, w = tex("A.\n* Доказательство\nВезде $\\lambda$.\n** $\\Rightarrow$\nB.\n*** $g$ -- выпуклая\nC.\n** 2. Шаг.\nD.")
         self.assertIn("\\begin{proof}\n  Везде $\\lambda$.\n\n  \\proofpart{$\\Rightarrow$}\n  B.\n\n  \\proofstep{$g$~--- выпуклая}\n  C.\n\n  \\proofpart{2. Шаг}\n  D.\n\\end{proof}", out)
         self.assertEqual(w, [])
+
+    def test_proof_heading_with_note(self):
+        out, w = tex("A.\n* Доказательство (только $\\Leftarrow$)\nB.\n* Теорема Поляка (без доказательства)\nC.")
+        self.assertIn("\\begin{proof}[Доказательство (только $\\Leftarrow$)]\n  B.\n\\end{proof}", out)
+        self.assertIn("\\paragraph*{Теорема Поляка (без доказательства)}", out)
+        self.assertEqual(w, ["X01"])
 
     def test_lists(self):
         out, _ = tex("Пусть:\n- a\n- b $x$\n  cont\n1. один\n   продолж.\n2. два\n   - вложенный")
@@ -509,6 +520,11 @@ class HtmlTest(unittest.TestCase):
         self.assertIn('<details class="proof" id="s1">', out)
         self.assertIn("<h3>Часть</h3>", out)
         self.assertEqual(toc, [("s1", "Доказательство")])
+        self.assertEqual(w, [])
+
+    def test_proof_heading_with_note(self):
+        out, _, w = article("Формулировка теоремы $x$.\n\n* Доказательство (только $\\Leftarrow$)\nШаг.")
+        self.assertIn("<summary>Доказательство (только \\(\\Leftarrow\\)) <span", out)
         self.assertEqual(w, [])
 
     def test_example_not_boxed(self):

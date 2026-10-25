@@ -25,7 +25,7 @@ from roam_doc import (                       # общая модель: см. ro
     HEADING_KIND as HEADING_ENV, UNICODE_MATH, TOK_RE,
     protect as _protect, EMPH_RE as _EMPH_RE, BOLD_RE as _BOLD_RE,
     DASH_RE as _DASH_RE, sentence_breaks as _sentence_breaks,
-    own_body as _own_body, children as _children,
+    own_body as _own_body, children as _children, heading_key as _heading_key,
     Course, lecture_plan,  # noqa: F401 -- lecture_plan реэкспорт для тестов/старых вызовов
 )
 import roam_doc
@@ -142,9 +142,23 @@ def render_table(t: Table, ctx: Ctx) -> str:
     return "\n".join(out)
 
 
+REM_TITLE_RE = re.compile(r"^\(([^()]+)\):\s*")
+
+
+def _remark(b: Rem, ctx: Ctx) -> str:
+    """/Rem/ → remark.  Ведущая скобка «(на лекции не было): …» -- заголовок замечания."""
+    text, opt = b.text, ""
+    m = REM_TITLE_RE.match(text)
+    if m and text[m.end():].strip():
+        opt = "[%s]" % prose_to_tex(m.group(1), ctx, b.line)
+        rest = text[m.end():]
+        text = rest[:1].upper() + rest[1:]
+    return "\\begin{remark}%s\n%s\n\\end{remark}" % (opt, _ind(prose_to_tex(text, ctx, b.line)))
+
+
 def render_blocks(blocks: list, ctx: Ctx, hoist: bool = False) -> tuple[str, list[str]]:
     """Return (body, hoisted_remarks).  With hoist=True the /Rem/ paragraphs
-    are returned separately instead of being rendered in place."""
+    are returned separately (as ready remark environments) instead of in place."""
     parts, rems = [], []
     for b in blocks:
         if isinstance(b, Para):
@@ -157,11 +171,7 @@ def render_blocks(blocks: list, ctx: Ctx, hoist: bool = False) -> tuple[str, lis
         elif isinstance(b, Table):
             parts.append(render_table(b, ctx))
         elif isinstance(b, Rem):
-            body = prose_to_tex(b.text, ctx, b.line)
-            if hoist:
-                rems.append(body)
-            else:
-                parts.append("\\begin{remark}\n%s\n\\end{remark}" % _ind(body))
+            (rems if hoist else parts).append(_remark(b, ctx))
         elif isinstance(b, ListBlock):
             parts.append(render_list(b, ctx))
         elif isinstance(b, Quote):
@@ -195,7 +205,7 @@ def _render_steps(note: Note, h, ctx: Ctx, depth: int) -> str:
     lines, base = _own_body(note, h)
     body, rems = _render_region(lines, base, ctx)
     parts = [body] if body.strip() else []
-    parts += ["\\begin{remark}\n%s\n\\end{remark}" % _ind(r) for r in rems]
+    parts += rems
     for c in _children(note, h):
         cmd = "\\proofpart" if depth == 0 else "\\proofstep"
         sub = _render_steps(note, c, ctx, depth + 1)
@@ -224,27 +234,29 @@ def note_to_tex(note: Note, vault: Vault, exported: set[str]) -> tuple[str, list
     else:
         ctx.warn("X06", note.body_start + 1, "пустая формулировка")
     for r in rems:
-        out.append("")
-        out.append("\\begin{remark}\n%s\n\\end{remark}" % _ind(r))
+        out += ["", r]
 
     k = 0
     for h in top:
         if h.noexport():
             continue
-        key = re.sub(r"[.:]\s*$", "", h.title.strip()).casefold()
-        kind = HEADING_ENV.get(key) or TEX_HEADING_KIND.get(re.split(r"[\s:]", key, 1)[0])
+        key, hnote = _heading_key(h.title)
+        hnote = prose_to_tex(hnote, ctx, h.line) if hnote else ""
+        kind = HEADING_ENV.get(key) or TEX_HEADING_KIND.get(re.split(r"[\s:]", key, maxsplit=1)[0])
         if kind == "proof":
             body = _render_steps(note, h, ctx, 0)
             if not body.strip():
                 ctx.warn("X06", h.line + 1, "пустое доказательство")
                 continue
-            out += ["", "\\begin{proof}", _ind(body), "\\end{proof}"]
+            opt = "[Доказательство (%s)]" % hnote if hnote else ""
+            out += ["", "\\begin{proof}%s" % opt, _ind(body), "\\end{proof}"]
         elif kind in ("example", "remark", "corollary"):
             body = _render_steps(note, h, ctx, 0)
             if not body.strip():
                 ctx.warn("X06", h.line + 1, f"пустой раздел «{h.title}»")
                 continue
             opt = "[%s]" % _heading_title(h, ctx) if kind == "remark" and key not in HEADING_ENV else ""
+            opt = opt or ("[%s]" % hnote if hnote else "")
             out += ["", "\\begin{%s}%s" % (kind, opt), _ind(body), "\\end{%s}" % kind]
         elif kind != "proposition":
             ctx.warn("X01", h.line + 1, f"неизвестный заголовок «{h.title}» -- выводится как абзац без рамки")
@@ -262,8 +274,7 @@ def note_to_tex(note: Note, vault: Vault, exported: set[str]) -> tuple[str, list
                        % (_heading_title(h, ctx), note.id, k))
             proof_parts = []
             for c in _children(note, h):
-                ckey = re.sub(r"[.:]\s*$", "", c.title.strip()).casefold()
-                if HEADING_ENV.get(ckey) == "proof":
+                if HEADING_ENV.get(_heading_key(c.title)[0]) == "proof":
                     proof_parts.append(_render_steps(note, c, ctx, 0))
                 else:
                     sub = _render_steps(note, c, ctx, 1)
@@ -271,7 +282,7 @@ def note_to_tex(note: Note, vault: Vault, exported: set[str]) -> tuple[str, list
             out.append(_ind(body))
             out.append("\\end{proposition}")
             for r in r2:
-                out += ["", "\\begin{remark}\n%s\n\\end{remark}" % _ind(r)]
+                out += ["", r]
             for p in proof_parts:
                 if p.strip():
                     out += ["", "\\begin{proof}", _ind(p), "\\end{proof}"]

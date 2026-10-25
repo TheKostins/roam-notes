@@ -26,7 +26,7 @@ from roam_doc import (
     Code, Table, BEGIN_RE, END_RE, segment_ext,  # noqa: F401
     DocWarning, Ctx, Para, Rem, ListBlock, Quote, segment, protect,
     EMPH_RE, BOLD_RE, DASH_RE, sentence_breaks, own_body, children,
-    HEADING_KIND, TOK_RE, Plan, lecture_plan, lectures_of, rel_of,
+    HEADING_KIND, TOK_RE, Plan, lecture_plan, lectures_of, rel_of, heading_key,
 )
 
 ASSETS = Path(__file__).resolve().parent / "site"
@@ -336,7 +336,7 @@ def heading_title(h, ctx: HCtx) -> str:
 
 
 def heading_kind(h) -> str | None:
-    return HEADING_KIND.get(re.sub(r"[.:]\s*$", "", h.title.strip()).casefold())
+    return HEADING_KIND.get(heading_key(h.title)[0])
 
 
 def render_steps(note: Note, h, ctx: HCtx, level: int) -> str:
@@ -412,7 +412,9 @@ def note_article(page: Page, site: Site) -> tuple[str, list[tuple[str, str]], li
             ctx.warn("X06", h.line + 1, f"пустой раздел «{h.title}»")
             continue
         if kind == "proof":
-            out.append(f'<details class="proof" id="{anchor}">\n<summary>Доказательство <span class="hint">свёрнуто</span></summary>\n'
+            hnote = heading_key(h.title)[1]
+            label = "Доказательство" + (f" ({prose_to_html(hnote, ctx, h.line)})" if hnote else "")
+            out.append(f'<details class="proof" id="{anchor}">\n<summary>{label} <span class="hint">свёрнуто</span></summary>\n'
                        f'<div class="body">\n{inner}\n</div>\n</details>')
             toc.append((anchor, "Доказательство"))
         else:
