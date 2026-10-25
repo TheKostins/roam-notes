@@ -2,8 +2,20 @@
 :ID:       F7506DC4-37FB-4E88-8178-B0FC678233C0
 :END:
 #+title: SR1
-#+filetags: :metopt:definition:
+#+filetags: :metopt:method:
 
 [[id:6BA18878-DE34-46A5-ABE2-EDA09CAE56A7][Квазиньютоновский метод]] с матрицей по правилу
 \[B_{k+1} = B_k + \sigma_k v_k v_k^T\]
- где $\sigma_kv_kv_k^T$ -- низкоранговое изменение
+ где $\sigma_k \in \R$, $v_k \in \R^n$: поправка $\sigma_kv_kv_k^T$ -- симметричная матрица ранга 1 (отсюда название: Symmetric Rank 1), а $\sigma_k$, $v_k$ подбираются так, чтобы $B_{k+1}$ удовлетворяла [[id:E976DE49-0091-45E1-B621-A236F8B87859][условию секущей]].
+
+* Как подобрать $\sigma_k$ и $v_k$
+Подставим в условие секущей $y_k = B_{k+1}d_k$:
+\[
+\sigma_k v_k \left( v_k^T d_k \right) = y_k - B_k d_k
+\]
+Значит, $v_k \parallel y_k - B_k d_k$. Возьмём $v_k = y_k - B_k d_k$, тогда $\sigma_k = \frac{1}{\left\langle y_k - B_k d_k; d_k \right\rangle}$ и
+\[
+B_{k+1} = B_k + \frac{(y_k - B_k d_k)(y_k - B_k d_k)^T}{\left\langle y_k - B_k d_k; d_k \right\rangle}
+\]
+
+/Rem/: Знаменатель может быть близок к нулю, а $B_{k+1} > 0$ не гарантируется -- в отличие от [[id:01306845-D37F-480A-8DCE-EE9CA022DA1A][BFGS]].

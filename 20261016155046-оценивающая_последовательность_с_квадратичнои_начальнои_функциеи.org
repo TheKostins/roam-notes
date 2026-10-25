@@ -4,7 +4,7 @@
 #+title: Оценивающая последовательность с квадратичной начальной функцией
 #+filetags: :metopt:lemma:
 
-Пусть
+Пусть $f$ -- $\mu$-[[id:22E546FC-186F-4A67-85AA-2C85DCEF9021][сильно выпуклая]] функция, $f \in C^1(\R^n)$, последовательность $\left\{ \varphi_k \right\}$ построена по [[id:C67AAFD8-D294-480B-B58E-C284BFF76D50][лемме о конструкции оценивающей последовательности]] (с теми же $\mu$, $\alpha_k$, $y_k$) и
 \[
 \varphi_0 = \varphi^{*}_0 + \frac{\mu}{2} \|x - v_0\|^2
 \]
@@ -14,7 +14,7 @@
 \varphi_k = \varphi^{*}_k + \frac{\mu}{2} \|x-v_k\|^2
 \]
 \[
-v_{k+1} = (1-\alpha_k)v_k + \alpha_ky_k + \frac{\alpha_k}{\mu} \nabla f(y_k)
+v_{k+1} = (1-\alpha_k)v_k + \alpha_ky_k - \frac{\alpha_k}{\mu} \nabla f(y_k)
 \]
 \[
 \varphi_{k+1}^{*} = (1-\alpha_{k})\varphi^{*}_k + \alpha_k f(y_k) - \frac{\alpha_k^2}{2\mu} \| \nabla f(y_k) \|^2 + \alpha_k (1-\alpha_k)
@@ -22,6 +22,6 @@ v_{k+1} = (1-\alpha_k)v_k + \alpha_ky_k + \frac{\alpha_k}{\mu} \nabla f(y_k)
 \]
 
 
-/Rem/: $v_k$ -- центрирование, а $\varphi^{*}_k$ -- наименьшее значение функции.
+/Rem/: $v_k$ -- центр (точка минимума $\varphi_k$), а $\varphi^{*}_k = \min_x \varphi_k(x)$ -- её наименьшее значение.
 
 Без доказательства.
