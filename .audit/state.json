@@ -110,6 +110,16 @@
    },
    "title": "Градиент"
   },
+  "1864673C-E84E-4CDA-B3F5-58779F1D6B63": {
+   "audited": {
+    "body_hash": "a7166224f03b9cb1",
+    "commit": "c4b61c7",
+    "date": "2026-10-25",
+    "open": 0,
+    "report": null
+   },
+   "title": "Выборка"
+  },
   "18BD8497-CEBD-4962-8144-474B489606C3": {
    "audited": {
     "body_hash": "c847a4d12c2c569a",
@@ -250,6 +260,16 @@
    },
    "title": "Условие Вульфа"
   },
+  "20CA13C1-9371-4848-8213-83584DF0E116": {
+   "audited": {
+    "body_hash": "0b050406ecd4be03",
+    "commit": "c4b61c7",
+    "date": "2026-10-25",
+    "open": 0,
+    "report": null
+   },
+   "title": "Состоятельность"
+  },
   "22E546FC-186F-4A67-85AA-2C85DCEF9021": {
    "audited": {
     "body_hash": "7344ef77c2a173cc",
@@ -389,6 +409,16 @@
     "date": "2026-09-22"
    },
    "title": "Характеристика выпуклого множества через выпуклые комбинации"
+  },
+  "42E16F1C-0231-49B1-8C22-4C1C7617E4F1": {
+   "audited": {
+    "body_hash": "d5116f32e68b8747",
+    "commit": "c4b61c7",
+    "date": "2026-10-25",
+    "open": 0,
+    "report": null
+   },
+   "title": "Матстат. Лекция 1"
   },
   "4B497C50-C541-428D-94F6-B0F0DF464A50": {
    "audited": {
@@ -630,6 +660,16 @@
    },
    "title": "Положительно определенная симметричная матрица"
   },
+  "77819B45-0D93-4CE7-A481-7E1FB5E1D1EF": {
+   "audited": {
+    "body_hash": "74edb3d9674114ed",
+    "commit": "c4b61c7",
+    "date": "2026-10-25",
+    "open": 0,
+    "report": null
+   },
+   "title": "Виды задач в статистике"
+  },
   "7DD1C7AB-1A49-4675-9F21-5A16C717F670": {
    "audited": {
     "body_hash": "581ec3dbcfafc175",
@@ -674,6 +714,16 @@
     "date": "2026-09-22"
    },
    "title": "Выпуклость проекции"
+  },
+  "80D5609B-09AE-4051-95E8-58BDF0BD581A": {
+   "audited": {
+    "body_hash": "6346df6c31648bd5",
+    "commit": "c4b61c7",
+    "date": "2026-10-25",
+    "open": 0,
+    "report": null
+   },
+   "title": "Наблюдение"
   },
   "81C8B68E-DAAD-4B86-BAEB-AB0E1C07442F": {
    "audited": {
@@ -870,6 +920,16 @@
    },
    "title": "Дифференцируемая функция"
   },
+  "966E254B-18A4-480E-97BA-7764CA49D9F8": {
+   "audited": {
+    "body_hash": "a5131ac1e84dd7cb",
+    "commit": "c4b61c7",
+    "date": "2026-10-25",
+    "open": 0,
+    "report": null
+   },
+   "title": "Проверка гипотез"
+  },
   "96DED7D9-3918-45C5-9850-E05030941645": {
    "audited": {
     "body_hash": "0d7f3fee737168fd",
@@ -905,6 +965,16 @@
    },
    "title": "Собственное значение"
   },
+  "9D909CA6-45EC-4650-B650-25AE26044316": {
+   "audited": {
+    "body_hash": "ebef3d255fe24749",
+    "commit": "c4b61c7",
+    "date": "2026-10-25",
+    "open": 0,
+    "report": null
+   },
+   "title": "Параметр распределения"
+  },
   "9E3EEBE3-5D6D-4EB8-AFF1-9B9F95F4463A": {
    "audited": {
     "body_hash": "f796ed77f4be4f87",
@@ -914,6 +984,16 @@
     "report": "2026-09-20-2113-audit.md"
    },
    "title": "Скалярное произведение матриц"
+  },
+  "9E906B0E-23E4-4E58-8139-B3412F9A601E": {
+   "audited": {
+    "body_hash": "385fc6dc301c58a5",
+    "commit": "c4b61c7",
+    "date": "2026-10-25",
+    "open": 0,
+    "report": null
+   },
+   "title": "Сильная состоятельность"
   },
   "9FA20DA5-3A95-4683-9CB5-C6C9A903C86A": {
    "audited": {
@@ -969,6 +1049,16 @@
     "report": null
    },
    "title": "Формула Ньютона-Лейбница"
+  },
+  "B00A6239-6086-4786-B5EB-A52C63538BA3": {
+   "audited": {
+    "body_hash": "5d6daafcfb980882",
+    "commit": "c4b61c7",
+    "date": "2026-10-25",
+    "open": 0,
+    "report": null
+   },
+   "title": "Оценка параметров"
   },
   "B9EF495E-CDBE-4E80-B401-8AFEAB0DCCAC": {
    "audited": {
@@ -1055,6 +1145,16 @@
    },
    "title": "Тест корней"
   },
+  "C0D36CB1-C2FA-4BE7-97B7-16E153320813": {
+   "audited": {
+    "body_hash": "a0d73bd7f714028d",
+    "commit": "c4b61c7",
+    "date": "2026-10-25",
+    "open": 0,
+    "report": null
+   },
+   "title": "Из асимптотической нормальности следует несмещенность"
+  },
   "C0ED5501-CFC6-42BA-A53A-1B346CBA545D": {
    "audited": {
     "body_hash": "0c5eb41cf560b55c",
@@ -1140,6 +1240,16 @@
    },
    "title": "Глобальная сходимость метода Ньютона"
   },
+  "CCAACEBA-A213-48B3-B47A-2F51A3E49CC7": {
+   "audited": {
+    "body_hash": "09c3f6fa68683c2f",
+    "commit": "c4b61c7",
+    "date": "2026-10-25",
+    "open": 0,
+    "report": null
+   },
+   "title": "Асимптотическая нормальность"
+  },
   "CD52D818-AA25-471C-97C2-5DBE9787CE53": {
    "audited": {
     "body_hash": "9476ba67b8dfe0f5",
@@ -1164,6 +1274,16 @@
     "report": "2026-10-16-1221-audit.md"
    },
    "title": "Локальная сходимость метода Ньютона"
+  },
+  "CDE05262-E3D0-4D6B-B910-ACF2863C49F3": {
+   "audited": {
+    "body_hash": "357ba60b44c6cb8c",
+    "commit": "c4b61c7",
+    "date": "2026-10-25",
+    "open": 0,
+    "report": null
+   },
+   "title": "Несмещенность"
   },
   "D053F5F9-AF9F-4517-A434-44B68A40039F": {
    "audited": {
@@ -1199,6 +1319,16 @@
     "report": "2026-10-16-1330-audit.md"
    },
    "title": "Оценка невязки через оценивающую последовательность"
+  },
+  "D7BD243E-CB71-494C-B5FC-5C2C19E75FFF": {
+   "audited": {
+    "body_hash": "b2da6b0c0ca7c112",
+    "commit": "c4b61c7",
+    "date": "2026-10-25",
+    "open": 0,
+    "report": null
+   },
+   "title": "Эмпирическая функция распределения"
   },
   "DAA0DAE4-4B48-4A2F-9459-54790B6B129F": {
    "audited": {
@@ -1260,6 +1390,16 @@
    },
    "title": "Косинус угла между градиентом и направлением спуска"
   },
+  "E4FA54E7-C88D-4A4A-9C4E-ED845A4F50FD": {
+   "audited": {
+    "body_hash": "ba2beb20b3f86282",
+    "commit": "c4b61c7",
+    "date": "2026-10-25",
+    "open": 0,
+    "report": null
+   },
+   "title": "Интервальная оценка"
+  },
   "E976DE49-0091-45E1-B621-A236F8B87859": {
    "audited": {
     "body_hash": "537874588c71984f",
@@ -1295,6 +1435,16 @@
    },
    "title": "Скалярное произведение"
   },
+  "F352A758-E64B-4C51-A01C-160D7745366A": {
+   "audited": {
+    "body_hash": "63a88e05f0816ee4",
+    "commit": "c4b61c7",
+    "date": "2026-10-25",
+    "open": 0,
+    "report": null
+   },
+   "title": "Сохранение требований к точечной оценки после отображения"
+  },
   "F7506DC4-37FB-4E88-8178-B0FC678233C0": {
    "audited": {
     "body_hash": "f4e008a37faac5db",
@@ -1319,6 +1469,16 @@
     "date": "2026-10-10"
    },
    "title": "Формула Тейлора с остаточным членом Пеано"
+  },
+  "FD46ACFB-6C82-42BC-A2C9-107BA45CEE1C": {
+   "audited": {
+    "body_hash": "5512acd7e0965678",
+    "commit": "c4b61c7",
+    "date": "2026-10-25",
+    "open": 0,
+    "report": null
+   },
+   "title": "Точечная оценка"
   },
   "FDA5DA6F-DE0F-437E-A4F4-89757BA7F538": {
    "audited": {
