@@ -567,10 +567,10 @@
   },
   "58D1735C-5A70-4DA0-B522-B4595CB4494C": {
    "audited": {
-    "body_hash": "46672fb67ed41d05",
-    "commit": "86d3517",
+    "body_hash": "a9662a5d3e083295",
+    "commit": "8eff4e2",
     "date": "2026-10-26",
-    "open": 2,
+    "open": 1,
     "report": "2026-10-26-0050-audit.md"
    },
    "title": "Сходимость SGD для выпуклых функций"
@@ -1022,10 +1022,10 @@
   },
   "A4769F74-2E6F-4CA3-89E4-7B01881D8109": {
    "audited": {
-    "body_hash": "2b81d4aa826c9ce1",
-    "commit": "86d3517",
+    "body_hash": "799e85a50dd104f1",
+    "commit": "8eff4e2",
     "date": "2026-10-26",
-    "open": 2,
+    "open": 0,
     "report": "2026-10-26-0050-audit.md"
    },
    "title": "Стохастический градиентный спуск (SGD)"
@@ -1352,13 +1352,13 @@
   },
   "D65FB534-B7F1-4194-8E4B-D4ACAA89E6D2": {
    "audited": {
-    "body_hash": "f0205220e4920a01",
-    "commit": "86d3517",
+    "body_hash": "884785f281388187",
+    "commit": "8eff4e2",
     "date": "2026-10-26",
-    "open": 3,
+    "open": 1,
     "report": "2026-10-26-0050-audit.md"
    },
-   "title": "Критерий Денниса-Морре"
+   "title": "Критерий Денниса–Море"
   },
   "D7BD243E-CB71-494C-B5FC-5C2C19E75FFF": {
    "audited": {
