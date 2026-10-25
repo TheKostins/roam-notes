@@ -1,0 +1,120 @@
+:PROPERTIES:
+:ID:       E976DE49-0091-45E1-B621-A236F8B87859
+:END:
+#+title: Условие секущей
+#+filetags: :definition:metopt:
+
+Пусть
+\[
+d_k:= x_{k+1} - x_k,\quad y_k = \nabla f(x_{k+1}) - \nabla f(x_k)
+\]
+
+Тогда для $B_k$ выполнено условие секущей, если
+\[
+y_k = B_{k+1}d_k
+\]
+
+Откуда оно берется:
+\[
+y_k = \nabla f(x_{k+1}) - \nabla f(x_k) = \int\limits_0^1 \nabla^2 f(x_k + \tau (x_{k+1} - x_k))\,d\tau(x_{k+1} - x_k) = \int\limits_0^1 \nabla^2 f(x_k + \tau d_k)\,d\tau d_k
+\]
+Получается, что
+\[
+y_k = \int\limits_0^1 \nabla^2f(x_k+\tau d_k)\, d\tau d_k = B_{k+1} d_k
+\]
+Получается, что $B_{k+1}$ должна оценивать приращение производной на направлении $d_k$ так-же хорошо, как интеграл от $\nabla^2 f$ (можно наверное как-то более красиво сформулировать)
+
+* Необходимые условия
+
+** Положительность скалярного произведения приращения аргумента и градиента
+Домножим исходное условие на $d_k^T$, получим
+\[
+d_k^Ty_k = d^T_kB_{k+1}d_k
+\]
+Так как $B_{k+1} > 0$, то $d^T_kB_kd_k >0 \Rightarrow d^T_ky_k > 0$
+
+** Сильная выпуклость или использование обратной матрицы
+Если $f$ -- $\mu$-сильно выпукла или
+\[
+x_{k+1} = x_k - \alpha_k B^{-1} \nabla f(x_k)
+\]
+Где $\alpha_k$ -- шаг по [[id:5330B23D-95DD-4D5D-B4A3-63EBADB1DB7D][условиям Армихо-Вульфа]]
+Тогда $d_k^Ty_k > 0$
+*** Доказательство
+**** Пункт 1
+По [[id:1B5A3E25-56E8-4D5E-9CF6-E2731DA77604][дифференциальому критерий сильной выпуклости]] получаем
+\[
+f(x) \ge f(y) + \left\langle \nabla f(y); x-y \right\rangle + \frac{\mu}{2} \|x-y\|^2
+\]
+\[
+f(y) \ge f(x) + \left\langle \nabla f(x); y-x \right\rangle + \frac{\mu}{2} \|x-y\|^2
+\]
+Сложим эти два неравенства
+\[
+f(x) + f(y) \ge f(y) + f(x) + \left\langle \nabla f(y); x-y \right\rangle + \left\langle \nabla f(x); y-x \right\rangle + \mu \|x-y\|^2
+\]
+Сократим $f(x) + f(y)$ и заметим, что
+\begin{multline*}
+\left\langle \nabla f(y); x-y \right\rangle + \left\langle \nabla f(x); y-x \right\rangle = \\
+ \left\langle \nabla f(x); y-x \right\rangle - \left\langle \nabla f(x); y-x \right\rangle =
+\left\langle \nabla f(y) - \nabla f(x); x-y \right\rangle
+\end{multline*}
+Тогда
+\[
+0 \ge \left\langle \nabla f(y) - \nabla f(x); x-y \right\rangle + \mu \|x-y\|^2
+\]
+Или
+\[
+\left\langle \nabla f(x) - \nabla f(y); x-y \right\rangle \ge \mu \|x-y\|^2
+\]
+
+Пусть $x = x_{k+1}, y=x_k$, тогда
+\[
+\left\langle \nabla f(x_{k+1}) - \nabla f(x_k); x_{k+1}-x_k \right\rangle \ge \mu \|x-y\|^2
+\]
+или
+\[
+\left\langle y_k; d_k \right\rangle \ge \mu \|x-y\|^2 > 0,\quad d_k \ne 0
+\]
+
+
+
+**** Пункт 2
+Пусть
+\[
+p_k = - B^{-1}\nabla f(x_k)
+\]
+Тогда
+\[
+x_{k+1} = x_k - \alpha_k p_k
+\]
+Из [[id:DF0CC2BA-9234-47D3-8988-7A1DAFC9B114][Градиентный спуск с шагом Армихо-Вульфа]] мы знаем, что
+\[
+\left\langle \nabla f(x_{k+1}); p_k \right\rangle \ge  - c_2 \left| \left\langle \nabla f(x_k); p_k \right\rangle \right|
+\]
+Под модулем стоит отрицательная производная  (см [[id:DF0CC2BA-9234-47D3-8988-7A1DAFC9B114][Градиентный спуск с шагом Армихо-Вульфа]]), раскроем модуль.
+\[
+\left\langle \nabla f(x_{k+1}); p_k \right\rangle \ge c_2 \left\langle \nabla f(x_k); p_k \right\rangle
+\]
+Вычтем $\left\langle \nabla f(x_k); p_k \right\rangle$ c обеих сторон
+\[
+\left\langle \nabla f(x_{k+1}) - \nabla f(x_k); p_k \right\rangle \ge (c_2-1) \left\langle \nabla f(x_k); p_k \right\rangle
+\]
+Заменим разность градиентов на $y$
+\[
+\left\langle y_k; p_k \right\rangle \ge (c_2-1) \left\langle \nabla f(x_k); p_k \right\rangle
+\]
+
+Заметим, что
+\[d_k = x_{k+1} - x_k = -\alpha_kB_k^-\nabla f(x_k) = \alpha_kp_{k}\].
+Тогда
+\[d^T_ky_k = \left\langle y_k; d_k \right\rangle = \left\langle y_k; \alpha_kp_k \right\rangle\].
+Давайте домножим неравенство на $\alpha_k > 0$
+\[
+d_k^Ty_k = \alpha_k\left\langle y_k; p_k \right\rangle \ge  \alpha_k(c_2-1) \left\langle \nabla f(x_k); p_k \right\rangle > 0
+\]
+
+Оно больше нуля так как
+\[
+\alpha_k > 0\quad c_2-1 < 0\quad \left\langle \nabla f(x_k);p_k \right\rangle < 0
+\]

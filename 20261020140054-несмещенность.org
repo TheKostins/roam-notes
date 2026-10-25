@@ -1,0 +1,10 @@
+:PROPERTIES:
+:ID:       CDE05262-E3D0-4D6B-B910-ACF2863C49F3
+:END:
+#+title: Несмещенность
+#+filetags: :definition:mathstat:
+Путь $T$ -- [[id:FD46ACFB-6C82-42BC-A2C9-107BA45CEE1C][точечная оценка]], $\theta$ -- [[id:9D909CA6-45EC-4650-B650-25AE26044316][параметр]]
+Тогда несмещенность выражается вот так:
+\[
+\forall \theta\ \E_{\theta}T = \theta
+\]

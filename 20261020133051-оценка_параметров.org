@@ -1,0 +1,10 @@
+:PROPERTIES:
+:ID:       B00A6239-6086-4786-B5EB-A52C63538BA3
+:END:
+#+title: Оценка параметров
+#+filetags: :concept:mathstat:
+
+Есть два вида оценок:
+- [[id:FD46ACFB-6C82-42BC-A2C9-107BA45CEE1C][Точечная оценка]]
+- [[id:E4FA54E7-C88D-4A4A-9C4E-ED845A4F50FD][Интервальная оценка]]
+

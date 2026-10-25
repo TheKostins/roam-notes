@@ -1,0 +1,73 @@
+:PROPERTIES:
+:ID:       F352A758-E64B-4C51-A01C-160D7745366A
+:END:
+#+title: Сохранение требований к точечной оценки после отображения
+#+filetags: :theorem:mathstat:
+
+Пусть у нас есть точечная оценка $T$ параметра $\theta$.
+Если мы применим функцию $g$. И получим оценку $g(T)$ параметра $g(\theta)$.
+
+Какие требования к оценке $g(T)$ сохранятся?
+
+* [[id:CDE05262-E3D0-4D6B-B910-ACF2863C49F3][Несмещенность]]
+В общем случае не сохраняется
+
+* [[id:20CA13C1-9371-4848-8213-83584DF0E116][Состоятельность]]
+Хотим доказать
+\[
+g(T) \xlongrightarrow{\Pb} g(\theta) \Leftrightarrow 
+\forall \varepsilon>0\  \Pb(\left| g(T) - g(\theta) \right| > \varepsilon) \rightarrow 0
+\]
+Имея
+\[
+T \xlongrightarrow{\Pb} \theta \Leftrightarrow
+\forall \delta > 0\ \Pb(|T - \theta| > \delta) \rightarrow 0
+\]
+И непрерывность $g$.
+\[
+\forall \varepsilon > 0\ \exists \delta >0:\ | g(T) - g(\theta) | > \varepsilon \Rightarrow |T - \theta| > \delta
+\]
+Заметим, что из непрерывности следует, что одна вероятность меньше другой
+\[
+\Pb(\left| g(T) - g(\theta) \right| > \varepsilon )  \le \Pb(|T - \theta| > \delta) \rightarrow 0
+\]
+
+* [[id:CCAACEBA-A213-48B3-B47A-2F51A3E49CC7][Асимптотическая нормальность]]
+
+Из нормальности $T$ следует состоятельность.
+Тогда  $T_n \xlongrightarrow{d} \theta$
+
+Хотим посмотреть, куда сходится
+\[
+\sqrt{n} (g(T_n) - g(\theta))
+\]
+
+Разложим $g$ по Тейлору в окрестности $\theta$
+\[
+g(x) = g(\theta) + g^{\prime}(\theta)(x-\theta) + r(x)(x - \theta) 
+\]
+
+Тогда
+\[
+\sqrt{n}(g(T_n) - g(\theta)) = \sqrt{n}g^{\prime}(\theta)(T_n-\theta) + r(T_n)(T_n - \theta) 
+\]
+Заметим, что так как умножение на константу -- непр, то
+\[
+\sqrt{n}g^{\prime}(\theta)(T_n-\theta) \xlongrightarrow{d} \mathcal{N}(0; [g^{\prime}(\theta)]^2 \cdot \sigma^2(\theta))
+\]
+Так-же замемтим, что $r(x)$ -- остаточная функция; Это непр. отображение. Тогда
+\[
+r(T_n) \xlongrightarrow{P} r(\theta) = 0
+\]
+По th о непрерывном отображении
+Тогда по Слуцкому 
+\[
+r(T_n) (T_n - \theta) \xlongrightarrow{d} 0 \cdot 0
+\]
+
+Еще раз применим слуцкого но для суммы
+\[
+\sqrt{n}(g(T_n) - g(\theta)) = \sqrt{n}g^{\prime}(\theta)(T_n-\theta) + r(T_n)(T_n - \theta)
+\xlongrightarrow{d} \mathcal{N}(0; [g^{\prime}(\theta)]^2 \cdot \sigma^2(\theta))
+\]
+

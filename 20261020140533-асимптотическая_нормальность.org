@@ -1,0 +1,12 @@
+:PROPERTIES:
+:ID:       CCAACEBA-A213-48B3-B47A-2F51A3E49CC7
+:END:
+#+title: Асимптотическая нормальность
+#+filetags: :definition:mathstat:
+Выполняется, если для [[id:FD46ACFB-6C82-42BC-A2C9-107BA45CEE1C][оценки]] $T$ и [[id:9D909CA6-45EC-4650-B650-25AE26044316][параметра]] $\theta$ верно:
+
+\[
+\sqrt{n} (T_n - \theta) \xlongrightarrow{d} \mathcal{N}(0; \sigma^2(\theta))
+\]
+
+

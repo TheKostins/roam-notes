@@ -1,0 +1,9 @@
+:PROPERTIES:
+:ID:       F7506DC4-37FB-4E88-8178-B0FC678233C0
+:END:
+#+title: SR1
+#+filetags: :definition:metopt:
+
+[[id:6BA18878-DE34-46A5-ABE2-EDA09CAE56A7][Квазиньютоновский метод]] с матрицей по правилу
+\[B_{k+2} = B_k + \sigma_k v_k v_k^T\]
+ где $\sigma_kv_kv_k^T$ -- низкоранговое изменение 

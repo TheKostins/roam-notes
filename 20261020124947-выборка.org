@@ -1,0 +1,17 @@
+:PROPERTIES:
+:ID:       1864673C-E84E-4CDA-B3F5-58779F1D6B63
+:END:
+#+title: Выборка
+#+filetags: :definition:mathstat:
+
+Пусть
+\[
+X_i: (\Omega; \mathcal{F}; \Pb) \rightarrow \mathcal{X} 
+\]
+Вероятностное пространство
+/Rem/: Зачастую $\mathcal{X} = \R$
+
+Тогда /выборкой/ считается набор:
+$X_1,..., X_n \sim \Pb_{\theta}$ -- одинаково распределенные и независимые случайные величины.
+Где $\Pb_{\theta}$ -- распределение с [[id:9D909CA6-45EC-4650-B650-25AE26044316][параметром]] $\theta$.
+

@@ -1,0 +1,6 @@
+:PROPERTIES:
+:ID:       80D5609B-09AE-4051-95E8-58BDF0BD581A
+:END:
+#+title: Наблюдение
+#+filetags: :definition:mathstat:
+Наблюдением называют элемент [[id:1864673C-E84E-4CDA-B3F5-58779F1D6B63][выборки]] $X_i$

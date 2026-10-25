@@ -1,0 +1,8 @@
+:PROPERTIES:
+:ID:       E4FA54E7-C88D-4A4A-9C4E-ED845A4F50FD
+:END:
+#+title: Интервальная оценка
+#+filetags: :concept:mathstat:
+Оцениваем вероятность нахождения [[id:9D909CA6-45EC-4650-B650-25AE26044316][параметра]] в промежутке
+\[ \Pb_{\theta}(\theta \in (T_l(X_1,...,X_n); T_r(X_1,...,X_n)) \ge \gamma \]
+Где $T_l,T_r$ -- функции от [[id:1864673C-E84E-4CDA-B3F5-58779F1D6B63][выборки]]

@@ -1,0 +1,35 @@
+:PROPERTIES:
+:ID:       D7BD243E-CB71-494C-B5FC-5C2C19E75FFF
+:END:
+#+title: Эмпирическая функция распределения
+#+filetags: :mathstat:definition:
+
+Пусть $X_1,...,X_n$ -- [[id:1864673C-E84E-4CDA-B3F5-58779F1D6B63][выборка]];
+Тогда эмпирическая функция распределения для этой выборки является
+\[
+F_n(x) = \frac{1}{n} \sum\limits_{i=1}^n \ind \left\{ X_i \le x \right\}
+\]
+/Rem/:  Мы просто считаем сколько элементов нашей выборки меньше и усредняем
+
+*   Свойства
+** Мат. ожидание
+Мат. ожидание равно истинной функции распределения.
+\[
+\E F_n(x) = \frac{1}{n} \sum\limits_{i=1}^n \E [\ind \left\{ X_i \le x \right\}] =
+\frac{1}{n} \sum\limits_{i=1}^n \Pb(X_i \le x) = \frac{n}{n} F(x) = F(x)
+\]
+** Стремится к истинной функции
+По ЗБЧ
+\[
+F_n(x) \xlongrightarrow{P} F
+\]
+** Нормальная смещенность
+По ЦПТ
+\[
+\frac{\sqrt{n} (F_n(x) - F(x))}{\sqrt{F(x)(1-F(x))}} \xlongrightarrow{d} \mathcal{N}(0; 1)
+\]
+** Гливенко-Кантелли
+\[
+\Pb \left(\sup_{x\in\R} \left|F_n(x) -F(x)  \right| \rightarrow 0\right) =1
+\]
+

@@ -2,6 +2,27 @@
 :ID:       4B497C50-C541-428D-94F6-B0F0DF464A50
 :END:
 #+title: Оценивающая последовательность с квадратичной начальной функцией
-#+filetags: :metopt:lemma:backfill:
+#+filetags: :metopt:lemma:
 
-backfill
+Пусть
+\[
+\varphi_0 = \varphi^{*}_0 + \frac{\mu}{2} \|x - v_0\|^2
+\]
+
+Тогда
+\[
+\varphi_k = \varphi^{*}_k + \frac{\mu}{2} \|x-v_k\|^2
+\]
+\[
+v_{k+1} = (1-\alpha_k)v_k + \alpha_ky_k + \frac{\alpha_k}{\mu} \nabla f(y_k)
+\] 
+\[
+\varphi_{k+1}^{*} = (1-\alpha_{k})\varphi^{*}_k + \alpha_k f(y_k) - \frac{\alpha_k^2}{2\mu} \| \nabla f(y_k) \|^2 + \alpha_k (1-\alpha_k)
+\left( \frac{\mu}{2} \| y_k -v_k\|^2 + \left\langle \nabla f(y); v_k -y_k \right\rangle \right)
+\]
+
+
+/Rem/: $v_k$ -- центрирование, а $\varphi^{*}_k$  -- наименьшее значение функции
+
+Без доказательства.
+

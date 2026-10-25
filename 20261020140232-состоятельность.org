@@ -1,0 +1,9 @@
+:PROPERTIES:
+:ID:       20CA13C1-9371-4848-8213-83584DF0E116
+:END:
+#+title: Состоятельность
+#+filetags: :definition:mathstat:
+Выполняется, если для [[id:FD46ACFB-6C82-42BC-A2C9-107BA45CEE1C][оценки]] $T$ и [[id:9D909CA6-45EC-4650-B650-25AE26044316][параметра]] $\theta$ верно:
+\[
+\forall \theta\ T_n \xlongrightarrow{P_{\theta}}  \theta
+\]

@@ -1,0 +1,255 @@
+:PROPERTIES:
+:ID:       42E16F1C-0231-49B1-8C22-4C1C7617E4F1
+:END:
+#+title: Матстат. Лекция 1
+#+filetags: :stats:mathstat:
+#+date: 2026-10-19
+
+* Задача Мат статистики
+
+- Теория вероятностей строит вероятностную модель, 
+- Получаем данные из реального мира
+- А матстат нужен для оценки модели и оптимизации ее параметров.
+
+  
+* Математическая постановка
+
+** Выборка
+Пусть у нас есть случайные величины
+\[
+X_i:\ \left( \Omega; \mathcal{F}; \Pb \right) \rightarrow \R
+\]
+(Link: вероятностное  пространство )
+Тогда выборкой считается $X_1,...,X_n$ -- независимые одинаково распределенные случайные величины.
+
+$X_i$ -- наблюдение выборки 
+
+$\Pb_{\theta},\ \theta \in \Theta$ -- пространство распределений выборки
+распределение $X_i$  -- одно из $\Pb_{\theta}$, но мы не знаем какое имнно
+
+/Rem/ Мы придерживаемся частотного подхода, но есть еще и Баесовский;
+
+/Rem/: В реальном мире мы видим реализации случайных величин. Однако для задач статистики полезно работать с такими абстракциями, как случайные величины.
+
+
+* Группы задач в статистике
+
+** Оценка параметров
+- Точечная оценка: $T(X_1,...,X_n) \approx \theta$ (примерно хорошо приближает параметр)
+- Интервальная оценка $\Pb_{\theta}(\theta \in (T_l(X_1,...,X_n); T_r(X_1,...,X_n)) \ge \gamma$
+
+
+** Проверка гипотез
+Пусть $\Theta = \Theta_0 \sqcup \Theta_1$ (пространство параметров разбито на 2 части)
+Есть 2 гипотезы
+\[
+H_0(X_1,...,X_n):\ \theta \in \Theta_0\quad H_1(X_1,...,X_n):\ \theta \in \Theta_1
+\]
+Ходим построить функцию от выборки, которая позволяет принять или отвергнуть одну из гипотез.
+Обычно отклоняют 0 гипотезу.
+\[
+p(X_1,...,X_n) = \left\{ \begin{array}{c} 0 \\ 1  \end{array}\right.
+\]
+
+* Эмпирическая функция распределения
+\[
+F_n (x) = \frac{1}{n} \sum\limits_{k=1}^n \ind_{\{X_i \le x\}}
+\]
+
+** Свойства
+\[
+\E F_n(x) = F(x)
+\]
+
+По збч
+\[
+F_n(x) \xlongrightarrow{P} F
+\]
+
+По цпт
+\[
+\frac{\sqrt{n} (F_n(x) - F(x))}{\sqrt{F(x)(1-F(x))}} \xlongrightarrow{d} \mathcal{N}(0; 1)
+\]
+
+
+Теорема Гливенко-Кантелли
+\[
+\Pb \left(\sup_{x\in\R} \left|F_n(x) -F(x)  \right| \rightarrow 0\right) =1
+\]
+
+* Требования к оценкам параметров
+** Несмещенность
+\[
+\forall \theta\ \E_{\theta}T = \theta
+\]
+** Состоятельность
+\[
+\forall \theta\ T_n \xlongrightarrow{P_{\theta}}  \theta
+\]
+** Сильная Состоятельность
+\[
+\forall \theta\ T_n \rightarrow \theta
+\]
+почти наверное по $P_{\theta}$
+** Асимптотическая нормальность
+\[
+\sqrt{n} (T_n - \theta) \xlongrightarrow{d} \mathcal{N}(0; \sigma^2(\theta))
+\]
+
+*** Из нормальности следует состоятельность
+Определим с.в. $X_n := \sqrt{n}(T_n - \theta)$ она $\xlongrightarrow{d} \mathcal{N}(0;\sigma^2(\theta))$.
+Пусть $Y_n:= \frac{1}{\sqrt{n}}$. она стремится к 0 (детерменировано, можно вообще любую сходимость дать)
+Тогда $X_n \cdot Y_n \xlongrightarrow{d} 0 \Leftrightarrow T_n - \theta \xlongrightarrow{d} 0$
+А сходимость по распределению к константе равносильна сходимости по вероятности. ЧТД
+** $T_1$ эффективнее $T_2$
+\[
+\forall \theta\ \E_{\theta}(T_1 - \theta)^2 \le \E_{\theta} (T_2 - \theta)^2
+\]
+
+** Сохранение свойств оценки
+Пусть была оценка $T$ параметра $\theta$.
+Применили функцию $g$ и получили новую оценку $g(\theta)$
+Что стало с $g(T)$
+
+*** Мат ожидание (Несмещенность)
+\[
+\E_{\theta} g(T) \overset{?}{=} g(\E_{\theta}(T))
+\]
+
+Ничего не можем сказать в общем случае
+
+*** Состоятельность
+\[
+g(T) \xlongrightarrow{P} g(\theta)\quad (?)
+\]
+
+Или
+\[
+\forall \varepsilon>0\  \Pb(\left| g(T) - g(\theta) \right| > \varepsilon) \rightarrow 0
+\]
+
+А исходим из того, что $T$ -- состоятельная
+\[
+\forall \delta > 0\ \Pb(|T - \theta| > \delta) \rightarrow 0
+\]
+
+Если $g$ -- непрерывна, то
+\[
+\forall \varepsilon > 0 \exists \delta >0:\ | g(T) - g(\theta) | > \varepsilon \Rightarrow |T - \theta| > \delta
+\]
+
+Тогда
+\[
+\Pb(\left| g(T) - g(\theta) \right| > \varepsilon )  \le \Pb(|T - \theta| > \delta)
+\]
+
+*** Ассимптотическая нормальность
+Из нормальности $T$ следует, что она еще и состоятельна
+Следовательно $T_n \xlongrightarrow{d} \theta$
+
+Хотим посмотреть, куда сходится
+\[
+\sqrt{n} (g(T_n) - g(\theta))
+\]
+
+Разложим $g$ по Тейлору в окрестности $\theta$
+\[
+g(x) = g(\theta) + g^{\prime}(\theta)(x-\theta) + r(x)(x - \theta) 
+\]
+
+
+
+Тогда \[
+\sqrt{n}(g(T_n) - g(\theta)) = \sqrt{n}g^{\prime}(\theta)(T_n-\theta) + r(T_n)(T_n - \theta) 
+\]
+Заметим, что так как умножение на константу -- непр, то
+\[
+\sqrt{n}g^{\prime}(\theta)(T_n-\theta) \xlongrightarrow{d} \mathcal{N}(0; [g^{\prime}(\theta)]^2 \cdot \sigma^2(\theta))
+\]
+Так-же замемтим, что $r(x)$ -- остаточная функция; Это непр. отображение. Тогда
+\[
+r(T_n) \xlongrightarrow{P} r(\theta) = 0
+\]
+По th о непрерывном отображении
+Тогда по Слуцкому 
+\[
+r(T_n) (T_n - \theta) \xlongrightarrow{d} 0 \cdot 0
+\]
+
+Еще раз применим слуцкого но для суммы
+\[
+\sqrt{n}(g(T_n) - g(\theta)) = \sqrt{n}g^{\prime}(\theta)(T_n-\theta) + r(T_n)(T_n - \theta)
+\xlongrightarrow{d} \mathcal{N}(0; [g^{\prime}(\theta)]^2 \cdot \sigma^2(\theta))
+\]
+
+
+* Кваниль
+Квантиль порядка $p$ это $\zeta_p$ и он определяется как $\Pb(\zeta_p) = p$
+
+У такого определения есть проблемы сущестования и единственности
+
+* Th
+Пусть $X_1,...,X_n$ -- выборка; $X_{(1)} \le ... \le X_{(n)}$ -- вариацонный ряд.
+$z_p = X_{[np]+1}$  -- выборочный квантиль
+
+Пусть $f$ -- плотность $X_i$, $f(\zeta_p) \ne 0$,
+Тогда
+\[
+\sqrt{n}(z_p - \zeta_p) \xlongrightarrow{d} \mathcal{N} \left( 0; \frac{p(1-p)}{f^2(\zeta_p)} \right)
+\]
+** Док-во
+\[
+\Pb(\sqrt{n}(z_p - \zeta_p) \le x) = \Pb\left(z_p \le \zeta_p + \frac{x}{\sqrt{n}}\right) =
+\Pb \left( \sum\limits_{i=1}^n \ind_{\left\{X_i \le \zeta_p + \frac{x}{\sqrt{n}}\right\}} \ge k \right)
+\]
+
+\begin{multline*}
+\E \left[   \sum\limits_{i=1}^n \ind_{\left\{X_i \le \zeta_p + \frac{x}{\sqrt{n}}\right\}}  \right]=
+F \left( \zeta_p + \frac{x}{\sqrt{n}} \right) = F(\zeta_p) + F^{\prime}(\zeta_p)\cdot \frac{x}{\sqrt{n}} + o \left( \frac{1}{\sqrt{n}} \right) = \\
+p + f(\zeta_p)\cdot \frac{x}{\sqrt{n}} + o \left( \frac{1}{\sqrt{n}} \right)
+\end{multline*}
+\[
+\D \left[   \sum\limits_{i=1}^n \ind_{\left\{X_i \le \zeta_p + \frac{x}{\sqrt{n}}\right\}}  \right] =
+F \left( \zeta_p + \frac{x}{\sqrt{n}} \right) + \left(
+1 - F \left( \zeta_p + \frac{x}{\sqrt{n}} \right)
+\right) = p(1-p)(1+o(1))
+\]
+
+Тогда по цпт (теорема муавра лапласа)
+\[
+\Pb \left( \sum\limits_{i=1}^n \ind_{\left\{X_i \le \zeta_p + \frac{x}{\sqrt{n}}\right\}} \ge k \right)
+= 1-\Phi \left( \frac{k - np - f(\zeta_p) x \cdot \sqrt{n} + o(\sqrt{n})}{\sqrt{np(1-p)(1+o(1))}} \right) + o(1)
+\]
+\[
+k - np = O(1) = o(\sqrt{n})
+\]
+\[
+\Pb \left( \sum\limits_{i=1}^n \ind_{\left\{X_i \le \zeta_p + \frac{x}{\sqrt{n}}\right\}} \ge k \right)
+= 1-\Phi \left( \frac{- f(\zeta_p) x \cdot \sqrt{n} + o(\sqrt{n})}{\sqrt{np(1-p)(1+o(1))}} \right) + o(1)
+\]
+\[
+\Phi(-x) = 1 - \Phi(x)
+\]
+\[
+\Pb \left( \sum\limits_{i=1}^n \ind_{\left\{X_i \le \zeta_p + \frac{x}{\sqrt{n}}\right\}} \ge k \right)
+= \Phi \left( \frac{f(\zeta_p) x \cdot \sqrt{n} + o(\sqrt{n})}{\sqrt{np(1-p)(1+o(1))}} \right) + o(1)
+\]
+Все $o(...)$ можно вытащить из под $\Phi$, так как она -- непр
+\[
+\Pb \left( \sum\limits_{i=1}^n \ind_{\left\{X_i \le \zeta_p + \frac{x}{\sqrt{n}}\right\}} \ge k \right)
+= \Phi \left( \frac{f(\zeta_p) \sqrt{n}}{\sqrt{p(1-p)}} \cdot x \right) + o(1)
+\]
+Тогда оно стремится
+\[
+\Pb \left( \sum\limits_{i=1}^n \ind_{\left\{X_i \le \zeta_p + \frac{x}{\sqrt{n}}\right\}} \ge k \right)
+\rightarrow \Phi \left( \frac{x}{\sigma}\right), \quad \sigma^2 = \frac{p(1-p)}{f^2(\zeta_p)}
+\]
+
+
+
+
+
+
+
+
+
