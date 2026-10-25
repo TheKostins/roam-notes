@@ -1,0 +1,101 @@
+:PROPERTIES:
+:ID:       58D1735C-5A70-4DA0-B522-B4595CB4494C
+:END:
+#+title: Сходимость SGD для выпуклых функций
+#+filetags: :metopt:theorem:
+Пусть
+- $f_i \in C^{0,1}_L$ ([[id:7DD1C7AB-1A49-4675-9F21-5A16C717F670][Функции с липшицевым градиентом]])
+- $F$ -- [[id:1CA14F2C-637F-41DE-9E97-72075D19E97F][выпуклая функция]]
+
+
+И $x_{k+1}$ считается по [[id:A4769F74-2E6F-4CA3-89E4-7B01881D8109][SGD]]
+\[
+x_{k+1} = x_k - \alpha_k\nabla f_{ik}(x_k) = x_k - \alpha_kg_k
+\]
+
+Тогда
+\[
+\E [F(\overline{x}_k)] - F^{*} \le \frac{\|x^{*} - x_0\|^2 + \left( \sum\limits_{i=0}^k \alpha_i^2 \right)L^2}{2 \sum\limits_{i=0}^k \alpha_i}, \quad
+\overline{x}_k = \frac{\sum\limits_{i=0}^k \alpha_ix_i}{\sum\limits_{i=0}^k \alpha_i}
+\]
+
+
+/Rem/: Давайте посмотрим на $\E_{i_k} \nabla f_{i_k} = \sum\limits_{i=1}^N \frac{1}{N} \nabla f_i(x_k)= \nabla F(x_k)$ -- [[id:CDE05262-E3D0-4D6B-B910-ACF2863C49F3][несмещенная оценка]]
+
+
+/Rem/: Когда не сходится. Рассмотрим $f(\omega) = \frac{1}{N} \sum\limits_{i=1}^N \frac{1}{2} (y_i - x_i\omega)^2$, рассмотрим SGD с постоянным шагом для этой функции. $f_i$ -- это парабола. На каждой итерации мы выбираем случайные параболы и двигаемся в сторону их центра. Тогда мы постоянно будем ходить в случайном направлении и не сойдемся. Если бы мы взяли уменьшающийся шаг, тогда бы амплитуда постепенно уменьшалась и мы бы сошлись хотя-бы где-то.
+
+* Доказательство
+Посмотрим на
+\[
+\|x_{k+1} - x^{*}\|^2 = \|x_k - \alpha_k g_k - x^{*}\|^2
+= \|x_k - x^{*}\|^2 + \alpha^2 \|g\|^2 - 2\alpha \left\langle g_k; x_k-x^{*} \right\rangle
+\]
+
+Возьмем мат.ожидание по $i_k$
+
+/Rem/: $x_k$ -- не зависит от $i_k$, а $x_{k+1}$ уже да. Так-же мат ожидание $g_k$ мы уже посчитали, по линейности его можно поставить внутрь скалярного произведения.
+
+\[
+\E_{i_k} \|x_{k+1} - x^{*}\|^2 = \|x_k -x^{*}\|^2 + \alpha^2_k \E_{i_k}\|g_k\| - 2\alpha_k \left\langle \nabla F(x_k); x_k - x^{*} \right\rangle
+\]
+Тогда
+\[
+2\alpha_k \left\langle \nabla F(x_k); x_k - x^{*} \right\rangle =
+ \|x_k -x^{*}\|^2 + \alpha^2_k \E_{i_k}\|g_k\| - \E_{i_k} \|x_{k+1} - x^{*}\|^2
+\]
+
+
+Так как $F$ -- [[id:1CA14F2C-637F-41DE-9E97-72075D19E97F][выпуклая]], то по [[id:18BD8497-CEBD-4962-8144-474B489606C3][дифференциальному критерию выпуклости]]
+\[
+F(x^{*}) \ge F(x_k) + \left\langle \nabla F(x_k); x^{*} - x_k \right\rangle
+\]
+Перенесем слагаемые и получим
+\[
+F(x_k) - F(x^{*}) \le \left\langle \nabla F(x_k); x_k - x^{*} \right\rangle
+\]
+Домножим обе стороны на $2\alpha_k$
+\[
+2\alpha_k(F(x_k) - F(x^{*})) \le 2\alpha_k\left\langle \nabla F(x_k); x_k - x^{*} \right\rangle = 
+ \|x_k -x^{*}\|^2 + \alpha^2_k \E_{i_k}\|g_k\| - \E_{i_k} \|x_{k+1} - x^{*}\|^2
+\]
+Возьмем $\E_{i_0,...,i_{k-1}}$ от всего неравентсва. Заметим, что все его члены не зависят от $i_{k}$. Получим
+\[
+2\alpha_k( \E[F(x_k)] - \E[F(x^{*})]) \le
+ \E \|x_k -x^{*}\|^2 + \alpha^2_k \E\|g_k\| - \E \|x_{k+1} - x^{*}\|^2
+\]
+
+Просуммируем по $k$, получается телескоп из $\E \|x_k -x^{*}\|^2 - \E \|x_k -x^{*}\|^2$
+\[
+\sum\limits_{i=0}^k  
+2\alpha_k( \E[F(x_k)] - \E[F(x^{*})]) \le
+ \E \|x_0 -x^{*}\|^2 + \sum\limits_{i=0}^{k} \alpha^2_k \E\|g_k\| - \underbrace{\E \|x_{k+1} - x^{*}\|^2}_{\ge0}
+\]
+
+Можно заметить, что $x_0$ не зависит от $i_0,...i_k$, тогда
+\[
+\E \|x_0 - x^{*}\|^2 = \|x_0 - x^{*}\|^2
+\]
+А $\|g_i\| \le L$, так как $f_{i} \in C_L^{0,1}$. Тогда получим
+\[
+\sum\limits_{i=0}^k  
+2\alpha_k( \E[F(x_k)] - \E[F(x^{*})]) \le
+ \|x_0 -x^{*}\|^2 + \sum\limits_{i=0}^k \alpha^2_k L 
+\]
+
+А еще заметим, что $F$ -- [[id:1CA14F2C-637F-41DE-9E97-72075D19E97F][выпуклая]]; Тогда по [[id:53558BAA-700E-46BE-9EAB-6A2F65A5B4C0][неравенству Йенсена]]
+\[
+F(\sum \lambda_ix_i) \le \sum \lambda_i F(x_i)
+\]
+Пусть
+\[
+\lambda_i = \frac{\alpha_i}{\sum\limits_i \alpha_i}
+\]
+Тогда, если поделить все на $\sum\limits_i a_i$
+\[
+2 ( \E F(\overline{x}_k) - F(x^{*})) \le 2 \sum\limits_{i=0}^k \frac{\alpha_i (\E F(x_i) - F(x_i))}{\sum\limits_{j=0}^k \alpha_j} \le \frac{\|x_0 - x^{*}\| + \sum\limits_{i=0}^k \alpha_i L^2}{ \sum\limits_{j=0}^k \alpha_j}
+\]
+
+
+
+ 

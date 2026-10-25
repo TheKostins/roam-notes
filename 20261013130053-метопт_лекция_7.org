@@ -3,7 +3,7 @@
 :END:
 #+title: Метопт. Лекция 7
 #+filetags: :metopt:lecture:
-#+date: 2026-10-13
+[[id:D65FB534-B7F1-4194-8E4B-D4ACAA89E6D2][Критерий Денниса-Морре]]#+date: 2026-10-13
 
 
 * Th: Условие Денниса-Морре
@@ -116,8 +116,8 @@ $f_i \in C^1(\R^{n})$
 
 Метод SGD:
 \[
-\left \{
-\begin{array}[l]
+\left\{
+\begin{array}{l}
  i_k \tilde \mathrm{Uniform} f(1...N) \Leftrightarrow \Pb(i_k = i) = \frac{1}{N} \\
  g_k = \nabla f_{ik} (x_k) \\
  x_{k+1} = x_k - \alpha_k g_k

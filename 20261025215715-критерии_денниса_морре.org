@@ -1,0 +1,156 @@
+:PROPERTIES:
+:ID:       D65FB534-B7F1-4194-8E4B-D4ACAA89E6D2
+:END:
+#+title: Критерий Денниса-Морре
+#+filetags: :metopt:theorem:
+
+Пусть
+- $f \in C^{2,2}_M$ -- [[id:7DD1C7AB-1A49-4675-9F21-5A16C717F670][Функции с липшицевым градиентом]]
+- $\nabla f(x^{*}) > 0$
+- $x_{k+1} = x_k -B_k^{-1}\nabla f(x_k)$:  [[id:6BA18878-DE34-46A5-ABE2-EDA09CAE56A7][квазиньютоновские методы]]
+- $x_k \rightarrow x^{*}$
+
+
+Тогда $x_k$ сходится [[id:9FA20DA5-3A95-4683-9CB5-C6C9A903C86A][сверхлинейно]] $\Leftrightarrow \lim \frac{\|(B_k - \nabla^2 f(x_k))d_k\|}{\|d_k\|} = 0$
+
+** Доказательство (только $\Leftarrow$ )
+
+Так как $f \in C^{2,2}_M$ и $\nabla f(x^{*}) > 0$. То по [[id:CDA139F9-5438-41E1-96B1-11A751BE40C5][локальной сходимости метода Ньютона]]:
+\[
+\exists R,C\,:\ \forall x_0\,:\  \|x_0-x^{*}\| < R\ x_k \rightarrow x^*,\text{ причем }
+\|\tilde{x}_{k+1} - x^{*}\| \le C\|x_k - x^{*}\|^{2}
+\]
+Где $\tilde{x}_{k+1}$ получен [[id:C0ED5501-CFC6-42BA-A53A-1B346CBA545D][методом ньютона]] и сходится сверхлинейно
+\[
+\tilde{x}_{k+1} = x_k - \left( \nabla^2 f(x_k) \right)^{-1} \nabla f(x_k) = x_k + d_k^N
+\]
+За $d_{k}^N$  мы обозначили шаг Ньютона
+\[
+d_k^N := - \left( \nabla^2 f(x_k) \right)^{-1} \nabla f(x_k)
+\]
+Пусть  $d_k$ -- наш шаг
+\[
+d_k := - B^{-1}_k \nabla f(x_k) = x_{k+1} - x_k
+\]
+
+Сперва нам нужно доказать, что
+\[
+d_k - d_k^N = o(d_k)
+\]
+
+Рассмотрим эту разность
+\[
+d_k - d_k^N = d_k -  \left( \nabla^2 f(x_k)\right)^{-1} \left( \nabla f(x_k) \right)
+= \left( \nabla^2 f(x_k)\right)^{-1} \left( \left(\nabla^2 f(x_k)) d_k + \nabla f(x_k) \right)
+\]
+
+Тут мы воспользовались тем, что
+\[
+d_k = \left( \nabla^2f(x_k) \right)^{-1} \left( \nabla^2 f(x_k) \right) d_k
+\]
+Заметим, что 
+\begin{multline*}
+x_{k+1} = x_k -B_k^{-1}\nabla f(x_k) \Leftrightarrow x_{k+1} - x_k = -B_k^{-1}_k\nabla f(x_k) \\
+\Leftrightarrow B_k(x_{k+1} -x_k ) = - \nabla f(x_k) \Leftrightarrow Bd_k = - \nabla f(x_k)
+\end{multline*}
+Давайте подставим $-B_kd_k$ вместо $\nabla f(x_k)$ 
+\[
+\left( \nabla^2 f(x_k)\right)^{-1} \left( \left(\nabla^2 f(x_k)) d_k + \nabla f(x_k) \right)
+= \left( \nabla^2 f(x_k)\right)^{-1} \left( \left(\nabla^2 f(x_k)) d_k - B_kd_k \right) 
+\]
+Итого 
+\[
+d_k - d_k^N
+= \left( \nabla^2 f(x_k)\right)^{-1} \left( \left(\nabla^2 f(x_k)) d_k - B_kd_k \right) 
+\]
+
+А значит и их нормы равны
+\begin{multline*}
+\| d_k - d_k^N\| =
+\left\| \left( \nabla^2 f(x_k)\right)^{-1} \left( \left(\nabla^2 f(x_k)) d_k - B_kd_k \right) \right\|
+\le\\ \left\|\left(\nabla^2 f(x_k)\right)^{-1} \right\|  \cdot
+\left\| \left( \nabla^2 f(x_k) - B_k \right) d_k\right\|
+\end{multline*}
+
+Заметим, что гессиан непрерывен, тогда
+\[x_k \rightarrow x^{*} \Rightarrow \nabla^2 f(x_k) \rightarrow \nabla^2 f(x^{*})\]
+А еще мы знаем, что $\lambda_{\min}$ тоже [[id:5A4CF475-D55C-4CAA-9A68-BD8D3B60AEA9][непрерывная]], следовательно
+\[
+\lambda_{\min}\left(\nabla^2 f(x_k)\right) \rightarrow \lambda_{\min} \left(\nabla^2 f(x^*)\right) = \mu > 0
+\]
+И для достаточно больших $k$ верно, что
+\[
+\lambda_{\min}\left(\nabla^2 f(x_k)\right)  > \frac{\mu}{2}
+\]
+Тогда на при этом условии
+\[
+\lambda_{\max}\left((\nabla^2 f(x_k))^{-1}\right) = \| (\nabla^2 f(x_k))^{-1} \| =
+\frac{1}{\lambda_{\max}\left((\nabla^2 f(x_k))^{-1}\right)} < \frac{2}{\mu}
+\]
+Тогда
+\[
+0 \le \| d_k - d_k^N\| \le \frac{2}{\mu} \cdot  \left\| \left( \nabla^2 f(x_k) - B_k \right) d_k\right\|
+\Leftrightarrow \| d_k - d_k^N\| = O\left( \|(\nabla^2 f(x_k) - B_k)d_k\| \right)
+\]
+А мы знаем, что по условиям задачи
+\[
+\lim \frac{\|(B_k - \nabla^2f(x_k))d_k\|}{\|d_k\|} = 0
+\]
+Тогда
+\[
+\| d_k - d_k^N\| = o(\|d_k\|)
+\]
+
+Тогда
+\[
+\|x_{k+1} - x^{*}\| = \|x_k + d_k - x^{*}\| \le \|x_k + d_k^N - x^{*}\| + \|d_k - d_k^N\| =
+\|\tilde{x}_{k+1} - x^{*}\| + o(\|d_k\|)
+\]
+И по [[id:9FA20DA5-3A95-4683-9CB5-C6C9A903C86A][сверхлинейности]] Ньютоновского метода 
+\[
+\|x_{k+1} - x^{*}\| =
+\|\tilde{x}_{k+1} - x^{*}\| + o(\|d_k\|)
+\le C\|x_k - x^{*}\|^2 + o(\|d_k\|)
+\]
+
+Заметим, что $\|x_k - x^{*}\| \rightarrow 0$, тогда
+\[
+C\|x_k - x^{*}\|^2 + o(\|d_k\|) = o(\|x_k - x^{*}\|)  + o(\|d_k\|)
+\]
+
+/Rem/: Что такое быть о малым
+\begin{multline*}
+\|x_{k+1} - x^{*}\| = o(\|x_k - x^{*}\|) \Leftrightarrow \\
+\Leftrightarrow \forall \varepsilon >0 \ \exists N:\ \forall n \ge N\ \|x_{n+1} - x^{*}\| \le \varepsilon \|x_n - x^{*}\| \le \varepsilon^{n-N} \|x_N - x^{*}\|
+\end{multline*}
+
+Осталось понять, что $\|d_k\| = O(\|x_k - x^{*}\|)$
+\begin{multline*}
+\|d_k\| = \|x_{k+1} - x_k\| = \|x_{k+1} - x^{*} + x^{*} - x_k\|
+\le \|x_{k+1} - x^{*}\|  + \|x^{*} - x_k\| =  \\
+o(\|x_k - x^{*}\|) + \|x_k - x^{*}\| + o(\|d_k\|) =
+O(\|x_k - x^{*}\|) + o(\|d_k\|)
+\end{multline*}
+
+
+ Теперь оценим по предыдущим неравенствам докажем [[id:9FA20DA5-3A95-4683-9CB5-C6C9A903C86A][сверхлинейность]]
+Хотим
+\[
+\frac{\|x_{k+1} - x^2\|}{\|x_k - x^{*}\|} \rightarrow 0
+\]
+Оценим выражение сверху
+\[
+\frac{\|x_{k+1} - x^2\|}{\|x_k - x^{*}\|} \le
+\frac{C\|x_k - x^{*}\|^2 + o(\|d_k\|)}{\|x_k - x^{*}\|}
+= C\|x_k - x^{*}\| + \frac{o(\|d_k\|)}{\|x_k - x^{*}\|}
+\]
+Но мы поняли, что $\|d_k\| = O(\|x_k - x^{*}\|) \Rightarrow o(\|d_k\|) = o(\|x_k - x^{*}\|)$
+Итого
+\[
+\frac{\|x_{k+1} - x^2\|}{\|x_k - x^{*}\|} \le
+ C\|x_k - x^{*}\| + \frac{o(\|x_k - x^{*}\|)}{\|x_k - x^{*}\|} \rightarrow 0
+\]
+
+Каждое слагаемое стремится к 0; И по [[id:C0408924-F658-43DF-8794-0C9AA85E7580][Тест корней]] это сверхлинейная сходимость
+
+

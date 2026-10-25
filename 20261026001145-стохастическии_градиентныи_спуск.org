@@ -1,0 +1,24 @@
+:PROPERTIES:
+:ID:       A4769F74-2E6F-4CA3-89E4-7B01881D8109
+:END:
+#+title: Стохастический градиентный спуск (SGD)
+#+filetags: :metopt:method:
+
+Мы будем рассматривать функции вида
+\[
+F = \frac{1}{N} \sum\limits_{i=1}^N f_i(x),\quad f_i \in C^1 (\R^n)
+\]
+
+Метод SGD:
+\[
+\left\{\begin{array}{l}
+i_{k} \sim \mathrm{U}[1,2,...,N] \Leftrightarrow \Pb(i_k = i) = \frac{1}{N} \\
+g_k = \nabla f_{ik} (x_k) \\
+x_{k+1} = x_k - \alpha_k g_k
+\end{array}
+\right.
+\]
+
+То есть мы случайно выбираем функцию, из которой состоит глобальная и считаем для нее градиент в точке.
+
+[[id:58D1735C-5A70-4DA0-B522-B4595CB4494C][Сходимость SGD для выпуклых функций]]
