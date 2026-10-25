@@ -15,14 +15,13 @@
 \]
 \[
 v_{k+1} = (1-\alpha_k)v_k + \alpha_ky_k + \frac{\alpha_k}{\mu} \nabla f(y_k)
-\] 
+\]
 \[
 \varphi_{k+1}^{*} = (1-\alpha_{k})\varphi^{*}_k + \alpha_k f(y_k) - \frac{\alpha_k^2}{2\mu} \| \nabla f(y_k) \|^2 + \alpha_k (1-\alpha_k)
-\left( \frac{\mu}{2} \| y_k -v_k\|^2 + \left\langle \nabla f(y); v_k -y_k \right\rangle \right)
+\left( \frac{\mu}{2} \| y_k -v_k\|^2 + \left\langle \nabla f(y_k); v_k -y_k \right\rangle \right)
 \]
 
 
-/Rem/: $v_k$ -- центрирование, а $\varphi^{*}_k$  -- наименьшее значение функции
+/Rem/: $v_k$ -- центрирование, а $\varphi^{*}_k$ -- наименьшее значение функции.
 
 Без доказательства.
-

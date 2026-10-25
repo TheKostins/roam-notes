@@ -2,12 +2,12 @@
 :ID:       01306845-D37F-480A-8DCE-EE9CA022DA1A
 :END:
 #+title: BFGS
-#+filetags: :definition:metopt:
+#+filetags: :metopt:definition:
 
 Это квазиньютоновский метод.
 Задаем $B_k$, как
 \[
-B_k = J_kJ^T
+B_k = J_kJ_k^T
 \]
 Заметим, что по построению $B_k$ -- симметрична и $\det J_k \ne 0 \Rightarrow B_k > 0$
 
@@ -19,5 +19,4 @@ y_k = J_{k+1}J_{k+1}^Td_k
 \end{array}\right.
 \]
 
-Последнее это условие секущей
-
+Последнее -- это условие секущей.

@@ -2,7 +2,7 @@
 :ID:       C038105E-BD42-44A8-9542-2DBE9FFAAA3F
 :END:
 #+title: Ускоренный метод Нестерова
-#+filetags: :theorem:metopt:
+#+filetags: :metopt:theorem:
 
 Пусть:
 - $\left\{ \varphi_k \right\}$ -- [[id:4B497C50-C541-428D-94F6-B0F0DF464A50][оценивающая последовательность с квадратичной начальной функцией]],
@@ -20,9 +20,9 @@ y_k = \frac{1}{1+\alpha_k} (\alpha_k v_k + x_k),\quad x_{k+1} = y_k - \frac{1}{L
 
 /Rem/: За обозначениями $v_k, \varphi_k^{*}$ нужно идти [[id:4B497C50-C541-428D-94F6-B0F0DF464A50][сюда]]
 
-/Rem/: При плохой обусловленности (то есть $\frac{\mu}{L}$ будет маленьким), мы получим более быструю сходимость так как мы извлекаем из этого корень. Соответственно $\left(1 - \sqrt{\frac{\mu}{L}}\right)^n$ будет убывать быстрее.
+/Rem/: При плохой обусловленности (то есть $\frac{\mu}{L}$ будет маленьким), мы получим более быструю сходимость, так как мы извлекаем из этого корень. Соответственно $\left(1 - \sqrt{\frac{\mu}{L}}\right)^n$ будет убывать быстрее.
 
-* Сходимость 
+* Сходимость
  Так как $f(x_k) \le \varphi^{*}_k$, то мы можем [[id:D21EBF43-7558-45EE-8198-60958E391E03][оценить невязку через оценивающую последовательность]].
 
  Мы получим
@@ -43,8 +43,8 @@ f(x_k) - f^{*} \le \left( 1 - \sqrt{\frac{\mu}{L}} \right)^k  (\varphi_0(x^{*}) 
 
 *  Доказательство
 
-Мы можем взять произвольную квадратичную функцию в качестве $\varphi_0$. 
-Пусть $y_0 = x_0$ и $v_0 = x_0$ 
+Мы можем взять произвольную квадратичную функцию в качестве $\varphi_0$.
+Пусть $y_0 = x_0$ и $v_0 = x_0$
 \[
 \varphi_0 = f(x_0) + \frac{\mu}{2} \|x - v_0\|^2 = f(x_0) + \frac{\mu}{2} \|x - x_0\|^2
 \]
@@ -56,27 +56,27 @@ f(x_k) - f^{*} \le \left( 1 - \sqrt{\frac{\mu}{L}} \right)^k  (\varphi_0(x^{*}) 
 f(x_0) \le  \varphi^{*}_0 = f(x_0)
 \]
 Переход $k \mapsto k+1$
-Из леммы о [[id:4B497C50-C541-428D-94F6-B0F0DF464A50][крадратичной оценивающей последовательности]], мы знаем
+Из леммы о [[id:4B497C50-C541-428D-94F6-B0F0DF464A50][квадратичной оценивающей последовательности]], мы знаем
 \begin{multline*}
 \varphi_{k+1}^{*} = \underline{(1-\alpha_{k}) \varphi^{*}_k} + \alpha_k f(y_k) - \frac{\alpha_k^2}{2\mu} \| \nabla f(y_k) \|^2 +\\
-\alpha_k (1-\alpha_k) \left( \frac{\mu}{2} \| y_k -v_k\|^2 + \left\langle \nabla f(y); v_k -y_k \right\rangle \right)
+\alpha_k (1-\alpha_k) \left( \frac{\mu}{2} \| y_k -v_k\|^2 + \left\langle \nabla f(y_k); v_k -y_k \right\rangle \right)
 \end{multline*}
 Заметим, что $\varphi^{*}_k \ge f(x_k)$ по индукционному предположению. Применим это к первому слагаемому.
 Получим
 \begin{multline*}
 \varphi_{k+1}^{*} \ge\underline{(1-\alpha_k)f(x_k)} + \alpha_k f(y_k) - \frac{\alpha_k^2}{2\mu} \| \nabla f(y_k) \|^2+\\
- \alpha_k (1-\alpha_k) \left( \underline{\frac{\mu}{2} \| y_k -v_k\|^2} + \left\langle \nabla f(y); v_k -y_k \right\rangle \right)
+ \alpha_k (1-\alpha_k) \left( \underline{\frac{\mu}{2} \| y_k -v_k\|^2} + \left\langle \nabla f(y_k); v_k -y_k \right\rangle \right)
 \end{multline*}
 
-Так-же по [[id:1CA14F2C-637F-41DE-9E97-72075D19E97F][выпуклости]] $f$
+Также по [[id:1CA14F2C-637F-41DE-9E97-72075D19E97F][выпуклости]] $f$
 \[
 f(x_k) \ge f(y_k) + \left\langle \nabla f(y_k); x_k - y_k \right\rangle
 \]
-После использования неравенства, Давайте сгруппируем $(1-\alpha_k) f(y_k) + \alpha f(y_k) = f(y_k)$ и оценим снизу $\frac{\mu}{2} \|y_k - v_k\|^2 \ge 0$
+После использования неравенства давайте сгруппируем $(1-\alpha_k) f(y_k) + \alpha_k f(y_k) = f(y_k)$ и оценим снизу $\frac{\mu}{2} \|y_k - v_k\|^2 \ge 0$
 Тогда получим
 \begin{multline*}
 \varphi_{k+1}^{*} \ge f(y_k) + (1-\alpha_k) \left\langle \nabla f(y_k); x_k- y_k \right\rangle - \frac{\alpha_k^2}{2\mu} \| \nabla f(y_k) \|^2+\\
- \alpha_k (1-\alpha_k) \left\langle \nabla f(y); v_k -y_k \right\rangle
+ \alpha_k (1-\alpha_k) \left\langle \nabla f(y_k); v_k -y_k \right\rangle
 \end{multline*}
 Давайте по линейности совместим скалярные произведения, получим
 \[
@@ -90,7 +90,7 @@ y_k = \frac{1}{1+\alpha_k}(x_k + \alpha_k v_k)
 \]
 Заметим, что
 \[
-x_k - y_k - \alpha_k + \alpha_k v_k - \alpha_ky_k  = x_k + \alpha_kv_k - (\alpha_k + 1)y_k =
+x_k - y_k + \alpha_k v_k - \alpha_ky_k  = x_k + \alpha_kv_k - (\alpha_k + 1)y_k =
 x_k + \alpha_k v_k - (x_k + \alpha_k v_k) = 0
 \]
 Тем самым скалярное произведение равно 0. Тогда
@@ -115,11 +115,10 @@ f(y_k) \ge f(x_{k+1}) + \frac{1}{2L}\|\nabla f(y_k)\|^2
 \[
 \varphi_{k+1}^{*} \ge f(x_{k+1}) + \frac{1}{2L} \|\nabla f(y_k)\|^2 - \frac{\alpha_k^2}{2\mu} \| \nabla f(y_k) \|^2
 \]
-Мы знаем, что $a_k =\sqrt{\frac{\mu}{L}}$ тогда
+Мы знаем, что $\alpha_k =\sqrt{\frac{\mu}{L}}$, тогда
 \[\frac{\alpha_k^2}{2\mu} = \frac{1}{2L}\]
 Мы получили, что нормы тоже сокращаются. Итого
 \[
 \varphi^{*}_{k+1} \ge f(x_{k+1})
 \]
 Индукция доказана.
-
