@@ -17,7 +17,9 @@ title = "Заметки"
 author = "Konstntin"
 base_url = "https://thekostins.github.io/roam-notes/"# https://<user>.github.io/<repo>/ -- для canonical
 publish = ["metopt", "calc"]  # курсы, которые выводятся (порядок = порядок в проводнике)
-exclude = []                  # UUID заметок, которые не публиковать
+exclude = [                   # UUID заметок, которые не публиковать
+  "BE21881B-6DC7-45CB-94F5-9F2E94C0584F",  # Идея поиска оптимального шага -- личная заметка, не теория курса
+]
 show_status = false           # показывать статус проверки (audited/pending)
 out = "site"
 intro = ""
