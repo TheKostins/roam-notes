@@ -312,11 +312,11 @@
   },
   "36F6E1BA-41DB-460D-A9C6-B980621727D4": {
    "audited": {
-    "body_hash": "e8f3dc66621b0826",
-    "commit": "2809353",
-    "date": "2026-10-16",
+    "body_hash": "9ad7f26f3d96d637",
+    "commit": "50bc31c",
+    "date": "2026-10-26",
     "open": 0,
-    "report": "2026-10-16-1330-audit.md"
+    "report": "2026-10-26-0145-audit.md"
    },
    "title": "Сходимость градиентного спуска с шагом Армихо-Вульфа"
   },
@@ -567,11 +567,11 @@
   },
   "58D1735C-5A70-4DA0-B522-B4595CB4494C": {
    "audited": {
-    "body_hash": "a9662a5d3e083295",
-    "commit": "8eff4e2",
+    "body_hash": "98cc53947736aa11",
+    "commit": "50bc31c",
     "date": "2026-10-26",
     "open": 1,
-    "report": "2026-10-26-0050-audit.md"
+    "report": "2026-10-26-0145-audit.md"
    },
    "title": "Сходимость SGD для выпуклых функций"
   },
@@ -1112,11 +1112,11 @@
   },
   "BE21881B-6DC7-45CB-94F5-9F2E94C0584F": {
    "audited": {
-    "body_hash": "27c455fda576d68c",
-    "commit": "928c16a",
-    "date": "2026-10-15",
+    "body_hash": "ae06476cbde5282e",
+    "commit": "50bc31c",
+    "date": "2026-10-26",
     "open": 2,
-    "report": "2026-10-15-1208-audit.md"
+    "report": "2026-10-26-0145-audit.md"
    },
    "title": "Идея поиска оптимального шага для неточной оптимизации"
   },
@@ -1352,11 +1352,11 @@
   },
   "D65FB534-B7F1-4194-8E4B-D4ACAA89E6D2": {
    "audited": {
-    "body_hash": "884785f281388187",
-    "commit": "8eff4e2",
+    "body_hash": "cd84710eb1a448ef",
+    "commit": "50bc31c",
     "date": "2026-10-26",
     "open": 1,
-    "report": "2026-10-26-0050-audit.md"
+    "report": "2026-10-26-0145-audit.md"
    },
    "title": "Критерий Денниса–Море"
   },
