@@ -41,7 +41,7 @@
 \phi(y) - \frac{1}{2L} \| \nabla \phi (y) \|^2
 \]
 
-Получили $\phi(x) \le \phi(y) - \frac{1}{2L} \| \nabla \phi (y) \|^2$, подставим значение $\phi$
+Получили $\phi(x) \le \phi(y) - \frac{1}{2L} \| \nabla \phi (y) \|^2$, подставим значение $\phi$ (так как $\phi(x) < \phi(z)$)
 \[
 f(x) - \left\langle \nabla f(x); x \right\rangle \le f(y) - \left\langle \nabla f(x);y \right\rangle - \frac{1}{2L} \| \nabla f(y) - \nabla f(x) \|^2
 \]
